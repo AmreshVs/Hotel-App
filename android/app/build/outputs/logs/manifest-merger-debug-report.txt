@@ -1,0 +1,332 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:1:1-26:12
+INJECTED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:1:1-26:12
+INJECTED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:1:1-26:12
+INJECTED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:1:1-26:12
+MERGED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:1:1-26:12
+MERGED from [:@philly25_react-native-paytm] d:\HotelAppNoExpo\node_modules\@philly25\react-native-paytm\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-21:12
+MERGED from [:@react-native-community_async-storage] d:\HotelAppNoExpo\node_modules\@react-native-community\async-storage\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:@react-native-community_datetimepicker] d:\HotelAppNoExpo\node_modules\@react-native-community\datetimepicker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-13:12
+MERGED from [:react-native-gesture-handler] d:\HotelAppNoExpo\node_modules\react-native-gesture-handler\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-reanimated] d:\HotelAppNoExpo\node_modules\react-native-reanimated\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-screens] d:\HotelAppNoExpo\node_modules\react-native-screens\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-svg] d:\HotelAppNoExpo\node_modules\react-native-svg\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.react:react-native:0.61.5] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-react-native-0.61.5.aar\0c11d5f47ab2fdddc63079486f0f04dc\AndroidManifest.xml:2:1-13:12
+MERGED from [org.webkit:android-jsc:r245459] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\android-jsc-r245459.aar\d57ae93d97cd10855559c77dd987245c\AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-linear-gradient] d:\HotelAppNoExpo\node_modules\react-native-linear-gradient\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.android.material:material:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\material-1.0.0.aar\fe62ff0d9b56616fc7cd9ea1d26dded6\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\appcompat-1.1.0.aar\b5a6d2c991d997857aa610fccae94e2e\AndroidManifest.xml:17:1-24:12
+MERGED from [com.facebook.fresco:fresco:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\fresco-2.0.0.aar\15101836b21636ac3cc5e5ca9ec1e6c8\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\imagepipeline-okhttp3-2.0.0.aar\7efb46c959f3bc2b95bf4d6029449878\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:drawee:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\drawee-2.0.0.aar\c5adb51461ea6be65c85c110b69d4cb2\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\nativeimagefilters-2.0.0.aar\a5220e34ea97d854c97db03205155d20\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\imagepipeline-2.0.0.aar\622f4f41418929d00130158bc2dccf05\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\nativeimagetranscoder-2.0.0.aar\664a50e1ced778630dd38f2fc31fc6b3\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\imagepipeline-base-2.0.0.aar\1c405a2cf628f446087cfbf1b43f7a2f\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.soloader:soloader:0.6.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\soloader-0.6.0.aar\e6a2ca76a6044907746c2a406f035b18\AndroidManifest.xml:2:1-13:12
+MERGED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:2:1-35:12
+MERGED from [androidx.transition:transition:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\transition-1.1.0.aar\413f86ca36c64d5ff77e0eb0f99e11ad\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\recyclerview-1.0.0.aar\c6b95f74cbf0c7b86cbc9780f52e002c\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\legacy-support-core-ui-1.0.0.aar\9162cf46ebe98572d50702e7501344e8\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-1.0.0.aar\ee6f3cf3d62133d24b5ba16d038267af\AndroidManifest.xml:17:1-22:12
+MERGED from [com.facebook.fresco:fbcore:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-fbcore-2.0.0.aar\0cacfe4f279d58a1b300d053c263b3bb\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\fragment-1.1.0.aar\6612fd46002490d81498d2c21f773ec7\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\appcompat-resources-1.1.0.aar\cca5ebc1de4230f0dac3c36c9428dd4c\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\drawerlayout-1.0.0.aar\54a18a35a0cba7891fc4e6e7ab774c99\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\viewpager-1.0.0.aar\cbd100c35f9349f6030c15d7fdc9e14b\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-1.0.0.aar\9e83d650dccf6f4c71891e0941f3993e\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\customview-1.0.0.aar\17b1d74510596b63584bde1a601c801a\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\legacy-support-core-utils-1.0.0.aar\e5b0d454812546f2275909636a149f84\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\loader-1.0.0.aar\f47787be20c42cdeb59ae1c18b507708\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\activity-1.0.0.aar\d53e421764146a4fb595ff9b2cf53599\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\vectordrawable-animated-1.1.0.aar\563d81edddc70919f74e564b8706cc32\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\vectordrawable-1.1.0.aar\9f3b60d6ed54ae0b0ee395a498158ecc\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-1.0.0.aar\7a4089282f6958c7516374ae0a030b1f\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-1.0.0.aar\4b3cf0f94febc22be7a286ec494225a9\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\core-1.1.0.aar\00ec6572edb5c79c7c3866b90cf57431\AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\cursoradapter-1.0.0.aar\6cee67925edce7f5d5e7ca7caf532de7\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\cardview-1.0.0.aar\57780afec64c88ba42488b4d6aa990b2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.1.0.aar\b86b3e912d1de8e0a9f3605b2a227eda\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\interpolator-1.0.0.aar\d32f379948e5c1e870c256a6faf002e9\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\documentfile-1.0.0.aar\d3c05105233ed8b10765752286865c2b\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-1.0.0.aar\ebac59aec1823b8cab4979b1d7176707\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\print-1.0.0.aar\c90d3399f96a5c73f6fe56f4a1658e64\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\lifecycle-runtime-2.1.0.aar\f151028c93b3329efd22364e74caa1fb\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\lifecycle-viewmodel-2.1.0.aar\56ba87e30fc014b1da68795b5764063c\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\savedstate-1.0.0.aar\0f2275ca473d461a8040885f572a3a46\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\lifecycle-livedata-2.0.0.aar\37bc4e87e87cb6a2e36e1bf0acc6eea0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\lifecycle-livedata-core-2.0.0.aar\48116e975aff9fa5fa92fcc266967813\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\core-runtime-2.0.0.aar\ee4bf3fd0b27e7ea7e0b48c385acd39a\AndroidManifest.xml:17:1-22:12
+INJECTED from D:\HotelAppNoExpo\android\app\src\debug\AndroidManifest.xml:2:1-8:12
+INJECTED from D:\HotelAppNoExpo\android\app\src\debug\AndroidManifest.xml:2:1-8:12
+INJECTED from D:\HotelAppNoExpo\android\app\src\debug\AndroidManifest.xml:2:1-8:12
+	package
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:2:3-36
+		INJECTED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:2:3-36
+		INJECTED from D:\HotelAppNoExpo\android\app\src\debug\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:1:1-26:12
+		INJECTED from D:\HotelAppNoExpo\android\app\src\debug\AndroidManifest.xml
+	xmlns:tools
+		ADDED from D:\HotelAppNoExpo\android\app\src\debug\AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:1:1-26:12
+		INJECTED from D:\HotelAppNoExpo\android\app\src\debug\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:4:5-67
+MERGED from [:@philly25_react-native-paytm] d:\HotelAppNoExpo\node_modules\@philly25\react-native-paytm\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-67
+MERGED from [:@philly25_react-native-paytm] d:\HotelAppNoExpo\node_modules\@philly25\react-native-paytm\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-67
+	android:name
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:4:22-64
+application
+ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:6:5-24:19
+MERGED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:6:5-24:19
+MERGED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:6:5-24:19
+MERGED from [:@philly25_react-native-paytm] d:\HotelAppNoExpo\node_modules\@philly25\react-native-paytm\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:5-19:19
+MERGED from [:@philly25_react-native-paytm] d:\HotelAppNoExpo\node_modules\@philly25\react-native-paytm\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:5-19:19
+MERGED from [:@react-native-community_datetimepicker] d:\HotelAppNoExpo\node_modules\@react-native-community\datetimepicker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-20
+MERGED from [:@react-native-community_datetimepicker] d:\HotelAppNoExpo\node_modules\@react-native-community\datetimepicker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.react:react-native:0.61.5] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-react-native-0.61.5.aar\0c11d5f47ab2fdddc63079486f0f04dc\AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.react:react-native:0.61.5] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-react-native-0.61.5.aar\0c11d5f47ab2fdddc63079486f0f04dc\AndroidManifest.xml:11:5-20
+MERGED from [com.google.android.material:material:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\material-1.0.0.aar\fe62ff0d9b56616fc7cd9ea1d26dded6\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\material-1.0.0.aar\fe62ff0d9b56616fc7cd9ea1d26dded6\AndroidManifest.xml:22:5-20
+MERGED from [com.facebook.soloader:soloader:0.6.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\soloader-0.6.0.aar\e6a2ca76a6044907746c2a406f035b18\AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:soloader:0.6.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\soloader-0.6.0.aar\e6a2ca76a6044907746c2a406f035b18\AndroidManifest.xml:11:5-20
+MERGED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:13:5-33:19
+MERGED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:13:5-33:19
+MERGED from [androidx.core:core:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\core-1.1.0.aar\00ec6572edb5c79c7c3866b90cf57431\AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\core-1.1.0.aar\00ec6572edb5c79c7c3866b90cf57431\AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.1.0.aar\b86b3e912d1de8e0a9f3605b2a227eda\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.1.0.aar\b86b3e912d1de8e0a9f3605b2a227eda\AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\core-1.1.0.aar\00ec6572edb5c79c7c3866b90cf57431\AndroidManifest.xml:24:18-86
+	android:label
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:8:7-39
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:8:7-39
+	tools:ignore
+		ADDED from D:\HotelAppNoExpo\android\app\src\debug\AndroidManifest.xml:7:75-114
+	android:roundIcon
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:10:7-52
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:10:7-52
+	tools:targetApi
+		ADDED from D:\HotelAppNoExpo\android\app\src\debug\AndroidManifest.xml:7:54-74
+	android:icon
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:9:7-41
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:9:7-41
+	android:allowBackup
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:11:7-34
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:11:7-34
+	android:theme
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:12:7-38
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:12:7-38
+	android:usesCleartextTraffic
+		ADDED from D:\HotelAppNoExpo\android\app\src\debug\AndroidManifest.xml:7:18-53
+	android:name
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:7:7-38
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:7:7-38
+activity#com.hotelappreactnative.MainActivity
+ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:13:7-22:18
+	android:label
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:15:9-41
+	android:windowSoftInputMode
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:17:9-51
+	android:configChanges
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:16:9-79
+	android:name
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:14:9-37
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:18:9-21:25
+action#android.intent.action.MAIN
+ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:19:13-65
+	android:name
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:19:21-62
+category#android.intent.category.LAUNCHER
+ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:20:13-73
+	android:name
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:20:23-70
+activity#com.facebook.react.devsupport.DevSettingsActivity
+ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:23:7-84
+	android:name
+		ADDED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml:23:17-81
+uses-sdk
+INJECTED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml
+INJECTED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml
+MERGED from [:@philly25_react-native-paytm] d:\HotelAppNoExpo\node_modules\@philly25\react-native-paytm\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:@philly25_react-native-paytm] d:\HotelAppNoExpo\node_modules\@philly25\react-native-paytm\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:@react-native-community_async-storage] d:\HotelAppNoExpo\node_modules\@react-native-community\async-storage\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:@react-native-community_async-storage] d:\HotelAppNoExpo\node_modules\@react-native-community\async-storage\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:@react-native-community_datetimepicker] d:\HotelAppNoExpo\node_modules\@react-native-community\datetimepicker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:@react-native-community_datetimepicker] d:\HotelAppNoExpo\node_modules\@react-native-community\datetimepicker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-gesture-handler] d:\HotelAppNoExpo\node_modules\react-native-gesture-handler\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-gesture-handler] d:\HotelAppNoExpo\node_modules\react-native-gesture-handler\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-reanimated] d:\HotelAppNoExpo\node_modules\react-native-reanimated\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-reanimated] d:\HotelAppNoExpo\node_modules\react-native-reanimated\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-screens] d:\HotelAppNoExpo\node_modules\react-native-screens\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-screens] d:\HotelAppNoExpo\node_modules\react-native-screens\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-svg] d:\HotelAppNoExpo\node_modules\react-native-svg\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-svg] d:\HotelAppNoExpo\node_modules\react-native-svg\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.react:react-native:0.61.5] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-react-native-0.61.5.aar\0c11d5f47ab2fdddc63079486f0f04dc\AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.61.5] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-react-native-0.61.5.aar\0c11d5f47ab2fdddc63079486f0f04dc\AndroidManifest.xml:7:5-9:41
+MERGED from [org.webkit:android-jsc:r245459] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\android-jsc-r245459.aar\d57ae93d97cd10855559c77dd987245c\AndroidManifest.xml:7:5-9:41
+MERGED from [org.webkit:android-jsc:r245459] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\android-jsc-r245459.aar\d57ae93d97cd10855559c77dd987245c\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-linear-gradient] d:\HotelAppNoExpo\node_modules\react-native-linear-gradient\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-linear-gradient] d:\HotelAppNoExpo\node_modules\react-native-linear-gradient\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.android.material:material:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\material-1.0.0.aar\fe62ff0d9b56616fc7cd9ea1d26dded6\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\material-1.0.0.aar\fe62ff0d9b56616fc7cd9ea1d26dded6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\appcompat-1.1.0.aar\b5a6d2c991d997857aa610fccae94e2e\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\appcompat-1.1.0.aar\b5a6d2c991d997857aa610fccae94e2e\AndroidManifest.xml:20:5-22:41
+MERGED from [com.facebook.fresco:fresco:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\fresco-2.0.0.aar\15101836b21636ac3cc5e5ca9ec1e6c8\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fresco:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\fresco-2.0.0.aar\15101836b21636ac3cc5e5ca9ec1e6c8\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\imagepipeline-okhttp3-2.0.0.aar\7efb46c959f3bc2b95bf4d6029449878\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\imagepipeline-okhttp3-2.0.0.aar\7efb46c959f3bc2b95bf4d6029449878\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\drawee-2.0.0.aar\c5adb51461ea6be65c85c110b69d4cb2\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\drawee-2.0.0.aar\c5adb51461ea6be65c85c110b69d4cb2\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\nativeimagefilters-2.0.0.aar\a5220e34ea97d854c97db03205155d20\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\nativeimagefilters-2.0.0.aar\a5220e34ea97d854c97db03205155d20\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\imagepipeline-2.0.0.aar\622f4f41418929d00130158bc2dccf05\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\imagepipeline-2.0.0.aar\622f4f41418929d00130158bc2dccf05\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\nativeimagetranscoder-2.0.0.aar\664a50e1ced778630dd38f2fc31fc6b3\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\nativeimagetranscoder-2.0.0.aar\664a50e1ced778630dd38f2fc31fc6b3\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\imagepipeline-base-2.0.0.aar\1c405a2cf628f446087cfbf1b43f7a2f\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\imagepipeline-base-2.0.0.aar\1c405a2cf628f446087cfbf1b43f7a2f\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.soloader:soloader:0.6.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\soloader-0.6.0.aar\e6a2ca76a6044907746c2a406f035b18\AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.soloader:soloader:0.6.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\soloader-0.6.0.aar\e6a2ca76a6044907746c2a406f035b18\AndroidManifest.xml:7:5-9:41
+MERGED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:7:5-44
+MERGED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:7:5-44
+MERGED from [androidx.transition:transition:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\transition-1.1.0.aar\413f86ca36c64d5ff77e0eb0f99e11ad\AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\transition-1.1.0.aar\413f86ca36c64d5ff77e0eb0f99e11ad\AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\recyclerview-1.0.0.aar\c6b95f74cbf0c7b86cbc9780f52e002c\AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\recyclerview-1.0.0.aar\c6b95f74cbf0c7b86cbc9780f52e002c\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\legacy-support-core-ui-1.0.0.aar\9162cf46ebe98572d50702e7501344e8\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\legacy-support-core-ui-1.0.0.aar\9162cf46ebe98572d50702e7501344e8\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-1.0.0.aar\ee6f3cf3d62133d24b5ba16d038267af\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-1.0.0.aar\ee6f3cf3d62133d24b5ba16d038267af\AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.fresco:fbcore:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-fbcore-2.0.0.aar\0cacfe4f279d58a1b300d053c263b3bb\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-fbcore-2.0.0.aar\0cacfe4f279d58a1b300d053c263b3bb\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\fragment-1.1.0.aar\6612fd46002490d81498d2c21f773ec7\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\fragment-1.1.0.aar\6612fd46002490d81498d2c21f773ec7\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\appcompat-resources-1.1.0.aar\cca5ebc1de4230f0dac3c36c9428dd4c\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\appcompat-resources-1.1.0.aar\cca5ebc1de4230f0dac3c36c9428dd4c\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\drawerlayout-1.0.0.aar\54a18a35a0cba7891fc4e6e7ab774c99\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\drawerlayout-1.0.0.aar\54a18a35a0cba7891fc4e6e7ab774c99\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\viewpager-1.0.0.aar\cbd100c35f9349f6030c15d7fdc9e14b\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\viewpager-1.0.0.aar\cbd100c35f9349f6030c15d7fdc9e14b\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-1.0.0.aar\9e83d650dccf6f4c71891e0941f3993e\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-1.0.0.aar\9e83d650dccf6f4c71891e0941f3993e\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\customview-1.0.0.aar\17b1d74510596b63584bde1a601c801a\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\customview-1.0.0.aar\17b1d74510596b63584bde1a601c801a\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\legacy-support-core-utils-1.0.0.aar\e5b0d454812546f2275909636a149f84\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\legacy-support-core-utils-1.0.0.aar\e5b0d454812546f2275909636a149f84\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\loader-1.0.0.aar\f47787be20c42cdeb59ae1c18b507708\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\loader-1.0.0.aar\f47787be20c42cdeb59ae1c18b507708\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\activity-1.0.0.aar\d53e421764146a4fb595ff9b2cf53599\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\activity-1.0.0.aar\d53e421764146a4fb595ff9b2cf53599\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\vectordrawable-animated-1.1.0.aar\563d81edddc70919f74e564b8706cc32\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\vectordrawable-animated-1.1.0.aar\563d81edddc70919f74e564b8706cc32\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\vectordrawable-1.1.0.aar\9f3b60d6ed54ae0b0ee395a498158ecc\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\vectordrawable-1.1.0.aar\9f3b60d6ed54ae0b0ee395a498158ecc\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-1.0.0.aar\7a4089282f6958c7516374ae0a030b1f\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-1.0.0.aar\7a4089282f6958c7516374ae0a030b1f\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-1.0.0.aar\4b3cf0f94febc22be7a286ec494225a9\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-1.0.0.aar\4b3cf0f94febc22be7a286ec494225a9\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\core-1.1.0.aar\00ec6572edb5c79c7c3866b90cf57431\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\core-1.1.0.aar\00ec6572edb5c79c7c3866b90cf57431\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\cursoradapter-1.0.0.aar\6cee67925edce7f5d5e7ca7caf532de7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\cursoradapter-1.0.0.aar\6cee67925edce7f5d5e7ca7caf532de7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\cardview-1.0.0.aar\57780afec64c88ba42488b4d6aa990b2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\cardview-1.0.0.aar\57780afec64c88ba42488b4d6aa990b2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.1.0.aar\b86b3e912d1de8e0a9f3605b2a227eda\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.1.0.aar\b86b3e912d1de8e0a9f3605b2a227eda\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\interpolator-1.0.0.aar\d32f379948e5c1e870c256a6faf002e9\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\interpolator-1.0.0.aar\d32f379948e5c1e870c256a6faf002e9\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\documentfile-1.0.0.aar\d3c05105233ed8b10765752286865c2b\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\documentfile-1.0.0.aar\d3c05105233ed8b10765752286865c2b\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-1.0.0.aar\ebac59aec1823b8cab4979b1d7176707\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-1.0.0.aar\ebac59aec1823b8cab4979b1d7176707\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\print-1.0.0.aar\c90d3399f96a5c73f6fe56f4a1658e64\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\print-1.0.0.aar\c90d3399f96a5c73f6fe56f4a1658e64\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\lifecycle-runtime-2.1.0.aar\f151028c93b3329efd22364e74caa1fb\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\lifecycle-runtime-2.1.0.aar\f151028c93b3329efd22364e74caa1fb\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\lifecycle-viewmodel-2.1.0.aar\56ba87e30fc014b1da68795b5764063c\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\lifecycle-viewmodel-2.1.0.aar\56ba87e30fc014b1da68795b5764063c\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\savedstate-1.0.0.aar\0f2275ca473d461a8040885f572a3a46\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\savedstate-1.0.0.aar\0f2275ca473d461a8040885f572a3a46\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\lifecycle-livedata-2.0.0.aar\37bc4e87e87cb6a2e36e1bf0acc6eea0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\lifecycle-livedata-2.0.0.aar\37bc4e87e87cb6a2e36e1bf0acc6eea0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\lifecycle-livedata-core-2.0.0.aar\48116e975aff9fa5fa92fcc266967813\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\lifecycle-livedata-core-2.0.0.aar\48116e975aff9fa5fa92fcc266967813\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\core-runtime-2.0.0.aar\ee4bf3fd0b27e7ea7e0b48c385acd39a\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\core-runtime-2.0.0.aar\ee4bf3fd0b27e7ea7e0b48c385acd39a\AndroidManifest.xml:20:5-44
+INJECTED from D:\HotelAppNoExpo\android\app\src\debug\AndroidManifest.xml
+INJECTED from D:\HotelAppNoExpo\android\app\src\debug\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml
+		INJECTED from D:\HotelAppNoExpo\android\app\src\debug\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\HotelAppNoExpo\android\app\src\main\AndroidManifest.xml
+		INJECTED from D:\HotelAppNoExpo\android\app\src\debug\AndroidManifest.xml
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from D:\HotelAppNoExpo\android\app\src\debug\AndroidManifest.xml:5:5-77
+	android:name
+		ADDED from D:\HotelAppNoExpo\android\app\src\debug\AndroidManifest.xml:5:22-75
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [:@philly25_react-native-paytm] d:\HotelAppNoExpo\node_modules\@philly25\react-native-paytm\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-79
+MERGED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:9:5-79
+MERGED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:9:5-79
+	android:name
+		ADDED from [:@philly25_react-native-paytm] d:\HotelAppNoExpo\node_modules\@philly25\react-native-paytm\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:22-76
+activity#com.paytm.pgsdk.PaytmPGActivity
+ADDED from [:@philly25_react-native-paytm] d:\HotelAppNoExpo\node_modules\@philly25\react-native-paytm\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:9-18:52
+MERGED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:14:9-17:47
+MERGED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:14:9-17:47
+	android:screenOrientation
+		ADDED from [:@philly25_react-native-paytm] d:\HotelAppNoExpo\node_modules\@philly25\react-native-paytm\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:13-49
+	android:configChanges
+		ADDED from [:@philly25_react-native-paytm] d:\HotelAppNoExpo\node_modules\@philly25\react-native-paytm\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:13-72
+	android:theme
+		ADDED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:17:13-44
+	android:name
+		ADDED from [:@philly25_react-native-paytm] d:\HotelAppNoExpo\node_modules\@philly25\react-native-paytm\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-59
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:10:5-81
+	android:name
+		ADDED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:10:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:11:5-80
+	android:name
+		ADDED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:11:22-77
+service#com.paytm.pgsdk.IntentServicePostNotification
+ADDED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:19:9-21:40
+	android:exported
+		ADDED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:21:13-37
+	android:name
+		ADDED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:20:13-73
+service#com.paytm.pgsdk.IntentServicePreNotification
+ADDED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:22:9-24:40
+	android:exported
+		ADDED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:24:13-37
+	android:name
+		ADDED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:23:13-72
+service#com.paytm.pgsdk.easypay.utils.EasypayLoaderService
+ADDED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:25:9-28:39
+	android:enabled
+		ADDED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:27:13-35
+	android:exported
+		ADDED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:28:13-36
+	android:name
+		ADDED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:26:13-78
+service#com.paytm.pgsdk.easypay.utils.AnalyticsService
+ADDED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:29:9-32:39
+	android:enabled
+		ADDED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:31:13-35
+	android:exported
+		ADDED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:32:13-36
+	android:name
+		ADDED from [com.paytm:pgplussdk:1.4.0] C:\Users\Amresh Vs\.gradle\caches\transforms-1\files-1.1\jetified-pgplussdk-1.4.0.aar\45802d0d0963a9903ae16798c685a5b5\AndroidManifest.xml:30:13-74
