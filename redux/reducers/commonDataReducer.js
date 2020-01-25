@@ -1,17 +1,17 @@
 // Not Used
-import {USER_LOGIN} from '../actionCreators/commonAC';
+import { USER_LOGIN } from '../actionCreators/commonAC';
 
 const initialState = {
-  userData: {},
+    userData: {},
 };
 
 const CommonDataReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case USER_LOGIN:
-      return Object.assign({}, state, {userData: action.payload});
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case USER_LOGIN:
+            return Object.assign({}, state, { userData: action.payload });
+        default:
+            return state;
+    }
 };
 
 export default CommonDataReducer;

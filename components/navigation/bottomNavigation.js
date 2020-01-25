@@ -1,13 +1,9 @@
 import React from 'react';
-import {SafeAreaView} from 'react-navigation';
-import {
-  BottomNavigation,
-  BottomNavigationTab,
-  Icon,
-} from '@ui-kitten/components';
+import { SafeAreaView } from 'react-navigation';
+import { BottomNavigation, BottomNavigationTab, Icon } from '@ui-kitten/components';
 import styles from './styles';
 
-const BottomNav = ({navigation}) => {
+const BottomNav = ({ navigation }) => {
   const onSelect = index => {
     const selectedTabRoute = navigation.state.routes[index];
     navigation.navigate(selectedTabRoute.routeName);
@@ -25,7 +21,8 @@ const BottomNav = ({navigation}) => {
         onSelect={onSelect}
         appearance="noIndicator"
         indicatorStyle={styles.indicator}
-        style={styles.bottomNavigation}>
+        style={styles.bottomNavigation}
+      >
         <BottomNavigationTab style={styles.tab} icon={HomeIcon} />
         <BottomNavigationTab style={styles.tab} icon={HeartIcon} />
         <BottomNavigationTab style={styles.tab} icon={BookingIcon} />
