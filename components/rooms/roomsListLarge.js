@@ -32,7 +32,7 @@ const RoomsListLarge = (props) => {
             <Ripple style={styles.namePrice} onPress={props.navigate}>
                 <Text style={styles.title}>{props.hotelName}</Text>
                 <View style={styles.priceBlock}>
-                    <Text style={styles.oldPrice}>₹{props.cost - 200} </Text>
+                    <Text style={styles.oldPrice}>₹{props.oldCost} </Text>
                     <Text style={styles.price}>₹{props.cost}</Text>
                     <Text style={styles.priceCaption}>  Per Night</Text>
                 </View>

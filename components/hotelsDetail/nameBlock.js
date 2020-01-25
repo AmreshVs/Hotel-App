@@ -1,8 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Card, Text, Icon } from '@ui-kitten/components';
 import { StyleSheet, View } from 'react-native';
-import ReviewRating from '../extra/reviewRating';
 
 const NameBlock = (props) => {
     var data = props.data;
@@ -13,7 +11,7 @@ const NameBlock = (props) => {
                     <Text style={styles.roomTitle}>{data.title}</Text>
                     <Text style={styles.caption}>{data.subtitle}</Text>
                     <View style={styles.ratingContainer}>
-                        <ReviewRating rating={data.avg_rating} />
+                        <Icon name='star' width={28} height={28} fill='#FFD13A'/>
                         <Text style={styles.ratingCount}><Text style={styles.caption}>{data.avg_rating}</Text><Text style={styles.caption}> | {data.total_comments} Comments</Text></Text>
                     </View>
                 </View>
@@ -27,10 +25,6 @@ const NameBlock = (props) => {
         </Card>
     );
 }
-
-// const mapStateToProps = (state) => {
-//     return state;
-// }
 
 export default NameBlock;
 
@@ -84,12 +78,14 @@ const styles = StyleSheet.create({
         marginBottom: 3
     },
     ratingContainer: {
+        flex: 1,
         flexDirection: 'row',
+        marginTop: 5,
     },
     ratingCount:{
         fontSize: 16,
         color: '#626262',
-        paddingTop: 7,
+        paddingTop: 5,
         paddingLeft: 5
     },
     mapIcon:{
