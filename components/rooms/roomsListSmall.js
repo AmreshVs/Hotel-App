@@ -18,8 +18,6 @@ const RoomsListLarge = props => {
       ? props.hotelName.substring(0, maxWidth - 3) + '...'
       : props.hotelName;
 
-  // console.log(Dimensions.get('window').width);
-
   return (
     <View style={styles.hotelListCard}>
       <View style={styles.imgContainer}>

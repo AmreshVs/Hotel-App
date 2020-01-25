@@ -1,6 +1,6 @@
-import { createAppContainer } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { createStackNavigator } from 'react-navigation-stack';
+import {createAppContainer} from 'react-navigation';
+import {createBottomTabNavigator} from 'react-navigation-tabs';
+import {createStackNavigator} from 'react-navigation-stack';
 import LoginScreen from '../../screen/login/index';
 import Main from '../../screen/Main/index';
 import HomeScreen from '../../screen/home/index';
@@ -25,7 +25,7 @@ const TabNavigation = createBottomTabNavigator(
   {
     unmountInactiveRoutes: true,
     tabBarComponent: BottomNav,
-  }
+  },
 );
 
 const rootStack = createStackNavigator(
@@ -43,7 +43,7 @@ const rootStack = createStackNavigator(
   {
     unmountInactiveRoutes: true,
     headerMode: 'none',
-  }
+  },
 );
 
 export const TabNavigator = createAppContainer(rootStack);
