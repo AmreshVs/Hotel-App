@@ -9,9 +9,6 @@ import {Platform, AppRegistry, View, StyleSheet, StatusBar} from 'react-native';
 import store from './redux/stores/store';
 import {Provider} from 'react-redux';
 import {enableScreens} from 'react-native-screens';
-// if(__DEV__) {
-//   import('./reactronConfig').then(() => console.log('Reactotron Configured'))
-// }
 
 const App = () => {
   enableScreens();
@@ -20,8 +17,8 @@ const App = () => {
       <Provider store={store}>
         <IconRegistry icons={EvaIconsPack} />
         <ApplicationProvider mapping={mapping} theme={theme}>
-          <StatusBar barStyle="light-content" />
-          {/* <View style={styles.statusBar} /> */}
+          <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
+          <View style={styles.statusBar} />
           <TabNavigator />
         </ApplicationProvider>
       </Provider>
@@ -37,7 +34,7 @@ if (Platform.OS === 'web') {
 
 const styles = StyleSheet.create({
   statusBar: {
-    backgroundColor: '#3366FF',
+    backgroundColor: '#1939B7',
     height: StatusBar.currentHeight,
   },
 });

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, Card, Icon } from '@ui-kitten/components';
+import { connect } from 'react-redux';
 import { StyleSheet, View, Modal, ScrollView } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import { withNavigation } from 'react-navigation';
@@ -7,14 +8,21 @@ import Progress from '../extra/progress';
 import ReviewsLess from './reviewsLess';
 import TopNavSimple from '../navigation/topNavSimple';
 import WriteReview from './writeReview';
+import ReviewsLessSK from '../skeletons/hotelDetail/reviewsLessSK';
+import LoadAllReviews from '../../redux/thunkActions/loadAllReviews';
 
 const GuestDetails = (props) => {
 
     const [visible, setVisible] = React.useState(false);
     const [writeReview, setwriteReview] = React.useState(false);
+    const [allReviewData, setAllReviewsData] = React.useState([]);
 
-    const toggleModal = () => {
+    const toggleModal = async () => {
         setVisible(!visible);
+        if(visible === false){
+            const data = await LoadAllReviews(props.hotelId, props.access_token);
+            setAllReviewsData(data);
+        }
     }
 
     const toggleWriteReview = () => {
@@ -29,6 +37,13 @@ const GuestDetails = (props) => {
         { id: 1, num: props.data.rating1 },
     ];
 
+    const RenderReviewLessSK = () => {
+        const skData = [1,2,3,4,5];
+        return(
+            skData.map((item) => <ReviewsLessSK key={item} />)
+        )
+    }
+
     return (
         <View style={{ width: '100%', marginLeft: 20 }}>
             <Card style={styles.cardContainer}>
@@ -42,8 +57,8 @@ const GuestDetails = (props) => {
                     <View style={styles.ratingsContainer}>
                         <View style={styles.ratingLeft}>
                             <Text style={styles.rating}>{props.data.avg_rating}</Text>
-                            <Text style={styles.ratingCaption}>Very Good</Text>
-                            <Text style={styles.ratingNumber}>{props.data.total_rating} ratings</Text>
+                            <Text style={styles.ratingCaption}>{props.data.rating_caption}</Text>
+                            <Text style={styles.ratingNumber}>{props.data.total_rating}</Text>
                         </View>
                         <View style={styles.ratingRight}>
                             {progressData.map((item) => {
@@ -74,9 +89,11 @@ const GuestDetails = (props) => {
                     <View>
                         <TopNavSimple backHandler={toggleModal} screenTitle="All Reviews" />
                         <ScrollView style={styles.reviewsMore} showsVerticalScrollIndicator={false}>
-                            {props.data.reviews.map((item) => {
-                                return <ReviewsLess key={item.id} data={item} />
-                            })}
+                            {allReviewData.length === 0 ? <RenderReviewLessSK/> : 
+                                allReviewData.map((item) => {
+                                    return <ReviewsLess key={item.id} data={item} />
+                                })
+                            }
                         </ScrollView>
                     </View>
                 </Modal>
@@ -96,7 +113,11 @@ const GuestDetails = (props) => {
     );
 }
 
-export default withNavigation(GuestDetails);
+const mapStateToProps = (state) => {
+    return state.common.userData;
+}
+
+export default connect(mapStateToProps)(withNavigation(GuestDetails));
 
 const styles = StyleSheet.create({
     cardContainer: {

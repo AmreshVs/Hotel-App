@@ -16,7 +16,7 @@ const RoomsListLarge = (props) => {
     var hotelname =  ((props.hotelName).length > maxlimit) ? 
         (((props.hotelName).substring(0,maxlimit-3)) + '...') : 
         props.hotelName;
-console.log(props)
+
     return (
         <View style={styles.hotelListCard}>
             <View style={styles.imgContainer}>

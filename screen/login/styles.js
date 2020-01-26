@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around'
     },
     input:{
+        // height: 60,
         width: '85%',
         marginBottom: 10,
     },

@@ -95,7 +95,7 @@ const HotelsDetail = (props) => {
                     {loading === true ? <RoomsBlockSK/> : <RoomsCategory hotelId={data.nameBlock.id} data={data.roomsBlock} /> }
                     {loading === true ? <ChooseRoomsBlockSK/> : <ChooseDates/> }
                     {loading === true ? <GuestDetailsBlockSK/> : <GuestDetails/> }
-                    {loading === true ? <ReviewRatingBlockSK/> : <ReviewsRatings data={data.reviewsRatingsBlock} /> }
+                    {loading === true ? <ReviewRatingBlockSK/> : <ReviewsRatings data={data.reviewsRatingsBlock} hotelId={data.nameBlock.id} /> }
                     <RenderPriceBlock/>
                     {loading === true ? <RulesBlockSK/> : <RulesPolicies/> }
                 </View>
