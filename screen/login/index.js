@@ -9,6 +9,7 @@ import { withNavigation } from 'react-navigation';
 import UserLoginAuth from '../../redux/thunkActions/userLoginAuth';
 import { userLogin } from '../../redux/actions/commonActions';
 import {AsyncStorage} from 'react-native';
+import SnackBar from 'react-native-snackbar-component';
 
 const LoginScreen = (props) => {
 
@@ -25,10 +26,12 @@ const LoginScreen = (props) => {
     ];
 
     const [value, setValue] = React.useState('8675529268');
-    const [otpValue, setOtpValue] = React.useState('1234');
+    const [otpValue, setOtpValue] = React.useState('');
     const [visible, setVisible] = React.useState(false);
     const [slideAnim] = React.useState(new Animated.Value(0));
     const [slideAnimOtp] = React.useState(new Animated.Value(500));
+    const [svisible, setSvisible] = React.useState(false);
+    const [smessage, setSmessage] = React.useState('');
 
     React.useEffect(() => {
         const retrieveData = async () => {
@@ -46,6 +49,7 @@ const LoginScreen = (props) => {
     }, [])
 
     const slideComp = () => {
+        sendOtp();
         Animated.spring(slideAnim, {
             toValue: -500,
         }).start();
@@ -77,12 +81,28 @@ const LoginScreen = (props) => {
         await AsyncStorage.setItem('@Darpad:userData', userData);
     };
 
+    const sendOtp = async () => {
+        const userData = await UserLoginAuth({mobile_number: value});
+        setSvisible(true);
+        setSmessage(userData.message)
+        setTimeout(() => {
+            setSvisible(false);
+            setSmessage('');
+        }, 1500);
+    }
+
     const loginWithOtp = async () => {
         const userData = await UserLoginAuth({mobile_number: value, otp: otpValue});
-        props.userLogin(userData);
-        const token = userData.access_token;
+        props.userLogin(userData.data);
+        const token = userData.data.access_token;
+        setSvisible(true);
+        setSmessage(userData.message)
+        setTimeout(() => {
+            setSvisible(false);
+            setSmessage('');
+        }, 1500);
         if(token !== undefined && token !== ''){
-            storeAsyncData(JSON.stringify(userData));
+            storeAsyncData(JSON.stringify(userData.data));
             props.navigation.navigate('Home');
         }
     }
@@ -140,6 +160,7 @@ const LoginScreen = (props) => {
                         <Button style={styles.backInput} appearance='filled' status='info' onPress={slideBack}>Back</Button>
                         <Button style={styles.backInput} appearance='filled' onPress={loginWithOtp}>Submit</Button>
                     </View>
+                    <SnackBar visible={svisible} textMessage={smessage} autoHidingTime={5000} actionText="Ok"/>
                 </KeyboardAvoidingView>
             </Animated.View>
         </KeyboardAvoidingView>

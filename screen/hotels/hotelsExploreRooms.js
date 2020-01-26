@@ -47,7 +47,7 @@ const HotelsLargeListScreen = (props) => {
     <SafeAreaView>
       <TopNavSimple screenTitle="Explore Rooms" />
       <ScrollView showsVerticalScrollIndicator={false} style={{paddingTop: 20}}>
-        {loading === true ? <RenderSK/> : data.map((item) => <RoomsListSmall key={item.alias} navigate={() => navigateHotelDetails(item.alias)} image={item.image[0].file} rating={item.avg_rating} hotelName={item.title} address={item.alias} cost={item.price_start}  oldCost={(item.price_start) + 200} /> )}
+        {loading === true ? <RenderSK/> : data.map((item) => <RoomsListSmall key={item.alias} navigate={() => navigateHotelDetails(item.alias)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} address={item.alias} cost={item.price_start}  oldCost={(item.price_start) + 200}  is_favourite={item.is_favorite} /> )}
         <View style={{marginBottom: 80}} />
       </ScrollView>
     </SafeAreaView>

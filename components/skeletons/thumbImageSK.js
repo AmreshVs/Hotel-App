@@ -21,15 +21,14 @@ export default ThumbImageSK;
 const styles = StyleSheet.create({
     placeholderContainer:{
         flex: 1, 
-        width: 350,
+        width: '100%',
         marginLeft: 10,
         marginRight: 10,
         alignItems: 'center',
         height: 300,
     },
     hotelImgPlaceholder: {
-        width: 450,
+        width: '100%',
         height: 300,
-        borderRadius: 10,
     },
 })

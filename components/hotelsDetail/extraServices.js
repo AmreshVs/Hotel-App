@@ -92,7 +92,7 @@ const ExtraServices = (props) => {
                 </View>
             </View>
             <View style={styles.quantityText}>
-                {props.quantity === true &&  <RenderQuantity/>}
+                {props.quantity === true && props.hotelDetail.serviceChecked.includes(props.id) && <RenderQuantity/>}
                 <View style={styles.checkText}>
                     <Text style={styles.price}>{props.price}</Text>
                     <CheckBox
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     },
     counterContainer:{
         flexDirection: 'row',
-        marginRight: 30,
+        marginRight: 10,
     },
     price:{
         width: 70,

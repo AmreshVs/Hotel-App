@@ -10,7 +10,7 @@ const Amenities = (props) => {
     const [showAmenities, setShowAmenities] = React.useState(90);
 
     const revealAmenities = () => {
-        showAmenities == 90 ? setShowAmenities('auto') : setShowAmenities(90);
+        showAmenities === 90 ? setShowAmenities('auto') : setShowAmenities(90);
     }
 
     return(
@@ -29,9 +29,11 @@ const Amenities = (props) => {
                     )}
                 </View>
             </View>
-            <Ripple rippleSize={50} rippleDuration={600} onPress={revealAmenities}>
-                <Text status='primary'>{showAmenities == 90 ? 'More' : 'Less'}</Text>
-            </Ripple>
+            {amenitiesData.length > 4 ? 
+                <Ripple rippleSize={50} rippleDuration={600} onPress={revealAmenities}>
+                    <Text status='primary'> {showAmenities === 90 ? 'More' : 'Less'} </Text>
+                </Ripple>
+            : null}
         </Card>
     )
 }

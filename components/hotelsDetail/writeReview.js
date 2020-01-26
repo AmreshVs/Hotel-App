@@ -51,12 +51,14 @@ const WriteReview = (props) => {
                 <Input
                     style={styles.inputs}
                     placeholder='Name'
+                    size='small'
                     value={value}
                     onChangeText={setValue}
                 />
                 <Input
                     style={styles.inputs}
                     placeholder='Email'
+                    size='small'
                     value={emailValue}
                     onChangeText={setEmailValue}
                 />

@@ -42,7 +42,7 @@ const RoomsCategory = (props) => {
         props.LoadPrices({hotelId : props.hotelId, roomId : data, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: props.hotelDetail.services }, props.common.userData.access_token);
     }
 
-    var maxlimit = 20;
+    var maxlimit = 30;
 
     const RenderModalElement = (props) => (
         <Layout style={styles.modalContainer}>

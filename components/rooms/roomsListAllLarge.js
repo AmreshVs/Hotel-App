@@ -2,13 +2,17 @@ import React from 'react';
 import { Text, Icon } from '@ui-kitten/components';
 import { View, StyleSheet, Image } from 'react-native';
 import Ripple from 'react-native-material-ripple';
+import AddFavourite from '../../redux/thunkActions/addFavourite';
+import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 
 const RoomsListAllLarge = (props) => {
 
-    const [favcolor, setFavcolor] = React.useState('#AAA');
+    const [favcolor, setFavcolor] = React.useState(props.is_favourite === 1 ? '#FF4626' : '#AAA');
 
-    const addFavourite = () => {
-        setFavcolor(favcolor == '#AAA' ? '#FF4626' : '#AAA');
+    const addFavourite = async () => {
+        setFavcolor(favcolor === '#AAA' ? '#FF4626' : '#AAA');
+        const response = await AddFavourite({hotel_id: props.hotelId}, props.token);
+        snackbarMessage(response.message + ' for ' + props.hotelName);
     }
 
     return (
@@ -127,10 +131,10 @@ const styles = StyleSheet.create({
         color: '#626262'
     },
     favourite:{
-        width: 40,
-        height: 40,
-        marginRight: '11%',
-        marginTop: 13,
+        width: 35,
+        height: 35,
+        marginRight: 60,
+        marginTop: 10,
         borderRadius: 50,
         borderColor: '#DDD',
         borderWidth: 1,

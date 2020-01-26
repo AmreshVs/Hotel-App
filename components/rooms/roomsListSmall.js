@@ -3,13 +3,17 @@ import { Text, Icon } from '@ui-kitten/components';
 import { View, StyleSheet, Image } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import ReviewRating from '../extra/reviewRating';
+import AddFavourite from '../../redux/thunkActions/addFavourite';
+import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 
-const RoomsListLarge = (props) => {
+const RoomsListSmall = (props) => {
 
-    const [favcolor, setFavcolor] = React.useState('#AAA');
+    const [favcolor, setFavcolor] = React.useState(props.is_favourite === 1 ? '#FF4626' : '#AAA');
 
-    const saveFavourite = () => {
-        setFavcolor(favcolor === '#AAA' ? '#FF4626' : '#AAA');
+    const saveFavourite = async () => {
+      setFavcolor(favcolor === '#AAA' ? '#FF4626' : '#AAA');
+      const response = await AddFavourite({hotel_id: props.hotelId}, props.token);
+      snackbarMessage(response.message + ' for ' + props.hotelName);
     }
 
     var maxlimit = 25;
@@ -56,7 +60,7 @@ const RoomsListLarge = (props) => {
     );
 }
 
-export default RoomsListLarge;
+export default RoomsListSmall;
 
 const styles = StyleSheet.create({
     hotelListCard: {

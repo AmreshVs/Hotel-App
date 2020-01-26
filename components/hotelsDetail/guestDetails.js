@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Text, Card, Icon, Layout, Button, Input } from '@ui-kitten/components';
+import { Text, Card, Icon, Input } from '@ui-kitten/components';
 import { StyleSheet, View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import { withNavigation } from 'react-navigation';
@@ -10,8 +10,8 @@ import { addGuests } from '../../redux/actions/hotelDetailActions';
 const GuestDetails = (props) => {
 
     const [visible, setVisible] = React.useState(false);
-    const [name, setName] = React.useState('');
-    const [phone, setPhone] = React.useState('');
+    const [name, setName] = React.useState(props.common.userData.firstname);
+    const [phone, setPhone] = React.useState(props.common.userData.mobile);
 
     const toggleModal = () => {
         setVisible(!visible);
@@ -32,20 +32,22 @@ const GuestDetails = (props) => {
                 </View>
                 {visible == false ?
                     <View style={styles.textContainer}>
-                        <Text style={styles.guestName}>{name == '' ? 'Amresh Vs' : name}</Text>
-                        <Text>91+ {phone == '' ? '8675529268' : phone}</Text>
+                        <Text style={styles.guestName}>{name}</Text>
+                        <Text>+91 {phone}</Text>
                     </View>
                     :
                     <View>
                         <Input
                             placeholder='Guest name'
                             value={name}
+                            size='small'
                             onChangeText={setName}
                             style={styles.input}
                         />
                         <Input
                             placeholder='Mobile Number'
                             value={phone}
+                            size='small'
                             onChangeText={setPhone}
                             style={styles.input}
                         />

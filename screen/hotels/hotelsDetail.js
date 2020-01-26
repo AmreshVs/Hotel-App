@@ -34,6 +34,7 @@ import TotalPriceSK from '../../components/skeletons/hotelDetail/totalPriceSK';
 
 
 const HotelsDetail = (props) => {
+    
     var errors = props.hotelDetail.prices_services;
     const [data, setData] = React.useState({});
     const [loading, setLoading] = React.useState(true);
@@ -87,9 +88,9 @@ const HotelsDetail = (props) => {
         <SafeAreaView style={styles.background}>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <TopNavSimple screenTitle={loading === false ? data.nameBlock.title : ''} />
-                {loading === true ? <ThumbImageSK pending={true} /> : <ThumbImg images={data.imageBlock}/> }
+                {loading === true ? <ThumbImageSK/> : <ThumbImg images={data.imageBlock}/> }
                 <View style={styles.bodyContainer}>
-                    {loading === true ? <NameBlockSK pending={true} /> : <NameBlock data={data.nameBlock} /> }
+                    {loading === true ? <NameBlockSK/> : <NameBlock data={data.nameBlock} /> }
                     {loading === true ? <DescriptionBlockSK/> : <HotelDescription description={data.descriptionBlock.desc} /> }
                     {loading === true ? <AmenitiesBlockSK/> : <Amenities data={data.amenitiesBlock} /> }
                     {loading === true ? <RoomsBlockSK/> : <RoomsCategory hotelId={data.nameBlock.id} data={data.roomsBlock} /> }

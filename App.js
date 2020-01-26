@@ -1,25 +1,20 @@
 import React from 'react';
 import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
-import 'react-native-gesture-handler';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
 import {mapping, light as theme} from '@eva-design/eva';
 // import { default as appTheme } from './custom-theme.json';
-import {TabNavigator} from './components/navigation/index';
-import {Platform, AppRegistry, View, StyleSheet, StatusBar} from 'react-native';
+import {Platform, AppRegistry} from 'react-native';
 import store from './redux/stores/store';
 import {Provider} from 'react-redux';
-import {enableScreens} from 'react-native-screens';
+import Main from './components/main/index';
 
 const App = () => {
-  enableScreens();
   return (
     <React.Fragment>
       <Provider store={store}>
         <IconRegistry icons={EvaIconsPack} />
         <ApplicationProvider mapping={mapping} theme={theme}>
-          <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
-          <View style={styles.statusBar} />
-          <TabNavigator />
+          <Main/>
         </ApplicationProvider>
       </Provider>
     </React.Fragment>
@@ -31,13 +26,6 @@ if (Platform.OS === 'web') {
     rootTag: document.getElementById('root'),
   });
 }
-
-const styles = StyleSheet.create({
-  statusBar: {
-    backgroundColor: '#1939B7',
-    height: StatusBar.currentHeight,
-  },
-});
 
 export default App;
 

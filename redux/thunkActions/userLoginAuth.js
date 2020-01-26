@@ -7,7 +7,7 @@ const UserLoginAuth = async (data) => {
         data: data,
     })
     .then(function (response) {
-        return response.data.data;
+        return response.data;
     })
     .catch(function (error) {
         console.log(error.response)
