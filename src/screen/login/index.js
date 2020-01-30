@@ -15,13 +15,13 @@ const LoginScreen = (props) => {
 
     const items = [
         {
-            uri: "http://pandadev.amreshrepos.ml/medias/room/medium/7/christopher-jolly-616571-unsplash.jpg",
+            uri: "https://r-cf.bstatic.com/images/hotel/max1024x768/779/77938171.jpg",
         },
         {
-            uri: "http://pandadev.amreshrepos.ml/medias/room/medium/10/armin-djuhic-609206-unsplash.jpg",
+            uri: "https://q-cf.bstatic.com/images/hotel/max1024x768/205/205138280.jpg",
         },
         {
-            uri: "http://pandadev.amreshrepos.ml/medias/room/medium/9/rhema-kallianpur-275251-unsplash.jpg",
+            uri: "https://captainsolo.website/wp-content/uploads/2019/10/sr-jungle-resort-1.jpg",
         }
     ];
 

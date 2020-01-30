@@ -9,7 +9,6 @@ import AddFavourite from '../../redux/thunkActions/addFavourite';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 
 const ThumbImg = (props) => {
-    console.log(props.navigation.state);
     var imageArr = [];
     var i = 0;
     props.images.map((item) => {

@@ -4,9 +4,9 @@ import {EvaIconsPack} from '@ui-kitten/eva-icons';
 import {mapping, light as theme} from '@eva-design/eva';
 // import { default as appTheme } from './custom-theme.json';
 import {Platform, AppRegistry} from 'react-native';
-import store from './redux/stores/store';
+import store from './src/redux/stores/store';
 import {Provider} from 'react-redux';
-import Main from './components/main/index';
+import Main from './src/components/main/index';
 
 const App = () => {
   return (

@@ -10,7 +10,7 @@ const UserLoginAuth = async (data) => {
         return response.data;
     })
     .catch(function (error) {
-        console.log(error.response)
+        return error.response;
     });
 
 }

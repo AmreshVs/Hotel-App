@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     mainView:{
         height: '100%',
         width: '100%',
+        backgroundColor: '#FFF'
     },
     statusBar: {
         backgroundColor: '#1939B7',
