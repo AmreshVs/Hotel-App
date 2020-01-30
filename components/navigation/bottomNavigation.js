@@ -11,7 +11,7 @@ const BottomNav = ({ navigation }) => {
 
   const HomeIcon = style => <Icon {...style} name="home-outline" />;
   const HeartIcon = style => <Icon {...style} name="heart-outline" />;
-  const BookingIcon = style => <Icon {...style} name="inbox-outline" />;
+  const BookingIcon = style => <Icon {...style} name="briefcase-outline" />;
   const ProfileIcon = style => <Icon {...style} name="person-outline" />;
 
   return (

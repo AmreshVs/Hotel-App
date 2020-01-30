@@ -16,11 +16,13 @@ const ExclusiveRooms = (props) => {
         props.navigation.navigate('HotelsExploreRooms');
     }
 
-    const navigateHotelDetails = (alias) => {
+    const navigateHotelDetails = (alias, id, is_favorite) => {
         props.navigation.navigate('HotelsDetail',{
-            alias: alias
+            alias: alias,
+            hotelId: id,
+            is_favorite: is_favorite
         });
-    }
+      }
     
     var data = [];
     var loaded = null;
@@ -41,7 +43,7 @@ const ExclusiveRooms = (props) => {
                     <Text style={styles.caption}>View More</Text>
                 </Ripple>
             </View>
-            {data.map((item) => loaded === false ? <ExclusiveRoomsSK key={item + 1} pending={true} /> : <RoomsListSmall key={item.alias} navigate={() => navigateHotelDetails(item.alias)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} address={item.alias} cost={item.price_start}  oldCost={Number(item.price_start) + 200} is_favourite={item.is_favorite} /> )}
+            {data.map((item) => loaded === false ? <ExclusiveRoomsSK key={item + 1} pending={true} /> : <RoomsListSmall key={item.alias} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} address={item.alias} cost={item.price_start}  oldCost={Number(item.price_start) + 200} is_favourite={item.is_favorite} /> )}
             <Ripple rippleDuration={600} onPress={navigateDetails}>
                 <Button style={styles.button} appearance='ghost' status='basic'>View More</Button>
             </Ripple>

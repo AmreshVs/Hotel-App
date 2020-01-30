@@ -7,6 +7,7 @@ import Head from '../../components/home/head';
 import RecommendedRooms from '../../components/home/recommenedRooms';
 import ExclusiveRooms from '../../components/home/exclusiveRooms';
 import LoadHomeData from '../../redux/thunkActions/loadHomeData';
+import { NavigationEvents } from 'react-navigation';
 
 const HomeScreen = (props) => {
 
@@ -14,14 +15,23 @@ const HomeScreen = (props) => {
 
   useEffect(() => {
     async function loadDatas(){
-        const response = await LoadHomeData(props.access_token);
-        setData(response);
+      const response = await LoadHomeData(props.access_token);
+      setData(response);
     }
     loadDatas();
   }, [])
 
+  const reloadData = async () => {
+    setData({});
+    const rdata = await LoadHomeData(props.access_token);
+    setData(rdata);
+  }
+
   return (
     <ScrollView style={styles.statusBarTop} showsVerticalScrollIndicator={false}>
+      <NavigationEvents
+        onDidFocus={reloadData}
+      />
       <Head/>
       <SearchHotelCard/>
       <RecommendedRooms data={data.recommended} />

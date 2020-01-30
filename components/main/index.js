@@ -5,6 +5,7 @@ import SnackBar from 'react-native-snackbar-component';
 import {TabNavigator} from '../navigation/index';
 
 const Main = (props) => {
+
     return(
         <View style={styles.mainView}>
             <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />

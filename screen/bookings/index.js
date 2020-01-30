@@ -1,56 +1,61 @@
-import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
-import { Text, Tab, TabView, Card } from '@ui-kitten/components';
+import React, { useEffect } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Text, Tab, TabView } from '@ui-kitten/components';
 import TopNavSimple from '../../components/navigation/topNavSimple';
 import { withNavigation } from 'react-navigation';
 import { connect } from 'react-redux';
+import LoadBookingHistory from '../../redux/thunkActions/loadBookingsHistory';
+import { NavigationEvents } from 'react-navigation';
 
-const NoBookings = () => {
+import BookingsOverview from '../../components/bookings/index';
+import BookingsOverviewSK from '../../components/skeletons/bookingsOverviewSK';
+
+const NoBookings = (props) => {
     return(
         <View style={styles.noDataContainer}>
-            <Text style={styles.noDataText}>No Bookings has been made yet!</Text>
+            <Text style={styles.noDataText}>No Bookings has been {props.txt} yet!</Text>
         </View>
     );
 }
 
-const FavouritesScreen = (props) => {
-    var data = props.initialState.AppData[0];
+const BookingssScreen = (props) => {
 
     const [selectedIndex, setSelectedIndex] = React.useState(0);
     const shouldLoadComponent = (index) => index === selectedIndex;
+    const [data, setData] = React.useState({});
+
+    useEffect(() => {
+      async function loadDatas(){
+        const response = await LoadBookingHistory(props.access_token);
+        setData(response);
+      }
+      loadDatas();
+    }, []);
+
+    const reloadData = async () => {
+        setData([]);
+        const response = await LoadBookingHistory(props.access_token);
+        setData(response);
+    }
 
     return(
         <View style={styles.bodyContainer}>
+            <NavigationEvents
+                onWillFocus={reloadData}
+            />
             <TopNavSimple screenTitle='Your Bookings' backHandler={() => props.navigation.goBack()} />
-            {/* <NoBookings/> */}
             <TabView
                 selectedIndex={selectedIndex}
                 shouldLoadComponent={shouldLoadComponent}
                 onSelect={setSelectedIndex}>
                 <Tab style={styles.tabs} title='Upcoming'>
-                    <View style={styles.container}>
-                        <Card style={styles.cardContainer}>
-                            <View style={styles.row}>
-                                <View>
-                                    <Image style={styles.image} source={{uri : data.image}} />
-                                </View>
-                                <View style={styles.content}>
-                                    <Text style={styles.hotelName}>{data.hotelName}</Text>
-                                    <Text style={styles.caption}>30 Dec - 31 Dec</Text>
-                                </View>
-                            </View>
-                            <View style={styles.info}>
-                                <Text style={styles.address}>Coimbatore</Text>
-                                <Text style={styles.caption}>Booked on 29 Dec 2019</Text>
-                            </View>
-                        </Card>
-                    </View>
+                    {data.upcoming === undefined ? <BookingsOverviewSK/> : (data.upcoming.length > 0 ? <BookingsOverview data={data.upcoming}/> : <NoBookings txt='made'/>)}
                 </Tab>
                 <Tab style={styles.tabs} title='Completed'>
-                    <Text>List of orders.</Text>
+                    {data.complete === undefined ? <BookingsOverviewSK/> : (data.complete.length > 0 ? <BookingsOverview data={data.complete} /> : <NoBookings txt='completed'/>)}
                 </Tab>
                 <Tab style={styles.tabs} title='Cancelled'>
-                    <Text>ORDERS</Text>
+                    {data.cancelled === undefined ? <BookingsOverviewSK/> : (data.cancelled.length > 0 ? <BookingsOverview data={data.cancelled} /> : <NoBookings txt='cancelled'/>)}
                 </Tab>
             </TabView>
         </View>
@@ -58,10 +63,10 @@ const FavouritesScreen = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    return state;
+    return state.common.userData;
 }
 
-export default connect(mapStateToProps)(withNavigation(FavouritesScreen));
+export default connect(mapStateToProps)(withNavigation(BookingssScreen));
 
 const styles = StyleSheet.create({
     bodyContainer:{
@@ -69,8 +74,8 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     noDataContainer:{
-        height: '100%',
-        flexDirection: 'row',
+        height: '90%',
+        // flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -81,42 +86,4 @@ const styles = StyleSheet.create({
     tabs:{
         padding: 10,
     },
-    container:{
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingTop: 10,
-    },
-    cardContainer:{
-        width: '95%',
-        borderRadius: 10,
-    },
-    image:{
-        width: 100,
-        height: 70,
-        borderRadius: 7,
-    },
-    row:{
-        flexDirection: 'row',
-    },
-    content:{
-        width: '72%',
-        paddingLeft: 10,
-    },
-    hotelName:{
-        color: '#626262',
-    },
-    caption:{
-        color: '#BBB'
-    },
-    info:{
-        marginTop: 20,
-        paddingTop: 10,
-        borderTopWidth: 1,
-        borderTopColor: '#EEE',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    address:{
-        color: '#626262',
-    }
 });

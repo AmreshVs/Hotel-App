@@ -25,9 +25,11 @@ const HotelsLargeListScreen = (props) => {
     }
   }, [])
 
-  const navigateHotelDetails = (alias) => {
+  const navigateHotelDetails = (alias, id, is_favorite) => {
     props.navigation.navigate('HotelsDetail',{
-      alias: alias
+        alias: alias,
+        hotelId: id,
+        is_favorite: is_favorite
     });
     props.loadPrices({});
   }
@@ -45,7 +47,7 @@ const HotelsLargeListScreen = (props) => {
     <SafeAreaView>
       <TopNavSimple screenTitle="Recommended Rooms" />
       <ScrollView showsVerticalScrollIndicator={false}>
-        {loading === true ? <RenderSK/> : data.map((item) => <RoomsListAllLarge key={item.alias} navigate={() => navigateHotelDetails(item.alias)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} cost={item.price_start} oldCost={(item.price_start) + 200} is_favourite={item.is_favorite} /> )}
+        {loading === true ? <RenderSK/> : data.map((item) => <RoomsListAllLarge key={item.alias} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favourite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} cost={item.price_start} oldCost={(item.price_start) + 200} is_favourite={item.is_favorite} /> )}
         <View style={{marginBottom: 80}} />
       </ScrollView>
     </SafeAreaView>

@@ -1,10 +1,15 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { Icon, Text } from '@ui-kitten/components';
 import TopNavSimple from '../../components/navigation/topNavSimple';
 import { withNavigation } from 'react-navigation';
 import { connect } from 'react-redux';
-import RoomsListSmall from '../../components/rooms/roomsListSmall';
+import FavouriteHotels from '../../components/favouriteHotels/index';
+import GetFavourites from '../../redux/thunkActions/getFavourites';
+import { loadPrices } from '../../redux/actions/hotelDetailActions';
+import { NavigationEvents } from 'react-navigation';
+import FavouriteHotelSK from '../../components/skeletons/favouriteHotelSK';
 
 const NoFavourites = () => {
     return(
@@ -18,15 +23,42 @@ const NoFavourites = () => {
 
 const FavouritesScreen = (props) => {
 
-    const navigateHotelDetails = () => {
-        navigation.navigate('HotelsDetail');
+    const [data, setData] = React.useState([]);
+    
+    React.useEffect(() => {
+        async function loadDatas(){
+            const response = await GetFavourites(props.access_token);
+            setData(response);
+        }
+        loadDatas();
+    }, []);
+
+    const reloadData = async () => {
+        setData([]);
+        const response = await GetFavourites(props.access_token);
+        setData(response);
+    }
+
+    const navigateHotelDetails = (alias, id, is_favorite) => {
+        props.loadPrices({});
+        props.navigation.navigate('HotelsDetail',{
+            alias: alias,
+            hotelId: id,
+            is_favorite: is_favorite
+        });
     }
 
     return(
         <View style={styles.bodyContainer}>
+            <NavigationEvents
+                onWillFocus={reloadData}
+            />
             <TopNavSimple screenTitle='Favourite Rooms' backHandler={() => props.navigation.goBack()} />
             <ScrollView showsVerticalScrollIndicator={false} style={styles.favourites} >
-                {props.initialState.AppData.map((item) => <RoomsListSmall key={item.id} navigate={navigateHotelDetails} image={item.image} rating={item.rating} hotelName={item.hotelName} address={item.address} cost={item.cost}  oldCost={item.oldCost} /> )}
+                {data.length === 0 ? 
+                    [1,2,3].map((item) =><FavouriteHotelSK key={item} />)
+                : 
+                    data.map((item) => <FavouriteHotels key={item.id} alias={item.alias} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} reloadData={reloadData} hotelId={item.id} image={item.image[0].file} hotelName={item.title} price={item.price_start} rating={item.avg_rating} token={props.access_token} /> )}
             </ScrollView>
             {/* <NoFavourites/> */}
         </View>
@@ -34,10 +66,14 @@ const FavouritesScreen = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    return state;
+    return state.common.userData;
 }
 
-export default connect(mapStateToProps)(withNavigation(FavouritesScreen));
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({loadPrices:loadPrices}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(FavouritesScreen));
 
 const styles = StyleSheet.create({
     bodyContainer:{

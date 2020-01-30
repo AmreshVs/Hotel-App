@@ -33,13 +33,10 @@ const styles = StyleSheet.create({
     title:{
         width: '60%',
         height: 30,
-        marginTop: -25,
         fontSize: 16,
         fontWeight: 'bold',
         borderBottomRightRadius: 20,
         borderBottomLeftRadius: 20,
-        color: '#3366FF',
-        backgroundColor: '#FFF',
-        elevation: 1,
+        color: '#FFF',
     },
 })

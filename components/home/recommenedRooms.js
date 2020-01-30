@@ -16,13 +16,15 @@ const RecommendedRooms = (props) => {
         props.navigation.navigate('HotelsLargeList');
     }
 
-    const navigateHotelDetails = (alias) => {
+    const navigateHotelDetails = (alias, id, is_favorite) => {
         props.navigation.navigate('HotelsDetail',{
-            alias: alias
+            alias: alias,
+            hotelId: id,
+            is_favorite: is_favorite
         });
         props.loadPrices({});
     }
-
+    
     var data = [];
     var loaded = null;
     if(props.data !== undefined && Object.keys(props.data).length > 0){
@@ -43,7 +45,7 @@ const RecommendedRooms = (props) => {
                 </Ripple>
             </View>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                {data.map((item) => loaded === false ? <RecommendedRoomsSK key={item + 1} pending={true} /> : <RoomsListLarge key={item.alias} navigate={() => navigateHotelDetails(item.alias)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} cost={item.price_start} oldCost={Number(item.price_start) + 200} pending={false} is_favourite={item.is_favorite} /> )}
+                {data.map((item) => loaded === false ? <RecommendedRoomsSK key={item + 1} pending={true} /> : <RoomsListLarge key={item.alias} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} cost={item.price_start} oldCost={Number(item.price_start) + 200} pending={false} is_favourite={item.is_favorite} /> )}
             </ScrollView>
         </View>
     );

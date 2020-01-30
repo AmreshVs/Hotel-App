@@ -1,11 +1,15 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
+import { withNavigation } from 'react-navigation';
 import { Icon } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import Slideshow from 'react-native-image-slider-show';
+import AddFavourite from '../../redux/thunkActions/addFavourite';
+import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 
 const ThumbImg = (props) => {
-    
+    console.log(props.navigation.state);
     var imageArr = [];
     var i = 0;
     props.images.map((item) => {
@@ -13,10 +17,12 @@ const ThumbImg = (props) => {
         i= i+1;
     })
 
-    const [favcolor, setFavcolor] = React.useState('#AAA');
+    const [favcolor, setFavcolor] = React.useState(props.navigation.state.params.is_favorite === 1 ? '#FF4626' : '#AAA');
 
-    const addFavourite = () => {
-        setFavcolor(favcolor == '#AAA' ? '#FF4626' : '#AAA');
+    const addFavourite = async () => {
+        setFavcolor(favcolor === '#AAA' ? '#FF4626' : '#AAA');
+        const response = await AddFavourite({hotel_id: props.navigation.state.params.hotelId}, props.access_token);
+        snackbarMessage(response.message);
     }
 
     return (
@@ -33,7 +39,11 @@ const ThumbImg = (props) => {
     );
 };
 
-export default ThumbImg;
+const mapStateToProps = (state) => {
+    return state.common.userData;
+}
+
+export default connect(mapStateToProps)(withNavigation(ThumbImg));
 
 const styles = StyleSheet.create({
     imageContainer: {
