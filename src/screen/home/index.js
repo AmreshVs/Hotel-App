@@ -32,7 +32,7 @@ const HomeScreen = (props) => {
       <NavigationEvents
         onDidFocus={reloadData}
       />
-      <Head/>
+      {/* <Head/> */}
       <SearchHotelCard/>
       <RecommendedRooms data={data.recommended} />
       <ExclusiveRooms data={data.exclusive} />

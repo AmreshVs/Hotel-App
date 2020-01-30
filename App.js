@@ -22,11 +22,11 @@ const App = () => {
 };
 
 if (Platform.OS === 'web') {
-  AppRegistry.runApplication('JR Jungle Resort', {
+  AppRegistry.runApplication('Darpad', {
     rootTag: document.getElementById('root'),
   });
 }
 
 export default App;
 
-AppRegistry.registerComponent('JR Jungle Resort', () => App);
+AppRegistry.registerComponent('Darpad', () => App);

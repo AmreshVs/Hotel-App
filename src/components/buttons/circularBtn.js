@@ -25,6 +25,6 @@ export default CircularBtnWithIcon;
 const styles = StyleSheet.create({
     button: {
         width: '100%',
-        borderRadius: 30
+        borderRadius: 10
     },
 });

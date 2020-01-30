@@ -128,7 +128,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.hotelappreactnative"
+        applicationId "com.darpad"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

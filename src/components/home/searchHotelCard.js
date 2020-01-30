@@ -1,23 +1,60 @@
 import React from 'react';
-import { Card } from '@ui-kitten/components';
+import { connect } from 'react-redux';
+import { Card, Text, Icon, Button } from '@ui-kitten/components';
 import { View } from 'react-native';
-import InputDatePicker from '../../components/inputs/inputDatePicker';
-import InputCounter from '../../components/inputs/inputCounter';
-import CircularBtnWithIcon from '../../components/buttons/circularBtn';
+import { withNavigation } from 'react-navigation';
+import Ripple from 'react-native-material-ripple';
 import styles from './styles';
+import moment from 'moment';
 
-const SearchHotelCard = () =>{
+const SearchHotelCard = (props) =>{
+
+  if(props.hotelDetail.rooms !== undefined){
+    var rooms = props.hotelDetail.rooms;
+    var length = Object.keys(rooms).length;
+    var roomNum = 0; var guests = 0;
+    for(var i=1;i<=length; i++){
+        roomNum++;
+        if(rooms[i] !== undefined){
+            guests += rooms[i].adult + rooms[i].children;
+        }
+    }
+  }
+
+  const StarIcon = (style) => (
+    <Icon {...style} name='search-outline' />
+  );
+
   return(
   <Card style={styles.searchCard}>
-    <InputDatePicker name="Check In" iconName="log-in-outline" />
-    <InputDatePicker name="Check Out" iconName="log-out-outline" />
-    <View style={styles.inputBox}>
-      <InputCounter name="Rooms"/>
-      <InputCounter name="Persons"/>
-    </View>
-    <CircularBtnWithIcon  name="Search Rooms" iconName="search-outline" color="primary" />
+    <Ripple rippleDuration={600} onPress={() => props.navigation.navigate('HotelDates')}>
+      <View style={styles.container}>
+        <View style={styles.datesContainer}>
+          <Icon name='log-in-outline' width={32} height={32} fill='#3366FF'/>
+          <Text style={styles.heading}>Check In</Text>
+          <Text style={styles.dateCaption}>{moment(props.hotelDetail.dates.startDate).format("DD MMM YYYY")}</Text>
+        </View>
+        <View style={styles.seperator}/>
+        <View style={styles.datesContainer}>
+          <Icon name='log-out-outline' width={32} height={32} fill='#3366FF'/>
+          <Text style={styles.heading}>Check Out</Text>
+          <Text style={styles.dateCaption}>{moment(props.hotelDetail.dates.endDate).format("DD MMM YYYY")}</Text>
+        </View>
+        <View style={styles.seperator}/>
+        <View style={styles.datesContainer}>
+          <Icon name='people-outline' width={32} height={32} fill='#3366FF'/>
+          <Text style={styles.heading}>Rooms - Guest</Text>
+          <Text style={styles.dateCaption}>{roomNum} - {guests}</Text>
+        </View>
+      </View>
+    </Ripple>
+    <Button style={styles.button} status='primary' icon={StarIcon} onPress={() => props.navigation.navigate('SearchRooms')}>Search Rooms</Button>
   </Card>
   );
 }
 
-export default SearchHotelCard;
+const mapStateToProps = (state) => {
+  return state;
+}
+
+export default connect(mapStateToProps)(withNavigation(SearchHotelCard));

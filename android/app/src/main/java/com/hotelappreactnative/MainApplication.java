@@ -1,4 +1,4 @@
-package com.hotelappreactnative;
+package com.darpad;
 
 import android.app.Application;
 import android.content.Context;

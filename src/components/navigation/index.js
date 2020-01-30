@@ -1,10 +1,10 @@
 import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { createStackNavigator } from 'react-navigation-stack';
 import LoginScreen from '../../screen/login/index';
 import Main from '../../screen/Main/index';
 import HomeScreen from '../../screen/home/index';
+import SearchRoomsScreen from '../../screen/home/searchRoomsScreen';
 import FavouritesScreen from '../../screen/favourites/index';
 import BookingsScreen from '../../screen/bookings/index';
 import UserProfileScreen from '../../screen/userProfile/index';
@@ -44,7 +44,8 @@ const rootStack = createAnimatedSwitchNavigator(
     HotelsDetail: HotelsDetail,
     PaymentScreen: PaymentScreen,
     BookingConfirmed: BookingConfirmed,
-    BookingDetails: BookingDetails
+    BookingDetails: BookingDetails,
+    SearchRooms: SearchRoomsScreen
   },
   {
     headerMode: 'none',

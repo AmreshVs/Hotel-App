@@ -2,9 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     searchCard:{
-        height: 320,
         margin: 20,
-        marginTop: -130,
         marginBottom: 30,
         borderRadius: 10,
         borderColor: '#ddd',
@@ -20,29 +18,6 @@ const styles = StyleSheet.create({
         paddingRight: 15,
         marginTop: 50,
         textAlign: 'center'
-    },
-    profileIcon:{
-        width: '100%',
-        paddingTop: 25,
-        marginBottom: -20,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    userIcon:{
-        backgroundColor: '#fff',
-        borderRadius: 50,
-        padding: 20,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 18, },
-        shadowOpacity: 0.50,
-        shadowRadius: 10.00,
-        elevation: 5
-    },
-    inputBox: {
-        borderColor: '#ececec',
-        borderBottomWidth: 1,
-        flexDirection: 'row',
-        marginBottom: 15
     },
     headingText:{
         fontWeight: '700',
@@ -60,6 +35,35 @@ const styles = StyleSheet.create({
         paddingRight: 20,
         paddingLeft: 20,
         marginBottom: 15,
+    },
+    datesContainer:{
+        width: '30%',
+        height: 100,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    container:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 20,
+    },
+    seperator:{
+        width: 1,
+        height:100,
+        backgroundColor: '#EEE'
+    },
+    heading:{
+        fontSize: 16,
+        fontWeight: '700',
+        color: '#3366FF',
+        marginBottom: 5,
+    },
+    dateCaption:{
+        fontSize: 18,
+        color: '#626262'
+    },
+    button:{
+        borderRadius: 7,
     }
 });
 

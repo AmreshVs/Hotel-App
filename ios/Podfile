@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'HotelAppReactNative' do
-  # Pods for HotelAppReactNative
+target 'Darpad' do
+  # Pods for Darpad
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -34,7 +34,7 @@ target 'HotelAppReactNative' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'HotelAppReactNativeTests' do
+  target 'DarpadTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -42,10 +42,10 @@ target 'HotelAppReactNative' do
   use_native_modules!
 end
 
-target 'HotelAppReactNative-tvOS' do
-  # Pods for HotelAppReactNative-tvOS
+target 'Darpad-tvOS' do
+  # Pods for Darpad-tvOS
 
-  target 'HotelAppReactNative-tvOSTests' do
+  target 'Darpad-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
