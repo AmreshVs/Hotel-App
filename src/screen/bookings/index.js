@@ -86,4 +86,8 @@ const styles = StyleSheet.create({
     tabs:{
         padding: 10,
     },
+    scroll:{
+        // height: '100%'
+        marginBottom: 300,
+    }
 });

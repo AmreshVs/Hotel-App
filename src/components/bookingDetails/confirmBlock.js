@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { Card, Text, Icon } from '@ui-kitten/components';
 
 const ConfirmBlock = (props) => {
-
+    console.log(props);
     var bgClr = '';
     if(props.status === '1' || props.status === '4'){
         bgClr = '#19b752';
@@ -20,7 +20,7 @@ const ConfirmBlock = (props) => {
                     <Text style={styles.confirmed}>Your Booking is {props.status_label}!</Text>
                 </View>
                 <Text style={styles.bookingCaption}>Your booking ID is #{props.booking_id}.</Text> 
-                <Text style={styles.caption}>The amount of ₹{props.total} can be payed upon your arrival. This booking can be cancelled anytime here.</Text>
+                {props.transaction_id === '' ? <Text style={styles.caption}>The amount of ₹{props.total} can be payed upon your arrival. This booking can be cancelled anytime here.</Text> : <Text style={styles.caption}> Your payment is successfull and Transaction ID is {props.transaction_id}. Now Check In to your rooms hassle free.</Text>}
             </View>
         </Card>
     )

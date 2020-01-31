@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, ScrollView } from 'react-native';
 import { Text, Card, Icon } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import { withNavigation } from 'react-navigation';
@@ -13,7 +13,8 @@ const BookingsOverview = (props) => {
     }
 
     return(
-        props.data.map((item) => 
+        <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+        {props.data.map((item) => 
             <View style={styles.container} key={item.booking_id}>
                 <Ripple rippleDuration={600} onPress={() => navigateBookingdetail(item.booking_id)}>
                     <Card style={styles.cardContainer}>
@@ -49,7 +50,8 @@ const BookingsOverview = (props) => {
                     </Card>
                 </Ripple>
             </View>
-        )
+        )}
+        </ScrollView>
     )
 }
 
@@ -93,6 +95,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     address:{
+        width: '50%',
         color: '#626262',
     },
     starIcon:{
@@ -116,5 +119,8 @@ const styles = StyleSheet.create({
     },
     datesRight:{
         paddingLeft: 15,
+    },
+    scroll:{
+        paddingBottom: 170,
     }
 })

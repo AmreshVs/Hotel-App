@@ -1,20 +1,30 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { View, StyleSheet } from 'react-native';
 import { Text, Radio, RadioGroup, Button } from '@ui-kitten/components';
 import TopNavSimple from '../../components/navigation/topNavSimple';
 import { withNavigation } from 'react-navigation';
 
-const PaymentScreen = ({navigation}) => {
+const PaymentScreen = (props) => {
 
     const [selectedIndex, setSelectedIndex] = React.useState(0);
 
     const continueBooking = () => {
-        navigation.navigate('BookingConfirmed');
+        if(selectedIndex === 0){
+            props.navigation.navigate('AfterBooking',{
+                payment_type: 1
+            });
+        }
+        if(selectedIndex === 1){
+            props.navigation.navigate('PaytmScreen',{
+                payment_type: 2
+            });
+        }
     }
 
     return (
         <View>
-            <TopNavSimple screenTitle="Make Payment" />
+            <TopNavSimple screenTitle="Confirm Booking" />
             <View styles={styles.flexContainer}>
                 <View style={styles.container}>
                     <RadioGroup
@@ -32,7 +42,11 @@ const PaymentScreen = ({navigation}) => {
     );
 }
 
-export default withNavigation(PaymentScreen);
+const mapStateToProps = (state) => {
+    return state;
+}
+
+export default connect(mapStateToProps)(withNavigation(PaymentScreen));
 
 const styles = StyleSheet.create({
     flexContainer:{
