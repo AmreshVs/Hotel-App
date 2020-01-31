@@ -2,10 +2,22 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     searchCard:{
-        margin: 20,
+        marginTop: -95,
+        margin: 10,
+        padding: 10,
         marginBottom: 30,
         borderRadius: 10,
-        borderColor: '#ddd',
+        borderWidth: 1,
+        backgroundColor: '#FFF',
+        borderColor: '#EEE',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.15,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
     headBlock:{
         width: '100%',
@@ -13,10 +25,10 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 50,
     },
     headingCaption:{
-        color: '#fff',
-        paddingLeft: 15,
-        paddingRight: 15,
-        marginTop: 50,
+        position: 'absolute',
+        color: '#FFF',
+        padding: 15,
+        // marginTop: 50,
         textAlign: 'center'
     },
     headingText:{
@@ -59,11 +71,26 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     dateCaption:{
-        fontSize: 18,
+        fontSize: 16,
         color: '#626262'
     },
     button:{
         borderRadius: 7,
+    },
+    headBack:{
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    headImg:{
+        height: 350,
+        width: '100%',
+    },
+    headImgOverlay:{
+        position: 'absolute',
+        opacity: 0.5,
+        height: 350,
+        width: '100%',
+        backgroundColor: '#3366FF',
     }
 });
 

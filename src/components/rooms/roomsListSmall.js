@@ -65,7 +65,7 @@ export default RoomsListSmall;
 const styles = StyleSheet.create({
     hotelListCard: {
         width: '95%',
-        height: 150,
+        height: 140,
         marginLeft: 10,
         marginBottom: 10,
         borderRadius: 10,
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     imgContainer: {
-      width: '43%',
+      width: '40%',
       height: '100%',
       borderTopLeftRadius: 10,
       borderBottomLeftRadius: 10,
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
       borderBottomLeftRadius: 10,
     },
     contentContainer: {
-      width: '57%',
+      width: '60%',
       justifyContent: 'space-between',
     },
     title: {
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     },
     caption: {
       marginTop: 0,
-      margin: 10,
+      marginLeft:10,
       color: '#BBB',
     },
     starIcon: {

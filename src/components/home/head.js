@@ -1,21 +1,13 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Image} from 'react-native';
 import {Text} from '@ui-kitten/components';
-// import { LinearGradient } from 'react-native-linear-gradient';
-import UserProfileIcon from './userProfileIcon';
 import styles from './styles';
 
 const Head = () => (
-  <View>
-    {/* <LinearGradient
-        colors={['#006cdb', '#4fcfff', '#0090fa']}
-        startPoint={10}
-        endPoint={50}
-        locations={[0, 56, 100]}
-        style={styles.headBlock}
-    /> */}
-    <UserProfileIcon />
-    <Text category="h4" style={styles.headingCaption}>
+  <View style={styles.headBack}>
+    <Image style={styles.headImg} source={{uri: 'https://r-cf.bstatic.com/images/hotel/max1024x768/779/77938171.jpg'}} />
+    <View style={styles.headImgOverlay} />
+    <Text category="h5" style={styles.headingCaption}>
       Let's Book your favourite Hotel Room now!
     </Text>
   </View>

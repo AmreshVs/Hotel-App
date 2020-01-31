@@ -25,7 +25,7 @@ export default ExclusiveRoomsSK;
 const styles = StyleSheet.create({
     placeholderContainer: {
       width: '95%',
-      height: 150,
+      height: 140,
       marginLeft: 10,
       marginBottom: 10,
       borderRadius: 10,
@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
     },
     hotelImgPlaceholder: {
-      width: 160,
-      height: 150,
+      width: 145,
+      height: 138,
       borderRadius: 10,
       borderTopRightRadius: 0,
       borderBottomRightRadius: 0,
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     textPlaceholder1: {
       position: 'absolute',
       marginTop: 35,
-      left: '44%',
+      left: '40%',
       width: 200,
       height: 15,
       padding: 1,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     textPlaceholder2: {
       position: 'absolute',
       marginTop: 60,
-      left: '44%',
+      left: '40%',
       width: 200,
       height: 15,
       padding: 1,

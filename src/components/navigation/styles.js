@@ -3,8 +3,8 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     bottomNavigation: {
         borderWidth: 1,
-        height: 50,
-        borderColor: '#DDD',
+        height: 45,
+        borderColor: '#EEE',
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
         shadowColor: '#000',
@@ -18,16 +18,12 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 10,
         borderBottomLeftRadius: 10,
         marginTop: -1,
-        // backgroundColor: 'red'
     },
     tab:{
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
-        height: 40,
-        marginLeft: 10,
-        marginRight: 10,
-        // backgroundColor: 'red'
-    }
+        height: 35,
+    },
 });
 
 export default styles;

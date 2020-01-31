@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import { Icon, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import { withNavigation } from 'react-navigation';
 import Ripple from 'react-native-material-ripple';
+import LinearGradient from 'react-native-linear-gradient';
 
 const TopNavSimple = (props) => {
 
@@ -19,7 +20,9 @@ const TopNavSimple = (props) => {
     );
 
     return(
-        <TopNavigation title={props.screenTitle} titleStyle={styles.title} alignment='center' leftControl={BackAction()} style={styles.header} />
+        <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#00bfff', '#0067d6']} style={styles.headerGradient}>
+            <TopNavigation title={props.screenTitle} titleStyle={styles.title} alignment='center' leftControl={BackAction()} style={styles.header} />
+        </LinearGradient>
     )
 }
 
@@ -27,8 +30,18 @@ export default withNavigation(TopNavSimple);
 
 const styles = StyleSheet.create({
     header:{
-        backgroundColor: '#3366FF',
-        elevation: 1,
+        backgroundColor: 'transparent',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+    },
+    headerGradient:{
+
     },
     title:{
         width: '60%',

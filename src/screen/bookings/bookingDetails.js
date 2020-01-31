@@ -33,7 +33,7 @@ const BookingDetails = (props) => {
 
     return(
         <View style={styles.bodyContainer}>
-            <TopNavSimple screenTitle='Booking Details' backHandler={() => props.navigation.goBack()} />
+            <TopNavSimple screenTitle='Booking Details' backHandler={() => props.navigation.navigate('BookingsScreen')} />
             <ScrollView contentContainerStyle={styles.container}  showsVerticalScrollIndicator={false}>
                 <View style={styles.contentContainer}>
                     {data.length <= 0 ? <ConfirmBlockSK/> : <ConfirmBlock booking_id={data.booking_id} total={data.total} status={data.status} status_label={data.status_label} />}

@@ -54,11 +54,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginLeft: 10,
         marginRight: 10,
-        height: 280,
+        height: 235,
     },
     hotelImg: {
-        width: 350,
-        height: 220,
+        width: 300,
+        height: 180,
         backgroundColor: '#FFF',
         borderColor: '#DDD',
         borderWidth: 1,
@@ -90,15 +90,15 @@ const styles = StyleSheet.create({
     },
     namePrice: {
         position: 'absolute',
-        bottom: 38,
-        width: '70%',
+        bottom: 30,
+        width: '80%',
         height: 50,
         alignItems: 'center',
         padding: 1,
         backgroundColor: '#FFF',
         borderWidth: 1,
-        borderRadius: 50,
-        borderColor: '#DDD',
+        borderRadius: 10,
+        borderColor: '#EEE',
     },
     title: {
         fontSize: 15,
@@ -128,11 +128,11 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     rating: {
-        width: 40,
-        height: 55,
+        width: 30,
+        height: 50,
         alignItems: 'center',
         marginLeft: '6%',
-        borderColor: '#DDD',
+        borderColor: '#EEE',
         borderTopColor: '#FFF',
         borderWidth: 1,
         borderBottomLeftRadius: 20,
@@ -141,21 +141,21 @@ const styles = StyleSheet.create({
     },
     starIcon: {
         marginTop: 2,
-        width: 25,
-        height: 25
+        width: 21,
+        height: 21
     },
     heartIcon: {
-        width: 25,
-        height: 25
+        width: 21,
+        height: 21
     },
     ratingCount: {
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: 'bold',
         color: '#626262'
     },
     favourite: {
-        width: 35,
-        height: 35,
+        width: 30,
+        height: 30,
         marginRight: '4%',
         marginTop: 12,
         borderRadius: 50,

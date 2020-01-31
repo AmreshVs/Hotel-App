@@ -91,8 +91,8 @@ const ProfileEdit = (props) => {
                     </View>
                 </View>
                 <View style={styles.btnContainer}>
-                    <Button style={styles.logoutButton} status='danger' appearance='outline' onPress={props.handleClick}>Cancel</Button>
-                    <Button style={styles.logoutButton} appearance='outline' onPress={handleSave}>Save</Button>
+                    <Button style={styles.logoutButton} status='danger' size='small' appearance='outline' onPress={props.handleClick}>Cancel</Button>
+                    <Button style={styles.logoutButton} appearance='outline' size='small' onPress={handleSave}>Save</Button>
                 </View>
             </Card>
         </View>

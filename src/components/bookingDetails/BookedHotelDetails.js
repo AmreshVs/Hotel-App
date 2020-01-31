@@ -97,8 +97,8 @@ const BookedHotelDetails = (props) => {
             </View>
             <View style={styles.hrLine}></View>
             <View style={styles.btnContainer}>
-                <Button style={styles.btns} status='danger' icon={CloseIcon} disabled={props.data.status === '1' ? false : true} onPress={cancelBook}>Cancel Booking</Button>
-                <Button style={styles.btns} status='primary' icon={CallIcon}>Call Hotel</Button>
+                <Button style={styles.btns} status='danger' size='small' icon={CloseIcon} disabled={props.data.status === '1' ? false : true} onPress={cancelBook}>Cancel Booking</Button>
+                <Button style={styles.btns} status='primary' size='small' icon={CallIcon}>Call Hotel</Button>
             </View>
         </Card>
     )
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     },
     confirmed:{
         color: '#626262',
-        fontSize: 17,
+        fontSize: 16,
         fontWeight: '700',
         textAlign: 'center',
     },
@@ -183,8 +183,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     InfoIcon:{
-        width: 30,
-        height: 30,
+        width: 25,
+        height: 25,
     },
     bookInfo:{
         width: '30%',
@@ -220,8 +220,8 @@ const styles = StyleSheet.create({
         width: '48%',
     },
     btnIcons:{
-        width: 25,
-        height: 25,
+        width: 23,
+        height: 23,
         marginRight: 0,
     }
 });

@@ -21,7 +21,7 @@ const AfterBooking = (props) => {
         hotelId: props.hotelDetail.hotelIds.hotelId, 
         roomId: props.hotelDetail.hotelIds.roomId,
         payment_type: props.navigation.state.params.payment_type,
-        transaction_id: (props.navigation.state.params.data !== '' ? JSON.parse(props.navigation.state.params.data).data.transaction_id : ''),
+        transaction_id: (props.navigation.state.params.data !== '' && props.navigation.state.params.data !== undefined ? JSON.parse(props.navigation.state.params.data).data.transaction_id : ''),
         dates: props.hotelDetail.dates,
         rooms: props.hotelDetail.rooms,
         service: props.hotelDetail.services,

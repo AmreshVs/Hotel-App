@@ -12,8 +12,8 @@ const HeloBlock = () => {
                 </View>
                 <Text style={styles.caption}>Do you have any queries regarding your stay or booking? We can support you anytime</Text>
                 <View style={styles.btnContainer}>
-                    <Button appearance='ghost' status='basic'>Call Us</Button>
-                    <Button appearance='ghost' status='basic'>Email Us</Button>
+                    <Button appearance='ghost' size='small' status='basic'>Call Us</Button>
+                    <Button appearance='ghost' size='small' status='basic'>Email Us</Button>
                 </View>
             </View>
         </Card>
@@ -36,13 +36,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     confirmed:{
-        fontSize: 17,
+        fontSize: 16,
         fontWeight: '700',
         paddingTop: 2,
     },
     checkIcon:{
-        width: 28,
-        height: 28,
+        width: 23,
+        height: 23,
         marginRight: 5,
     },
     caption:{
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     bookingCaption:{
         textAlign: 'center',
         color: '#FFF',
-        fontSize: 17,
+        fontSize: 16,
         paddingTop: 10,
     },
     btnContainer:{

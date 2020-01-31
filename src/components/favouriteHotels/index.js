@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     },
     favContainer:{
         width: '95%',
-        height: 320,
+        height: 300,
         borderBottomWidth: 1,
         borderBottomColor: '#EEE',
     },
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     hotelName:{
-        fontSize: 18,
+        fontSize: 16,
         marginBottom: 3,
         color: '#626262',
         fontWeight: '700',
@@ -82,18 +82,18 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     starIcon:{
-        width: 25,
-        height: 25
+        width: 21,
+        height: 21
     },
     caption:{
         color: '#BBB',
         paddingLeft: 5,
-        fontSize: 18,
+        fontSize: 14,
     },
     price: {
         textAlign: 'right',
         marginBottom: 3,
-        fontSize: 21,
+        fontSize: 18,
         fontWeight: '700',
         color: '#3366FF',
     },
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
         zIndex: 1,
     },
     heartIcon: {
-        width: 22,
-        height: 22
+        width: 21,
+        height: 21
     }
 });

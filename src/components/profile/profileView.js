@@ -58,8 +58,8 @@ const ProfileView = (props) => {
                     </View>
                 </View>
                 <View style={styles.btnContainer}>
-                    <Button style={styles.logoutButton} status='danger' appearance='outline' onPress={logout}>Logout</Button>
-                    <Button style={styles.logoutButton} appearance='outline' onPress={props.handleClick}>Edit</Button>
+                    <Button style={styles.logoutButton} status='danger' size='small' appearance='outline' onPress={logout}>Logout</Button>
+                    <Button style={styles.logoutButton} appearance='outline' size='small' onPress={props.handleClick}>Edit</Button>
                 </View>
             </Card>
         </View>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Card, Text, Icon, Button } from '@ui-kitten/components';
+import { Text, Icon, Button } from '@ui-kitten/components';
 import { View } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Ripple from 'react-native-material-ripple';
@@ -26,7 +26,7 @@ const SearchHotelCard = (props) =>{
   );
 
   return(
-  <Card style={styles.searchCard}>
+  <View style={styles.searchCard}>
     <Ripple rippleDuration={600} onPress={() => props.navigation.navigate('HotelDates')}>
       <View style={styles.container}>
         <View style={styles.datesContainer}>
@@ -48,8 +48,8 @@ const SearchHotelCard = (props) =>{
         </View>
       </View>
     </Ripple>
-    <Button style={styles.button} status='primary' icon={StarIcon} onPress={() => props.navigation.navigate('SearchRooms')}>Search Rooms</Button>
-  </Card>
+    <Button style={styles.button} status='primary' size='small' icon={StarIcon} onPress={() => props.navigation.navigate('SearchRooms')}>Search Rooms</Button>
+  </View>
   );
 }
 

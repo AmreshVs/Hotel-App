@@ -66,7 +66,7 @@ const SelectGuest = (props) => {
                 </View>
             </View>
             <Text style={styles.error}>{(btnIndex === 2 && btnCIndex === 3) || (btnIndex === 3 && btnCIndex === 2) ? "Cannot accomodate more than 4 guest's" : ""}</Text>
-            { props.roomNum > 1 ? <Button style={styles.addRoom} appearance='outline' status='danger' onPress={props.removeRoom}>Remove Room</Button> : <View></View>}
+            { props.roomNum > 1 ? <Button style={styles.addRoom} appearance='outline' size='small' status='danger' onPress={props.removeRoom}>Remove Room</Button> : <View></View>}
         </Card>
     )
 }

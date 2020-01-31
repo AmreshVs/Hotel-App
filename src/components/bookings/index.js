@@ -17,7 +17,7 @@ const BookingsOverview = (props) => {
         {props.data.map((item) => 
             <View style={styles.container} key={item.booking_id}>
                 <Ripple rippleDuration={600} onPress={() => navigateBookingdetail(item.booking_id)}>
-                    <Card style={styles.cardContainer}>
+                    <View style={styles.cardContainer}>
                         <View style={styles.row}>
                             <View style={styles.contentContainer}>
                                 <View>
@@ -47,7 +47,7 @@ const BookingsOverview = (props) => {
                             <Text style={styles.address}>{item.address}</Text>
                             <Text style={styles.caption}>Booked on {item.created_at}</Text>
                         </View>
-                    </Card>
+                    </View>
                 </Ripple>
             </View>
         )}
@@ -65,7 +65,11 @@ const styles = StyleSheet.create({
     },
     cardContainer:{
         width: '90%',
+        padding: 10,
         borderRadius: 10,
+        borderWidth: 1,
+        backgroundColor: '#FFF',
+        borderColor: '#EEE',
     },
     image:{
         width: 100,
@@ -106,7 +110,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     iconContainer:{
-        right: 10,
+        right: 20,
     },
     datesContainer:{
         marginTop: 5,
@@ -121,6 +125,7 @@ const styles = StyleSheet.create({
         paddingLeft: 15,
     },
     scroll:{
+        backgroundColor: '#FAFAFA',
         paddingBottom: 170,
     }
 })
