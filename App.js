@@ -7,8 +7,18 @@ import {Platform, AppRegistry} from 'react-native';
 import store from './src/redux/stores/store';
 import {Provider} from 'react-redux';
 import Main from './src/components/main/index';
+import OneSignal from 'react-native-onesignal';
 
 const App = () => {
+
+  React.useEffect(() => {
+    OneSignal.init("9cf8c27d-0a89-4e7d-bb2a-d24e8bfd03ab");
+
+    // OneSignal.addEventListener('received', this.onReceived);
+    // OneSignal.addEventListener('opened', this.onOpened);
+    // OneSignal.addEventListener('ids', this.onIds);
+  }, [])
+
   return (
     <React.Fragment>
       <Provider store={store}>
