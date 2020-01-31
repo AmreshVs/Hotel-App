@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Image, ScrollView } from 'react-native';
-import { Text, Card, Icon } from '@ui-kitten/components';
+import { Text, Icon } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import { withNavigation } from 'react-navigation';
 

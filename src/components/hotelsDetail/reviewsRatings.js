@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Card, Icon } from '@ui-kitten/components';
+import { Text, Icon } from '@ui-kitten/components';
 import { connect } from 'react-redux';
 import { StyleSheet, View, Modal, ScrollView } from 'react-native';
 import Ripple from 'react-native-material-ripple';
@@ -46,7 +46,7 @@ const GuestDetails = (props) => {
 
     return (
         <View style={{ width: '100%', marginLeft: 20 }}>
-            <Card style={styles.cardContainer}>
+            <View style={styles.cardContainer}>
                 <View style={styles.textContainer}>
                     <View style={styles.textContainer1}>
                         <Text style={styles.heading}>Reviews & Ratings</Text>
@@ -108,7 +108,7 @@ const GuestDetails = (props) => {
                         <WriteReview backHandler={toggleWriteReview} />
                     </View>
                 </Modal>
-            </Card>
+            </View>
         </View>
     );
 }
@@ -124,6 +124,16 @@ const styles = StyleSheet.create({
         width: '95%',
         borderRadius: 10,
         marginTop: 10,
+        backgroundColor: '#FFF',
+        padding: 13,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
     },
     heading: {
         fontSize: 16,

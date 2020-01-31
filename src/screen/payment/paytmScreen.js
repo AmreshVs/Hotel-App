@@ -6,9 +6,7 @@ import BookHotel from '../../redux/thunkActions/bookHotel';
 const PaytmScreen = (props) => {
 
     const [url, setUrl] = React.useState('');
-
     const [webUrl, setWebUrl] = React.useState('');
-    const [webData, setWebData] = React.useState('');
 
     const bookingData = {
         hotelId: props.hotelDetail.hotelIds.hotelId, 
@@ -41,7 +39,6 @@ const PaytmScreen = (props) => {
             }}
             onMessage={event => {
                 if(webUrl === 'https://pandaapi.amreshrepos.ml/api/payment/status'){
-                    setWebData(event.nativeEvent.data)
                     props.navigation.navigate('AfterBooking', {payment_type: 2, data: event.nativeEvent.data});
                 }
             }}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Text, Card, CheckBox, Button } from '@ui-kitten/components';
+import { Text, CheckBox, Button } from '@ui-kitten/components';
 import { StyleSheet, View, Modal, ScrollView } from 'react-native';
 import TopNavSimple from '../navigation/topNavSimple';
 import ExtraServices from './extraServices';
@@ -9,7 +9,6 @@ import LoadPrices from '../../redux/thunkActions/loadPrices';
 import { addCoupons } from '../../redux/actions/hotelDetailActions';
 
 const PricingDetails = (props) => {
-    const quantitytypes = props.data.data.quantity_types !== undefined ? Object.values(props.data.data.quantity_types) : null;
     const [modal, setModal] = React.useState(false);
     var servicesId = 0;
 
@@ -31,7 +30,7 @@ const PricingDetails = (props) => {
     }
 
     return(
-        <Card style={styles.cardContainer}>
+        <View style={styles.cardContainer}>
             <Text style={styles.heading}>Pricing Details & Extra Services</Text>
             <View style={styles.textContainer}>
                 {props.hotelDetail.coupons.code === undefined ? <Text>Apply Coupon</Text> : <Text style={[styles.coupon, {marginTop: 10}]}>Coupon : {props.hotelDetail.coupons.code}</Text>}
@@ -93,7 +92,7 @@ const PricingDetails = (props) => {
                     </ScrollView>
                 </View>
             </Modal>
-        </Card>
+        </View>
     );
 }
 
@@ -112,6 +111,16 @@ const styles = StyleSheet.create({
         width: '95%',
         borderRadius: 10,
         marginTop: 10,
+        backgroundColor: '#FFF',
+        padding: 13,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
     },
     heading:{
         fontSize: 16,

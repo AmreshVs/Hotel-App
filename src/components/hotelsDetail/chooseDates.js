@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Text, Card, Icon } from '@ui-kitten/components';
+import { Text, Icon } from '@ui-kitten/components';
 import { StyleSheet, View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import { withNavigation } from 'react-navigation';
@@ -37,7 +37,7 @@ const ChooseDates = (props) => {
     const dates = (fromDate !== undefined && toDate !== undefined) ? fromDate + ' - ' + toDate : '-';
 
     return(
-        <Card style={styles.cardContainer}>
+        <View style={styles.cardContainer}>
             <Text style={styles.heading}>Choose Room's and Guest's</Text>
             <Ripple rippleSize={150} rippleDuration={600} style={styles.choosedates} onPress={hotelDates}>
                 <View style={styles.container}>
@@ -49,7 +49,7 @@ const ChooseDates = (props) => {
                     <Text style={styles.text}>{roomNum} Room's, {guests} Guest's</Text>
                 </View>
             </Ripple>
-        </Card>
+        </View>
     );
 }
 
@@ -68,6 +68,16 @@ const styles = StyleSheet.create({
         width: '95%',
         borderRadius: 10,
         marginTop: 10,
+        backgroundColor: '#FFF',
+        padding: 13,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
     },
     heading:{
         fontSize: 16,

@@ -26,12 +26,12 @@ const HotelsLargeListScreen = (props) => {
   }, [])
 
   const navigateHotelDetails = (alias, id, is_favorite) => {
+    props.loadPrices({});
     props.navigation.navigate('HotelsDetail',{
         alias: alias,
         hotelId: id,
         is_favorite: is_favorite
     });
-    props.loadPrices({});
   }
 
   const RenderSK = () => {

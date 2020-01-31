@@ -22,8 +22,6 @@ const styles = StyleSheet.create({
     placeholderContainer:{
         flex: 1, 
         width: '100%',
-        marginLeft: 10,
-        marginRight: 10,
         alignItems: 'center',
         height: 300,
     },

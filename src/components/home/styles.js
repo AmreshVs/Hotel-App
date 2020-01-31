@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
     searchCard:{
         marginTop: -95,
         margin: 10,
-        padding: 10,
+        padding: 15,
         marginBottom: 30,
         borderRadius: 10,
         borderWidth: 1,

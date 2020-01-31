@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Text, Card, Icon, Input } from '@ui-kitten/components';
+import { Text, Icon, Input } from '@ui-kitten/components';
 import { StyleSheet, View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import { withNavigation } from 'react-navigation';
@@ -18,8 +18,8 @@ const GuestDetails = (props) => {
     };
 
     return (
-        <View style={{ width: '100%', marginLeft: 20 }}>
-            <Card style={styles.cardContainer}>
+        <View style={{ width: '100%', alignItems: 'center' }}>
+            <View style={styles.cardContainer}>
                 <View style={styles.textContainer}>
                     <Text style={styles.heading}>Guest Details</Text>
                     <Ripple onPress={toggleModal}>
@@ -53,7 +53,7 @@ const GuestDetails = (props) => {
                         />
                     </View>
                 }
-            </Card>
+            </View>
         </View>
     );
 }
@@ -73,6 +73,17 @@ const styles = StyleSheet.create({
         width: '95%',
         borderRadius: 10,
         marginTop: 10,
+        backgroundColor: '#FFF',
+        padding: 13,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
+        paddingBottom: 15,
     },
     heading: {
         fontSize: 16,

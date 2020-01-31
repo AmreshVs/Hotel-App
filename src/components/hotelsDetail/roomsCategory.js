@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ScrollView, View, StyleSheet, Image } from 'react-native';
-import { Text, Card, CheckBox, Icon, Modal, Layout } from '@ui-kitten/components';
+import { Text, CheckBox, Icon, Modal, Layout } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import { openImageViewer, closeImageViewer } from '../../redux/actions/hotelDetailActions';
 import ImageViewer from '../../components/extra/ImageViewer';
@@ -63,7 +63,7 @@ const RoomsCategory = (props) => {
     );  
 
     return(
-        <Card style={styles.cardContainer}>
+        <View style={styles.cardContainer}>
             <Text style={styles.heading}>Rooms</Text>
             {props.data.map((item) => {
                 var hotelname =  ((item.title).length > maxlimit) ? 
@@ -107,7 +107,7 @@ const RoomsCategory = (props) => {
                 </View>
                 )
             })}
-        </Card>
+        </View>
     );
 }
 
@@ -132,6 +132,16 @@ const styles = StyleSheet.create({
         width: '95%',
         borderRadius: 10,
         marginTop: 10,
+        backgroundColor: '#FFF',
+        padding: 13,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
     },
     checkbox: {
         marginLeft: 10,
@@ -201,11 +211,11 @@ const styles = StyleSheet.create({
     },
     modalContainer:{
         width: 300,
+        borderRadius: 10,
         backgroundColor: '#FFF',
         padding: 15,
         borderWidth: 1,
         borderColor: '#CCC',
-        borderRadius: 10,
     },
     moreAmenities:{
         flex: 1,

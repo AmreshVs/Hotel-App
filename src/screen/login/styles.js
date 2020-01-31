@@ -8,15 +8,12 @@ const styles = StyleSheet.create({
     inputContainer:{
         position: 'absolute',
         width: '100%',
-        height: '100%',
         bottom: 3,
         justifyContent: 'flex-end',
         alignItems: 'center',
     },
     inputOtpContainer:{
-        position: 'absolute',
         width: '100%',
-        height: '100%',
         bottom: 10,
         justifyContent: 'flex-end',
         alignItems: 'center',
@@ -27,7 +24,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around'
     },
     input:{
-        // height: 60,
         width: '85%',
         marginBottom: 10,
     },

@@ -20,7 +20,7 @@ const TopNavSimple = (props) => {
     );
 
     return(
-        <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#00bfff', '#0067d6']} style={styles.headerGradient}>
+        <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#1947eb', '#006df7', '#0059e2']} style={styles.headerGradient}>
             <TopNavigation title={props.screenTitle} titleStyle={styles.title} alignment='center' leftControl={BackAction()} style={styles.header} />
         </LinearGradient>
     )

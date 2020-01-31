@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Image } from 'react-native';
-import { Text, Card } from '@ui-kitten/components';
+import { Text } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 
 const Amenities = (props) => {
@@ -14,7 +14,7 @@ const Amenities = (props) => {
     }
 
     return(
-        <Card style={styles.cardContainer}>
+        <View style={styles.cardContainer}>
             <Text style={styles.heading}>Amenities</Text>
             <View style={{height: showAmenities, overflow: 'hidden'}}>
                 <View style={styles.amenitiesContainer}>
@@ -34,7 +34,7 @@ const Amenities = (props) => {
                     <Text status='primary'> {showAmenities === 90 ? 'More' : 'Less'} </Text>
                 </Ripple>
             : null}
-        </Card>
+        </View>
     )
 }
 
@@ -51,6 +51,16 @@ const styles = StyleSheet.create({
         width: '95%',
         borderRadius: 10,
         marginTop: 10,
+        padding: 13,
+        backgroundColor: '#FFF',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
     },
     amenitiesContainer:{
         top: 5,

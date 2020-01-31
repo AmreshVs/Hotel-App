@@ -1,17 +1,17 @@
 import React from 'react';
-import { Card, Text, Icon } from '@ui-kitten/components';
+import { Text, Icon } from '@ui-kitten/components';
 import { StyleSheet, View } from 'react-native';
 
 const NameBlock = (props) => {
     var data = props.data;
     return(
-        <Card style={styles.cardContainer}>
+        <View style={styles.cardContainer}>
             <View style={styles.nameprice}>
                 <View style={styles.nameBlock}>
                     <Text style={styles.roomTitle}>{data.title}</Text>
                     <Text style={styles.caption}>{data.subtitle}</Text>
                     <View style={styles.ratingContainer}>
-                        <Icon name='star' width={28} height={28} fill='#FFD13A'/>
+                        <Icon name='star' width={22} height={22} fill='#FFD13A'/>
                         <Text style={styles.ratingCount}><Text style={styles.caption}>{data.avg_rating}</Text><Text style={styles.caption}> | {data.total_comments} Comments</Text></Text>
                     </View>
                 </View>
@@ -22,7 +22,7 @@ const NameBlock = (props) => {
                     <Icon name='map-outline' style={styles.mapIcon} fill='#CCC' />
                 </View>
             </View>
-        </Card>
+        </View>
     );
 }
 
@@ -33,6 +33,16 @@ const styles = StyleSheet.create({
         width: '95%',
         borderRadius: 10,
         marginTop: 10,
+        backgroundColor: '#FFF',
+        padding: 13,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
     },
     nameprice:{
         flex: 1,
@@ -85,12 +95,12 @@ const styles = StyleSheet.create({
     ratingCount:{
         fontSize: 16,
         color: '#626262',
-        paddingTop: 5,
+        paddingTop: 2,
         paddingLeft: 5
     },
     mapIcon:{
-        width: 27,
-        height: 27,
+        width: 23,
+        height: 23,
         marginRight: '15%'
     }
 });

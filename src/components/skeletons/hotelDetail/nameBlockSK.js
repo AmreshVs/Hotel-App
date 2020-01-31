@@ -1,11 +1,10 @@
 import React from 'react';
 import SkeletonContent from "react-native-skeleton-content-nonexpo";
-import { Card } from '@ui-kitten/components';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 const NameBlockSK = () => {
     return(
-        <Card style={styles.cardContainer}>
+        <View style={styles.cardContainer}>
             <SkeletonContent
                 containerStyle={styles.placeholderContainer}
                 isLoading={true}
@@ -18,7 +17,7 @@ const NameBlockSK = () => {
                 ]}
             >
             </SkeletonContent>
-        </Card>
+        </View>
     )
 }
 
@@ -30,6 +29,16 @@ const styles = StyleSheet.create({
         height: 120,
         borderRadius: 10,
         marginTop: 10,
+        backgroundColor: '#FFF',
+        padding: 13,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
         flexDirection: 'column',
         justifyContent: 'center',
     },

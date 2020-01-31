@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Card, Button } from '@ui-kitten/components';
+import { Text, Button } from '@ui-kitten/components';
 import { StyleSheet, View } from 'react-native';
 import { withNavigation } from 'react-navigation';
 

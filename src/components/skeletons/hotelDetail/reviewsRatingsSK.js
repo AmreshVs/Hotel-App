@@ -1,11 +1,11 @@
 import React from 'react';
 import SkeletonContent from "react-native-skeleton-content-nonexpo";
-import { Card, Text } from '@ui-kitten/components';
+import { Text } from '@ui-kitten/components';
 import { StyleSheet, View } from 'react-native';
 
 const ReviewRatingBlockSK = () => {
     return(
-        <Card style={styles.cardContainer}>
+        <View style={styles.cardContainer}>
             <Text style={styles.heading}>Reviews & Ratings</Text>
             <View style={styles.skContainer}>
                 <SkeletonContent
@@ -62,7 +62,7 @@ const ReviewRatingBlockSK = () => {
                     ]}
                 >
             </SkeletonContent>
-        </Card>
+        </View>
     )
 }
 
@@ -73,6 +73,16 @@ const styles = StyleSheet.create({
         width: '95%',
         borderRadius: 10,
         marginTop: 10,
+        backgroundColor: '#FFF',
+        padding: 13,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
     },
     heading:{
         fontSize: 16,

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text, Card } from '@ui-kitten/components';
-import { StyleSheet } from 'react-native';
+import { Text } from '@ui-kitten/components';
+import { StyleSheet, View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 
 const HotelDescription = (props) => {
@@ -16,13 +16,13 @@ const HotelDescription = (props) => {
     const description1 = description.replace(lines, '');
 
     return(
-        <Card style={styles.cardContainer}>
+        <View style={styles.cardContainer}>
             <Text style={styles.heading}>Description</Text>
             <Text style={{height: showDesc}}>{description1}</Text>
             <Ripple rippleSize={50} rippleDuration={600} onPress={revealDescription}>
                 <Text status='primary' style={{marginTop: 5}}>{showDesc == 60 ? 'More' : 'Less'}</Text>
             </Ripple>
-        </Card>
+        </View>
     );
 }
 
@@ -33,6 +33,16 @@ const styles = StyleSheet.create({
         width: '95%',
         borderRadius: 10,
         marginTop: 10,
+        backgroundColor: '#FFF',
+        padding: 13,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
     },
     heading:{
         fontSize: 16,
