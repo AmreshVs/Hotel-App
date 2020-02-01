@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { View, StyleSheet } from 'react-native';
 import { Input, Icon, Card, Button } from '@ui-kitten/components';
 import SaveProfileData from '../../redux/thunkActions/saveProfileData';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
+import { userLogin } from '../../redux/actions/commonActions';
 
 const ProfileEdit = (props) => {
 
@@ -16,6 +18,7 @@ const ProfileEdit = (props) => {
     const handleSave = async () => {
         const response = await SaveProfileData(props.access_token, {firstname: firstname, lastname: lastname, email: email, address: address, city: city});
         snackbarMessage(response.message);
+        props.userLogin({access_token: props.access_token, firstname: firstname, lastname: lastname, email: email, address: address, city: city})
         props.handleClick();
         props.reloadData();
     }
@@ -103,7 +106,11 @@ const mapStateToProps = (state) => {
     return state.common.userData;
 }
 
-export default connect(mapStateToProps)(ProfileEdit);
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({userLogin:userLogin}, dispatch);
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(ProfileEdit);
 
 const styles = StyleSheet.create({
     bodyContainer:{

@@ -18,6 +18,10 @@ const PaytmScreen = (props) => {
         coupons: props.hotelDetail.prices_services.data.data.coupons[0].code,
         user: {
             firstname: props.common.userData.firstname,
+            lastname: props.common.userData.lastname,
+            email: props.common.userData.email,
+            address: props.common.userData.address,
+            city: props.common.userData.city,
             mobile: props.common.userData.mobile,
         }
     };

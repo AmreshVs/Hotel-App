@@ -1,12 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Text, Button } from '@ui-kitten/components';
 import { StyleSheet, View } from 'react-native';
 import { withNavigation } from 'react-navigation';
+import CheckUserData from '../../commonFunctions/checkUserData';
 
 const BookHotel = (props) => {
 
     const navigatePayment = () => {
-        props.navigation.navigate('PaymentScreen');
+        let checkData = CheckUserData(props.userData);
+        if(Object.values(checkData).length > 0){
+            props.navigation.navigate('UserProfileScreen');
+        }
+        else{
+            props.navigation.navigate('PaymentScreen');
+        }
     }
 
     return(
@@ -24,7 +32,11 @@ const BookHotel = (props) => {
     );
 }
 
-export default withNavigation(BookHotel);
+const mapStateToProps = (state) => {
+    return state.common;
+}
+
+export default connect(mapStateToProps)(withNavigation(BookHotel));
 
 const styles = StyleSheet.create({
     cardContainer:{

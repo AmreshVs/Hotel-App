@@ -6,7 +6,7 @@ import { withNavigation } from 'react-navigation';
 import { connect } from 'react-redux';
 import LoadBookingHistory from '../../redux/thunkActions/loadBookingsHistory';
 import { NavigationEvents } from 'react-navigation';
-
+import CheckUserData from '../../commonFunctions/checkUserData';
 import BookingsOverview from '../../components/bookings/index';
 import BookingsOverviewSK from '../../components/skeletons/bookingsOverviewSK';
 
@@ -25,16 +25,18 @@ const BookingssScreen = (props) => {
     const [data, setData] = React.useState({});
 
     useEffect(() => {
+      CheckUserData(props.userData);
       async function loadDatas(){
-        const response = await LoadBookingHistory(props.access_token);
+        const response = await LoadBookingHistory(props.userData.access_token);
         setData(response);
       }
       loadDatas();
     }, []);
 
     const reloadData = async () => {
+        CheckUserData(props.userData);
         setData([]);
-        const response = await LoadBookingHistory(props.access_token);
+        const response = await LoadBookingHistory(props.userData.access_token);
         setData(response);
     }
 
@@ -63,7 +65,7 @@ const BookingssScreen = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    return state.common.userData;
+    return state.common;
 }
 
 export default connect(mapStateToProps)(withNavigation(BookingssScreen));

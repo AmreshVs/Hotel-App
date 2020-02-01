@@ -54,6 +54,10 @@ const PricingDetails = (props) => {
                         <Text>- ₹{props.data.data.price.discount_price}</Text>
                     </View>
                     <View style={styles.textContainer}>
+                        <Text style={styles.total}>Tax</Text>
+                        <Text style={styles.total}>₹{props.data.data.price !== undefined ? props.data.data.price.vat : 0}</Text>
+                    </View>
+                    <View style={styles.textContainer}>
                         <Text style={styles.total}>Total After Discount</Text>
                         <Text style={styles.total}>₹{props.data.data.price.discount_after_price}</Text>
                     </View>

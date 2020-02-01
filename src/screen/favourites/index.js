@@ -10,6 +10,7 @@ import GetFavourites from '../../redux/thunkActions/getFavourites';
 import { loadPrices } from '../../redux/actions/hotelDetailActions';
 import { NavigationEvents } from 'react-navigation';
 import FavouriteHotelSK from '../../components/skeletons/favouriteHotelSK';
+import CheckUserData from '../../commonFunctions/checkUserData';
 
 const NoFavourites = () => {
     return(
@@ -24,19 +25,26 @@ const NoFavourites = () => {
 const FavouritesScreen = (props) => {
 
     const [data, setData] = React.useState([]);
+    const [loading, setLoading] = React.useState(false);
     
     React.useEffect(() => {
+        CheckUserData(props.userData);
         async function loadDatas(){
-            const response = await GetFavourites(props.access_token);
+            setLoading(true);
+            const response = await GetFavourites(props.userData.access_token);
             setData(response);
+            setLoading(false);
         }
         loadDatas();
     }, []);
 
     const reloadData = async () => {
+        CheckUserData(props.userData);
+        setLoading(true);
         setData([]);
-        const response = await GetFavourites(props.access_token);
+        const response = await GetFavourites(props.userData.access_token);
         setData(response);
+        setLoading(false);
     }
 
     const navigateHotelDetails = (alias, id, is_favorite) => {
@@ -55,18 +63,17 @@ const FavouritesScreen = (props) => {
             />
             <TopNavSimple screenTitle='Favourite Rooms' backHandler={() => props.navigation.goBack()} />
             <ScrollView showsVerticalScrollIndicator={false} style={styles.favourites} >
-                {data.length === 0 ? 
+                {loading === true ? 
                     [1,2,3].map((item) =><FavouriteHotelSK key={item} />)
                 : 
-                    data.map((item) => <FavouriteHotels key={item.id} alias={item.alias} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} reloadData={reloadData} hotelId={item.id} image={item.image[0].file} hotelName={item.title} price={item.price_start} rating={item.avg_rating} token={props.access_token} /> )}
+                    (data.length === 0 ? <NoFavourites/> : data.map((item) => <FavouriteHotels key={item.id} alias={item.alias} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} reloadData={reloadData} hotelId={item.id} image={item.image[0].file} hotelName={item.title} price={item.price_start} rating={item.avg_rating} token={props.access_token} />) )}
             </ScrollView>
-            {/* <NoFavourites/> */}
         </View>
     );
 }
 
 const mapStateToProps = (state) => {
-    return state.common.userData;
+    return state.common;
 }
 
 const mapDispatchToProps = (dispatch) => {

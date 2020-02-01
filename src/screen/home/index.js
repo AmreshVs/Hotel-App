@@ -8,22 +8,25 @@ import RecommendedRooms from '../../components/home/recommenedRooms';
 import ExclusiveRooms from '../../components/home/exclusiveRooms';
 import LoadHomeData from '../../redux/thunkActions/loadHomeData';
 import { NavigationEvents } from 'react-navigation';
+import CheckUserData from '../../commonFunctions/checkUserData';
 
 const HomeScreen = (props) => {
 
   const [data, setData] = React.useState({});
 
   useEffect(() => {
+    CheckUserData(props.userData);
     async function loadDatas(){
-      const response = await LoadHomeData(props.access_token);
+      const response = await LoadHomeData(props.userData.access_token);
       setData(response);
     }
     loadDatas();
   }, [])
 
   const reloadData = async () => {
+    CheckUserData(props.userData);
     setData({});
-    const rdata = await LoadHomeData(props.access_token);
+    const rdata = await LoadHomeData(props.userData.access_token);
     setData(rdata);
   }
 
@@ -41,7 +44,7 @@ const HomeScreen = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return state.common.userData;
+  return state.common;
 }
 
 export default connect(mapStateToProps)(HomeScreen);

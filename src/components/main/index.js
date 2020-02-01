@@ -11,7 +11,7 @@ const Main = (props) => {
             <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
             <View style={styles.statusBar} />
             <TabNavigator />
-            <SnackBar style={styles.snack} visible={props.visible} textMessage={props.message} actionText="Ok"/>
+            <SnackBar style={styles.snack} visible={props.visible} textMessage={props.message} backgroundColor={props.backgroundColor} actionText="Ok"/>
         </View>
     )
 }
