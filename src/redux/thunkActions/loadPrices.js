@@ -1,4 +1,4 @@
-import { loadPrices } from '../actions/hotelDetailActions';
+import { loadPrices, removeServices, serviceChecked } from '../actions/hotelDetailActions';
 import axios from 'axios';
 
 const LoadPrices = (data, token) => {

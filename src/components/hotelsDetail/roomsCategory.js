@@ -8,6 +8,7 @@ import { openImageViewer, closeImageViewer } from '../../redux/actions/hotelDeta
 import ImageViewer from '../../components/extra/ImageViewer';
 import LoadPrices from '../../redux/thunkActions/loadPrices';
 import { hotelIds } from '../../redux/actions/hotelDetailActions';
+import { removeServices, serviceChecked } from '../../redux/actions/hotelDetailActions';
 
 const RoomsCategory = (props) => {
 
@@ -38,6 +39,8 @@ const RoomsCategory = (props) => {
 
     const checkRooms = (data) => {
         onCheckedChange(data);
+        props.removeServices([]);
+        props.serviceChecked([]);
         props.hotelIds({hotelId: props.hotelId, roomId: data});
         props.LoadPrices({hotelId : props.hotelId, roomId : data, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: props.hotelDetail.services }, props.common.userData.access_token);
     }
@@ -116,7 +119,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ openImageViewer: openImageViewer, closeImageViewer: closeImageViewer, LoadPrices: LoadPrices, hotelIds: hotelIds }, dispatch);
+    return bindActionCreators({ openImageViewer: openImageViewer, closeImageViewer: closeImageViewer, LoadPrices: LoadPrices, hotelIds: hotelIds, removeServices, serviceChecked }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoomsCategory);
@@ -141,7 +144,7 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
-        elevation: 2,
+        elevation: 5,
     },
     checkbox: {
         marginLeft: 10,

@@ -8,7 +8,7 @@ import RoomsListSmall from '../rooms/roomsListSmall';
 import styles from './styles';
 import { withNavigation } from 'react-navigation';
 import ExclusiveRoomsSK from '../skeletons/exclusiveRoomsSK';
-import { loadPrices } from '../../redux/actions/hotelDetailActions';
+import { loadPrices, removeServices, serviceChecked } from '../../redux/actions/hotelDetailActions';
 
 const ExclusiveRooms = (props) => {
 
@@ -17,6 +17,8 @@ const ExclusiveRooms = (props) => {
     }
 
     const navigateHotelDetails = (alias, id, is_favorite) => {
+        props.removeServices([]);
+        props.serviceChecked([]);
         props.loadPrices({});
         props.navigation.navigate('HotelsDetail',{
             alias: alias,
@@ -57,7 +59,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({loadPrices: loadPrices}, dispatch);
+    return bindActionCreators({loadPrices:loadPrices, removeServices: removeServices, serviceChecked: serviceChecked}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(ExclusiveRooms));

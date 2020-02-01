@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
-        elevation: 2,
+        elevation: 5,
     },
     heading:{
         fontSize: 16,

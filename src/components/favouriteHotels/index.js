@@ -1,9 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { View, StyleSheet, Image } from 'react-native';
 import { Text, Icon } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import AddFavourite from '../../redux/thunkActions/addFavourite';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
+import { withNavigation } from 'react-navigation';
+import { loadPrices, removeServices, serviceChecked } from '../../redux/actions/hotelDetailActions';
 
 const FavouriteHotels = (props) => {
 
@@ -13,10 +17,21 @@ const FavouriteHotels = (props) => {
         props.reloadData();
     }
 
+    const navigateHotelDetails = (alias, id, is_favorite) => {
+        props.removeServices([]);
+        props.serviceChecked([]);
+        props.loadPrices({});
+        props.navigation.navigate('HotelsDetail',{
+            alias: alias,
+            hotelId: id,
+            is_favorite: is_favorite
+        });
+    }
+
     return(
         <View style={styles.container}>
             <View style={styles.favContainer}>
-                <Ripple rippleSize={500} rippleDuration={600} onPress={() => props.navigate(props.alias)}>
+                <Ripple rippleSize={500} rippleDuration={600} onPress={() => navigateHotelDetails(props.alias, props.hotelId, 1)}>
                     <Image style={styles.image} source={{uri:props.image}} />
                 </Ripple>
                 <Ripple rippleSize={50} rippleDuration={600} onPress={removeFavourite} style={styles.heartContainer}>
@@ -24,7 +39,7 @@ const FavouriteHotels = (props) => {
                 </Ripple>
                 <View style={styles.contentContainer}>
                     <View style={styles.leftContainer}>
-                        <Ripple rippleSize={500} rippleDuration={600} onPress={() => props.navigate(props.alias)}>
+                        <Ripple rippleSize={500} rippleDuration={600} onPress={() => props.navigate(props.alias, props.hotelId, 1)}>
                             <Text style={styles.hotelName}>{props.hotelName}</Text>
                         </Ripple>
                         <View style={styles.iconContainer}>
@@ -42,7 +57,15 @@ const FavouriteHotels = (props) => {
     );
 }
 
-export default FavouriteHotels;
+const mapStateToProps = (state) => {
+    return state;
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({loadPrices:loadPrices, removeServices: removeServices, serviceChecked: serviceChecked}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(FavouriteHotels));
 
 const styles = StyleSheet.create({
     container:{
