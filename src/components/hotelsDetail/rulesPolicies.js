@@ -24,14 +24,8 @@ const styles = StyleSheet.create({
         marginTop: 10,
         backgroundColor: '#FFF',
         padding: 13,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
+        borderWidth: 1,
+        borderColor: '#EEE',
     },
     heading:{
         fontSize: 16,

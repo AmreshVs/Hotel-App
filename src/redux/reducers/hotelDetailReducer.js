@@ -40,7 +40,7 @@ const HotelDetailReducer = (state = initialState, action) => {
         case LOAD_HOTELDETAILS_DATA_ERROR:
             return Object.assign({}, state, { pending: false, error: true });
         case CLEAR_DATA:
-            return Object.assign({}, state, { pending: true, hotelDetail: [] });
+            return Object.assign({}, state, { pending: true, prices_services: [], services: [], serviceChecked: [], hotelIds: [], coupons: '' });
         case SAVE_REVIEW:
             return Object.assign({}, state, { save_review: action.payload } );
         case LOAD_PRICES:

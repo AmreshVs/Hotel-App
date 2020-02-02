@@ -17,10 +17,10 @@ const HotelDates = (props) => {
     
 
     const ClosePage = () => {
-        props.navigation.goBack();
+        props.navigation.navigate('HotelsDetail',{alias: props.navigation.state.params.alias});
         setTimeout(function() { 
             props.chooseDates({dates: range});
-            props.LoadPrices({hotelId : props.hotelDetail.hotelIds.hotelId, roomId : props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: props.hotelDetail.services }, props.common.userData.access_token);
+            // props.LoadPrices({hotelId : props.hotelDetail.hotelIds.hotelId, roomId : props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, services: props.hotelDetail.services }, props.common.userData.access_token);
         }, 10);
     }
 

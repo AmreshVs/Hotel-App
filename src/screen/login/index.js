@@ -25,7 +25,7 @@ const LoginScreen = (props) => {
         }
     ];
 
-    const [value, setValue] = React.useState('8675529268');
+    const [value, setValue] = React.useState('');
     const [otpValue, setOtpValue] = React.useState('');
     const [visible, setVisible] = React.useState(false);
     const [slideAnim] = React.useState(new Animated.Value(0));

@@ -7,7 +7,7 @@ import RoomsListSmall from '../../components/rooms/roomsListSmall';
 import TopNavSimple from '../../components/navigation/topNavSimple';
 import ExclusiveRoomsSK from '../../components/skeletons/exclusiveRoomsSK';
 import LoadExclusiveRoomsData from '../../redux/thunkActions/loadExclusiveRoomsData';
-import { loadPrices, removeServices, serviceChecked } from '../../redux/actions/hotelDetailActions';
+import { clearData } from '../../redux/actions/hotelDetailActions';
 
 const HotelsLargeListScreen = (props) => {
 
@@ -26,9 +26,7 @@ const HotelsLargeListScreen = (props) => {
   }, []);
 
   const navigateHotelDetails = (alias, id, is_favorite) => {
-    props.removeServices([]);
-    props.serviceChecked([]);
-    props.loadPrices({});
+    props.clearData();
     props.navigation.navigate('HotelsDetail',{
         alias: alias,
         hotelId: id,
@@ -63,7 +61,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({loadPrices:loadPrices, removeServices: removeServices, serviceChecked: serviceChecked}, dispatch);
+  return bindActionCreators({clearData: clearData}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(HotelsLargeListScreen));

@@ -7,7 +7,7 @@ import { withNavigation } from 'react-navigation';
 import { connect } from 'react-redux';
 import FavouriteHotels from '../../components/favouriteHotels/index';
 import GetFavourites from '../../redux/thunkActions/getFavourites';
-import { loadPrices } from '../../redux/actions/hotelDetailActions';
+import { clearData } from '../../redux/actions/hotelDetailActions';
 import { NavigationEvents } from 'react-navigation';
 import FavouriteHotelSK from '../../components/skeletons/favouriteHotelSK';
 import CheckUserData from '../../commonFunctions/checkUserData';
@@ -48,7 +48,7 @@ const FavouritesScreen = (props) => {
     }
 
     const navigateHotelDetails = (alias, id, is_favorite) => {
-        props.loadPrices({});
+        props.clearData();
         props.navigation.navigate('HotelsDetail',{
             alias: alias,
             hotelId: id,
@@ -77,7 +77,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({loadPrices:loadPrices}, dispatch);
+    return bindActionCreators({clearData:clearData}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(FavouritesScreen));

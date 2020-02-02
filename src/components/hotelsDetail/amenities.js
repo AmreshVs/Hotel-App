@@ -53,14 +53,8 @@ const styles = StyleSheet.create({
         marginTop: 10,
         padding: 13,
         backgroundColor: '#FFF',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
+        borderWidth: 1,
+        borderColor: '#EEE',
     },
     amenitiesContainer:{
         top: 5,

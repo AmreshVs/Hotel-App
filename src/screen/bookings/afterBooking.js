@@ -56,7 +56,7 @@ const AfterBooking = (props) => {
             <ScrollView contentContainerStyle={styles.container}  showsVerticalScrollIndicator={false}>
                 <View style={styles.contentContainer}>
                     {data.length <= 0 ? <ConfirmBlockSK/> : <ConfirmBlock booking_id={data.booking_id} total={data.total} status={data.status} status_label={data.status_label} transaction_id={data.transaction_id} />}
-                    {data.length <= 0 ? <BookedDetailsSK/> : <BookedHotelDetails data={data} token={props.access_token} reloadData={reloadData} />}
+                    {data.length <= 0 ? <BookedDetailsSK/> : <BookedHotelDetails data={data} token={props.common.userData.access_token} reloadData={reloadData} />}
                     {data.length <= 0 ? <HelpBlockSK/> : <HelpBlock/>}
                 </View>
             </ScrollView>

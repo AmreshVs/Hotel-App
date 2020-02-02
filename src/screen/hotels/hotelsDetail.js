@@ -34,7 +34,7 @@ import TotalPriceSK from '../../components/skeletons/hotelDetail/totalPriceSK';
 
 
 const HotelsDetail = (props) => {
-    
+
     var errors = props.hotelDetail.prices_services;
     const [data, setData] = React.useState({});
     const [loading, setLoading] = React.useState(true);
@@ -42,7 +42,7 @@ const HotelsDetail = (props) => {
     const [showSnack, setShowSnack] = React.useState(false);
 
     const priceCond = props.hotelDetail.prices_services !== undefined && props.hotelDetail.prices_services !== null && props.hotelDetail.prices_services.pricesLoading === false;
-    
+
     useEffect(() => {
         async function loadDatas(){
             const response = await LoadHotelDetailsData(props.navigation.state.params.alias, props.common.userData.access_token);
@@ -57,7 +57,12 @@ const HotelsDetail = (props) => {
 
     if(loadPrices === true){
         setLoadPrices(false);
-        props.LoadPrices({hotelId : data.nameBlock.id, roomId : data.roomsBlock[0].id, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms }, props.common.userData.access_token);
+        if(props.hotelDetail.services.length <= 0){
+            props.LoadPrices({hotelId : data.nameBlock.id, roomId : data.roomsBlock[0].id, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms }, props.common.userData.access_token);
+        }
+        else{
+            props.LoadPrices({hotelId : data.nameBlock.id, roomId : data.roomsBlock[0].id, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: props.hotelDetail.services }, props.common.userData.access_token);
+        }
     }
 
     if(props.hotelDetail.prices_services !== undefined && props.hotelDetail.prices_services !== null){
@@ -94,7 +99,7 @@ const HotelsDetail = (props) => {
                     {loading === true ? <DescriptionBlockSK/> : <HotelDescription description={data.descriptionBlock.desc} /> }
                     {loading === true ? <AmenitiesBlockSK/> : <Amenities data={data.amenitiesBlock} /> }
                     {loading === true ? <RoomsBlockSK/> : <RoomsCategory hotelId={data.nameBlock.id} data={data.roomsBlock} /> }
-                    {loading === true ? <ChooseRoomsBlockSK/> : <ChooseDates/> }
+                    {loading === true ? <ChooseRoomsBlockSK/> : <ChooseDates alias={props.navigation.state.params.alias} /> }
                     {loading === true ? <GuestDetailsBlockSK/> : <GuestDetails/> }
                     {loading === true ? <ReviewRatingBlockSK/> : <ReviewsRatings data={data.reviewsRatingsBlock} hotelId={data.nameBlock.id} /> }
                     <RenderPriceBlock/>

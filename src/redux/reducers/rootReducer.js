@@ -11,9 +11,9 @@ const rootReducer = combineReducers({
     initialState: initialAppState,
     common: CommonDataReducer,
     hotelDetail: HotelDetailReducer,
-    homeData: HomeDataReducer,
-    recommendedRooms: RecommendedRoomReducer,
-    exclusiveRooms: ExclusiveRoomReducer,
+    // homeData: HomeDataReducer,
+    // recommendedRooms: RecommendedRoomReducer,
+    // exclusiveRooms: ExclusiveRoomReducer,
     // form: formReducer
 });
 

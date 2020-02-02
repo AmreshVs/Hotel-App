@@ -1,7 +1,8 @@
-import { loadPrices, removeServices, serviceChecked } from '../actions/hotelDetailActions';
+import { loadPrices } from '../actions/hotelDetailActions';
 import axios from 'axios';
 
 const LoadPrices = (data, token) => {
+console.log(data)
     return dispatch => {
         dispatch(loadPrices({pricesLoading: true, data: {data: []}}));
         axios({
@@ -15,6 +16,7 @@ const LoadPrices = (data, token) => {
             data: data,
         })
         .then(function (response) {
+            console.log(response.data);
             dispatch(loadPrices({pricesLoading: false, data: response.data}));
         })
         .catch(function (error) {

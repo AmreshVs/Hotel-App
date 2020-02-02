@@ -7,7 +7,7 @@ import Ripple from 'react-native-material-ripple';
 import AddFavourite from '../../redux/thunkActions/addFavourite';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 import { withNavigation } from 'react-navigation';
-import { loadPrices, removeServices, serviceChecked } from '../../redux/actions/hotelDetailActions';
+import { clearData } from '../../redux/actions/hotelDetailActions';
 
 const FavouriteHotels = (props) => {
 
@@ -18,9 +18,7 @@ const FavouriteHotels = (props) => {
     }
 
     const navigateHotelDetails = (alias, id, is_favorite) => {
-        props.removeServices([]);
-        props.serviceChecked([]);
-        props.loadPrices({});
+        props.clearData();
         props.navigation.navigate('HotelsDetail',{
             alias: alias,
             hotelId: id,
@@ -62,7 +60,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({loadPrices:loadPrices, removeServices: removeServices, serviceChecked: serviceChecked}, dispatch);
+    return bindActionCreators({clearData: clearData}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(FavouriteHotels));

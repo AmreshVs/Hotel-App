@@ -26,7 +26,7 @@ const ChooseDates = (props) => {
         if(Object.keys(rooms).length <= 0){
             props.addGuests({room: 1 , guests: {adult: 1, children: 0}});
         }
-        props.navigation.navigate('HotelDates');
+        props.navigation.navigate('HotelDates', {alias: props.alias});
     }
 
     if(props.hotelDetail.dates !== undefined){
@@ -70,14 +70,8 @@ const styles = StyleSheet.create({
         marginTop: 10,
         backgroundColor: '#FFF',
         padding: 13,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
+        borderWidth: 1,
+        borderColor: '#EEE',
     },
     heading:{
         fontSize: 16,
