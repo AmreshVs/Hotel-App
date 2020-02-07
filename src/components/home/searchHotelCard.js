@@ -27,7 +27,7 @@ const SearchHotelCard = (props) =>{
 
   return(
   <View style={styles.searchCard}>
-    <Ripple rippleDuration={600} onPress={() => props.navigation.navigate('HotelDates')}>
+    <Ripple rippleDuration={600} onPress={() => props.navigation.navigate('SearchDates')}>
       <View style={styles.container}>
         <View style={styles.datesContainer}>
           <Icon name='log-in-outline' width={32} height={32} fill='#3366FF'/>

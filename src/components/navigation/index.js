@@ -13,6 +13,7 @@ import HotelsLargeListScreen from '../../screen/hotels/hotelsLargeList';
 import HotelsExploreRooms from '../../screen/hotels/hotelsExploreRooms';
 import HotelsDetail from '../../screen/hotels/hotelsDetail';
 import HotelDates from '../../screen/hotels/hotelDates';
+import SearchDates from '../../screen/home/SearchDates';
 import PaymentScreen from '../../screen/payment';
 import PaytmScreen from '../../screen/payment/paytmScreen';
 import BookingDetails from '../../screen/bookings/bookingDetails';
@@ -49,7 +50,8 @@ const rootStack = createAnimatedSwitchNavigator(
     BookingDetails: BookingDetails,
     SearchRooms: SearchRoomsScreen,
     AfterBooking: AfterBooking,
-    PaytmScreen: PaytmScreen
+    PaytmScreen: PaytmScreen,
+    SearchDates: SearchDates
   },
   {
     headerMode: 'none',
