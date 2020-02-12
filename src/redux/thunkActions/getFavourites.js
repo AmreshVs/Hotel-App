@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { API_URL } from '../../constants';
 
 const GetFavourites = async (token) => {
     return await axios({
         method: 'GET',
-        url: 'https://pandaapi.amreshrepos.ml/api/v1/get-favorite',
+        url: API_URL + '/get-favorite',
         headers:{
             'Accept-Language' : 'en',
             'Authorization': token

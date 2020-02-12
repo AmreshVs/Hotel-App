@@ -1,5 +1,6 @@
 import { loadPrices } from '../actions/hotelDetailActions';
 import axios from 'axios';
+import { API_URL } from '../../constants';
 
 const LoadPrices = (data, token) => {
 console.log(data)
@@ -7,7 +8,7 @@ console.log(data)
         dispatch(loadPrices({pricesLoading: true, data: {data: []}}));
         axios({
             method: 'POST',
-            url: 'https://pandaapi.amreshrepos.ml/api/v1/choose-room',
+            url: API_URL + '/choose-room',
             headers:{
                 'Accept-Language' : 'en',
                 'Content-Type' : 'application/json',

@@ -1,16 +1,37 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Text, Button } from '@ui-kitten/components';
-import { View } from 'react-native';
+import { Text, Button, withStyles } from '@ui-kitten/components';
+import { View, StyleSheet } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import RoomsListSmall from '../rooms/roomsListSmall';
-import styles from './styles';
 import { withNavigation } from 'react-navigation';
 import ExclusiveRoomsSK from '../skeletons/exclusiveRoomsSK';
 import { clearData } from '../../redux/actions/hotelDetailActions';
 
 const ExclusiveRooms = (props) => {
+
+    const theme = props.theme;
+
+    const styles = StyleSheet.create({
+        headingText:{
+            fontWeight: '700',
+            fontSize: 16,
+            color: theme['color-basic-700']
+        },
+        caption:{
+            color: theme['color-basic-600'],
+            padding: 5,
+            marginTop: -5,
+        },
+        headingBlock:{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            paddingRight: 10,
+            paddingLeft: 10,
+            marginBottom: 15,
+        },
+    });
 
     const navigateDetails = () => {
         props.navigation.navigate('HotelsExploreRooms');
@@ -60,4 +81,4 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({clearData: clearData}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(ExclusiveRooms));
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(withStyles(ExclusiveRooms)));

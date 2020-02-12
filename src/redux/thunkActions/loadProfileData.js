@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { API_URL } from '../../constants';
 
 const LoadProfileData = async (token) => {
     return await axios({
         method: 'GET',
-        url: 'https://pandaapi.amreshrepos.ml/api/v1/profile-view',
+        url: API_URL + '/profile-view',
         headers:{
             'Accept-Language' : 'en',
             'Authorization': token,

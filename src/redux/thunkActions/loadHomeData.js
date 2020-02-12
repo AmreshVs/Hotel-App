@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { API_URL } from '../../constants';
 
 const LoadHomeData = async (token) => {
     return await axios({
         method: 'GET',
-        url: 'https://pandaapi.amreshrepos.ml/api/v1/home',
+        url: API_URL + '/home',
         headers:{
             'Accept-Language' : 'en',
             'Authorization': token

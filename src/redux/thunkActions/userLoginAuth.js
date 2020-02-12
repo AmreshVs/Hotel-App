@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { API_URL } from '../../constants';
 
 const UserLoginAuth = async (data) => {
     return await axios({
         method: 'POST',
-        url: 'https://pandaapi.amreshrepos.ml/api/v1/login',
+        url: API_URL + '/login',
         data: data,
     })
     .then(function (response) {

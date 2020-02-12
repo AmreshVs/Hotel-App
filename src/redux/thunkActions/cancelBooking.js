@@ -1,9 +1,10 @@
+import { API_URL } from '../../constants/index';
 import axios from 'axios';
 
 const CancelBooking = async (id, token) => {
     return await axios({
         method: 'POST',
-        url: 'https://pandaapi.amreshrepos.ml/api/v1/cancel-booking',
+        url: API_URL + '/cancel-booking',
         headers:{
             'Accept-Language' : 'en',
             'Authorization': token

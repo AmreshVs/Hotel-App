@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { API_URL } from '../../constants';
 
 const LoadAllReviews = async (id, token) => {
     return await axios({
         method: 'GET',
-        url: 'https://pandaapi.amreshrepos.ml/api/v1/get-all-reviews?hotel_id='+id,
+        url: API_URL + '/get-all-reviews?hotel_id='+id,
         headers:{
             'Authorization': token
         }

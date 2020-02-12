@@ -1,9 +1,10 @@
+import { API_URL } from '../../constants/index';
 import axios from 'axios';
 
 const AddFavourite = async (data, token) => {
     return await axios({
         method: 'POST',
-        url: 'https://pandaapi.amreshrepos.ml/api/v1/add-favourite',
+        url: API_URL + '/add-favourite',
         headers:{
             'Authorization': token
         },

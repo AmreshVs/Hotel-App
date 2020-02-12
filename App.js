@@ -3,7 +3,7 @@ import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
 import {mapping, light as theme} from '@eva-design/eva';
 import 'react-native-gesture-handler';
-// import { default as appTheme } from './custom-theme.json';
+import { default as appTheme } from './custom-theme.json';
 import {Platform, AppRegistry} from 'react-native';
 import store from './src/redux/stores/store';
 import {Provider} from 'react-redux';
@@ -24,7 +24,7 @@ const App = () => {
     <React.Fragment>
       <Provider store={store}>
         <IconRegistry icons={EvaIconsPack} />
-        <ApplicationProvider mapping={mapping} theme={theme}>
+        <ApplicationProvider mapping={mapping} theme={appTheme}>
           <Main/>
         </ApplicationProvider>
       </Provider>

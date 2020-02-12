@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { API_URL } from '../../constants';
 
 const LoadBookingsHistory = async (token) => {
     return await axios({
         method: 'GET',
-        url: 'https://pandaapi.amreshrepos.ml/api/v1/get-booking-history',
+        url: API_URL + '/get-booking-history',
         headers:{
             'Accept-Language' : 'en',
             'Authorization': token

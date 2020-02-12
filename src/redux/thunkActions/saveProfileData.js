@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { API_URL } from '../../constants';
 
 const LoadProfileData = async (token, data) => {
     return await axios({
         method: 'POST',
-        url: 'https://pandaapi.amreshrepos.ml/api/v1/profile-update',
+        url: API_URL + '/profile-update',
         headers:{
             'Authorization': token,
         },
