@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
         height: StatusBar.currentHeight,
     },
     snack:{
-        position: 'absolute',
-        bottom: 0,
+        overflow: 'hidden',
+        borderRadius: 5,
+        margin: 10,
     }
 });

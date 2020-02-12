@@ -1,11 +1,19 @@
 import React from 'react';
 import { View, StyleSheet, AsyncStorage } from 'react-native';
 import { Button, Card, Icon, Text } from '@ui-kitten/components';
-import { withNavigation } from 'react-navigation';
+import { withNavigation, StackActions, NavigationActions } from 'react-navigation';
 
 const ProfileView = (props) => {
 
     const logout = async () => {
+
+        // const resetAction = StackActions.reset({
+        //     index: 0,
+        //     key: null,
+        //     actions: [NavigationActions.navigate({ routeName:'LoginScreen'})],
+        // });
+
+        // props.navigation.dispatch(resetAction);
         const userData = await AsyncStorage.removeItem('@Darpad:userData');
         if (userData === null) {
             props.navigation.navigate('LoginScreen');

@@ -10,8 +10,8 @@ import { removeGuests, addGuests, chooseDates } from '../../redux/actions/hotelD
 import LoadPrices from '../../redux/thunkActions/loadPrices';
 
 const SearchDates = (props) => {
-    
-    const [selectedIndex, setSelectedIndex] = React.useState(0);
+
+    const [selectedIndex, setSelectedIndex] = React.useState(props.navigation.state.params.index);
     const [range, setRange] = React.useState({startDate: props.hotelDetail.dates.startDate, endDate: props.hotelDetail.dates.endDate});
     
     const ClosePage = () => {

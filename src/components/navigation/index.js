@@ -60,11 +60,11 @@ const rootStack = createAnimatedSwitchNavigator(
       <Transition.Together>
         <Transition.Out
           propagation="top"
-          type="scale"
+          type="slide-right"
           durationMs={100}
           interpolation="easeOut"
         />
-        <Transition.In type="scale" durationMs={300} />
+        <Transition.In type="slide-left" durationMs={300} />
       </Transition.Together>
     ),
   },

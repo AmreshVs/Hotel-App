@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         color: '#FFF',
         padding: 15,
-        // marginTop: 50,
         textAlign: 'center'
     },
     headingText:{
@@ -91,7 +90,7 @@ const styles = StyleSheet.create({
         height: 350,
         width: '100%',
         backgroundColor: '#3366FF',
-    }
+    },
 });
 
 export default styles;

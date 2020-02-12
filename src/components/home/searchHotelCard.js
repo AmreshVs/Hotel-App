@@ -27,27 +27,25 @@ const SearchHotelCard = (props) =>{
 
   return(
   <View style={styles.searchCard}>
-    <Ripple rippleDuration={600} onPress={() => props.navigation.navigate('SearchDates')}>
-      <View style={styles.container}>
-        <View style={styles.datesContainer}>
-          <Icon name='log-in-outline' width={32} height={32} fill='#3366FF'/>
-          <Text style={styles.heading}>Check In</Text>
-          <Text style={styles.dateCaption}>{moment(props.hotelDetail.dates.startDate).format("DD MMM YYYY")}</Text>
-        </View>
-        <View style={styles.seperator}/>
-        <View style={styles.datesContainer}>
-          <Icon name='log-out-outline' width={32} height={32} fill='#3366FF'/>
-          <Text style={styles.heading}>Check Out</Text>
-          <Text style={styles.dateCaption}>{moment(props.hotelDetail.dates.endDate).format("DD MMM YYYY")}</Text>
-        </View>
-        <View style={styles.seperator}/>
-        <View style={styles.datesContainer}>
-          <Icon name='people-outline' width={32} height={32} fill='#3366FF'/>
-          <Text style={styles.heading}>Rooms - Guest</Text>
-          <Text style={styles.dateCaption}>{roomNum} - {guests}</Text>
-        </View>
-      </View>
-    </Ripple>
+    <View style={styles.container}>
+      <Ripple style={styles.datesContainer} rippleDuration={600} onPress={() => props.navigation.navigate('SearchDates', { index: 0 })}>
+        <Icon name='log-in-outline' width={32} height={32} fill='#3366FF'/>
+        <Text style={styles.heading}>Check In</Text>
+        <Text style={styles.dateCaption}>{moment(props.hotelDetail.dates.startDate).format("DD MMM YYYY")}</Text>
+      </Ripple>
+      <View style={styles.seperator}/>
+      <Ripple style={styles.datesContainer} rippleDuration={600} onPress={() => props.navigation.navigate('SearchDates', { index: 0 })}>
+        <Icon name='log-out-outline' width={32} height={32} fill='#3366FF'/>
+        <Text style={styles.heading}>Check Out</Text>
+        <Text style={styles.dateCaption}>{moment(props.hotelDetail.dates.endDate).format("DD MMM YYYY")}</Text>
+      </Ripple>
+      <View style={styles.seperator}/>
+      <Ripple style={styles.datesContainer} rippleDuration={600} onPress={() => props.navigation.navigate('SearchDates', { index: 1 })}>
+        <Icon name='people-outline' width={32} height={32} fill='#3366FF'/>
+        <Text style={styles.heading}>Rooms - Guest</Text>
+        <Text style={styles.dateCaption}>{roomNum} - {guests}</Text>
+      </Ripple>
+    </View>
     <Button style={styles.button} status='primary' size='small' icon={StarIcon} onPress={() => props.navigation.navigate('SearchRooms')}>Search Rooms</Button>
   </View>
   );
