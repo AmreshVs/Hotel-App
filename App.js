@@ -1,9 +1,9 @@
 import React from 'react';
 import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
-import {mapping, light as theme} from '@eva-design/eva';
+import {mapping} from '@eva-design/eva';
 import 'react-native-gesture-handler';
-import { default as appTheme } from './custom-theme.json';
+import { default as appTheme } from './src/theme/light.json';
 import {Platform, AppRegistry} from 'react-native';
 import store from './src/redux/stores/store';
 import {Provider} from 'react-redux';
