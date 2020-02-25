@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
-import { View, StyleSheet, ScrollView } from 'react-native';
-import { Icon, Text } from '@ui-kitten/components';
+import { View, ScrollView } from 'react-native';
+import { Icon, Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import TopNavSimple from '../../components/navigation/topNavSimple';
 import { withNavigation } from 'react-navigation';
 import { connect } from 'react-redux';
@@ -13,6 +13,7 @@ import FavouriteHotelSK from '../../components/skeletons/favouriteHotelSK';
 import CheckUserData from '../../commonFunctions/checkUserData';
 
 const NoFavourites = () => {
+    const styles = useStyleSheet(style);
     return(
         <View style={styles.noDataContainer}>
             <Text style={styles.noDataText}>No </Text>
@@ -23,7 +24,7 @@ const NoFavourites = () => {
 }
 
 const FavouritesScreen = (props) => {
-
+    const styles = useStyleSheet(style);
     const [data, setData] = React.useState([]);
     const [loading, setLoading] = React.useState(false);
     
@@ -64,7 +65,7 @@ const FavouritesScreen = (props) => {
             <TopNavSimple screenTitle='Favourite Rooms' backHandler={() => props.navigation.goBack()} />
             <ScrollView showsVerticalScrollIndicator={false} style={styles.favourites} >
                 {loading === true ? 
-                    [1,2,3].map((item) =><FavouriteHotelSK key={item} />)
+                    [1,2,3].map((item) => <FavouriteHotelSK key={item} />)
                 : 
                     (data.length === 0 ? <NoFavourites/> : data.map((item) => <FavouriteHotels key={item.id} alias={item.alias} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} reloadData={reloadData} hotelId={item.id} image={item.image[0].file} hotelName={item.title} price={item.price_start} rating={item.avg_rating} token={props.access_token} />) )}
             </ScrollView>
@@ -82,9 +83,9 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(FavouritesScreen));
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     bodyContainer:{
-        backgroundColor: '#FAFAFA',
+        backgroundColor: 'background-basic-color-1',
         height: '100%',
     },
     noDataContainer:{
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
     },
     noDataText:{
         fontSize: 16,
-        color: '#626262',
+        color: 'color-basic-700',
     },
     favourites:{
         paddingTop: 10,

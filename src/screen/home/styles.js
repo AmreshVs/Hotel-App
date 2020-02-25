@@ -1,8 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { StyleService } from '@ui-kitten/components';
 
-const styles = StyleSheet.create({
+const styles = StyleService.create({
     statusBarTop:{
-        backgroundColor: '#FAFAFA',
+        backgroundColor: 'background-basic-color-2',
     },
 });
 

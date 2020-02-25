@@ -5,7 +5,7 @@ import CancelBooking from '../../redux/thunkActions/cancelBooking';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 
 const BookedHotelDetails = (props) => {
-console.log(props);
+
     const CloseIcon = () => (
         <Icon style={styles.btnIcons} name='close-circle-outline' fill='#FFF' />
     );

@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Text, withStyles } from '@ui-kitten/components';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import { Text, withStyles, StyleService, useStyleSheet } from '@ui-kitten/components';
+import { View, ScrollView } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import RoomsListLarge from '../rooms/roomsListLarge';
 import { withNavigation } from 'react-navigation';
@@ -11,27 +11,7 @@ import { clearData } from '../../redux/actions/hotelDetailActions';
 
 const RecommendedRooms = (props) => {
 
-    const theme = props.theme;
-
-    const styles = StyleSheet.create({
-        headingText:{
-            fontWeight: '700',
-            fontSize: 16,
-            color: theme['color-basic-700']
-        },
-        caption:{
-            color: theme['color-basic-600'],
-            padding: 5,
-            marginTop: -5,
-        },
-        headingBlock:{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingRight: 10,
-            paddingLeft: 10,
-            marginBottom: 15,
-        },
-    });
+    const styles = useStyleSheet(style);
 
     const navigateDetails = () => {
         props.navigation.navigate('HotelsLargeList');
@@ -81,3 +61,23 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(withStyles(RecommendedRooms)));
+
+const style = StyleService.create({
+    headingText:{
+        fontWeight: '700',
+        fontSize: 16,
+        color: 'color-basic-700'
+    },
+    caption:{
+        color: 'color-basic-600',
+        padding: 5,
+        marginTop: -5,
+    },
+    headingBlock:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingRight: 10,
+        paddingLeft: 10,
+        marginBottom: 15,
+    },
+});

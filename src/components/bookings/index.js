@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, StyleSheet, Image, ScrollView } from 'react-native';
-import { Text, Icon } from '@ui-kitten/components';
+import { View, Image, ScrollView } from 'react-native';
+import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import { withNavigation } from 'react-navigation';
 
 const BookingsOverview = (props) => {
-
+    const styles = useStyleSheet(style);
     const navigateBookingdetail = (id) => {
         props.navigation.navigate('BookingDetails',{
             id: id
@@ -57,7 +57,7 @@ const BookingsOverview = (props) => {
 
 export default withNavigation(BookingsOverview);
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     container:{
         alignItems: 'center',
         justifyContent: 'center',
@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 10,
         borderWidth: 1,
-        backgroundColor: '#FFF',
-        borderColor: '#EEE',
+        backgroundColor: 'background-basic-color-1',
+        borderColor: 'color-basic-400',
     },
     image:{
         width: 100,
@@ -85,22 +85,22 @@ const styles = StyleSheet.create({
     },
     hotelName:{
         fontWeight: '700',
-        color: '#626262',
+        color: 'color-basic-700',
     },
     caption:{
-        color: '#BBB'
+        color: 'color-basic-600'
     },
     info:{
         marginTop: 20,
         paddingTop: 10,
         borderTopWidth: 1,
-        borderTopColor: '#EEE',
+        borderTopColor: 'color-basic-400',
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
     address:{
         width: '50%',
-        color: '#626262',
+        color: 'color-basic-600',
     },
     starIcon:{
         width: 25,
@@ -119,13 +119,13 @@ const styles = StyleSheet.create({
     datesLeft:{
         paddingRight: 15,
         borderRightWidth: 1,
-        borderRightColor: '#EEE'
+        borderRightColor: 'color-basic-400'
     },
     datesRight:{
         paddingLeft: 15,
     },
     scroll:{
-        backgroundColor: '#FAFAFA',
+        backgroundColor: 'background-basic-color-2',
         paddingBottom: 170,
     }
 })

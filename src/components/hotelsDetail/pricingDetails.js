@@ -9,7 +9,7 @@ import LoadPrices from '../../redux/thunkActions/loadPrices';
 import { addCoupons } from '../../redux/actions/hotelDetailActions';
 
 const PricingDetails = (props) => {
-    console.log(props.data.data.services);
+
     const [modal, setModal] = React.useState(false);
     var servicesId = 0;
 

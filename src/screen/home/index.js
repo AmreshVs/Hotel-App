@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { ScrollView } from 'react-native';
-import styles from './styles';
+import { useStyleSheet } from '@ui-kitten/components';
+import style from './styles';
 import SearchHotelCard from '../../components/home/searchHotelCard';
 import Head from '../../components/home/head';
 import RecommendedRooms from '../../components/home/recommenedRooms';
@@ -11,7 +12,7 @@ import { NavigationEvents } from 'react-navigation';
 import CheckUserData from '../../commonFunctions/checkUserData';
 
 const HomeScreen = (props) => {
-
+  const styles = useStyleSheet(style);
   const [data, setData] = React.useState({});
 
   useEffect(() => {

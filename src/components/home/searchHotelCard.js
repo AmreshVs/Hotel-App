@@ -4,7 +4,6 @@ import { Text, Icon, Button, StyleService, useStyleSheet } from '@ui-kitten/comp
 import { View } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Ripple from 'react-native-material-ripple';
-import { StyleSheet } from 'react-native';
 import moment from 'moment';
 
 const SearchHotelCard = (props) => {

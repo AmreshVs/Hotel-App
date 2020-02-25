@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { View, StyleSheet } from 'react-native';
-import { Input, Icon, Card, Button } from '@ui-kitten/components';
+import { View } from 'react-native';
+import { Input, Icon, Card, Button, StyleService, useStyleSheet } from '@ui-kitten/components';
 import SaveProfileData from '../../redux/thunkActions/saveProfileData';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 import { userLogin } from '../../redux/actions/commonActions';
 
 const ProfileEdit = (props) => {
-
+    const styles = useStyleSheet(style);
     const [firstname, setFirstname] = React.useState(props.data.firstname);
     const [lastname, setLastname] = React.useState(props.data.lastname);
     const [email, setEmail] = React.useState(props.data.email);
@@ -29,7 +29,7 @@ const ProfileEdit = (props) => {
                 <View>
                     <View style={styles.inputContainer}>
                         <View style={styles.iconContainer}>
-                            <Icon name='person-outline' style={styles.icons} fill='#BBB' />
+                            <Icon name='person-outline' style={styles.icons} fill={styles.iconColor.color} />
                         </View>
                         <View style={styles.nameContainer}>
                             <Input
@@ -42,7 +42,7 @@ const ProfileEdit = (props) => {
                     </View>
                     <View style={styles.inputContainer}>
                         <View style={styles.iconContainer}>
-                            <Icon name='person-outline' style={styles.icons} fill='#BBB' />
+                            <Icon name='person-outline' style={styles.icons} fill={styles.iconColor.color} />
                         </View>
                         <View style={styles.nameContainer}>
                             <Input
@@ -55,7 +55,7 @@ const ProfileEdit = (props) => {
                     </View>
                     <View style={styles.inputContainer}>
                         <View style={styles.iconContainer}>
-                            <Icon name='email-outline' style={styles.icons} fill='#BBB' />
+                            <Icon name='email-outline' style={styles.icons} fill={styles.iconColor.color} />
                         </View>
                         <View style={styles.nameContainer}>
                             <Input
@@ -68,7 +68,7 @@ const ProfileEdit = (props) => {
                     </View>
                     <View style={styles.inputContainer}>
                         <View style={styles.iconContainer}>
-                            <Icon name='map-outline' style={styles.icons} fill='#BBB' />
+                            <Icon name='map-outline' style={styles.icons} fill={styles.iconColor.color} />
                         </View>
                         <View style={styles.nameContainer}>
                             <Input
@@ -81,7 +81,7 @@ const ProfileEdit = (props) => {
                     </View>
                     <View style={styles.inputContainer}>
                         <View style={styles.iconContainer}>
-                            <Icon name='pin-outline' style={styles.icons} fill='#BBB' />
+                            <Icon name='pin-outline' style={styles.icons} fill={styles.iconColor.color} />
                         </View>
                         <View style={styles.nameContainer}>
                             <Input
@@ -112,9 +112,9 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps,mapDispatchToProps)(ProfileEdit);
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     bodyContainer:{
-        backgroundColor: '#FAFAFA',
+        backgroundColor: 'background-basic-color-1',
         height: '100%',
         alignItems: 'center',
     },
@@ -145,10 +145,13 @@ const styles = StyleSheet.create({
     },
     inputText:{
         fontSize: 16,
-        color: '#626262',
+        color: 'color-basic-700',
     },
     btnContainer:{
         flexDirection: 'row',
         justifyContent: 'space-between',
+    },
+    iconColor:{
+        color: 'color-basic-600'
     }
 });

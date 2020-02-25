@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Text, Tab, TabView } from '@ui-kitten/components';
+import { View } from 'react-native';
+import { Text, Tab, TabView, StyleService, useStyleSheet } from '@ui-kitten/components';
 import TopNavSimple from '../../components/navigation/topNavSimple';
 import { withNavigation } from 'react-navigation';
 import { connect } from 'react-redux';
@@ -11,6 +11,7 @@ import BookingsOverview from '../../components/bookings/index';
 import BookingsOverviewSK from '../../components/skeletons/bookingsOverviewSK';
 
 const NoBookings = (props) => {
+    const styles = useStyleSheet(style);
     return(
         <View style={styles.noDataContainer}>
             <Text style={styles.noDataText}>No Bookings has been {props.txt} yet!</Text>
@@ -19,7 +20,7 @@ const NoBookings = (props) => {
 }
 
 const BookingssScreen = (props) => {
-
+    const styles = useStyleSheet(style);
     const [selectedIndex, setSelectedIndex] = React.useState(0);
     const shouldLoadComponent = (index) => index === selectedIndex;
     const [data, setData] = React.useState({});
@@ -70,20 +71,19 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps)(withNavigation(BookingssScreen));
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     bodyContainer:{
-        backgroundColor: '#FAFAFA',
+        backgroundColor: 'background-basic-color-2',
         height: '100%',
     },
     noDataContainer:{
         height: '90%',
-        // flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
     },
     noDataText:{
         fontSize: 16,
-        color: '#626262',
+        color: 'color-basic-700',
     },
     tabs:{
         padding: 10,

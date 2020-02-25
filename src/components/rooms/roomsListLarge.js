@@ -1,12 +1,12 @@
 import React from 'react';
-import { Text, Icon } from '@ui-kitten/components';
-import { View, StyleSheet, Image } from 'react-native';
+import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
+import { View, Image } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import AddFavourite from '../../redux/thunkActions/addFavourite';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 
 const RoomsListLarge = (props) => {
-
+    const styles = useStyleSheet(style);
     const [favcolor, setFavcolor] = React.useState(props.is_favourite === 1 ? '#FF4626' : '#AAA');
 
     const addFavourite = async () => {
@@ -48,7 +48,7 @@ const RoomsListLarge = (props) => {
 
 export default RoomsListLarge;
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     hotelCard: {
         position: 'relative',
         alignItems: 'center',
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         width: 300,
         height: 180,
         backgroundColor: '#FFF',
-        borderColor: '#DDD',
+        borderColor: 'background-basic-color-1',
         borderWidth: 1,
         borderRadius: 10,
     },
@@ -95,15 +95,15 @@ const styles = StyleSheet.create({
         height: 50,
         alignItems: 'center',
         padding: 1,
-        backgroundColor: '#FFF',
+        backgroundColor: 'background-basic-color-1',
         borderWidth: 1,
         borderRadius: 10,
-        borderColor: '#EEE',
+        borderColor: 'background-basic-color-4',
     },
     title: {
         fontSize: 15,
         marginBottom: 0,
-        color: '#626262',
+        color: 'color-basic-700',
         fontWeight: '700',
     },
     priceBlock: {
@@ -113,12 +113,12 @@ const styles = StyleSheet.create({
         marginTop: 4,
         fontSize: 20,
         fontWeight: '700',
-        color: '#3366FF',
+        color: 'color-primary-500',
     },
     priceCaption: {
         fontSize: 14,
         marginTop: 2,
-        color: '#AAA'
+        color: 'color-basic-600'
     },
     topBlock: {
         width: '100%',
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         paddingTop: 2,
         paddingRight: 5,
-        color: '#AAA',
+        color: 'color-basic-600',
         textDecorationLine: 'line-through',
         textDecorationStyle: 'solid'
     },

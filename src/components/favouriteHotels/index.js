@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { View, StyleSheet, Image } from 'react-native';
-import { Text, Icon } from '@ui-kitten/components';
+import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import AddFavourite from '../../redux/thunkActions/addFavourite';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
@@ -10,7 +10,7 @@ import { withNavigation } from 'react-navigation';
 import { clearData } from '../../redux/actions/hotelDetailActions';
 
 const FavouriteHotels = (props) => {
-
+    const styles = useStyleSheet(style);
     const removeFavourite = async () => {
         const response = await AddFavourite({hotel_id: props.hotelId}, props.token);
         snackbarMessage(response.message + ' for ' + props.hotelName);
@@ -65,7 +65,7 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(FavouriteHotels));
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     container:{
         alignItems: 'center',
         marginBottom: 20,
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         width: '95%',
         height: 300,
         borderBottomWidth: 1,
-        borderBottomColor: '#EEE',
+        borderBottomColor: 'color-basic-400',
     },
     image:{
         width: '100%',
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     hotelName:{
         fontSize: 16,
         marginBottom: 3,
-        color: '#626262',
+        color: 'color-basic-700',
         fontWeight: '700',
     },
     leftContainer:{
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
         height: 21
     },
     caption:{
-        color: '#BBB',
+        color: 'color-basic-600',
         paddingLeft: 5,
         fontSize: 14,
     },
@@ -116,17 +116,17 @@ const styles = StyleSheet.create({
         marginBottom: 3,
         fontSize: 18,
         fontWeight: '700',
-        color: '#3366FF',
+        color: 'color-primary-500',
     },
     priceCaption: {
-        color: '#BBB',
+        color: 'color-basic-600',
         fontSize: 16
     },
     heartContainer: {
         position: 'absolute', 
         right: 10, 
         top: 10, 
-        backgroundColor: '#FFF',
+        backgroundColor: 'background-basic-color-1',
         borderRadius: 20,
         padding: 4,
         zIndex: 1,

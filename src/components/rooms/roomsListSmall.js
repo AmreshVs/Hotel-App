@@ -1,13 +1,13 @@
 import React from 'react';
-import { Text, Icon } from '@ui-kitten/components';
-import { View, StyleSheet, Image } from 'react-native';
+import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
+import { View, Image } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import ReviewRating from '../extra/reviewRating';
 import AddFavourite from '../../redux/thunkActions/addFavourite';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 
 const RoomsListSmall = (props) => {
-
+    const styles = useStyleSheet(style);
     const [favcolor, setFavcolor] = React.useState(props.is_favourite === 1 ? '#FF4626' : '#AAA');
 
     const saveFavourite = async () => {
@@ -62,7 +62,7 @@ const RoomsListSmall = (props) => {
 
 export default RoomsListSmall;
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     hotelListCard: {
         width: '95%',
         height: 140,
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#DDD',
-        backgroundColor: '#FFF',
+        backgroundColor: 'background-basic-color-1',
         flexDirection: 'row',
     },
     imgContainer: {
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     title: {
       fontSize: 15,
       marginBottom: 0,
-      color: '#626262',
+      color: 'color-basic-700',
       fontWeight: '700',
     },
     priceContainer: {
@@ -102,30 +102,30 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       flexDirection: 'row',
       borderTopWidth: 1,
-      borderTopColor: '#DDD',
+      borderTopColor: 'color-basic-300',
     },
     price: {
       marginTop: 5,
       fontSize: 20,
       fontWeight: '700',
-      color: '#3366FF',
+      color: 'color-primary-500',
     },
     oldPrice: {
       fontSize: 15,
       paddingTop: 1,
       paddingRight: 5,
-      color: '#AAA',
+      color: 'color-basic-600',
       textDecorationLine: 'line-through',
       textDecorationStyle: 'solid',
     },
     priceCaption: {
-      color: '#BBB',
+      color: 'color-basic-600',
       fontSize: 13,
     },
     caption: {
       marginTop: 0,
       marginLeft:10,
-      color: '#BBB',
+      color: 'color-basic-600',
     },
     starIcon: {
       width: 25,
