@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text, Button } from '@ui-kitten/components';
-import { StyleSheet, View } from 'react-native';
+import { Text, Button, StyleService, useStyleSheet } from '@ui-kitten/components';
+import { View } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import CheckUserData from '../../commonFunctions/checkUserData';
 
 const BookHotel = (props) => {
-
+    const styles = useStyleSheet(style);
     const navigatePayment = () => {
         let checkData = CheckUserData(props.userData);
         if(Object.values(checkData).length > 0){
@@ -38,17 +38,17 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps)(withNavigation(BookHotel));
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     cardContainer:{
         padding: 10,
         borderTopWidth: 1,
-        borderTopColor: '#EEE',
-        backgroundColor: '#FFF',
+        borderTopColor: 'color-basic-300',
+        backgroundColor: 'background-basic-color-1',
     },
     heading:{
         fontSize: 16,
         marginBottom: 3,
-        color: '#626262',
+        color: 'color-basic-700',
         fontWeight: '700',
     },
     textContainer:{

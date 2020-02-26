@@ -1,8 +1,9 @@
 import React from 'react';
-import { Text, Icon } from '@ui-kitten/components';
-import { StyleSheet, View } from 'react-native';
+import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
+import { View } from 'react-native';
 
 const ReviewsLess = (props) => {
+    const styles = useStyleSheet(style);
     return (
         <View style={styles.reviewsContainer}>
             {props.data !== undefined &&
@@ -28,7 +29,7 @@ const ReviewsLess = (props) => {
 
 export default ReviewsLess;
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     reviewsContainer:{
         marginTop: 20,
     },
@@ -42,11 +43,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'flex-start',
         borderRightWidth: 1,
-        borderRightColor: '#EEE',
+        borderRightColor: 'color-basic-300',
     },
     rating:{
         fontSize: 13,
-        color: '#AAA',
+        color: 'color-basic-600',
         textAlign: 'center',
         width: 20,
     },
@@ -57,12 +58,12 @@ const styles = StyleSheet.create({
         marginLeft: 20
     },
     name:{
-        color: '#3c3c3c',
+        color: 'color-basic-700',
         fontWeight: '700'
     },
     postedon:{
         fontSize: 13,
-        color: '#AAA'
+        color: 'color-basic-600'
     },
     reviewContent:{
         marginTop: 5,

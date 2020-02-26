@@ -1,9 +1,10 @@
 import React from 'react';
-import { Text, Icon } from '@ui-kitten/components';
-import { StyleSheet, View } from 'react-native';
+import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
+import { View } from 'react-native';
 
 const NameBlock = (props) => {
-    var data = props.data;
+    const styles = useStyleSheet(style);
+    const data = props.data;
     return(
         <View style={styles.cardContainer}>
             <View style={styles.nameprice}>
@@ -28,15 +29,15 @@ const NameBlock = (props) => {
 
 export default NameBlock;
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     cardContainer:{
         width: '95%',
         borderRadius: 10,
         marginTop: 10,
-        backgroundColor: '#FFF',
+        backgroundColor: 'background-basic-color-1',
         padding: 13,
         borderWidth: 1,
-        borderColor: '#EEE',
+        borderColor: 'color-basic-300',
     },
     nameprice:{
         flex: 1,
@@ -57,28 +58,28 @@ const styles = StyleSheet.create({
         marginTop: 5,
         fontSize: 21,
         fontWeight: '700',
-        color: '#3366FF',
+        color: 'color-primary-500',
     },
     oldPrice:{
         fontSize: 15,
         paddingTop: 1,
         paddingRight: 5,
-        color: '#AAA',
+        color: 'color-basic-600',
         textDecorationLine: 'line-through', 
         textDecorationStyle: 'solid'
     },
     priceCaption: {
-        color: '#BBB',
+        color: 'color-basic-600',
         fontSize: 13
     },
     roomTitle:{
         fontSize: 16,
         marginBottom: 3,
-        color: '#626262',
+        color: 'color-basic-700',
         fontWeight: '700',
     },
     caption: {
-        color: '#BBB',
+        color: 'color-basic-600',
         marginBottom: 3
     },
     ratingContainer: {
@@ -88,7 +89,7 @@ const styles = StyleSheet.create({
     },
     ratingCount:{
         fontSize: 16,
-        color: '#626262',
+        color: 'color-basic-700',
         paddingTop: 2,
         paddingLeft: 5
     },

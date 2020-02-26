@@ -1,9 +1,9 @@
 import React from 'react';
-import { Text } from '@ui-kitten/components';
-import { StyleSheet, View } from 'react-native';
+import { Text, StyleService, useStyleSheet } from '@ui-kitten/components';
+import { View } from 'react-native';
 
 const RulesPolicies = () => {
-
+    const styles = useStyleSheet(style);
     return(
         <View style={styles.cardContainer}>
             <Text style={styles.heading}>Rules & Policies</Text>
@@ -17,20 +17,20 @@ const RulesPolicies = () => {
 
 export default RulesPolicies;
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     cardContainer:{
         width: '95%',
         borderRadius: 10,
         marginTop: 10,
-        backgroundColor: '#FFF',
+        backgroundColor: 'background-basic-color-1',
         padding: 13,
         borderWidth: 1,
-        borderColor: '#EEE',
+        borderColor: 'color-basic-300',
     },
     heading:{
         fontSize: 16,
         marginBottom: 3,
-        color: '#626262',
+        color: 'color-basic-700',
         fontWeight: '700',
     },
 })

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, Icon } from '@ui-kitten/components';
+import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { connect } from 'react-redux';
-import { StyleSheet, View, Modal, ScrollView } from 'react-native';
+import { View, Modal, ScrollView } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import { withNavigation } from 'react-navigation';
 import Progress from '../extra/progress';
@@ -12,7 +12,7 @@ import ReviewsLessSK from '../skeletons/hotelDetail/reviewsLessSK';
 import LoadAllReviews from '../../redux/thunkActions/loadAllReviews';
 
 const GuestDetails = (props) => {
-
+    const styles = useStyleSheet(style);
     const [visible, setVisible] = React.useState(false);
     const [writeReview, setwriteReview] = React.useState(false);
     const [allReviewData, setAllReviewsData] = React.useState([]);
@@ -119,20 +119,20 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps)(withNavigation(GuestDetails));
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     cardContainer: {
         width: '95%',
         borderRadius: 10,
         marginTop: 10,
-        backgroundColor: '#FFF',
+        backgroundColor: 'background-basic-color-1',
         padding: 13,
         borderWidth: 1,
-        borderColor: '#EEE',
+        borderColor: 'color-basic-300',
     },
     heading: {
         fontSize: 16,
         marginBottom: 3,
-        color: '#626262',
+        color: 'color-basic-700',
         fontWeight: '700',
     },
     ratingsContainer: {
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRightWidth: 1,
         borderTopStartRadius: 10,
-        borderRightColor: '#EEE',
+        borderRightColor: 'color-basic-300',
     },
     ratingRight: {
         height: 150,
@@ -159,13 +159,13 @@ const styles = StyleSheet.create({
         fontSize: 40,
         fontWeight: '700',
         paddingTop: 20,
-        color: '#3366FF'
+        color: 'color-primary-500'
     },
     ratingCaption: {
         // color: '#AAA'
     },
     ratingNumber: {
-        color: '#BBB',
+        color: 'color-basic-600',
         fontSize: 13,
     },
     progressCount: {
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     seeAll: {
-        color: '#3366FF'
+        color: 'color-primary-500'
     },
     reviewsMore: {
         paddingLeft: 20,

@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
         minHeight: 64,
     },
     title: {
-        padding: 10
+        padding: 10,
     },
     guests: {
         margin: 20,

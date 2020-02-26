@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { ScrollView, View, StyleSheet, Image } from 'react-native';
-import { Text, CheckBox, Icon, Modal, Layout } from '@ui-kitten/components';
+import { ScrollView, View, Image } from 'react-native';
+import { Text, CheckBox, Icon, Modal, Layout, StyleService, useStyleSheet } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import { openImageViewer, closeImageViewer } from '../../redux/actions/hotelDetailActions';
 import ImageViewer from '../../components/extra/ImageViewer';
@@ -18,6 +18,7 @@ const RoomsCategory = (props) => {
         }
     }, [])
 
+    const styles = useStyleSheet(style);
     const [selectedIndex, setSelectedIndex] = React.useState(props.data[0].id);
     const [modalImages, setModalImages] = React.useState(props.data[0].images);
     const [amenities, setAmenities] = React.useState([]);
@@ -86,7 +87,7 @@ const RoomsCategory = (props) => {
                         <View>
                             <Text style={styles.roomTitle}>{hotelname}</Text>
                             <View style={styles.capacity}>
-                                <Icon name='people-outline' fill='#BBB' width={20} height={20} />
+                                <Icon name='people-outline' fill={styles.iconColor.color} width={20} height={20} />
                                 <Text style={styles.roomCaption}> x{item.capacity.max_people}</Text>
                             </View>
                             <View style={styles.roomAmenities}>
@@ -124,21 +125,21 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoomsCategory);
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     heading:{
         fontSize: 16,
         marginBottom: 3,
-        color: '#626262',
+        color: 'color-basic-700',
         fontWeight: '700',
     },
     cardContainer:{
         width: '95%',
         borderRadius: 10,
         marginTop: 10,
-        backgroundColor: '#FFF',
+        backgroundColor: 'background-basic-color-1',
         padding: 13,
         borderWidth: 1,
-        borderColor: '#EEE',
+        borderColor: 'color-basic-300',
     },
     checkbox: {
         marginLeft: 10,
@@ -151,7 +152,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
         marginBottom: 5,
         borderWidth: 1,
-        borderColor: '#DDD',
+        borderColor: 'color-basic-300',
     },
     image:{
         width: 150,
@@ -172,7 +173,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10
     },
     roomCaption:{
-        color: '#BBB',
+        color: 'color-basic-600',
         paddingTop: 0
     },
     roomAmenities:{
@@ -191,7 +192,7 @@ const styles = StyleSheet.create({
     },
     moreBorder:{
         borderWidth: 1,
-        borderColor: '#CCC',
+        borderColor: 'color-basic-300',
         borderRadius: 5,
         padding: 1
     },
@@ -199,20 +200,20 @@ const styles = StyleSheet.create({
         minWidth: 20,
         textAlign: 'center',
         fontSize: 13,
-        color: '#AAA'
+        color: 'color-basic-600'
     },
     checkText:{
         fontSize: 16,
         fontWeight: 'bold',
-        color: '#3366FF'
+        color: 'color-primary-500'
     },
     modalContainer:{
         width: 300,
         borderRadius: 10,
-        backgroundColor: '#FFF',
+        backgroundColor: 'background-basic-color-1',
         padding: 15,
         borderWidth: 1,
-        borderColor: '#CCC',
+        borderColor: 'color-basic-300',
     },
     moreAmenities:{
         flex: 1,
@@ -236,4 +237,7 @@ const styles = StyleSheet.create({
         marginRight: 10,
         opacity: 0.5
     },
+    iconColor : {
+        color: 'color-basic-600'
+    }
 });

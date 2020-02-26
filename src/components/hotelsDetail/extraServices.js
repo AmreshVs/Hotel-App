@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Text, CheckBox, Icon, Tooltip } from '@ui-kitten/components';
-import { StyleSheet, View } from 'react-native';
+import { Text, CheckBox, Icon, Tooltip, StyleService, useStyleSheet } from '@ui-kitten/components';
+import { View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import { addServices, removeServices, serviceChecked } from '../../redux/actions/hotelDetailActions';
 import LoadPrices from '../../redux/thunkActions/loadPrices';
 
 const ExtraServices = (props) => {
-
+    const styles = useStyleSheet(style);
     const count = 1;
     const [visible, setVisible] = React.useState(false);
 
@@ -65,11 +65,11 @@ const ExtraServices = (props) => {
         return(
             <View style={styles.counterContainer}>
                 <Ripple onPress={() => countChange('add')}>
-                    <Icon name='plus-outline' width={20} height={20} fill='#AAA' />
+                    <Icon name='plus-outline' width={20} height={20} fill={styles.iconColor.color} />
                 </Ripple>
                 <Text style={styles.count}>{props.hotelDetail.services[props.id] !== undefined ? props.hotelDetail.services[props.id].qty : 1}</Text>
                 <Ripple onPress={() => countChange('minus')}>
-                    <Icon name='minus-outline' width={20} height={20} fill='#AAA' />
+                    <Icon name='minus-outline' width={20} height={20} fill={styles.iconColor.color} />
                 </Ripple>
             </View>
         )
@@ -86,7 +86,7 @@ const ExtraServices = (props) => {
                         text={props.desc}
                         placement='right'
                         onBackdropPress={() => setVisible(!visible)}>
-                            <Icon name='info-outline' style={styles.infoIcon} fill='#626262' onPress={() => setVisible(!visible)} />
+                            <Icon name='info-outline' style={styles.infoIcon} fill={styles.tooltipColor.color} onPress={() => setVisible(!visible)} />
                         </Tooltip>
                     }
                 </View>
@@ -115,7 +115,7 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExtraServices);
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     cardContainer:{
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -150,5 +150,11 @@ const styles = StyleSheet.create({
     },
     checkText:{
         flexDirection: 'row',
+    },
+    tooltipColor:{
+        color: 'color-basic-700'
+    },
+    iconColor:{
+        color: 'color-basic-600'
     }
 })

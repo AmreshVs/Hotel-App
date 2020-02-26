@@ -1,12 +1,11 @@
 import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
-import { Text } from '@ui-kitten/components';
+import { View, Image } from 'react-native';
+import { Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 
 const Amenities = (props) => {
-
+    const styles = useStyleSheet(style);
     const amenitiesData = props.data;
-
     const [showAmenities, setShowAmenities] = React.useState(90);
 
     const revealAmenities = () => {
@@ -40,11 +39,11 @@ const Amenities = (props) => {
 
 export default Amenities;
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     heading:{
         fontSize: 16,
         marginBottom: 3,
-        color: '#626262',
+        color: 'color-basic-700',
         fontWeight: '700',
     },
     cardContainer:{
@@ -52,9 +51,9 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginTop: 10,
         padding: 13,
-        backgroundColor: '#FFF',
+        backgroundColor: 'background-basic-color-1',
         borderWidth: 1,
-        borderColor: '#EEE',
+        borderColor: 'color-basic-300',
     },
     amenitiesContainer:{
         top: 5,

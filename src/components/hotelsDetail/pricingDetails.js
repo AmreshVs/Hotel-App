@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Text, CheckBox, Button } from '@ui-kitten/components';
-import { StyleSheet, View, Modal, ScrollView } from 'react-native';
+import { Text, CheckBox, Button, StyleService, useStyleSheet } from '@ui-kitten/components';
+import { View, Modal, ScrollView } from 'react-native';
 import TopNavSimple from '../navigation/topNavSimple';
 import ExtraServices from './extraServices';
 import LoadPrices from '../../redux/thunkActions/loadPrices';
 import { addCoupons } from '../../redux/actions/hotelDetailActions';
 
 const PricingDetails = (props) => {
-
+    const styles = useStyleSheet(style);
     const [modal, setModal] = React.useState(false);
     var servicesId = 0;
 
@@ -111,20 +111,20 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(PricingDetails);
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     cardContainer:{
         width: '95%',
         borderRadius: 10,
         marginTop: 10,
-        backgroundColor: '#FFF',
+        backgroundColor: 'background-basic-color-1',
         padding: 13,
         borderWidth: 1,
-        borderColor: '#EEE',
+        borderColor: 'color-basic-300',
     },
     heading:{
         fontSize: 16,
         marginBottom: 10,
-        color: '#626262',
+        color: 'color-basic-700',
         fontWeight: '700',
     },
     textContainer:{
@@ -149,11 +149,11 @@ const styles = StyleSheet.create({
     },
     container:{
         borderWidth: 1,
-        borderColor: '#DDD',
+        borderColor: 'color-basic-300',
         borderRadius: 10,
         marginTop: 10,
         width: '95%',
-        backgroundColor: '#FFF'
+        backgroundColor: 'background-basic-color-1'
     },
     coupons:{
         alignItems: 'center',
@@ -170,11 +170,11 @@ const styles = StyleSheet.create({
     },
     coupon:{
         fontWeight: '700',
-        backgroundColor: '#FEFAD7',
+        backgroundColor: 'color-warning-100',
         padding: 7,
         borderWidth: 1,
         borderStyle: 'dashed',
-        borderColor: '#D8B828',
+        borderColor: 'color-warning-500',
         borderRadius: 6,
     },
     couponDesc:{
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     },
     applyCoupon:{
         height: '100%',
-        backgroundColor: '#FAFAFA',
+        backgroundColor: 'background-basic-color-2',
         paddingBottom: 30,
     }
 })

@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { StyleSheet, View } from 'react-native';
-import { Text, Button, Card, ButtonGroup } from '@ui-kitten/components';
+import { View } from 'react-native';
+import { Text, Button, Card, ButtonGroup, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { addGuests } from '../../redux/actions/hotelDetailActions';
 
 const SelectGuest = (props) => {
+    const styles = useStyleSheet(style);
     const roomIndex = props.rooms[props.roomNum];
     const [btnIndex, setBtnIndex] = React.useState(roomIndex.adult);
     const [btnCIndex, setBtnCIndex] = React.useState(roomIndex.children);
@@ -81,10 +82,10 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectGuest);
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     room:{
         borderRadius: 8,
-        marginBottom: 10
+        marginBottom: 10,
     },
     tabContainer: {
         minHeight: 64,
@@ -103,16 +104,15 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         marginBottom: 10,
         paddingBottom: 20,
-        borderBottomColor: '#EEE',
+        borderBottomColor: 'color-basic-300',
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
     btnSelected:{
-        backgroundColor: '#254EDB',
-        color: '#FFF'
+        backgroundColor: 'color-primary-600',
     },
     roomHeading:{
-        color: '#626262',
+        color: 'color-basic-700',
         fontWeight: '700'
     },
     spaceBetween:{
@@ -123,13 +123,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     headingCaption:{
-        color: '#CCC'
+        color: 'color-basic-600'
     },
     container:{
         marginBottom: 20,
     },
     error:{
-        color: '#DB2726'
+        color: 'color-danger-600'
     },
     addRoom:{
         marginTop: 10

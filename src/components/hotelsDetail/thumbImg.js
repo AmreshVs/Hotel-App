@@ -1,14 +1,15 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { withNavigation } from 'react-navigation';
-import { Icon } from '@ui-kitten/components';
+import { Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import Slideshow from 'react-native-image-slider-show';
 import AddFavourite from '../../redux/thunkActions/addFavourite';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 
 const ThumbImg = (props) => {
+    const styles = useStyleSheet(style);
     var imageArr = [];
     var i = 0;
     props.images.map((item) => {
@@ -44,7 +45,7 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps)(withNavigation(ThumbImg));
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     imageContainer: {
         alignItems: 'center',
         justifyContent: 'center',
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
         position: 'absolute', 
         right: 10, 
         top: 10, 
-        backgroundColor: '#FFF',
+        backgroundColor: 'background-basic-color-1',
         borderRadius: 20,
         padding: 4,
         zIndex: 1,

@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Text, Icon, Input } from '@ui-kitten/components';
+import { Text, Icon, Input, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { StyleSheet, View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import { withNavigation } from 'react-navigation';
 import { addGuests } from '../../redux/actions/hotelDetailActions';
 
 const GuestDetails = (props) => {
-
+    const styles = useStyleSheet(style);
     const [visible, setVisible] = React.useState(false);
     const [name, setName] = React.useState(props.common.userData.firstname);
     const [phone, setPhone] = React.useState(props.common.userData.mobile);
@@ -24,9 +24,9 @@ const GuestDetails = (props) => {
                     <Text style={styles.heading}>Guest Details</Text>
                     <Ripple onPress={toggleModal}>
                         {visible == false ?
-                            <Icon name='edit-outline' fill='#AAA' width={20} height={20} />
+                            <Icon name='edit-outline' fill={styles.iconColor.color} width={20} height={20} />
                             :
-                            <Icon name='checkmark-outline' fill='#AAA' width={20} height={20} />
+                            <Icon name='checkmark-outline' fill={styles.iconColor.color} width={20} height={20} />
                         }
                     </Ripple>
                 </View>
@@ -68,21 +68,21 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(GuestDetails));
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     cardContainer: {
         width: '95%',
         borderRadius: 10,
         marginTop: 10,
-        backgroundColor: '#FFF',
+        backgroundColor: 'background-basic-color-1',
         padding: 13,
         borderWidth: 1,
-        borderColor: '#EEE',
+        borderColor: 'color-basic-300',
         paddingBottom: 15,
     },
     heading: {
         fontSize: 16,
         marginBottom: 3,
-        color: '#626262',
+        color: 'color-basic-700',
         fontWeight: '700',
     },
     textContainer: {
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     guestName: {
-        color: '#3c3c3c',
+        color: 'color-basic-700',
         fontWeight: '700'
     },
     popoverContent: {
@@ -101,9 +101,12 @@ const styles = StyleSheet.create({
         padding: 24,
     },
     backdrop: {
-        backgroundColor: '#EEE',
+        backgroundColor: 'color-basic-300',
     },
     input:{
         marginTop: 5
+    },
+    iconColor:{
+        color: 'color-basic-600'
     }
 })
