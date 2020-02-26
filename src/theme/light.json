@@ -310,5 +310,8 @@
   "text-danger-hover-color": "$color-danger-hover",
   "text-danger-active-color": "$color-danger-active",
   "text-danger-disabled-color": "$color-danger-400",
-  "outline-color": "$color-basic-transparent-200"
+  "outline-color": "$color-basic-transparent-200",
+  "topBar-color-1": "#1947eb",
+  "topBar-color-2": "#006df7",
+  "topBar-color-3": "#0059e2"
 }

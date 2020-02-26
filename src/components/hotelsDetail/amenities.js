@@ -74,6 +74,7 @@ const style = StyleService.create({
         opacity: 0.5
     },
     amenitiesName:{
-        marginTop: 3
+        marginTop: 3,
+        color: 'color-basic-600'
     }
 })

@@ -11,7 +11,7 @@ const Head = (props) => {
       position: 'absolute',
       color: theme['color-basic-100'],
       padding: 15,
-      textAlign: 'center'
+      textAlign: 'center',
     },
     headBack:{
       alignItems: 'center',

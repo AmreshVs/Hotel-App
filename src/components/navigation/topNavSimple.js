@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { Icon, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import { Icon, TopNavigation, TopNavigationAction, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { withNavigation } from 'react-navigation';
 import Ripple from 'react-native-material-ripple';
 import LinearGradient from 'react-native-linear-gradient';
 
 const TopNavSimple = (props) => {
-
+    const styles = useStyleSheet(style);
     const BackIcon = () => <Icon name='arrow-ios-back-outline' fill='#FFF' />;
 
     const navigateBack = () => {
@@ -20,7 +20,7 @@ const TopNavSimple = (props) => {
     );
 
     return(
-        <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#1947eb', '#006df7', '#0059e2']} style={styles.headerGradient}>
+        <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={[styles.topbar.color1, styles.topbar.color2, styles.topbar.color3]} style={styles.headerGradient}>
             <TopNavigation title={props.screenTitle} titleStyle={styles.title} alignment='center' leftControl={BackAction()} style={styles.header} />
         </LinearGradient>
     )
@@ -28,7 +28,7 @@ const TopNavSimple = (props) => {
 
 export default withNavigation(TopNavSimple);
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     header:{
         backgroundColor: 'transparent',
     },
@@ -44,4 +44,9 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 20,
         color: '#FFF',
     },
+    topbar:{
+        color1: 'topBar-color-1',
+        color2: 'topBar-color-2',
+        color3: 'topBar-color-3'
+    }
 })

@@ -18,7 +18,7 @@ const HotelDescription = (props) => {
     return(
         <View style={styles.cardContainer}>
             <Text style={styles.heading}>Description</Text>
-            <Text style={{height: showDesc}}>{description1}</Text>
+            <Text style={[styles.desc, {height: showDesc}]}>{description1}</Text>
             <Ripple rippleSize={50} rippleDuration={600} onPress={revealDescription}>
                 <Text status='primary' style={{marginTop: 5}}>{showDesc == 60 ? 'More' : 'Less'}</Text>
             </Ripple>
@@ -44,4 +44,7 @@ const style = StyleService.create({
         color: 'color-basic-700',
         fontWeight: '700',
     },
+    desc:{
+        color: 'color-basic-600'
+    }
 })
