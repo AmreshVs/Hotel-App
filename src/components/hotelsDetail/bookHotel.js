@@ -62,7 +62,7 @@ const style = StyleService.create({
         fontWeight: '700'
     },
     totalCaption:{
-        color: '#AAA'
+        color: 'color-basic-600'
     },
     btnContainer:{
         width: '70%',

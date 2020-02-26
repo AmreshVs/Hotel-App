@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Card, Button, Text, Icon } from '@ui-kitten/components';
+import { View } from 'react-native';
+import { Card, Button, Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 
-const HeloBlock = () => {
+const HelpBlock = () => {
+    const styles = useStyleSheet(style);
     return(
         <Card style={styles.container}>
             <View style={styles.bookingContainer}>
@@ -20,9 +21,9 @@ const HeloBlock = () => {
     )
 }
 
-export default HeloBlock;
+export default HelpBlock;
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     container:{
         width: '100%',
         marginTop: 10,
@@ -49,11 +50,11 @@ const styles = StyleSheet.create({
         paddingTop: 5,
         paddingBottom: 5,
         textAlign: 'center',
-        color: '#AAA'
+        color: 'color-basic-600'
     },
     bookingCaption:{
         textAlign: 'center',
-        color: '#FFF',
+        color: 'background-basic-color-1',
         fontSize: 16,
         paddingTop: 10,
     },
