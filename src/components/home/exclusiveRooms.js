@@ -59,7 +59,7 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({clearData: clearData}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(ExclusiveRooms));
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(React.memo(ExclusiveRooms)));
 
 const style = StyleService.create({
     headingText:{

@@ -48,4 +48,4 @@ const mapStateToProps = (state) => {
   return state.common;
 }
 
-export default connect(mapStateToProps)(HomeScreen);
+export default connect(mapStateToProps)(React.memo(HomeScreen));

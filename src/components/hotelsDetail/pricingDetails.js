@@ -26,7 +26,7 @@ const PricingDetails = (props) => {
 
     const closeModal = (item, price) => {
         props.addCoupons({code: item, price: price});
-        props.LoadPrices({hotelId : props.hotelDetail.hotelIds.hotelId, roomId : props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: props.hotelDetail.services, coupon_code: item }, props.common.userData.access_token);
+        props.LoadPrices({hotelId : props.hotelDetail.hotelIds.hotelId, roomId : props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: props.hotelDetail.services, coupons: item }, props.common.userData.access_token);
         setModal(!modal);
     }
 

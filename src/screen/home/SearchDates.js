@@ -86,7 +86,7 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({ removeGuests: removeGuests, addGuests: addGuests, chooseDates: chooseDates, LoadPrices:LoadPrices }, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(SearchDates));
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(React.memo(SearchDates)));
 
 const styles = StyleSheet.create({
     tabContainer: {

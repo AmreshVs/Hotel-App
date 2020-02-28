@@ -120,7 +120,7 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({LoadPrices:LoadPrices}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HotelsDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(HotelsDetail));
 
 const styles = StyleSheet.create({
     background:{

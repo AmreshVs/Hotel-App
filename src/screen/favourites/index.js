@@ -81,7 +81,7 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({clearData:clearData}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(FavouritesScreen));
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(React.memo(FavouritesScreen)));
 
 const style = StyleService.create({
     bodyContainer:{

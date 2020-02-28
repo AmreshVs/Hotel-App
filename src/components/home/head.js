@@ -1,34 +1,9 @@
 import React from 'react';
-import {View, Image, StyleSheet} from 'react-native';
-import {Text, withStyles} from '@ui-kitten/components';
+import {View, Image} from 'react-native';
+import {Text, StyleService, useStyleSheet} from '@ui-kitten/components';
 
-const Head = (props) => {
-
-  const theme = props.theme;
-
-  const styles = StyleSheet.create({
-    headingCaption:{
-      position: 'absolute',
-      color: theme['color-basic-100'],
-      padding: 15,
-      textAlign: 'center',
-    },
-    headBack:{
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    headImg:{
-      height: 350,
-      width: '100%',
-    },
-    headImgOverlay:{
-      position: 'absolute',
-      opacity: 0.5,
-      height: 350,
-      width: '100%',
-      backgroundColor: theme['color-primary-500'],
-    },
-  });
+const Head = () => {
+  const styles = useStyleSheet(style);
 
   return(
     <View style={styles.headBack}>
@@ -41,4 +16,28 @@ const Head = (props) => {
   );
 }
 
-export default withStyles(Head);
+export default Head;
+
+const style = StyleService.create({
+  headingCaption:{
+    position: 'absolute',
+    color: 'color-basic-100',
+    padding: 15,
+    textAlign: 'center',
+  },
+  headBack:{
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  headImg:{
+    height: 350,
+    width: '100%',
+  },
+  headImgOverlay:{
+    position: 'absolute',
+    opacity: 0.5,
+    height: 350,
+    width: '100%',
+    backgroundColor: 'color-primary-500',
+  },
+});

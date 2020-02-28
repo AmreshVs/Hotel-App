@@ -60,4 +60,4 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({clearData: clearData}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(SearchRoomsScreen));
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(React.memo(SearchRoomsScreen)));

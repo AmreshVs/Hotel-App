@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Text, withStyles, StyleService, useStyleSheet } from '@ui-kitten/components';
+import { Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View, ScrollView } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import RoomsListLarge from '../rooms/roomsListLarge';
@@ -60,7 +60,7 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({clearData:clearData}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(withStyles(RecommendedRooms)));
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(React.memo(RecommendedRooms)));
 
 const style = StyleService.create({
     headingText:{

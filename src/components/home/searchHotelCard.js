@@ -56,7 +56,7 @@ const mapStateToProps = (state) => {
   return state;
 }
 
-export default connect(mapStateToProps)(withNavigation(SearchHotelCard));
+export default connect(mapStateToProps)(withNavigation(React.memo(SearchHotelCard)));
 
 const themedStyles = StyleService.create({
   searchCard:{

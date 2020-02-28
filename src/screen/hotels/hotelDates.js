@@ -89,7 +89,7 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({ removeGuests: removeGuests, addGuests: addGuests, chooseDates: chooseDates, LoadPrices:LoadPrices }, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(HotelDates));
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(React.memo(HotelDates)));
 
 const styles = StyleSheet.create({
     tabContainer: {

@@ -62,4 +62,4 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({clearData: clearData}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(HotelsLargeListScreen));
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(React.memo(HotelsLargeListScreen)));

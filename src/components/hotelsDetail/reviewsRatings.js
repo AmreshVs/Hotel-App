@@ -45,7 +45,7 @@ const GuestDetails = (props) => {
     }
 
     return (
-        <View style={{ width: '100%', marginLeft: 20 }}>
+        <View style={{ width: '100%', alignItems: 'center' }}>
             <View style={styles.cardContainer}>
                 <View style={styles.textContainer}>
                     <View style={styles.textContainer1}>

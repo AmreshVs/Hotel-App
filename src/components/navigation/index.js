@@ -17,7 +17,6 @@ import SearchDates from '../../screen/home/SearchDates';
 import PaymentScreen from '../../screen/payment';
 import PaytmScreen from '../../screen/payment/paytmScreen';
 import BookingDetails from '../../screen/bookings/bookingDetails';
-import BookingConfirmed from '../../screen/hotels/bookingConfirmed';
 import AfterBooking from '../../screen/bookings/afterBooking';
 import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
 import { Transition } from 'react-native-reanimated';
@@ -46,7 +45,6 @@ const rootStack = createAnimatedSwitchNavigator(
     HotelDates: HotelDates,
     HotelsDetail: HotelsDetail,
     PaymentScreen: PaymentScreen,
-    BookingConfirmed: BookingConfirmed,
     BookingDetails: BookingDetails,
     SearchRooms: SearchRoomsScreen,
     AfterBooking: AfterBooking,
