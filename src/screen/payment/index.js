@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View, StyleSheet } from 'react-native';
-import { Text, Radio, RadioGroup, Button } from '@ui-kitten/components';
+import { Radio, RadioGroup, Button } from '@ui-kitten/components';
 import TopNavSimple from '../../components/navigation/topNavSimple';
 import { withNavigation } from 'react-navigation';
 

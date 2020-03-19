@@ -3,12 +3,13 @@ import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
 import {mapping} from '@eva-design/eva';
 import 'react-native-gesture-handler';
-import { default as appTheme } from './src/theme/light.json';
-import {Platform, AppRegistry} from 'react-native';
-import store from './src/redux/stores/store';
-import {Provider} from 'react-redux';
-import Main from './src/components/main/index';
 import OneSignal from 'react-native-onesignal';
+import {Platform, AppRegistry} from 'react-native';
+import {Provider} from 'react-redux';
+
+import { default as appTheme } from './src/theme/light.json';
+import store from './src/redux/stores/store';
+import Main from './src/components/main/index';
 
 const App = () => {
 
@@ -17,8 +18,10 @@ const App = () => {
 
     // OneSignal.addEventListener('received', this.onReceived);
     // OneSignal.addEventListener('opened', this.onOpened);
-    // OneSignal.addEventListener('ids', this.onIds);
+    // OneSignal.addEventListener('ids', onIds);
   }, [])
+
+  // const onIds = (data) => {console.log(data);}
 
   return (
     <React.Fragment>

@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Input, Icon, Button } from '@ui-kitten/components';
-import { StyleSheet, View } from 'react-native';
+import { Input, Icon, Button, StyleService, useStyleSheet } from '@ui-kitten/components';
+import { View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import SnackBar from 'react-native-snackbar-component';
 import saveReviewRating from '../../redux/thunkActions/saveReview';
 
 const WriteReview = (props) => {
+    const styles = useStyleSheet(style);
     var errors = props.hotelDetail.save_review;
     const id = props.hotelDetail.hotelIds.hotelId;
     const [value, setValue] = React.useState('');
@@ -42,8 +43,12 @@ const WriteReview = (props) => {
     }
 
     const addReview = () => {
-        props.saveReviewRating({id_hotel: id, name: value, rating: star, email: emailValue, comment: commentsValue}, props.common.userData.access_token);
+      props.saveReviewRating({id_hotel: id, name: value, rating: star, email: emailValue, comment: commentsValue}, props.common.userData.access_token);
     }
+
+    const SubmitIcon = () => (
+      <Icon style={styles.saveIconStyle} fill={styles.saveIconStyle.fill} animation={'zoom'} name='save-outline'/>
+    );
 
     return (
         <View>
@@ -51,14 +56,12 @@ const WriteReview = (props) => {
                 <Input
                     style={styles.inputs}
                     placeholder='Name'
-                    size='small'
                     value={value}
                     onChangeText={setValue}
                 />
                 <Input
                     style={styles.inputs}
                     placeholder='Email'
-                    size='small'
                     value={emailValue}
                     onChangeText={setEmailValue}
                 />
@@ -66,11 +69,11 @@ const WriteReview = (props) => {
                 <Input
                     style={styles.inputsComment}
                     placeholder='Comments'
+                    size='large'
                     value={commentsValue}
                     onChangeText={setCommentsValue}
-                    size='large'
                 />
-                <Button style={styles.button} onPress={addReview} >Submit</Button>
+                <Button style={styles.button} onPress={addReview} appearance={'outline'} icon={SubmitIcon} >Submit</Button>
             </View>
             <View style={styles.snackbar}>
                 {errors !== null ? <SnackBar visible={errors.error} textMessage={errors.message} autoHidingTime={5000} actionText="Ok"/> : null }
@@ -89,7 +92,7 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(WriteReview);
 
-const styles = StyleSheet.create({
+const style = StyleService.create({
     inputContainer: {
         alignItems: 'center',
     },
@@ -118,5 +121,9 @@ const styles = StyleSheet.create({
     },
     snackbar:{
         marginTop: 60,
-    }
+    },
+    saveIconStyle:{
+      fill: 'color-primary-600',
+      marginRight: 0
+    },
 });

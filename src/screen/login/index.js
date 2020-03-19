@@ -117,7 +117,6 @@ const LoginScreen = (props) => {
                         value={value}
                         keyboardType={Platform.OS === 'android' ? "numeric" : "number-pad"}
                         style={styles.input}
-                        size='small'
                         placeholder='Enter mobile number'
                         icon={renderIcon}
                         onChangeText={setValue}
@@ -141,7 +140,6 @@ const LoginScreen = (props) => {
                         style={styles.input}
                         placeholder='Enter OTP'
                         icon={renderMsgIcon}
-                        size='small'
                         onChangeText={setOtpValue}
                     />
                     <View style={styles.btnContainer}>
