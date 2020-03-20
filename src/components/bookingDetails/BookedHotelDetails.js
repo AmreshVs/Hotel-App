@@ -4,6 +4,7 @@ import { Card, Button, Text, Icon, StyleService, useStyleSheet } from '@ui-kitte
 import CancelBooking from '../../redux/thunkActions/cancelBooking';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 import SendNotification from '../../commonFunctions/sendNotification';
+import SaveNotification from '../../commonFunctions/saveNotification';
 
 const BookedHotelDetails = (props) => {
   const styles = useStyleSheet(style);
@@ -33,6 +34,7 @@ const BookedHotelDetails = (props) => {
             const heading = "Booking cancelled!"
             const content = "#" + props.data.booking_id + " booking on " + props.data.title + " has been cancelled by " + props.data.customer_name;
             SendNotification(heading, content);
+            SaveNotification({ user_id: props.user_id, booking_id: props.data.booking_id, type: 'cancel', heading: heading, content: content }, props.token);
           }
         },
       ],

@@ -13,9 +13,9 @@ import HelpBlockSK from '../../components/skeletons/bookingDetails/helpBlockSK';
 import BookedDetailsSK from '../../components/skeletons/bookingDetails/bookedDetailsSK';
 import BookHotel from '../../redux/thunkActions/bookHotel';
 import SendNotification from '../../commonFunctions/sendNotification';
+import SaveNotification from '../../commonFunctions/saveNotification';
 
 const AfterBooking = (props) => {
-
   const [data, setData] = React.useState([]);
 
   const bookingData = {
@@ -44,6 +44,7 @@ const AfterBooking = (props) => {
       const heading = props.common.userData.firstname + " " + props.common.userData.lastname + " has booked " + Object.keys(props.hotelDetail.rooms).length + " room's on " + response[0].title;
       const content = "Booking ID : "+ response[0].booking_id + ", Check In : " + response[0].start_date + ", Check Out : " + response[0].end_date + ", Adult's : " + response[0].adults + ", Children's : " + response[0].children + ", Total : " + response[0].total;
       SendNotification(heading, content);
+      SaveNotification({ user_id: props.common.userData.user_id, booking_id: response[0].booking_id, type: 'booking', heading: heading, content: content }, props.common.userData.access_token);
     }
     loadDatas();
   }, []);
@@ -60,7 +61,7 @@ const AfterBooking = (props) => {
       <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.contentContainer}>
           {data.length <= 0 ? <ConfirmBlockSK /> : <ConfirmBlock booking_id={data.booking_id} total={data.total} status={data.status} status_label={data.status_label} transaction_id={data.transaction_id} />}
-          {data.length <= 0 ? <BookedDetailsSK /> : <BookedHotelDetails data={data} token={props.common.userData.access_token} reloadData={reloadData} />}
+          {data.length <= 0 ? <BookedDetailsSK /> : <BookedHotelDetails data={data} token={props.common.userData.access_token} user_id={props.common.userData.user_id} reloadData={reloadData} />}
           {data.length <= 0 ? <HelpBlockSK /> : <HelpBlock />}
         </View>
       </ScrollView>
