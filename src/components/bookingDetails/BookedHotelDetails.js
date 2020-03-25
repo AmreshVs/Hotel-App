@@ -5,8 +5,11 @@ import CancelBooking from '../../redux/thunkActions/cancelBooking';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 import SendNotification from '../../commonFunctions/sendNotification';
 import SaveNotification from '../../commonFunctions/saveNotification';
+import { withNavigation } from 'react-navigation';
 
 const BookedHotelDetails = (props) => {
+
+  console.log(props)
   const styles = useStyleSheet(style);
   const CloseIcon = () => (
     <Icon style={styles.btnIcons} name='close-circle-outline' fill='#FFF' />
@@ -30,11 +33,11 @@ const BookedHotelDetails = (props) => {
           onPress: async () => {
             const response = await CancelBooking(props.data.booking_id, props.token);
             snackbarMessage(response.message);
-            props.reloadData();
             const heading = "Booking cancelled!"
             const content = "#" + props.data.booking_id + " booking on " + props.data.title + " has been cancelled by " + props.data.customer_name;
+            await SaveNotification({ user_id: props.user_id, booking_id: props.data.booking_id, type: 'cancel', heading: heading, content: content }, props.token);
             SendNotification(heading, content);
-            SaveNotification({ user_id: props.user_id, booking_id: props.data.booking_id, type: 'cancel', heading: heading, content: content }, props.token);
+            props.navigation.navigate('Home');
           }
         },
       ],
@@ -103,14 +106,14 @@ const BookedHotelDetails = (props) => {
       </View>
       <View style={styles.hrLine}></View>
       <View style={styles.btnContainer}>
-        <Button style={styles.btns} status='danger' size='small' icon={CloseIcon} disabled={props.data.status === '1' ? false : true} onPress={cancelBook}>Cancel Booking</Button>
+        <Button style={styles.btns} status='danger' size='small' icon={CloseIcon} disabled={props.data.status === '1' || props.data.status === '5' ? false : true} onPress={cancelBook}>Cancel Booking</Button>
         <Button style={styles.btns} status='primary' size='small' icon={CallIcon}>Call Hotel</Button>
       </View>
     </Card>
   )
 }
 
-export default BookedHotelDetails;
+export default withNavigation(BookedHotelDetails);
 
 const style = StyleService.create({
   container: {

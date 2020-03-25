@@ -18,6 +18,7 @@ import PaymentScreen from '../../screen/payment';
 import PaytmScreen from '../../screen/payment/paytmScreen';
 import BookingDetails from '../../screen/bookings/bookingDetails';
 import AfterBooking from '../../screen/bookings/afterBooking';
+import NotificationsScreen from '../../screen/notifications/index';
 import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
 import { Transition } from 'react-native-reanimated';
 
@@ -25,6 +26,7 @@ const TabNavigation = createBottomTabNavigator(
   {
     Home: HomeScreen,
     FavouritesScreen: FavouritesScreen,
+    NotificationsScreen: NotificationsScreen,
     BookingsScreen: BookingsScreen,
     UserProfileScreen: UserProfileScreen,
   },

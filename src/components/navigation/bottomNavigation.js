@@ -13,6 +13,7 @@ const BottomNav = ({ navigation }) => {
   const HeartIcon = style => <Icon {...style} name="heart-outline" />;
   const BookingIcon = style => <Icon {...style} name="briefcase-outline" />;
   const ProfileIcon = style => <Icon {...style} name="person-outline" />;
+  const NotificationIcon = style => <Icon {...style} name="bell-outline" />;
 
   return (
     <SafeAreaView>
@@ -25,6 +26,7 @@ const BottomNav = ({ navigation }) => {
       >
         <BottomNavigationTab style={styles.tab} icon={HomeIcon} />
         <BottomNavigationTab style={styles.tab} icon={HeartIcon} />
+        <BottomNavigationTab style={styles.tab} icon={NotificationIcon} />
         <BottomNavigationTab style={styles.tab} icon={BookingIcon} />
         <BottomNavigationTab style={styles.tab} icon={ProfileIcon} />
       </BottomNavigation>

@@ -5,7 +5,7 @@ import { Card, Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/compon
 const ConfirmBlock = (props) => {
     const styles = useStyleSheet(style);
     var bgClr = '';
-    if(props.status === '1' || props.status === '4'){
+    if(props.status === '1' || props.status === '4' || props.status === '5'){
         bgClr = '#19b752';
     }
     if(props.status === '2'){
