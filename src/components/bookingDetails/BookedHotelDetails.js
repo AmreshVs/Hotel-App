@@ -9,7 +9,6 @@ import { withNavigation } from 'react-navigation';
 
 const BookedHotelDetails = (props) => {
 
-  console.log(props)
   const styles = useStyleSheet(style);
   const CloseIcon = () => (
     <Icon style={styles.btnIcons} name='close-circle-outline' fill='#FFF' />
@@ -35,7 +34,7 @@ const BookedHotelDetails = (props) => {
             snackbarMessage(response.message);
             const heading = "Booking cancelled!"
             const content = "#" + props.data.booking_id + " booking on " + props.data.title + " has been cancelled by " + props.data.customer_name;
-            await SaveNotification({ user_id: props.user_id, booking_id: props.data.booking_id, type: 'cancel', heading: heading, content: content }, props.token);
+            await SaveNotification({ user_id: props.user_id, booking_id: props.data.booking_id, type: 'cancel', heading: heading, content: content, notify_to: 'admin' }, props.token);
             SendNotification(heading, content);
             props.navigation.navigate('Home');
           }

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const ViewNotification = async (token) => {
   return await axios({
-    url: API_URL + '/view-notifications',
+    url: API_URL + '/user-notifications',
     method: 'GET',
     headers:{
       "Authorization" : token,

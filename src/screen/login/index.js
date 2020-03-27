@@ -92,7 +92,6 @@ const LoginScreen = (props) => {
 
   const loginWithOtp = async () => {
     const userData = await UserLoginAuth({ mobile_number: value, otp: otpValue, oneSignalUserId: userId });
-    console.log(userData);
     props.userLogin(userData.data);
     const token = userData.data.access_token;
     snackbarMessage(userData.message)

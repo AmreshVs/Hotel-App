@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { NavigationEvents } from 'react-navigation';
-import { TopNavigationAction, Icon, Text } from '@ui-kitten/components';
+import { TopNavigationAction, Icon, Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 
 import Notifications from '../../components/notifications/index';
@@ -12,6 +12,7 @@ import TopNavSimple from '../../components/navigation/topNavSimple';
 import ViewNotifications from '../../commonFunctions/viewNotifications';
 
 const NotificationsScreen = (props) => {
+  const styles = useStyleSheet(themedStyles);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -63,9 +64,9 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps)(withNavigation(NotificationsScreen));
 
-const styles = StyleSheet.create({
+const themedStyles = StyleService.create({
   backContainer:{
-    backgroundColor: '#FAFAFA',
+    backgroundColor: 'background-basic-color-1',
     height: '100%',
   },
   container:{

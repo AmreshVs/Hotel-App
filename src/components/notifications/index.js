@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Text, Icon, Button } from '@ui-kitten/components';
+import { View } from 'react-native';
+import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import { withNavigation } from 'react-navigation';
 import ReadNotification from '../../commonFunctions/readNotifications';
 
 const Notifications = (props) => {
+  
+  const styles = useStyleSheet(themedStyles);
 
   const navigateBookingdetail = (id, booking_id, user_type) => {
     props.navigation.navigate('BookingDetails',{
@@ -13,9 +15,7 @@ const Notifications = (props) => {
       user_type: user_type,
       notify_id: booking_id
     });
-    if(user_type !== 'editor'){
-      ReadNotification({id: booking_id}, props.token);
-    }
+    ReadNotification({id: booking_id}, props.token);
   }
 
   return (
@@ -44,13 +44,13 @@ const Notifications = (props) => {
 
 export default withNavigation(Notifications);
 
-const styles = StyleSheet.create({
+const themedStyles = StyleService.create({
   cardContainer:{
     width: '95%',
     borderRadius: 5,
     marginTop: 10,
     padding: 13,
-    backgroundColor: '#FFF',
+    backgroundColor: 'background-basic-color-1',
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     padding: 5
   },
   agentContainer:{
-    backgroundColor: '#FFCB3D',
+    backgroundColor: 'color-warning-400',
     width: 40,
     height: 40,
     position: 'absolute',

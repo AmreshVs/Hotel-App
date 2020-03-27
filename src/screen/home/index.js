@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import { ScrollView } from 'react-native';
 import { useStyleSheet } from '@ui-kitten/components';
 import style from './styles';
+import { NavigationEvents } from 'react-navigation';
+
 import SearchHotelCard from '../../components/home/searchHotelCard';
 import Head from '../../components/home/head';
 import RecommendedRooms from '../../components/home/recommenedRooms';
 import ExclusiveRooms from '../../components/home/exclusiveRooms';
 import LoadHomeData from '../../redux/thunkActions/loadHomeData';
-import { NavigationEvents } from 'react-navigation';
 import CheckUserData from '../../commonFunctions/checkUserData';
 
 const HomeScreen = (props) => {

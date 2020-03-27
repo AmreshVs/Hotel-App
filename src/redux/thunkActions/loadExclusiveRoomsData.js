@@ -1,20 +1,24 @@
 import axios from 'axios';
 import { API_URL } from '../../constants';
+import Logout from '../../commonFunctions/logout';
 
 const LoadExclusiveRoomsData = async (token) => {
-    return await axios({
-        method: 'GET',
-        url: API_URL + '/view-recommended',
-        headers:{
-            'Accept-Language' : 'en',
-            'Authorization': token
-        }
-    })
+  return await axios({
+    method: 'GET',
+    url: API_URL + '/view-recommended',
+    headers: {
+      'Accept-Language': 'en',
+      'Authorization': token
+    }
+  })
     .then(function (response) {
-        return response.data.data.recommended;
+      return response.data.data.recommended;
     })
     .catch(function (error) {
-        return error.response.data;
+      if (error.response.data.message === 'Please Login to Continue') {
+        Logout();
+      }
+      return error.response.data;
     });
 }
 

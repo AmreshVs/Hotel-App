@@ -17,14 +17,13 @@ const App = () => {
 
   React.useEffect(() => {
     OneSignal.init("9cf8c27d-0a89-4e7d-bb2a-d24e8bfd03ab");
-
-    // OneSignal.addEventListener('received', this.onReceived);
+    // OneSignal.addEventListener('received', onReceived);
     // OneSignal.addEventListener('opened', this.onOpened);
     // OneSignal.addEventListener('ids', onIds);
 
   }, [])
 
-  // const onIds = (data) => {console.log(data);}
+  // const onReceived = (data) => {console.log('data');}
 
   // var message = { 
   //   app_id: "9cf8c27d-0a89-4e7d-bb2a-d24e8bfd03ab",

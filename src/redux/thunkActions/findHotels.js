@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { API_URL } from '../../constants';
+import Logout from '../../commonFunctions/logout';
 
 const FindHotels = async (data, token) => {
   return await axios({
@@ -16,6 +17,9 @@ const FindHotels = async (data, token) => {
     return response.data.data;
   })
   .catch(function (error) {
+    if (error.response.data.message === 'Please Login to Continue') {
+      Logout();
+    }
     return error.response.data;
   });
 }

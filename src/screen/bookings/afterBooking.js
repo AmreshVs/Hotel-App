@@ -43,7 +43,7 @@ const AfterBooking = (props) => {
       setData(response[0]);
       const heading = props.common.userData.firstname + " " + props.common.userData.lastname + " has booked " + Object.keys(props.hotelDetail.rooms).length + " room's on " + response[0].title;
       const content = "Booking ID : "+ response[0].booking_id + ", Check In : " + response[0].start_date + ", Check Out : " + response[0].end_date + ", Adult's : " + response[0].adults + ", Children's : " + response[0].children + ", Total : " + response[0].total;
-      const saveNotify = await SaveNotification({ user_id: props.common.userData.user_id, booking_id: response[0].booking_id, type: 'booking', heading: heading, content: content }, props.common.userData.access_token);
+      const saveNotify = await SaveNotification({ user_id: props.common.userData.user_id, booking_id: response[0].booking_id, type: 'booking', heading: heading, content: content, notify_to: 'admin' }, props.common.userData.access_token);
       const buttons = [{"id": "notify-cancel", "text": "Cancel"}, {"id": "notify-approve", "text": "Approve"}]
       const notifyData = { action: 'approve', notification_id: saveNotify.data.id, booking_id: saveNotify.data.booking_id, oneSignalUserId: props.common.userData.oneSignalUserId, user_id: props.common.userData.user_id };
       SendNotification(heading, content, buttons, notifyData);
