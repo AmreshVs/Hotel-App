@@ -1,6 +1,7 @@
 import React from 'react';
-import { createAppContainer } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+
 import LoginScreen from '../../screen/login/index';
 import Main from '../../screen/Main/index';
 import HomeScreen from '../../screen/home/index';
@@ -19,55 +20,41 @@ import PaytmScreen from '../../screen/payment/paytmScreen';
 import BookingDetails from '../../screen/bookings/bookingDetails';
 import AfterBooking from '../../screen/bookings/afterBooking';
 import NotificationsScreen from '../../screen/notifications/index';
-import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
-import { Transition } from 'react-native-reanimated';
 
-const TabNavigation = createBottomTabNavigator(
-  {
-    Home: HomeScreen,
-    FavouritesScreen: FavouritesScreen,
-    NotificationsScreen: NotificationsScreen,
-    BookingsScreen: BookingsScreen,
-    UserProfileScreen: UserProfileScreen,
-  },
-  {
-    unmountInactiveRoutes: true,
-    tabBarComponent: BottomNav,
-    resetOnBlur: true,
-  }
-);
+const Tab = createBottomTabNavigator();
 
-const rootStack = createAnimatedSwitchNavigator(
-  {
-    Main: Main,
-    LoginScreen: LoginScreen,
-    Home: TabNavigation,
-    HotelsLargeList: HotelsLargeListScreen,
-    HotelsExploreRooms: HotelsExploreRooms,
-    HotelDates: HotelDates,
-    HotelsDetail: HotelsDetail,
-    PaymentScreen: PaymentScreen,
-    BookingDetails: BookingDetails,
-    SearchRooms: SearchRoomsScreen,
-    AfterBooking: AfterBooking,
-    PaytmScreen: PaytmScreen,
-    SearchDates: SearchDates
-  },
-  {
-    headerMode: 'none',
-    backBehavior: 'history',
-    transition: (
-      <Transition.Together>
-        <Transition.Out
-          propagation="top"
-          type="slide-right"
-          durationMs={100}
-          interpolation="easeOut"
-        />
-        <Transition.In type="slide-left" durationMs={300} />
-      </Transition.Together>
-    ),
-  },
-);
+const TabNavigation = () => {
+  return (
+    <Tab.Navigator tabBar={props => <BottomNav {...props} />}>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="FavouritesScreen" component={FavouritesScreen} />
+      <Tab.Screen name="NotificationsScreen" component={NotificationsScreen} />
+      <Tab.Screen name="BookingsScreen" component={BookingsScreen} />
+      <Tab.Screen name="UserProfileScreen" component={UserProfileScreen} />
+    </Tab.Navigator>
+  )
+}
 
-export const TabNavigator = createAppContainer(rootStack);
+const Stack = createStackNavigator();
+
+const TabNavigator = () => {
+  return (  
+    <Stack.Navigator headerMode="none">
+      <Stack.Screen name="Main" component={Main} />
+      <Stack.Screen name="LoginScreen" component={LoginScreen} />
+      <Stack.Screen name="Home" component={TabNavigation} />
+      <Stack.Screen name="HotelsLargeList" component={HotelsLargeListScreen} />
+      <Stack.Screen name="HotelsExploreRooms" component={HotelsExploreRooms} />
+      <Stack.Screen name="HotelDates" component={HotelDates} />
+      <Stack.Screen name="HotelsDetail" component={HotelsDetail} />
+      <Stack.Screen name="PaymentScreen" component={PaymentScreen} />
+      <Stack.Screen name="BookingDetails" component={BookingDetails} />
+      <Stack.Screen name="SearchRooms" component={SearchRoomsScreen} />
+      <Stack.Screen name="AfterBooking" component={AfterBooking} />
+      <Stack.Screen name="PaytmScreen" component={PaytmScreen} />
+      <Stack.Screen name="SearchDates" component={SearchDates} />
+    </Stack.Navigator>
+  )
+}
+
+export default TabNavigator;

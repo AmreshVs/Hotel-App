@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native';
 
 const NotificationsSK = () => {
   return (
-    [1,2,3,4,5].map((item) => 
+    [1, 2, 3, 4, 5].map((item) =>
       <View style={styles.cardContainer} key={item}>
         <View style={styles.leftContainer}>
           <SkeletonContent
@@ -100,12 +100,12 @@ const styles = StyleSheet.create({
     height: 15,
     borderRadius: 10,
   },
-  leftContainer:{
+  leftContainer: {
     width: '20%',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  rightContainer:{
+  rightContainer: {
     width: '80%',
   },
 })

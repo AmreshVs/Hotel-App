@@ -2,23 +2,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View, StyleSheet, StatusBar } from 'react-native';
 import SnackBar from 'react-native-snackbar-component';
-import { createAppContainer } from 'react-navigation';
+import { NavigationContainer } from '@react-navigation/native';
 
-import { TabNavigator } from '../navigation/index';
+import TabNavigator from '../navigation/index';
 import NavigationService from '../navigation/navigationService';
 
 const Main = (props) => {
-
   return (
     <View style={styles.mainView}>
-      <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
-      <View style={styles.statusBar} />
-      <TabNavigator
-        ref={navigatorRef => {
-          NavigationService.setTopLevelNavigator(navigatorRef);
-        }}
-      />
-      <SnackBar style={styles.snack} visible={props.visible} textMessage={props.message} backgroundColor={props.backgroundColor} actionText="Ok" />
+      <NavigationContainer>
+        <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
+        <View style={styles.statusBar} />
+        <TabNavigator
+          ref={navigatorRef => {
+            NavigationService.setTopLevelNavigator(navigatorRef);
+          }}
+        />
+        <SnackBar style={styles.snack} visible={props.visible} textMessage={props.message} backgroundColor={props.backgroundColor} actionText="Ok" />
+      </NavigationContainer>
     </View>
   )
 }

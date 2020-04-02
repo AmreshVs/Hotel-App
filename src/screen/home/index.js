@@ -2,9 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { ScrollView } from 'react-native';
 import { useStyleSheet } from '@ui-kitten/components';
-import style from './styles';
-import { NavigationEvents } from 'react-navigation';
 
+import style from './styles';
 import SearchHotelCard from '../../components/home/searchHotelCard';
 import Head from '../../components/home/head';
 import RecommendedRooms from '../../components/home/recommenedRooms';
@@ -13,6 +12,7 @@ import LoadHomeData from '../../redux/thunkActions/loadHomeData';
 import CheckUserData from '../../commonFunctions/checkUserData';
 
 const HomeScreen = (props) => {
+  
   const styles = useStyleSheet(style);
   const [data, setData] = React.useState({});
 
@@ -23,6 +23,11 @@ const HomeScreen = (props) => {
       setData(response);
     }
     loadDatas();
+    
+    props.navigation.addListener('focus', () => {
+      reloadData();
+    })
+
   }, [])
 
   const reloadData = async () => {
@@ -34,9 +39,6 @@ const HomeScreen = (props) => {
 
   return (
     <ScrollView style={styles.statusBarTop} showsVerticalScrollIndicator={false}>
-      <NavigationEvents
-        onDidFocus={reloadData}
-      />
       <Head/>
       <SearchHotelCard/>
       <RecommendedRooms data={data.recommended} />

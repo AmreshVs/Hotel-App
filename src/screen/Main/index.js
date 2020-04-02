@@ -2,29 +2,33 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Image } from 'react-native';
-import { withNavigation } from 'react-navigation';
-import { userLogin } from '../../redux/actions/commonActions';
+import { useNavigation } from '@react-navigation/native';
 import { AsyncStorage, StyleSheet, View } from 'react-native';
+
+import { userLogin } from '../../redux/actions/commonActions';
 
 const Main = (props) => {
 
-  React.useEffect(() => {
-    const retrieveData = async () => {
-      try {
-        const userData = await AsyncStorage.getItem('@Darpad:userData');
-        if (userData !== null) {
-          props.userLogin(JSON.parse(userData));
-          props.navigation.navigate('Home');
-        }
-        else {
-          props.navigation.navigate('LoginScreen');
-        }
-      } catch (error) {
+  const navigation = useNavigation();
 
-      }
-    }
+  React.useEffect(() => {
     retrieveData();
   }, [])
+
+  const retrieveData = async () => {
+    try {
+      const userData = await AsyncStorage.getItem('@Darpad:userData');
+      if (userData !== null) {
+        props.userLogin(JSON.parse(userData));
+        navigation.navigate('Home');
+      }
+      else {
+        navigation.navigate('LoginScreen');
+      }
+    } catch (error) {
+
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -42,7 +46,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({ userLogin: userLogin }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(Main));
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
 
 const styles = StyleSheet.create({
   container: {

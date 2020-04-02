@@ -1,30 +1,32 @@
 import axios from 'axios';
+import { ONE_SIGNAL_API_URL } from '../constants/index';
+import GetOneSignalAdminId from './getOneSignalAdminId';
 
-const SendNotification = (heading, content, buttons = [], data = {}) => {
-  var message = { 
+const SendNotification = async (heading, content, token, buttons = [], data = {}) => {
+
+  const admin_id = await GetOneSignalAdminId(token);
+  let message = { 
     app_id: "9cf8c27d-0a89-4e7d-bb2a-d24e8bfd03ab",
     headings: {"en": heading},
-    // subtitle: {"en": "Chech to approve or cancel!"},
     contents: {"en": content},
-    include_player_ids: ["68867ecb-7bc0-479b-b795-0fcb697e5e47"],
+    include_player_ids: [admin_id],
     buttons: buttons,
     data: data
-    // big_picture: "http://i.imgur.com/N8SN8ZS.png",
   };
 
   axios({
     method: 'POST',
-    url: 'https://onesignal.com/api/v1/notifications',
+    url: ONE_SIGNAL_API_URL,
     headers:{
       "Content-Type": "application/json; charset=utf-8"
     },
     data: message,
   })
   .then(function (response) {
-    console.log(response.data);
+    // console.log(response.data);
   })
   .catch(function (error) {
-    console.log(error.response.data);
+    // console.log(error.response.data);
   });
 }
 

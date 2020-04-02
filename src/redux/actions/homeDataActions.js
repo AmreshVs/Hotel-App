@@ -8,15 +8,15 @@ export const loadHomeDataPending = (payload) => {
 };
 
 export const loadHomeDataSuccess = (payload) => {
-    return {
-      type: LOAD_HOME_DATA_SUCCESS,
-      payload
-    };
+  return {
+    type: LOAD_HOME_DATA_SUCCESS,
+    payload
+  };
 };
 
 export const loadHomeDataError = (payload) => {
-    return {
-      type: LOAD_HOME_DATA_ERROR,
-      payload
-    };
+  return {
+    type: LOAD_HOME_DATA_ERROR,
+    payload
+  };
 };

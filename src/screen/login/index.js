@@ -3,17 +3,19 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { View, Platform, KeyboardAvoidingView, Animated } from 'react-native';
 import TimedSlideshow from 'react-native-timed-slideshow';
-import styles from './styles';
 import { Icon, Input, Button } from '@ui-kitten/components';
-import { withNavigation } from 'react-navigation';
+import { useNavigation } from '@react-navigation/native';
+import { AsyncStorage } from 'react-native';
+import OneSignal from 'react-native-onesignal';
+
+import styles from './styles';
 import UserLoginAuth from '../../redux/thunkActions/userLoginAuth';
 import { userLogin } from '../../redux/actions/commonActions';
-import { AsyncStorage } from 'react-native';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
-import OneSignal from 'react-native-onesignal';
 
 const LoginScreen = (props) => {
 
+  const navigation = useNavigation();
   const items = [
     {
       uri: "https://r-cf.bstatic.com/images/hotel/max1024x768/779/77938171.jpg",
@@ -39,7 +41,7 @@ const LoginScreen = (props) => {
         const userData = await AsyncStorage.getItem('@Darpad:userData');
         if (userData !== null) {
           props.userLogin(JSON.parse(userData));
-          props.navigation.navigate('Home');
+          navigation.navigate('Home');
         }
       } catch (error) {
 
@@ -97,7 +99,7 @@ const LoginScreen = (props) => {
     snackbarMessage(userData.message)
     if (token !== undefined && token !== '') {
       storeAsyncData(JSON.stringify(userData.data));
-      props.navigation.navigate('Home');
+      navigation.navigate('Home');
     }
   }
 
@@ -166,4 +168,4 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({ userLogin: userLogin }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(LoginScreen));
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);

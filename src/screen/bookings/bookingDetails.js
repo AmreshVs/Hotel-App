@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import TopNavSimple from '../../components/navigation/topNavSimple';
-import { withNavigation } from 'react-navigation';
+import { useNavigation } from '@react-navigation/native';
 import { connect } from 'react-redux';
 import { TopNavigationAction, Icon } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
@@ -17,11 +17,12 @@ import LoadBookingDetails from '../../redux/thunkActions/loadBookingDetails';
 
 const BookingDetails = (props) => {
 
+  const navigation = useNavigation();
   const [data, setData] = React.useState([]);
 
   useEffect(() => {
     async function loadDatas() {
-      const response = await LoadBookingDetails(props.access_token, props.navigation.state.params.id);
+      const response = await LoadBookingDetails(props.access_token, navigation.state.params.id);
       setData(response[0]);
     }
     loadDatas();
@@ -29,7 +30,7 @@ const BookingDetails = (props) => {
 
   const reloadData = async () => {
     setData([]);
-    const response = await LoadBookingDetails(props.access_token, props.navigation.state.params.id);
+    const response = await LoadBookingDetails(props.access_token, navigation.state.params.id);
     setData(response[0]);
   }
 
@@ -43,7 +44,7 @@ const BookingDetails = (props) => {
 
   return (
     <View style={styles.bodyContainer}>
-      <TopNavSimple screenTitle='Booking Details' backHandler={() => props.navigation.navigate('BookingsScreen')} rightControl={true} rightControlFun={RefreshAction} />
+      <TopNavSimple screenTitle='Booking Details' backHandler={() => navigation.navigate('BookingsScreen')} rightControl={true} rightControlFun={RefreshAction} />
       <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.contentContainer}>
           {data.length <= 0 ? <ConfirmBlockSK /> : <ConfirmBlock booking_id={data.booking_id} total={data.total} status={data.status} status_label={data.status_label} transaction_id={data.transaction_id} />}
@@ -59,7 +60,7 @@ const mapStateToProps = (state) => {
   return state.common.userData;
 }
 
-export default connect(mapStateToProps)(withNavigation(BookingDetails));
+export default connect(mapStateToProps)(BookingDetails);
 
 const styles = StyleSheet.create({
   bodyContainer: {

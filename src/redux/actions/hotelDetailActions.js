@@ -20,7 +20,7 @@ export const closeImageViewer = (payload) => {
   };
 };
 
-const roomsArr = {1 : {adult: 1, children: 0}};
+const roomsArr = { 1: { adult: 1, children: 0 } };
 
 // Add Guests for rooms
 export const addGuests = (payload) => {
@@ -44,7 +44,7 @@ const servicesArr = {};
 
 // Add Services for rooms
 export const addServices = (payload) => {
-  servicesArr[payload.id] = {service_id: payload.serviceId, qty: payload.qty};
+  servicesArr[payload.id] = { service_id: payload.serviceId, qty: payload.qty };
   return {
     type: ADD_SERVICES,
     payload,
@@ -77,17 +77,17 @@ export const loadHotelDetailsDataPending = (payload) => {
 };
 
 export const loadHotelDetailsDataSuccess = (payload) => {
-    return {
-      type: LOAD_HOTELDETAILS_DATA_SUCCESS,
-      payload
-    };
+  return {
+    type: LOAD_HOTELDETAILS_DATA_SUCCESS,
+    payload
+  };
 };
 
 export const loadHotelDetailsDataError = (payload) => {
-    return {
-      type: LOAD_HOTELDETAILS_DATA_ERROR,
-      payload
-    };
+  return {
+    type: LOAD_HOTELDETAILS_DATA_ERROR,
+    payload
+  };
 };
 
 export const clearData = (payload) => {

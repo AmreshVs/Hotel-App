@@ -13,7 +13,7 @@ const ViewNotification = async (token) => {
     return response.data.data;
   })
   .catch(function (error) {
-    console.log(error);
+    // console.log(error);
   });
 }
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
-import {EvaIconsPack} from '@ui-kitten/eva-icons';
-import {mapping} from '@eva-design/eva';
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
+import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import { mapping } from '@eva-design/eva';
 import 'react-native-gesture-handler';
 import OneSignal from 'react-native-onesignal';
-import {Platform, AppRegistry} from 'react-native';
-import {Provider} from 'react-redux';
+import { Platform, AppRegistry } from 'react-native';
+import { Provider } from 'react-redux';
 
 import { default as appTheme } from './src/theme/light.json';
 import store from './src/redux/stores/store';
@@ -56,7 +56,7 @@ const App = () => {
       <Provider store={store}>
         <IconRegistry icons={EvaIconsPack} />
         <ApplicationProvider mapping={mapping} theme={appTheme}>
-          <Main/>
+          <Main />
         </ApplicationProvider>
       </Provider>
     </React.Fragment>

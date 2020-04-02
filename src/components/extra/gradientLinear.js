@@ -1,6 +1,6 @@
 import React from 'react';
-import {LinearGradient} from 'expo-linear-gradient';
-import {StyleSheet} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { StyleSheet } from 'react-native';
 
 const GradientLinear = props => {
   return (

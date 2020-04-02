@@ -8,15 +8,15 @@ export const loadExRoomsDataPending = (payload) => {
 };
 
 export const loadExRoomsDataSuccess = (payload) => {
-    return {
-      type: LOAD_EXROOMS_DATA_SUCCESS,
-      payload
-    };
+  return {
+    type: LOAD_EXROOMS_DATA_SUCCESS,
+    payload
+  };
 };
 
 export const loadExRoomsDataError = (payload) => {
-    return {
-      type: LOAD_EXROOMS_DATA_ERROR,
-      payload
-    };
+  return {
+    type: LOAD_EXROOMS_DATA_ERROR,
+    payload
+  };
 };

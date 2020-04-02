@@ -15,7 +15,7 @@ const SaveNotification = async (data, token) => {
     return response.data;
   })
   .catch(function (error) {
-    console.log(error.response.data);
+    return error.response.data;
   });
 }
 

@@ -5,11 +5,13 @@ import CancelBooking from '../../redux/thunkActions/cancelBooking';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 import SendNotification from '../../commonFunctions/sendNotification';
 import SaveNotification from '../../commonFunctions/saveNotification';
-import { withNavigation } from 'react-navigation';
+import { useNavigation } from '@react-navigation/native';
 
 const BookedHotelDetails = (props) => {
 
+  const navigation = useNavigation();
   const styles = useStyleSheet(style);
+
   const CloseIcon = () => (
     <Icon style={styles.btnIcons} name='close-circle-outline' fill='#FFF' />
   );
@@ -35,8 +37,8 @@ const BookedHotelDetails = (props) => {
             const heading = "Booking cancelled!"
             const content = "#" + props.data.booking_id + " booking on " + props.data.title + " has been cancelled by " + props.data.customer_name;
             await SaveNotification({ user_id: props.user_id, booking_id: props.data.booking_id, type: 'cancel', heading: heading, content: content, notify_to: 'admin' }, props.token);
-            SendNotification(heading, content);
-            props.navigation.navigate('Home');
+            SendNotification(heading, content, props.token);
+            navigation.navigate('Home');
           }
         },
       ],
@@ -112,7 +114,7 @@ const BookedHotelDetails = (props) => {
   )
 }
 
-export default withNavigation(BookedHotelDetails);
+export default BookedHotelDetails;
 
 const style = StyleService.create({
   container: {
