@@ -58,9 +58,11 @@ const LoginScreen = (props) => {
     sendOtp();
     Animated.spring(slideAnim, {
       toValue: -500,
+      useNativeDriver: true
     }).start();
     Animated.spring(slideAnimOtp, {
       toValue: 0,
+      useNativeDriver: true
     }).start();
     setVisible(true);
   }
@@ -68,9 +70,11 @@ const LoginScreen = (props) => {
   const slideBack = () => {
     Animated.spring(slideAnim, {
       toValue: 0,
+      useNativeDriver: true
     }).start();
     Animated.spring(slideAnimOtp, {
       toValue: 500,
+      useNativeDriver: true
     }).start();
     setVisible(false);
   }

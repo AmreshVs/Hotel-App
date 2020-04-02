@@ -4,20 +4,24 @@ import { View, StyleSheet, StatusBar } from 'react-native';
 import SnackBar from 'react-native-snackbar-component';
 import { NavigationContainer } from '@react-navigation/native';
 
+import { navigationRef, isMountedRef } from '../navigation/rootNavigation';
 import TabNavigator from '../navigation/index';
-import NavigationService from '../navigation/navigationService';
+
 
 const Main = (props) => {
+
+  // Handling Reference Mount
+  React.useEffect(() => {
+    isMountedRef.current = true;
+    return () => (isMountedRef.current = false);
+  }, []);
+
   return (
     <View style={styles.mainView}>
-      <NavigationContainer>
+      <NavigationContainer ref={navigationRef}>
         <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
         <View style={styles.statusBar} />
-        <TabNavigator
-          ref={navigatorRef => {
-            NavigationService.setTopLevelNavigator(navigatorRef);
-          }}
-        />
+        <TabNavigator/>
         <SnackBar style={styles.snack} visible={props.visible} textMessage={props.message} backgroundColor={props.backgroundColor} actionText="Ok" />
       </NavigationContainer>
     </View>
