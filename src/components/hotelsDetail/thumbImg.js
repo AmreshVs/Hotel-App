@@ -1,7 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
 import { Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import Slideshow from 'react-native-image-slider-show';
@@ -11,7 +10,6 @@ import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 
 const ThumbImg = (props) => {
 
-  const navigation = useNavigation();
   const styles = useStyleSheet(style);
   var imageArr = [];
   var i = 0;
@@ -21,11 +19,11 @@ const ThumbImg = (props) => {
     i = i + 1;
   })
 
-  const [favcolor, setFavcolor] = React.useState(navigation.state.params.is_favorite === 1 ? '#FF4626' : '#AAA');
+  const [favcolor, setFavcolor] = React.useState(props.route.is_favorite === 1 ? '#FF4626' : '#AAA');
 
   const addFavourite = async () => {
     setFavcolor(favcolor === '#AAA' ? '#FF4626' : '#AAA');
-    const response = await AddFavourite({ hotel_id: navigation.state.params.hotelId }, props.access_token);
+    const response = await AddFavourite({ hotel_id: props.route.hotelId }, props.access_token);
     snackbarMessage(response.message);
   }
 

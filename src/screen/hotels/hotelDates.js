@@ -18,7 +18,7 @@ const HotelDates = (props) => {
 
 
   const ClosePage = () => {
-    navigation.navigate('HotelsDetail', { alias: navigation.state.params.alias });
+    navigation.navigate('HotelsDetail', { alias: props.route.params.alias });
     setTimeout(function () {
       props.chooseDates({ dates: range });
       // props.LoadPrices({hotelId : props.hotelDetail.hotelIds.hotelId, roomId : props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, services: props.hotelDetail.services }, props.common.userData.access_token);

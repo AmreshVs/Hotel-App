@@ -1,36 +1,41 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { WebView } from 'react-native-webview';
+import { useNavigation } from '@react-navigation/native';
 
 import { PAYTM_API_URL } from '../../constants/index';
 import BookHotel from '../../redux/thunkActions/bookHotel';
 
 const PaytmScreen = (props) => {
 
+  const navigation = useNavigation();
   const [url, setUrl] = React.useState('');
   const [webUrl, setWebUrl] = React.useState('');
 
+  const hotelDetail = props.hotelDetail;
+  const userData = props.common.userData;
+
   const bookingData = {
-    hotelId: props.hotelDetail.hotelIds.hotelId,
-    roomId: props.hotelDetail.hotelIds.roomId,
-    payment_type: props.navigation.state.params.payment_type,
-    dates: props.hotelDetail.dates,
-    rooms: props.hotelDetail.rooms,
-    service: props.hotelDetail.services,
-    coupons: props.hotelDetail.prices_services.data.data.coupons[0].code,
+    hotelId: hotelDetail.hotelIds.hotelId,
+    roomId: hotelDetail.hotelIds.roomId,
+    payment_type: props.route.params.payment_type,
+    dates: hotelDetail.dates,
+    rooms: hotelDetail.rooms,
+    service: hotelDetail.services,
+    coupons: hotelDetail.prices_services.data.data.coupons[0].code,
     user: {
-      firstname: props.common.userData.firstname,
-      lastname: props.common.userData.lastname,
-      email: props.common.userData.email,
-      address: props.common.userData.address,
-      city: props.common.userData.city,
-      mobile: props.common.userData.mobile,
+      firstname: userData.firstname,
+      lastname: userData.lastname,
+      email: userData.email,
+      address: userData.address,
+      city: userData.city,
+      mobile: userData.mobile,
     }
   };
 
   useEffect(() => {
     async function loadDatas() {
-      const response = await BookHotel(bookingData, props.common.userData.access_token);
+      const response = await BookHotel(bookingData, userData.access_token);
       setUrl(response.url);
     }
     loadDatas();
@@ -45,7 +50,7 @@ const PaytmScreen = (props) => {
       }}
       onMessage={event => {
         if (webUrl === PAYTM_API_URL) {
-          props.navigation.navigate('AfterBooking', { payment_type: 2, data: event.nativeEvent.data });
+          navigation.navigate('AfterBooking', { payment_type: 2, data: event.nativeEvent.data });
         }
       }}
       injectedJavaScript={jsCode}

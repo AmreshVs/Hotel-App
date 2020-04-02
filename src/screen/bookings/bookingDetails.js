@@ -22,7 +22,7 @@ const BookingDetails = (props) => {
 
   useEffect(() => {
     async function loadDatas() {
-      const response = await LoadBookingDetails(props.access_token, navigation.state.params.id);
+      const response = await LoadBookingDetails(props.access_token, props.route.params.id);
       setData(response[0]);
     }
     loadDatas();
@@ -30,7 +30,7 @@ const BookingDetails = (props) => {
 
   const reloadData = async () => {
     setData([]);
-    const response = await LoadBookingDetails(props.access_token, navigation.state.params.id);
+    const response = await LoadBookingDetails(props.access_token, props.route.params.id);
     setData(response[0]);
   }
 

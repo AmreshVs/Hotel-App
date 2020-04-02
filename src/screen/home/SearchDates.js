@@ -13,7 +13,7 @@ import LoadPrices from '../../redux/thunkActions/loadPrices';
 const SearchDates = (props) => {
 
   const navigation = useNavigation();
-  const [selectedIndex, setSelectedIndex] = React.useState(navigation.state.params.index);
+  const [selectedIndex, setSelectedIndex] = React.useState(props.route.params.index);
   const dates = props.hotelDetail.dates;
   const [range, setRange] = React.useState({ startDate: dates.startDate, endDate: dates.endDate });
 

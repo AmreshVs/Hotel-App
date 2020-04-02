@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { ScrollView } from 'react-native';
 import { useStyleSheet } from '@ui-kitten/components';
+import { useNavigation } from '@react-navigation/native';
 
 import style from './styles';
 import SearchHotelCard from '../../components/home/searchHotelCard';
@@ -12,7 +13,8 @@ import LoadHomeData from '../../redux/thunkActions/loadHomeData';
 import CheckUserData from '../../commonFunctions/checkUserData';
 
 const HomeScreen = (props) => {
-  
+
+  const navigation = useNavigation();
   const styles = useStyleSheet(style);
   const [data, setData] = React.useState({});
 
@@ -24,7 +26,7 @@ const HomeScreen = (props) => {
     }
     loadDatas();
     
-    props.navigation.addListener('focus', () => {
+    navigation.addListener('focus', () => {
       reloadData();
     })
 

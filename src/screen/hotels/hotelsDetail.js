@@ -45,7 +45,7 @@ const HotelsDetail = (props) => {
 
   useEffect(() => {
     async function loadDatas() {
-      const response = await LoadHotelDetailsData(props.navigation.state.params.alias, props.common.userData.access_token);
+      const response = await LoadHotelDetailsData(props.route.params.alias, props.common.userData.access_token);
       setData(response.data[0]);
       setLoading(false);
       setLoadPrices(true);
@@ -93,13 +93,13 @@ const HotelsDetail = (props) => {
     <SafeAreaView style={styles.background}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <TopNavSimple screenTitle={loading === false ? data.nameBlock.title : ''} />
-        {loading === true ? <ThumbImageSK /> : <ThumbImg images={data.imageBlock} />}
+        {loading === true ? <ThumbImageSK /> : <ThumbImg route={props.route.params} images={data.imageBlock} />}
         <View style={styles.bodyContainer}>
           {loading === true ? <NameBlockSK /> : <NameBlock data={data.nameBlock} />}
           {loading === true ? <DescriptionBlockSK /> : <HotelDescription description={data.descriptionBlock.desc} />}
           {loading === true ? <AmenitiesBlockSK /> : <Amenities data={data.amenitiesBlock} />}
           {loading === true ? <RoomsBlockSK /> : <RoomsCategory hotelId={data.nameBlock.id} data={data.roomsBlock} />}
-          {loading === true ? <ChooseRoomsBlockSK /> : <ChooseDates alias={props.navigation.state.params.alias} />}
+          {loading === true ? <ChooseRoomsBlockSK /> : <ChooseDates alias={props.route.params.alias} />}
           {loading === true ? <GuestDetailsBlockSK /> : <GuestDetails />}
           {loading === true ? <ReviewRatingBlockSK /> : <ReviewsRatings data={data.reviewsRatingsBlock} hotelId={data.nameBlock.id} />}
           <RenderPriceBlock />
