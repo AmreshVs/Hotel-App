@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { SafeAreaView, ScrollView, View, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import SnackBar from 'react-native-snackbar-component';
 
 import TopNavSimple from '../../components/navigation/topNavSimple';
@@ -35,6 +36,7 @@ import TotalPriceSK from '../../components/skeletons/hotelDetail/totalPriceSK';
 
 const HotelsDetail = (props) => {
 
+  const navigation = useNavigation();
   var errors = props.hotelDetail.prices_services;
   const [data, setData] = React.useState({});
   const [loading, setLoading] = React.useState(true);
@@ -92,7 +94,7 @@ const HotelsDetail = (props) => {
   return (
     <SafeAreaView style={styles.background}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <TopNavSimple screenTitle={loading === false ? data.nameBlock.title : ''} />
+        <TopNavSimple screenTitle={loading === false ? data.nameBlock.title : ''} backHandler={() => navigation.goBack()} />
         {loading === true ? <ThumbImageSK /> : <ThumbImg route={props.route.params} images={data.imageBlock} />}
         <View style={styles.bodyContainer}>
           {loading === true ? <NameBlockSK /> : <NameBlock data={data.nameBlock} />}

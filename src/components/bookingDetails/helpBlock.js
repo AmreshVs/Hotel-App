@@ -1,31 +1,34 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Card, Button, Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
+import * as Animatable from 'react-native-animatable';
 
 const HelpBlock = () => {
 
-  const styles = useStyleSheet(style);
+  const styles = useStyleSheet(themedStyle);
   
   return (
-    <Card style={styles.container}>
-      <View style={styles.bookingContainer}>
-        <View style={styles.confirmContainer}>
-          <Icon name='alert-circle-outline' style={styles.checkIcon} fill='#FF7E6D' />
-          <Text style={styles.confirmed}>Need Assistance?</Text>
+    <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={30}>
+      <Card style={styles.container}>
+        <View style={styles.bookingContainer}>
+          <View style={styles.confirmContainer}>
+            <Icon name='alert-circle-outline' style={styles.checkIcon} fill='#FF7E6D' />
+            <Text style={styles.confirmed}>Need Assistance?</Text>
+          </View>
+          <Text style={styles.caption}>Do you have any queries regarding your stay or booking? We can support you anytime</Text>
+          <View style={styles.btnContainer}>
+            <Button appearance='ghost' size='small' status='basic'>Call Us</Button>
+            <Button appearance='ghost' size='small' status='basic'>Email Us</Button>
+          </View>
         </View>
-        <Text style={styles.caption}>Do you have any queries regarding your stay or booking? We can support you anytime</Text>
-        <View style={styles.btnContainer}>
-          <Button appearance='ghost' size='small' status='basic'>Call Us</Button>
-          <Button appearance='ghost' size='small' status='basic'>Email Us</Button>
-        </View>
-      </View>
-    </Card>
+      </Card>
+    </Animatable.View>
   )
 }
 
 export default HelpBlock;
 
-const style = StyleService.create({
+const themedStyle = StyleService.create({
   container: {
     width: '100%',
     marginTop: 10,

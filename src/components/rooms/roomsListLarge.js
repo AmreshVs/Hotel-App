@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View, Image } from 'react-native';
 import Ripple from 'react-native-material-ripple';
+import * as Animatable from 'react-native-animatable';
 
 import AddFavourite from '../../redux/thunkActions/addFavourite';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
@@ -18,33 +19,35 @@ const RoomsListLarge = (props) => {
   }
 
   return (
-    <View style={styles.hotelCard}>
-      <Ripple rippleSize={300} rippleDuration={600} onPress={props.navigate}>
-        <Image
-          style={styles.hotelImg}
-          source={{ uri: props.image }}
-        />
-      </Ripple>
-      <View style={styles.topBlock}>
-        <View style={styles.rating}>
-          <Icon name='star' style={styles.starIcon} fill='#FFD13A' />
-          <Text style={styles.ratingCount}>{props.rating}</Text>
+    <Animatable.View animation="fadeInRight" direction="normal" duration={800} useNativeDriver={true} delay={props.delay * 50}>
+      <View style={styles.hotelCard}>
+        <Ripple rippleSize={300} rippleDuration={600} onPress={props.navigate}>
+          <Image
+            style={styles.hotelImg}
+            source={{ uri: props.image }}
+          />
+        </Ripple>
+        <View style={styles.topBlock}>
+          <View style={styles.rating}>
+            <Icon name='star' style={styles.starIcon} fill='#FFD13A' />
+            <Text style={styles.ratingCount}>{props.rating}</Text>
+          </View>
+          <View style={styles.favourite}>
+            <Ripple rippleSize={50} rippleDuration={600} onPress={addFavourite}>
+              <Icon name='heart' style={styles.heartIcon} fill={favcolor} />
+            </Ripple>
+          </View>
         </View>
-        <View style={styles.favourite}>
-          <Ripple rippleSize={50} rippleDuration={600} onPress={addFavourite}>
-            <Icon name='heart' style={styles.heartIcon} fill={favcolor} />
-          </Ripple>
-        </View>
+        <Ripple style={styles.namePrice} onPress={props.navigate}>
+          <Text style={styles.title}>{props.hotelName}</Text>
+          <View style={styles.priceBlock}>
+            <Text style={styles.oldPrice}>₹{props.oldCost} </Text>
+            <Text style={styles.price}>₹{props.cost}</Text>
+            <Text style={styles.priceCaption}>  Per Night</Text>
+          </View>
+        </Ripple>
       </View>
-      <Ripple style={styles.namePrice} onPress={props.navigate}>
-        <Text style={styles.title}>{props.hotelName}</Text>
-        <View style={styles.priceBlock}>
-          <Text style={styles.oldPrice}>₹{props.oldCost} </Text>
-          <Text style={styles.price}>₹{props.cost}</Text>
-          <Text style={styles.priceCaption}>  Per Night</Text>
-        </View>
-      </Ripple>
-    </View>
+    </Animatable.View>
   );
 }
 

@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import { useNavigation } from '@react-navigation/native';
+import * as Animatable from 'react-native-animatable';
 
 import ReadNotification from '../../commonFunctions/readNotifications';
 
@@ -21,25 +22,27 @@ const Notifications = (props) => {
   }
 
   return (
-    props.data.map((item) =>
-      <View style={styles.cardContainer} key={item.id}>
-        <Ripple style={styles.contentContainer} onPress={() => navigateBookingdetail(item.booking_id, item.id, item.user_type)}>
-          <View style={styles.leftContainer}>
-            <View style={[{ backgroundColor: item.type === 'booking' ? '#1EA82E' : '#D8462E' }, styles.iconContainer]}>
-              {item.type === 'booking' ?
-                <Icon name='checkmark-outline' fill='#FFF' width={40} height={40} />
-                :
-                <Icon name='close-outline' fill='#FFF' width={40} height={40} />
-              }
+    props.data.map((item, index) =>
+      <Animatable.View animation="bounceInRight" direction="normal" duration={500} useNativeDriver={true} delay={index * 50}>
+        <View style={styles.cardContainer} key={item.id}>
+          <Ripple style={styles.contentContainer} onPress={() => navigateBookingdetail(item.booking_id, item.id, item.user_type)}>
+            <View style={styles.leftContainer}>
+              <View style={[{ backgroundColor: item.type === 'booking' ? '#1EA82E' : '#D8462E' }, styles.iconContainer]}>
+                {item.type === 'booking' ?
+                  <Icon name='checkmark-outline' fill='#FFF' width={40} height={40} />
+                  :
+                  <Icon name='close-outline' fill='#FFF' width={40} height={40} />
+                }
+              </View>
             </View>
-          </View>
-          <View style={styles.rightContainer}>
-            <Text category='h6'>{item.heading}</Text>
-            <Text category='p1'>{item.content}</Text>
-            <Text style={styles.datetime} category='c1'>{item.created_dt}</Text>
-          </View>
-        </Ripple>
-      </View>
+            <View style={styles.rightContainer}>
+              <Text category='h6'>{item.heading}</Text>
+              <Text category='p1'>{item.content}</Text>
+              <Text style={styles.datetime} category='c1'>{item.created_dt}</Text>
+            </View>
+          </Ripple>
+        </View>
+      </Animatable.View>
     )
   )
 }

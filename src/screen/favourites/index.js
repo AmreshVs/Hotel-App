@@ -8,13 +8,13 @@ import { connect } from 'react-redux';
 import TopNavSimple from '../../components/navigation/topNavSimple';
 import FavouriteHotels from '../../components/favouriteHotels/index';
 import GetFavourites from '../../redux/thunkActions/getFavourites';
-import { clearData } from '../../redux/actions/hotelDetailActions';
 import FavouriteHotelSK from '../../components/skeletons/favouriteHotelSK';
 import CheckUserData from '../../commonFunctions/checkUserData';
+import { clearData } from '../../redux/actions/hotelDetailActions';
 
 const NoFavourites = () => {
 
-  const styles = useStyleSheet(style);
+  const styles = useStyleSheet(themedStyle);
 
   return (
     <View style={styles.noDataContainer}>
@@ -28,7 +28,7 @@ const NoFavourites = () => {
 const FavouritesScreen = (props) => {
 
   const navigation = useNavigation();
-  const styles = useStyleSheet(style);
+  const styles = useStyleSheet(themedStyle);
   const [data, setData] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
 
@@ -66,12 +66,12 @@ const FavouritesScreen = (props) => {
 
   return (
     <View style={styles.bodyContainer}>
-      <TopNavSimple screenTitle='Favourite Rooms' backHandler={() => navigation.goBack()} />
+      <TopNavSimple screenTitle='Favourite Rooms' />
       <ScrollView showsVerticalScrollIndicator={false} style={styles.favourites} >
         {loading === true ?
           [1, 2, 3].map((item) => <FavouriteHotelSK key={item} />)
           :
-          (data.length === 0 ? <NoFavourites /> : data.map((item) => <FavouriteHotels key={item.id} alias={item.alias} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} reloadData={reloadData} hotelId={item.id} image={item.image[0].file} hotelName={item.title} price={item.price_start} rating={item.avg_rating} token={props.access_token} />))}
+          (data.length === 0 ? <NoFavourites /> : data.map((item, index) => <FavouriteHotels key={item.id} delay={index} alias={item.alias} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} reloadData={reloadData} hotelId={item.id} image={item.image[0].file} hotelName={item.title} price={item.price_start} rating={item.avg_rating} token={props.access_token} />))}
       </ScrollView>
     </View>
   );
@@ -87,9 +87,8 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(React.memo(FavouritesScreen));
 
-const style = StyleService.create({
+const themedStyle = StyleService.create({
   bodyContainer: {
-    backgroundColor: 'background-basic-color-1',
     height: '100%',
   },
   noDataContainer: {

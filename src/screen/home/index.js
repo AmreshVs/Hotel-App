@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { ScrollView } from 'react-native';
 import { useStyleSheet } from '@ui-kitten/components';
 import { useNavigation } from '@react-navigation/native';
+import * as Animatable from 'react-native-animatable';
 
-import style from './styles';
+import themedStyle from './styles';
 import SearchHotelCard from '../../components/home/searchHotelCard';
 import Head from '../../components/home/head';
 import RecommendedRooms from '../../components/home/recommenedRooms';
@@ -15,7 +16,7 @@ import CheckUserData from '../../commonFunctions/checkUserData';
 const HomeScreen = (props) => {
 
   const navigation = useNavigation();
-  const styles = useStyleSheet(style);
+  const styles = useStyleSheet(themedStyle);
   const [data, setData] = React.useState({});
 
   useEffect(() => {
@@ -25,11 +26,9 @@ const HomeScreen = (props) => {
       setData(response);
     }
     loadDatas();
-    
     navigation.addListener('focus', () => {
       reloadData();
     })
-
   }, [])
 
   const reloadData = async () => {
@@ -41,7 +40,9 @@ const HomeScreen = (props) => {
 
   return (
     <ScrollView style={styles.statusBarTop} showsVerticalScrollIndicator={false}>
-      <Head/>
+      <Animatable.View animation="fadeIn" direction="normal" duration={800} useNativeDriver={true} >
+        <Head/>
+      </Animatable.View>
       <SearchHotelCard/>
       <RecommendedRooms data={data.recommended} />
       <ExclusiveRooms data={data.exclusive} />

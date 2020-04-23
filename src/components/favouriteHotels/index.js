@@ -5,15 +5,16 @@ import { View, Image } from 'react-native';
 import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import { useNavigation } from '@react-navigation/native';
+import * as Animatable from 'react-native-animatable';
 
 import AddFavourite from '../../redux/thunkActions/addFavourite';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 import { clearData } from '../../redux/actions/hotelDetailActions';
 
 const FavouriteHotels = (props) => {
-
+console.log(props);
   const navigation = useNavigation();
-  const styles = useStyleSheet(style);
+  const styles = useStyleSheet(themedStyle);
 
   const removeFavourite = async () => {
     const response = await AddFavourite({ hotel_id: props.hotelId }, props.token);
@@ -31,31 +32,33 @@ const FavouriteHotels = (props) => {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.favContainer}>
-        <Ripple rippleSize={500} rippleDuration={600} onPress={() => navigateHotelDetails(props.alias, props.hotelId, 1)}>
-          <Image style={styles.image} source={{ uri: props.image }} />
-        </Ripple>
-        <Ripple rippleSize={50} rippleDuration={600} onPress={removeFavourite} style={styles.heartContainer}>
-          <Icon name='heart' style={styles.heartIcon} fill='#FF4626' />
-        </Ripple>
-        <View style={styles.contentContainer}>
-          <View style={styles.leftContainer}>
-            <Ripple rippleSize={500} rippleDuration={600} onPress={() => props.navigate(props.alias, props.hotelId, 1)}>
-              <Text style={styles.hotelName}>{props.hotelName}</Text>
-            </Ripple>
-            <View style={styles.iconContainer}>
-              <Icon name='star' style={styles.starIcon} fill='#FFD13A' />
-              <Text style={styles.caption}>{props.rating}</Text>
+    <Animatable.View animation="fadeInLeft" direction="normal" duration={1000} useNativeDriver={true} delay={props.delay * 50}>
+      <View style={styles.container}>
+        <View style={styles.favContainer}>
+          <Ripple rippleSize={500} rippleDuration={600} onPress={() => navigateHotelDetails(props.alias, props.hotelId, 1)}>
+            <Image style={styles.image} source={{ uri: props.image }} />
+          </Ripple>
+          <Ripple rippleSize={50} rippleDuration={600} onPress={removeFavourite} style={styles.heartContainer}>
+            <Icon name='heart' style={styles.heartIcon} fill='#FF4626' />
+          </Ripple>
+          <View style={styles.contentContainer}>
+            <View style={styles.leftContainer}>
+              <Ripple rippleSize={500} rippleDuration={600} onPress={() => props.navigate(props.alias, props.hotelId, 1)}>
+                <Text style={styles.hotelName}>{props.hotelName}</Text>
+              </Ripple>
+              <View style={styles.iconContainer}>
+                <Icon name='star' style={styles.starIcon} fill='#FFD13A' />
+                <Text style={styles.caption}>{props.rating}</Text>
+              </View>
             </View>
-          </View>
-          <View style={styles.rightContainer}>
-            <Text style={styles.price}>{'₹' + props.price}</Text>
-            <Text style={styles.priceCaption}>  Per Night</Text>
+            <View style={styles.rightContainer}>
+              <Text style={styles.price}>{'₹' + props.price}</Text>
+              <Text style={styles.priceCaption}>  Per Night</Text>
+            </View>
           </View>
         </View>
       </View>
-    </View>
+    </Animatable.View>
   );
 }
 
@@ -69,7 +72,7 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(FavouriteHotels);
 
-const style = StyleService.create({
+const themedStyle = StyleService.create({
   container: {
     alignItems: 'center',
     marginBottom: 20,

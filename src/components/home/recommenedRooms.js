@@ -48,7 +48,7 @@ const RecommendedRooms = (props) => {
         </Ripple>
       </View>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        {data.map((item) => loaded === false ? <RecommendedRoomsSK key={item + 1} pending={true} /> : <RoomsListLarge key={item.alias} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} cost={item.price_start} oldCost={Number(item.price_start) + 200} pending={false} is_favourite={item.is_favorite} />)}
+        {data.map((item, index) => loaded === false ? <RecommendedRoomsSK key={item + 1} pending={true} /> : <RoomsListLarge key={item.alias} delay={index} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} cost={item.price_start} oldCost={Number(item.price_start) + 200} pending={false} is_favourite={item.is_favorite} />)}
       </ScrollView>
     </View>
   );

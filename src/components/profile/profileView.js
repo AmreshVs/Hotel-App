@@ -2,6 +2,7 @@ import React from 'react';
 import { View, AsyncStorage } from 'react-native';
 import { Button, Card, Icon, Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { useNavigation } from '@react-navigation/native';
+import * as Animatable from 'react-native-animatable';
 
 const ProfileView = (props) => {
 
@@ -11,7 +12,7 @@ const ProfileView = (props) => {
   const logout = async () => {
     const userData = await AsyncStorage.removeItem('@Darpad:userData');
     if (userData === null) {
-      navigation.navigate('LoginScreen');
+      navigation.push('LoginScreen');
     }
   }
 
@@ -27,51 +28,63 @@ const ProfileView = (props) => {
     <View style={styles.bodyContainer}>
       <Card style={styles.cardContainer}>
         <View>
-          <View style={styles.inputContainer}>
-            <View style={styles.iconContainer}>
-              <Icon name='person-outline' style={styles.icons} fill={styles.iconColor.color} />
+          <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true}>
+            <View style={styles.inputContainer}>
+              <View style={styles.iconContainer}>
+                <Icon name='person-outline' style={styles.icons} fill={styles.iconColor.color} />
+              </View>
+              <View style={styles.nameContainer}>
+                <Text style={styles.inputText}>{props.data.firstname} {props.data.lastname}</Text>
+              </View>
             </View>
-            <View style={styles.nameContainer}>
-              <Text style={styles.inputText}>{props.data.firstname} {props.data.lastname}</Text>
+          </Animatable.View>
+          <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true}>
+            <View style={styles.inputContainer}>
+              <View style={styles.iconContainer}>
+                <Icon name='email-outline' style={styles.icons} fill={styles.iconColor.color} />
+              </View>
+              <View style={styles.nameContainer}>
+                <Text style={styles.inputText}>{props.data.email}</Text>
+              </View>
             </View>
-          </View>
-          <View style={styles.inputContainer}>
-            <View style={styles.iconContainer}>
-              <Icon name='email-outline' style={styles.icons} fill={styles.iconColor.color} />
+          </Animatable.View>
+          <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true}>
+            <View style={styles.inputContainer}>
+              <View style={styles.iconContainer}>
+                <Icon name='phone-outline' style={styles.icons} fill={styles.iconColor.color} />
+              </View>
+              <View style={styles.nameContainer}>
+                <Text style={styles.inputText}>{'+91 ' + props.data.mobile}</Text>
+              </View>
             </View>
-            <View style={styles.nameContainer}>
-              <Text style={styles.inputText}>{props.data.email}</Text>
+          </Animatable.View>
+          <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true}>
+            <View style={styles.inputContainer}>
+              <View style={styles.iconContainer}>
+                <Icon name='map-outline' style={styles.icons} fill={styles.iconColor.color} />
+              </View>
+              <View style={styles.nameContainer}>
+                <Text style={styles.inputText}>{props.data.address}</Text>
+              </View>
             </View>
-          </View>
-          <View style={styles.inputContainer}>
-            <View style={styles.iconContainer}>
-              <Icon name='phone-outline' style={styles.icons} fill={styles.iconColor.color} />
+          </Animatable.View>
+          <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true}>
+            <View style={styles.inputContainer}>
+              <View style={styles.iconContainer}>
+                <Icon name='pin-outline' style={styles.icons} fill={styles.iconColor.color} />
+              </View>
+              <View style={styles.nameContainer}>
+                <Text style={styles.inputText}>{props.data.city}</Text>
+              </View>
             </View>
-            <View style={styles.nameContainer}>
-              <Text style={styles.inputText}>+91 {props.data.mobile}</Text>
-            </View>
-          </View>
-          <View style={styles.inputContainer}>
-            <View style={styles.iconContainer}>
-              <Icon name='map-outline' style={styles.icons} fill={styles.iconColor.color} />
-            </View>
-            <View style={styles.nameContainer}>
-              <Text style={styles.inputText}>{props.data.address}</Text>
-            </View>
-          </View>
-          <View style={styles.inputContainer}>
-            <View style={styles.iconContainer}>
-              <Icon name='pin-outline' style={styles.icons} fill={styles.iconColor.color} />
-            </View>
-            <View style={styles.nameContainer}>
-              <Text style={styles.inputText}>{props.data.city}</Text>
-            </View>
-          </View>
+          </Animatable.View>
         </View>
-        <View style={styles.btnContainer}>
-          <Button style={styles.logoutButton} status='danger' size='small' appearance='outline' onPress={logout} icon={LogoutIcon}>Logout</Button>
-          <Button style={styles.logoutButton} appearance='outline' size='small' onPress={props.handleClick} icon={EditIcon}>Edit</Button>
-        </View>
+        <Animatable.View animation="bounceInLeft" direction="normal" duration={500} useNativeDriver={true}>
+          <View style={styles.btnContainer}>
+              <Button style={styles.logoutButton} status='danger' size='small' appearance='outline' onPress={logout} icon={LogoutIcon}>Logout</Button>
+            <Button style={styles.logoutButton} appearance='outline' size='small' onPress={props.handleClick} icon={EditIcon}>Edit</Button>
+          </View>
+        </Animatable.View>
       </Card>
     </View>
   );
@@ -102,7 +115,7 @@ const style = StyleService.create({
     flexDirection: 'row',
   },
   iconContainer: {
-    width: '10%',
+    width: 30,
     justifyContent: 'center',
   },
   nameContainer: {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, StyleSheet, StatusBar } from 'react-native';
+import { View, StatusBar } from 'react-native';
+import { StyleService, useStyleSheet } from '@ui-kitten/components';
 import SnackBar from 'react-native-snackbar-component';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -9,6 +10,8 @@ import TabNavigator from '../navigation/index';
 
 
 const Main = (props) => {
+
+  const styles = useStyleSheet(themedStyle);
 
   // Handling Reference Mount
   React.useEffect(() => {
@@ -22,7 +25,7 @@ const Main = (props) => {
         <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
         <View style={styles.statusBar} />
         <TabNavigator/>
-        <SnackBar style={styles.snack} visible={props.visible} textMessage={props.message} backgroundColor={props.backgroundColor} actionText="Ok" />
+        <SnackBar containerStyle={styles.snack} visible={props.visible} textMessage={props.message} backgroundColor={props.backgroundColor} actionText="Ok" position="bottom" bottom={10} right={10} left={10} autoHidingTime={1900} />
       </NavigationContainer>
     </View>
   )
@@ -34,19 +37,18 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps)(Main);
 
-const styles = StyleSheet.create({
+const themedStyle = StyleService.create({
   mainView: {
     height: '100%',
     width: '100%',
-    backgroundColor: '#FFF'
+    backgroundColor: 'background-basic-color-1'
   },
   statusBar: {
-    backgroundColor: '#1939B7',
+    backgroundColor: 'color-primary-600',
     height: StatusBar.currentHeight,
   },
   snack: {
-    overflow: 'hidden',
     borderRadius: 5,
-    margin: 10,
+    zIndex: 9999999,
   }
 });

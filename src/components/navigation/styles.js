@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
   tab: {
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    height: 35,
   },
 });
 

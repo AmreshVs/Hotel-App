@@ -5,8 +5,10 @@ import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import { useNavigation } from '@react-navigation/native';
-import { addGuests } from '../../redux/actions/hotelDetailActions';
 import moment from 'moment';
+import * as Animatable from 'react-native-animatable';
+
+import { addGuests } from '../../redux/actions/hotelDetailActions';
 
 const ChooseDates = (props) => {
 
@@ -40,19 +42,21 @@ const ChooseDates = (props) => {
   const dates = (fromDate !== undefined && toDate !== undefined) ? fromDate + ' - ' + toDate : '-';
 
   return (
-    <View style={styles.cardContainer}>
-      <Text style={styles.heading}>Choose Room's and Guest's</Text>
-      <Ripple rippleSize={150} rippleDuration={600} style={styles.choosedates} onPress={hotelDates}>
-        <View style={styles.container}>
-          <Icon name='calendar-outline' width={22} height={22} fill={styles.iconColor.color} />
-          <Text style={styles.text}>{dates}</Text>
-        </View>
-        <View style={styles.container}>
-          <Icon name='people-outline' width={22} height={22} fill={styles.iconColor.color} />
-          <Text style={styles.text}>{roomNum} Room's, {guests} Guest's</Text>
-        </View>
-      </Ripple>
-    </View>
+    <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={40} >
+      <View style={styles.cardContainer}>
+        <Text style={styles.heading}>Choose Room's and Guest's</Text>
+        <Ripple rippleSize={150} rippleDuration={600} style={styles.choosedates} onPress={hotelDates}>
+          <View style={styles.container}>
+            <Icon name='calendar-outline' width={22} height={22} fill={styles.iconColor.color} />
+            <Text style={styles.text}>{dates}</Text>
+          </View>
+          <View style={styles.container}>
+            <Icon name='people-outline' width={22} height={22} fill={styles.iconColor.color} />
+            <Text style={styles.text}>{roomNum} Room's, {guests} Guest's</Text>
+          </View>
+        </Ripple>
+      </View>
+    </Animatable.View>
   );
 }
 

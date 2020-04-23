@@ -50,7 +50,7 @@ const BookingssScreen = (props) => {
 
   return (
     <View style={styles.bodyContainer}>
-      <TopNavSimple screenTitle='Your Bookings' backHandler={() => navigation.goBack()} />
+      <TopNavSimple screenTitle='Your Bookings' />
       <TabView
         selectedIndex={selectedIndex}
         shouldLoadComponent={shouldLoadComponent}

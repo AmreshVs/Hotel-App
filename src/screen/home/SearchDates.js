@@ -5,6 +5,7 @@ import { SafeAreaView, StyleSheet, ScrollView } from 'react-native';
 import { Layout, Tab, TabView, Button } from '@ui-kitten/components';
 import { RangeCalendar } from '@ui-kitten/components';
 import { useNavigation } from '@react-navigation/native';
+import * as Animatable from 'react-native-animatable';
 
 import SelectGuest from '../../components/hotelsDetail/selectGuest';
 import { removeGuests, addGuests, chooseDates } from '../../redux/actions/hotelDetailActions';
@@ -72,7 +73,9 @@ const SearchDates = (props) => {
                 return <SelectGuest key={item} roomNum={item} adult={props.hotelDetail.rooms[item].adult} children={props.hotelDetail.rooms[item].children} removeRoom={removeRoom} ClosePage={ClosePage} />
               }
             })}
-            <Button style={styles.addRoom} appearance='outline' status='primary' onPress={addRoom}>Add Room</Button>
+            <Animatable.View animation="bounceInRight" direction="normal" duration={500} useNativeDriver={true}>
+              <Button style={styles.addRoom} appearance='outline' status='primary' onPress={addRoom}>Add Room</Button>
+            </Animatable.View>
           </ScrollView>
         </Tab>
       </TabView>

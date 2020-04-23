@@ -38,7 +38,7 @@ const UserProfileScreen = (props) => {
 
   return (
     <View>
-      <TopNavSimple screenTitle='User Profile' backHandler={() => navigation.goBack()} />
+      <TopNavSimple screenTitle='User Profile' />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           {data.length <= 0 ? <ProfileSK /> : (edit === false ? <ProfileView data={data} handleClick={handleClick} /> : <ProfileEdit data={data} handleClick={handleClick} reloadData={reloadData} />)}

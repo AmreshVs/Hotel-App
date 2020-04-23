@@ -1,32 +1,36 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Card, Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
+import * as Animatable from 'react-native-animatable';
 
 const ConfirmBlock = (props) => {
-  const styles = useStyleSheet(style);
+  
+  const styles = useStyleSheet(themedStyle);
   var bgClr = '';
-  if (props.status === '1' || props.status === '4' || props.status === '5') {
+  if (props.status === 1 || props.status === 4 || props.status === 5) {
     bgClr = '#19b752';
   }
-  if (props.status === '2') {
+  if (props.status === 2) {
     bgClr = '#DB2C36';
   }
 
   return (
-    <Card style={[styles.container, { backgroundColor: bgClr }]}>
-      <View style={styles.bookingContainer}>
-        <Icon name='checkmark-circle-outline' style={styles.checkIcon} fill={styles.iconColor.color} />
-        <Text style={styles.confirmed}>Your Booking is {props.status_label}!</Text>
-        <Text style={styles.bookingCaption}>Your booking ID is #{props.booking_id}.</Text>
-        {props.transaction_id === '' || props.transaction_id === '-' ? <Text style={styles.caption}>The amount of ₹{props.total} can be payed upon your arrival. This booking can be cancelled anytime here.</Text> : <Text style={styles.caption}> Your payment is successfull and Transaction ID is {props.transaction_id}. Now Check In to your rooms hassle free.</Text>}
-      </View>
-    </Card>
+    <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true}>
+      <Card style={[styles.container, { backgroundColor: bgClr }]}>
+        <View style={styles.bookingContainer}>
+          <Icon name='checkmark-circle-outline' style={styles.checkIcon} fill={styles.iconColor.color} />
+          <Text style={styles.confirmed}>Your Booking is {props.status_label}!</Text>
+          <Text style={styles.bookingCaption}>Your booking ID is #{props.booking_id}.</Text>
+          {props.transaction_id === '' || props.transaction_id === '-' ? <Text style={styles.caption}>The amount of ₹{props.total} can be payed upon your arrival. This booking can be cancelled anytime here.</Text> : <Text style={styles.caption}> Your payment is successfull and Transaction ID is {props.transaction_id}. Now Check In to your rooms hassle free.</Text>}
+        </View>
+      </Card>
+    </Animatable.View>
   )
 }
 
 export default ConfirmBlock;
 
-const style = StyleService.create({
+const themedStyle = StyleService.create({
   container: {
     width: '100%',
     marginTop: 10,

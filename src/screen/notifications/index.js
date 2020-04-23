@@ -51,7 +51,7 @@ const NotificationsScreen = (props) => {
 
   return (
     <View style={styles.backContainer}>
-      <TopNavSimple screenTitle='Notifications' backHandler={() => navigation.goBack()} rightControl={true} rightControlFun={RefreshAction} />
+      <TopNavSimple screenTitle='Notifications' rightControl={true} rightControlFun={RefreshAction} />
       <ScrollView contentContainerStyle={styles.container} showsHorizontalScrollIndicator={false}>
         {data === -1 ? <NoData /> : data.length === 0 ? <NotificationsSK /> : <Notifications data={data} token={props.access_token} reload={reloadData} />}
       </ScrollView>
@@ -67,7 +67,6 @@ export default connect(mapStateToProps)(NotificationsScreen);
 
 const themedStyles = StyleService.create({
   backContainer: {
-    backgroundColor: 'background-basic-color-1',
     height: '100%',
   },
   container: {

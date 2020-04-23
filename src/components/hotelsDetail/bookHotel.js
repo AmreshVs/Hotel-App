@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Text, Button, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+
 import CheckUserData from '../../commonFunctions/checkUserData';
 
 const BookHotel = (props) => {

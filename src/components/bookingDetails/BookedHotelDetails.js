@@ -1,16 +1,18 @@
 import React from 'react';
 import { View, Image, Alert } from 'react-native';
 import { Card, Button, Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
+import { useNavigation } from '@react-navigation/native';
+import * as Animatable from 'react-native-animatable';
+
 import CancelBooking from '../../redux/thunkActions/cancelBooking';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 import SendNotification from '../../commonFunctions/sendNotification';
 import SaveNotification from '../../commonFunctions/saveNotification';
-import { useNavigation } from '@react-navigation/native';
 
 const BookedHotelDetails = (props) => {
 
   const navigation = useNavigation();
-  const styles = useStyleSheet(style);
+  const styles = useStyleSheet(themedStyle);
 
   const CloseIcon = () => (
     <Icon style={styles.btnIcons} name='close-circle-outline' fill='#FFF' />
@@ -47,76 +49,78 @@ const BookedHotelDetails = (props) => {
   }
 
   return (
-    <Card style={styles.container}>
-      <View style={styles.bookingContainer}>
-        <View style={styles.confirmContainer}>
-          <Text style={styles.confirmed}>{props.data.customer_name}</Text>
-          <View style={styles.datesContainer}>
-            <View style={styles.datesLeft}>
-              <Text>Check In</Text>
-              <Text style={styles.caption}>{props.data.start_date}</Text>
+    <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={10} >
+      <Card style={styles.container}>
+        <View style={styles.bookingContainer}>
+          <View style={styles.confirmContainer}>
+            <Text style={styles.confirmed}>{props.data.customer_name}</Text>
+            <View style={styles.datesContainer}>
+              <View style={styles.datesLeft}>
+                <Text>Check In</Text>
+                <Text style={styles.caption}>{props.data.start_date}</Text>
+              </View>
+              <Icon name='swap-outline' style={styles.personIcon} fill={styles.iconColor.color} />
+              <View style={styles.datesRight}>
+                <Text>Check Out</Text>
+                <Text style={styles.caption}>{props.data.end_date}</Text>
+              </View>
             </View>
-            <Icon name='swap-outline' style={styles.personIcon} fill={styles.iconColor.color} />
-            <View style={styles.datesRight}>
-              <Text>Check Out</Text>
-              <Text style={styles.caption}>{props.data.end_date}</Text>
+          </View>
+          <View style={styles.hrLine}></View>
+          <View style={styles.contentContainer}>
+            <View>
+              <Image style={styles.image} source={{ uri: props.data.image[0].file }} />
             </View>
+            <View style={styles.content}>
+              <Text style={styles.hotelName}>{props.data.title}</Text>
+              <Text style={styles.caption}>{props.data.address}</Text>
+            </View>
+          </View>
+          <View style={styles.bookInfoContainer}>
+            <View style={styles.bookInfo}>
+              <Icon name='person-outline' style={styles.InfoIcon} fill={styles.iconColor.color} />
+              <Text style={styles.infoCaption}>Adult's : {props.data.adults}</Text>
+            </View>
+            <View style={styles.bookInfo}>
+              <Icon name='people-outline' style={styles.InfoIcon} fill={styles.iconColor.color} />
+              <Text style={styles.infoCaption}>Children : {props.data.children}</Text>
+            </View>
+            <View style={styles.bookInfo}>
+              <Icon name='npm-outline' style={styles.InfoIcon} fill={styles.iconColor.color} />
+              <Text style={styles.infoCaption}>Room's : {props.data.rooms}</Text>
+            </View>
+          </View>
+        </View>
+        <View style={styles.priceContainer}>
+          <Text style={styles.heading}>Price & Extra Services</Text>
+          {props.data.service.map((item) =>
+            <View style={styles.serviceContainer} key={item.id}>
+              <Text style={styles.serviceCaption}>{item.title}</Text>
+              <Text style={styles.caption}>₹{item.price}</Text>
+            </View>
+          )}
+          <View style={styles.serviceContainer}>
+            <Text style={styles.serviceCaption}>Discount</Text>
+            <Text style={styles.caption}>₹{props.data.discount}</Text>
+          </View>
+          <View style={styles.serviceContainer}>
+            <Text style={styles.serviceCaption}>Total</Text>
+            <Text style={styles.totalCaption}>₹{props.data.total}</Text>
           </View>
         </View>
         <View style={styles.hrLine}></View>
-        <View style={styles.contentContainer}>
-          <View>
-            <Image style={styles.image} source={{ uri: props.data.image[0].file }} />
-          </View>
-          <View style={styles.content}>
-            <Text style={styles.hotelName}>{props.data.title}</Text>
-            <Text style={styles.caption}>{props.data.address}</Text>
-          </View>
+        <View style={styles.btnContainer}>
+          <Button style={styles.btns} status='danger' size='small' icon={CloseIcon} disabled={props.data.status === 1 || props.data.status === 5 ? false : true} onPress={cancelBook}>Cancel Booking</Button>
+          <Button style={styles.btns} status='primary' size='small' icon={CallIcon}>Call Hotel</Button>
         </View>
-        <View style={styles.bookInfoContainer}>
-          <View style={styles.bookInfo}>
-            <Icon name='person-outline' style={styles.InfoIcon} fill={styles.iconColor.color} />
-            <Text style={styles.infoCaption}>Adult's : {props.data.adults}</Text>
-          </View>
-          <View style={styles.bookInfo}>
-            <Icon name='people-outline' style={styles.InfoIcon} fill={styles.iconColor.color} />
-            <Text style={styles.infoCaption}>Children : {props.data.children}</Text>
-          </View>
-          <View style={styles.bookInfo}>
-            <Icon name='npm-outline' style={styles.InfoIcon} fill={styles.iconColor.color} />
-            <Text style={styles.infoCaption}>Room's : {props.data.rooms}</Text>
-          </View>
-        </View>
-      </View>
-      <View style={styles.priceContainer}>
-        <Text style={styles.heading}>Price & Extra Services</Text>
-        {props.data.service.map((item) =>
-          <View style={styles.serviceContainer} key={item.id}>
-            <Text style={styles.serviceCaption}>{item.title}</Text>
-            <Text style={styles.caption}>₹{item.price}</Text>
-          </View>
-        )}
-        <View style={styles.serviceContainer}>
-          <Text style={styles.serviceCaption}>Discount</Text>
-          <Text style={styles.caption}>₹{props.data.discount}</Text>
-        </View>
-        <View style={styles.serviceContainer}>
-          <Text style={styles.serviceCaption}>Total</Text>
-          <Text style={styles.totalCaption}>₹{props.data.total}</Text>
-        </View>
-      </View>
-      <View style={styles.hrLine}></View>
-      <View style={styles.btnContainer}>
-        <Button style={styles.btns} status='danger' size='small' icon={CloseIcon} disabled={props.data.status === '1' || props.data.status === '5' ? false : true} onPress={cancelBook}>Cancel Booking</Button>
-        <Button style={styles.btns} status='primary' size='small' icon={CallIcon}>Call Hotel</Button>
-      </View>
-    </Card>
+      </Card>
+    </Animatable.View>
   )
 }
 
 export default BookedHotelDetails;
 
-const style = StyleService.create({
+const themedStyle = StyleService.create({
   container: {
     width: '100%',
     borderRadius: 10,

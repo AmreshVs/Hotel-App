@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Image } from 'react-native';
 import { Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
+import * as Animatable from 'react-native-animatable';
 
 const Amenities = (props) => {
   const styles = useStyleSheet(style);
@@ -13,27 +14,29 @@ const Amenities = (props) => {
   }
 
   return (
-    <View style={styles.cardContainer}>
-      <Text style={styles.heading}>Amenities</Text>
-      <View style={{ height: showAmenities, overflow: 'hidden' }}>
-        <View style={styles.amenitiesContainer}>
-          {amenitiesData.map((item) =>
-            <View key={item.id} style={styles.amenities}>
-              <Image
-                style={styles.amenitiesImg}
-                source={{ uri: item.image }}
-              />
-              <Text style={styles.amenitiesName}>{item.name}</Text>
-            </View>
-          )}
+    <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={20} >
+      <View style={styles.cardContainer}>
+        <Text style={styles.heading}>Amenities</Text>
+        <View style={{ height: showAmenities, overflow: 'hidden' }}>
+          <View style={styles.amenitiesContainer}>
+            {amenitiesData.map((item) =>
+              <View key={item.id} style={styles.amenities}>
+                <Image
+                  style={styles.amenitiesImg}
+                  source={{ uri: item.image }}
+                />
+                <Text style={styles.amenitiesName}>{item.name}</Text>
+              </View>
+            )}
+          </View>
         </View>
+        {amenitiesData.length > 4 ?
+          <Ripple rippleSize={50} rippleDuration={600} onPress={revealAmenities}>
+            <Text status='primary'> {showAmenities === 90 ? 'More' : 'Less'} </Text>
+          </Ripple>
+          : null}
       </View>
-      {amenitiesData.length > 4 ?
-        <Ripple rippleSize={50} rippleDuration={600} onPress={revealAmenities}>
-          <Text status='primary'> {showAmenities === 90 ? 'More' : 'Less'} </Text>
-        </Ripple>
-        : null}
-    </View>
+    </Animatable.View>
   )
 }
 

@@ -22,7 +22,7 @@ const TopNavSimple = (props) => {
 
   return (
     <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={[styles.topbar.color1, styles.topbar.color2, styles.topbar.color3]}>
-      <TopNavigation title={props.screenTitle} titleStyle={styles.title} alignment='center' leftControl={BackAction()} rightControls={props.rightControl === true ? props.rightControlFun() : null} style={styles.header} />
+      <TopNavigation title={props.screenTitle} titleStyle={styles.title} alignment='center' leftControl={props.backHandler !== undefined ? BackAction() : null} rightControls={props.rightControl === true ? props.rightControlFun() : null} style={styles.header} />
     </LinearGradient>
   )
 }

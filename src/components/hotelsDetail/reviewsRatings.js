@@ -3,6 +3,7 @@ import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { connect } from 'react-redux';
 import { View, Modal, ScrollView } from 'react-native';
 import Ripple from 'react-native-material-ripple';
+import * as Animatable from 'react-native-animatable';
 
 import Progress from '../extra/progress';
 import ReviewsLess from './reviewsLess';
@@ -46,7 +47,7 @@ const GuestDetails = (props) => {
   }
 
   return (
-    <View style={{ width: '100%', alignItems: 'center' }}>
+    <Animatable.View style={{ width: '100%', alignItems: 'center' }} animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={60} >
       <View style={styles.cardContainer}>
         <View style={styles.textContainer}>
           <View style={styles.textContainer1}>
@@ -91,8 +92,8 @@ const GuestDetails = (props) => {
             <TopNavSimple backHandler={toggleModal} screenTitle="All Reviews" />
             <ScrollView style={styles.reviewsMore} showsVerticalScrollIndicator={false}>
               {allReviewData.length === 0 ? <RenderReviewLessSK /> :
-                allReviewData.map((item) => {
-                  return <ReviewsLess key={item.id} data={item} />
+                allReviewData.map((item, index) => {
+                  return <ReviewsLess key={item.id} delay={index} data={item} />
                 })
               }
             </ScrollView>
@@ -110,7 +111,7 @@ const GuestDetails = (props) => {
           </View>
         </Modal>
       </View>
-    </View>
+    </Animatable.View>
   );
 }
 

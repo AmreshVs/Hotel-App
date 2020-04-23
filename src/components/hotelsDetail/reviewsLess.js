@@ -1,31 +1,34 @@
 import React from 'react';
 import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 
 const ReviewsLess = (props) => {
 
   const styles = useStyleSheet(style);
   
   return (
-    <View style={styles.reviewsContainer}>
-      {props.data !== undefined &&
-        <View style={styles.ratingName}>
-          <View style={styles.starContainer}>
-            <Icon name='star' style={styles.star} fill='#FFC145' />
-            <Text style={styles.rating}>{props.data !== undefined ? props.data.rating : 0}</Text>
+    <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={props.delay * 50} >
+      <View style={styles.reviewsContainer}>
+        {props.data !== undefined &&
+          <View style={styles.ratingName}>
+            <View style={styles.starContainer}>
+              <Icon name='star' style={styles.star} fill='#FFC145' />
+              <Text style={styles.rating}>{props.data !== undefined ? props.data.rating : 0}</Text>
+            </View>
+            <View style={styles.nameContainer}>
+              <Text style={styles.name}>{props.data !== undefined ? props.data.name : ''}</Text>
+              <Text style={styles.postedon}>Posted on {props.data !== undefined ? props.data.posted_on : ''}</Text>
+            </View>
           </View>
-          <View style={styles.nameContainer}>
-            <Text style={styles.name}>{props.data !== undefined ? props.data.name : ''}</Text>
-            <Text style={styles.postedon}>Posted on {props.data !== undefined ? props.data.posted_on : ''}</Text>
+        }
+        {props.data !== undefined &&
+          <View style={styles.reviewContent}>
+            <Text style={styles.review}>{props.data !== undefined ? props.data.msg : ''}</Text>
           </View>
-        </View>
-      }
-      {props.data !== undefined &&
-        <View style={styles.reviewContent}>
-          <Text style={styles.review}>{props.data !== undefined ? props.data.msg : ''}</Text>
-        </View>
-      }
-    </View>
+        }
+      </View>
+    </Animatable.View>
   );
 }
 

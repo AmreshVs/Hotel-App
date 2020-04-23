@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ScrollView, View, Image } from 'react-native';
 import { Text, CheckBox, Icon, Modal, Layout, StyleService, useStyleSheet } from '@ui-kitten/components';
+import * as Animatable from 'react-native-animatable';
 
 import LoadPrices from '../../redux/thunkActions/loadPrices';
 import ImageViewer from '../../components/extra/ImageViewer';
@@ -68,51 +69,53 @@ const RoomsCategory = (props) => {
   );
 
   return (
-    <View style={styles.cardContainer}>
-      <Text style={styles.heading}>Rooms</Text>
-      {props.data.map((item) => {
-        var hotelname = ((item.title).length > maxlimit) ?
-          (((item.title).substring(0, maxlimit - 3)) + '...') :
-          item.title;
-        return (
-          <View key={item.id} style={styles.controlContainer}>
-            <View style={styles.roomDetails}>
-              <View>
-                <Ripple onPress={() => addModalImages(item.images)}>
-                  <Image
-                    style={styles.image}
-                    source={{ uri: item.images[0].source.uri }}
+    <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={30} >
+      <View style={styles.cardContainer}>
+        <Text style={styles.heading}>Rooms</Text>
+        {props.data.map((item) => {
+          var hotelname = ((item.title).length > maxlimit) ?
+            (((item.title).substring(0, maxlimit - 3)) + '...') :
+            item.title;
+          return (
+            <View key={item.id} style={styles.controlContainer}>
+              <View style={styles.roomDetails}>
+                <View>
+                  <Ripple onPress={() => addModalImages(item.images)}>
+                    <Image
+                      style={styles.image}
+                      source={{ uri: item.images[0].source.uri }}
+                    />
+                  </Ripple>
+                </View>
+                <View>
+                  <Text style={styles.roomTitle}>{hotelname}</Text>
+                  <View style={styles.capacity}>
+                    <Icon name='people-outline' fill={styles.iconColor.color} width={20} height={20} />
+                    <Text style={styles.roomCaption}> x{item.capacity.max_people}</Text>
+                  </View>
+                  <View style={styles.roomAmenities}>
+                    {item.amenities.slice(0, 4).map((amenity) => <Image key={amenity.id} source={{ uri: amenity.image }} style={styles.roomAmenitiesImg} />)}
+                    {item.amenities.length > 4 ? <Ripple style={styles.moreBorder} onPress={() => toggleModal(item.amenities)}><Text style={styles.moreCaption}>{item.amenities.length - 4 + '+'}</Text></Ripple> : false}
+                    <Modal visible={visible} allowBackdrop={true} onBackdropPress={() => toggleModal([])}>
+                      <RenderModalElement amenitiesData={amenities} />
+                    </Modal>
+                  </View>
+                  <CheckBox
+                    style={styles.checkbox}
+                    status='success'
+                    text={'₹' + item.price}
+                    textStyle={styles.checkText}
+                    checked={item.id == selectedIndex ? true : false}
+                    onChange={() => checkRooms(item.id)}
                   />
-                </Ripple>
-              </View>
-              <View>
-                <Text style={styles.roomTitle}>{hotelname}</Text>
-                <View style={styles.capacity}>
-                  <Icon name='people-outline' fill={styles.iconColor.color} width={20} height={20} />
-                  <Text style={styles.roomCaption}> x{item.capacity.max_people}</Text>
                 </View>
-                <View style={styles.roomAmenities}>
-                  {item.amenities.slice(0, 4).map((amenity) => <Image key={amenity.id} source={{ uri: amenity.image }} style={styles.roomAmenitiesImg} />)}
-                  {item.amenities.length > 4 ? <Ripple style={styles.moreBorder} onPress={() => toggleModal(item.amenities)}><Text style={styles.moreCaption}>{item.amenities.length - 4 + '+'}</Text></Ripple> : false}
-                  <Modal visible={visible} allowBackdrop={true} onBackdropPress={() => toggleModal([])}>
-                    <RenderModalElement amenitiesData={amenities} />
-                  </Modal>
-                </View>
-                <CheckBox
-                  style={styles.checkbox}
-                  status='success'
-                  text={'₹' + item.price}
-                  textStyle={styles.checkText}
-                  checked={item.id == selectedIndex ? true : false}
-                  onChange={() => checkRooms(item.id)}
-                />
               </View>
+              <ImageViewer images={modalImages} show={props.hotelDetail.showImageViewer} onClose={props.closeImageViewer} />
             </View>
-            <ImageViewer images={modalImages} show={props.hotelDetail.showImageViewer} onClose={props.closeImageViewer} />
-          </View>
-        )
-      })}
-    </View>
+          )
+        })}
+      </View>
+    </Animatable.View>
   );
 }
 

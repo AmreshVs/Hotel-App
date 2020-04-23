@@ -45,7 +45,7 @@ const SearchRoomsScreen = (props) => {
 
   return (
     <SafeAreaView>
-      <TopNavSimple screenTitle="Find Rooms" />
+      <TopNavSimple screenTitle="Find Rooms" backHandler={() => navigation.goBack()} />
       <ScrollView showsVerticalScrollIndicator={false} style={{ paddingTop: 20 }}>
         {data <= 0 ? <RenderSK /> : data.map((item) => <RoomsListSmall key={item.alias} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favourite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} address={item.alias} cost={item.price_start} oldCost={(item.price_start) + 200} is_favourite={item.is_favorite} />)}
         <View style={{ marginBottom: 80 }} />

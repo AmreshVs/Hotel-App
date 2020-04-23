@@ -3,11 +3,12 @@ import { View, Image, ScrollView } from 'react-native';
 import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import { useNavigation } from '@react-navigation/native';
+import * as Animatable from 'react-native-animatable';
 
 const BookingsOverview = (props) => {
 
   const navigation = useNavigation();
-  const styles = useStyleSheet(style);
+  const styles = useStyleSheet(themedStyle);
 
   const navigateBookingdetail = (id) => {
     navigation.navigate('BookingDetails', {
@@ -17,42 +18,44 @@ const BookingsOverview = (props) => {
 
   return (
     <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
-      {props.data.map((item) =>
-        <View style={styles.container} key={item.booking_id}>
-          <Ripple rippleDuration={600} onPress={() => navigateBookingdetail(item.booking_id)}>
-            <View style={styles.cardContainer}>
-              <View style={styles.row}>
-                <View style={styles.contentContainer}>
-                  <View>
-                    <Image style={styles.image} source={{ uri: item.image[0].file }} />
-                  </View>
-                  <View style={styles.content}>
-                    <Text style={styles.hotelName}>{item.title}</Text>
-                    <Text style={styles.caption}>Booking ID : {item.booking_id}</Text>
-                    <View style={styles.datesContainer}>
-                      <View style={styles.datesLeft}>
-                        <Text>Check In</Text>
-                        <Text style={styles.caption}>{item.start_date}</Text>
-                      </View>
-                      <View style={styles.datesRight}>
-                        <Text>Check Out</Text>
-                        <Text style={styles.caption}>{item.end_date}</Text>
+      {props.data.map((item, index) =>
+        <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={index * 50}>
+          <View style={styles.container} key={item.booking_id}>
+            <Ripple rippleDuration={600} onPress={() => navigateBookingdetail(item.booking_id)}>
+              <View style={styles.cardContainer}>
+                <View style={styles.row}>
+                  <View style={styles.contentContainer}>
+                    <View>
+                      <Image style={styles.image} source={{ uri: item.image[0].file }} />
+                    </View>
+                    <View style={styles.content}>
+                      <Text style={styles.hotelName}>{item.title}</Text>
+                      <Text style={styles.caption}>Booking ID : {item.booking_id}</Text>
+                      <View style={styles.datesContainer}>
+                        <View style={styles.datesLeft}>
+                          <Text>Check In</Text>
+                          <Text style={styles.caption}>{item.start_date}</Text>
+                        </View>
+                        <View style={styles.datesRight}>
+                          <Text>Check Out</Text>
+                          <Text style={styles.caption}>{item.end_date}</Text>
+                        </View>
                       </View>
                     </View>
                   </View>
+                  <View style={styles.iconContainer}>
+                    <Icon name='star' style={styles.starIcon} fill='#FFD13A' />
+                    <Text style={styles.caption}>{item.avg_rating}</Text>
+                  </View>
                 </View>
-                <View style={styles.iconContainer}>
-                  <Icon name='star' style={styles.starIcon} fill='#FFD13A' />
-                  <Text style={styles.caption}>{item.avg_rating}</Text>
+                <View style={styles.info}>
+                  <Text style={styles.address}>{item.address}</Text>
+                  <Text style={styles.caption}>Booked on {item.created_at}</Text>
                 </View>
               </View>
-              <View style={styles.info}>
-                <Text style={styles.address}>{item.address}</Text>
-                <Text style={styles.caption}>Booked on {item.created_at}</Text>
-              </View>
-            </View>
-          </Ripple>
-        </View>
+            </Ripple>
+          </View>
+        </Animatable.View>
       )}
     </ScrollView>
   )
@@ -60,7 +63,7 @@ const BookingsOverview = (props) => {
 
 export default BookingsOverview;
 
-const style = StyleService.create({
+const themedStyle = StyleService.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -81,6 +84,7 @@ const style = StyleService.create({
   },
   row: {
     flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   content: {
     width: '72%',
@@ -113,7 +117,7 @@ const style = StyleService.create({
     flexDirection: 'row',
   },
   iconContainer: {
-    right: 20,
+    right: 10,
   },
   datesContainer: {
     marginTop: 5,

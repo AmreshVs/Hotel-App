@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { View } from 'react-native';
 import { Input, Icon, Card, Button, StyleService, useStyleSheet } from '@ui-kitten/components';
+
 import SaveProfileData from '../../redux/thunkActions/saveProfileData';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 import { userLogin } from '../../redux/actions/commonActions';
 
 const ProfileEdit = (props) => {
-  
-  const styles = useStyleSheet(style);
+
+  const styles = useStyleSheet(themedStyle);
   const [firstname, setFirstname] = React.useState(props.data.firstname);
   const [lastname, setLastname] = React.useState(props.data.lastname);
   const [email, setEmail] = React.useState(props.data.email);
@@ -17,11 +18,24 @@ const ProfileEdit = (props) => {
   const [city, setCity] = React.useState(props.data.city);
 
   const handleSave = async () => {
-    const response = await SaveProfileData(props.access_token, { firstname: firstname, lastname: lastname, email: email, address: address, city: city });
-    snackbarMessage(response.message);
-    props.userLogin({ access_token: props.access_token, firstname: firstname, lastname: lastname, email: email, address: address, city: city })
-    props.handleClick();
-    props.reloadData();
+    if (validate()) {
+      const response = await SaveProfileData(props.access_token, { firstname: firstname, lastname: lastname, email: email, address: address, city: city });
+      snackbarMessage(response.message);
+      props.userLogin({ access_token: props.access_token, firstname: firstname, lastname: lastname, email: email, address: address, city: city })
+      props.handleClick();
+      props.reloadData();
+    }
+  }
+
+  const validate = () => {
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (email.match(mailformat)) {
+      return true;
+    }
+    else {
+      snackbarMessage("You have entered an invalid email address!");
+      return false;
+    }
   }
 
   const SaveIcon = () => (
@@ -121,7 +135,7 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileEdit);
 
-const style = StyleService.create({
+const themedStyle = StyleService.create({
   bodyContainer: {
     backgroundColor: 'background-basic-color-1',
     height: '100%',

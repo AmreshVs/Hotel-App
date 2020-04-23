@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
+import * as Animatable from 'react-native-animatable';
 
 const HotelDescription = (props) => {
   
@@ -17,13 +18,15 @@ const HotelDescription = (props) => {
   const description1 = description.replace(lines, '');
 
   return (
-    <View style={styles.cardContainer}>
-      <Text style={styles.heading}>Description</Text>
-      <Text style={[styles.desc, { height: showDesc }]}>{description1}</Text>
-      <Ripple rippleSize={50} rippleDuration={600} onPress={revealDescription}>
-        <Text status='primary' style={{ marginTop: 5 }}>{showDesc == 60 ? 'More' : 'Less'}</Text>
-      </Ripple>
-    </View>
+    <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={20} >
+      <View style={styles.cardContainer}>
+        <Text style={styles.heading}>Description</Text>
+        <Text style={[styles.desc, { height: showDesc }]}>{description1}</Text>
+        <Ripple rippleSize={50} rippleDuration={600} onPress={revealDescription}>
+          <Text status='primary' style={{ marginTop: 5 }}>{showDesc == 60 ? 'More' : 'Less'}</Text>
+        </Ripple>
+      </View>
+    </Animatable.View>
   );
 }
 

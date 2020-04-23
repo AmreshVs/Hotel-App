@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { View, Platform, KeyboardAvoidingView, Animated } from 'react-native';
+import { View, Platform, KeyboardAvoidingView, Animated, BackHandler } from 'react-native';
 import TimedSlideshow from 'react-native-timed-slideshow';
 import { Icon, Input, Button } from '@ui-kitten/components';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { AsyncStorage } from 'react-native';
 import OneSignal from 'react-native-onesignal';
+import  * as Animatable from 'react-native-animatable';
 
 import styles from './styles';
 import UserLoginAuth from '../../redux/thunkActions/userLoginAuth';
@@ -51,20 +52,35 @@ const LoginScreen = (props) => {
     retrieveData();
   }, [])
 
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        return true;
+      };
+
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () =>
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+    }, [])
+  );
+
   // return one signal user id
   const onIds = (data) => setUserId(data.userId);
 
   const slideComp = () => {
-    sendOtp();
-    Animated.spring(slideAnim, {
-      toValue: -500,
-      useNativeDriver: true
-    }).start();
-    Animated.spring(slideAnimOtp, {
-      toValue: 0,
-      useNativeDriver: true
-    }).start();
-    setVisible(true);
+    if (validateData()) {
+      sendOtp();
+      Animated.spring(slideAnim, {
+        toValue: 200,
+        useNativeDriver: true
+      }).start();
+      Animated.spring(slideAnimOtp, {
+        toValue: 0,
+        useNativeDriver: true
+      }).start();
+      setVisible(true);
+    }
   }
 
   const slideBack = () => {
@@ -96,23 +112,51 @@ const LoginScreen = (props) => {
     snackbarMessage(userData.message)
   }
 
-  const loginWithOtp = async () => {
-    const userData = await UserLoginAuth({ mobile_number: value, otp: otpValue, oneSignalUserId: userId });
-    props.userLogin(userData.data);
-    const token = userData.data.access_token;
-    snackbarMessage(userData.message)
-    if (token !== undefined && token !== '') {
-      storeAsyncData(JSON.stringify(userData.data));
-      navigation.navigate('Home');
+  const validateData = () => {
+    var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+
+    if (value.length <= 0) {
+      snackbarMessage('Enter a mobile number');
+      return false;
     }
+    else if(value.length > 0 && !value.match(phoneno)){
+      snackbarMessage('Enter a valid phone number');
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+
+  const loginWithOtp = async () => {
+
+    if(otpValue.length <= 0){
+      snackbarMessage('Enter OTP');
+    }
+    else{
+      const userData = await UserLoginAuth({ mobile_number: value, otp: otpValue, oneSignalUserId: userId });
+      if(userData.message.otp){
+        snackbarMessage(userData.message.otp);
+      }
+      else{
+        props.userLogin(userData.data);
+        const token = userData.data.access_token;
+        snackbarMessage(userData.message)
+        if (token !== undefined && token !== '') {
+          storeAsyncData(JSON.stringify(userData.data));
+          navigation.navigate('Home');
+        }
+      }
+    }
+
   }
 
   return (
     <View style={styles.statusBarTop} behavior="padding" enabled>
       <TimedSlideshow
         items={items}
-        progressBarColor='#3366FF'
-        progressBarDirection='fromLeft'
+        footerStyle={{ backgroundColor: 'transparent' }}
+        showProgressBar={false}
         renderIcon={() => null}
         renderCloseIcon={() => null}
       />
@@ -120,27 +164,36 @@ const LoginScreen = (props) => {
         style={[styles.inputContainer, {
           visibility: visible === true ? '' : 'hidden',
           transform: [{
-            translateX: slideAnim
+            translateY: slideAnim
           }]
         }]}
       >
         <KeyboardAvoidingView behavior="padding" enabled>
-          <Input
-            value={value}
-            keyboardType={Platform.OS === 'android' ? "numeric" : "number-pad"}
-            style={styles.input}
-            placeholder='Enter mobile number'
-            icon={renderIcon}
-            onChangeText={setValue}
-          />
-          <Button style={styles.btnInput} appearance='filled' onPress={slideComp}>Get OTP</Button>
+          <Animatable.View animation="bounceInLeft" direction="normal" duration={800} useNativeDriver={true}>
+            <View style={styles.mobileNumber}>
+              <Input
+                value={'+91'}
+                style={styles.countryCode}
+                disabled={true}
+              />
+              <Input
+                value={value}
+                keyboardType={Platform.OS === 'android' ? "numeric" : "number-pad"}
+                style={styles.phone}
+                placeholder='Enter mobile number'
+                icon={renderIcon}
+                onChangeText={setValue}
+              />
+            </View>
+            <Button style={styles.btnInput} appearance='filled' onPress={slideComp}>Get OTP</Button>
+          </Animatable.View>
         </KeyboardAvoidingView>
       </Animated.View>
       <Animated.View
         style={[styles.inputContainer, {
           transform: [
             {
-              translateX: slideAnimOtp
+              translateY: slideAnimOtp
             }
           ]
         }]}

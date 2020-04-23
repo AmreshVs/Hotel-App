@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import TopNavSimple from '../../components/navigation/topNavSimple';
 import { useNavigation } from '@react-navigation/native';
 import { connect } from 'react-redux';
-import { TopNavigationAction, Icon } from '@ui-kitten/components';
+import { TopNavigationAction, Icon, useStyleSheet, StyleService } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 
 import ConfirmBlock from '../../components/bookingDetails/confirmBlock';
@@ -18,6 +18,7 @@ import LoadBookingDetails from '../../redux/thunkActions/loadBookingDetails';
 const BookingDetails = (props) => {
 
   const navigation = useNavigation();
+  const styles = useStyleSheet(themedStyle);
   const [data, setData] = React.useState([]);
 
   useEffect(() => {
@@ -62,7 +63,7 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps)(BookingDetails);
 
-const styles = StyleSheet.create({
+const themedStyle = StyleService.create({
   bodyContainer: {
     backgroundColor: '#FAFAFA',
     height: '100%',

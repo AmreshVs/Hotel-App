@@ -1,19 +1,22 @@
 import React from 'react';
 import { Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 
 const RulesPolicies = () => {
 
   const styles = useStyleSheet(style);
   
   return (
-    <View style={styles.cardContainer}>
-      <Text style={styles.heading}>Rules & Policies</Text>
-      <Text>{'\u2022 '} Outside food not allowed</Text>
-      <Text>{'\u2022 '} Couples are welcome</Text>
-      <Text>{'\u2022 '} Guests can check in using any local or outstation ID proof</Text>
-      <Text>{'\u2022 '} Only Indian citizens are allowed to stay</Text>
-    </View>
+    <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={60} >
+      <View style={styles.cardContainer}>
+        <Text style={styles.heading}>Rules & Policies</Text>
+        <Text>{'\u2022 '} Outside food not allowed</Text>
+        <Text>{'\u2022 '} Couples are welcome</Text>
+        <Text>{'\u2022 '} Guests can check in using any local or outstation ID proof</Text>
+        <Text>{'\u2022 '} Only Indian citizens are allowed to stay</Text>
+      </View>
+    </Animatable.View>
   );
 }
 

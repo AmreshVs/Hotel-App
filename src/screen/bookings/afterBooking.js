@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView, BackHandler } from 'react-native';
 import TopNavSimple from '../../components/navigation/topNavSimple';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { connect } from 'react-redux';
 
 import ConfirmBlock from '../../components/bookingDetails/confirmBlock';
@@ -54,6 +54,19 @@ const AfterBooking = (props) => {
     }
     loadDatas();
   }, []);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        navigation.navigate('BookingsScreen');
+      };
+
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () =>
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+    }, [])
+  );
 
   const reloadData = async () => {
     setData([]);

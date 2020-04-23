@@ -5,6 +5,7 @@ import { View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import moment from 'moment';
 import { useNavigation } from '@react-navigation/native';
+import * as Animatable from 'react-native-animatable';
 
 const SearchHotelCard = (props) => {
 
@@ -30,25 +31,33 @@ const SearchHotelCard = (props) => {
   return (
     <View style={styles.searchCard}>
       <View style={styles.container}>
-        <Ripple style={styles.datesContainer} rippleDuration={600} onPress={() => navigation.navigate('SearchDates', { index: 0 })}>
-          <Icon name='log-in-outline' width={32} height={32} fill={styles.iconFill.color} />
-          <Text style={styles.heading}>Check In</Text>
-          <Text style={styles.dateCaption}>{moment(props.hotelDetail.dates.startDate).format("DD MMM YYYY")}</Text>
-        </Ripple>
+        <Animatable.View animation="fadeInDown" direction="normal" duration={500} useNativeDriver={true} >
+          <Ripple style={styles.datesContainer} rippleDuration={600} onPress={() => navigation.navigate('SearchDates', { index: 0 })}>
+            <Icon name='log-in-outline' width={32} height={32} fill={styles.iconFill.color} />
+            <Text style={styles.heading}>Check In</Text>
+            <Text style={styles.dateCaption}>{moment(props.hotelDetail.dates.startDate).format("DD MMM YYYY")}</Text>
+          </Ripple>
+        </Animatable.View>
         <View style={styles.seperator} />
-        <Ripple style={styles.datesContainer} rippleDuration={600} onPress={() => navigation.navigate('SearchDates', { index: 0 })}>
-          <Icon name='log-out-outline' width={32} height={32} fill={styles.iconFill.color} />
-          <Text style={styles.heading}>Check Out</Text>
-          <Text style={styles.dateCaption}>{moment(props.hotelDetail.dates.endDate).format("DD MMM YYYY")}</Text>
-        </Ripple>
+        <Animatable.View animation="fadeInDown" direction="normal" duration={500} useNativeDriver={true} >
+          <Ripple style={styles.datesContainer} rippleDuration={600} onPress={() => navigation.navigate('SearchDates', { index: 0 })}>
+            <Icon name='log-out-outline' width={32} height={32} fill={styles.iconFill.color} />
+            <Text style={styles.heading}>Check Out</Text>
+            <Text style={styles.dateCaption}>{moment(props.hotelDetail.dates.endDate).format("DD MMM YYYY")}</Text>
+          </Ripple>
+        </Animatable.View>
         <View style={styles.seperator} />
-        <Ripple style={styles.datesContainer} rippleDuration={600} onPress={() => navigation.navigate('SearchDates', { index: 1 })}>
-          <Icon name='people-outline' width={32} height={32} fill={styles.iconFill.color} />
-          <Text style={styles.heading}>Rooms - Guest</Text>
-          <Text style={styles.dateCaption}>{roomNum} - {guests}</Text>
-        </Ripple>
+        <Animatable.View animation="fadeInDown" direction="normal" duration={500} useNativeDriver={true} >
+          <Ripple style={styles.datesContainer} rippleDuration={600} onPress={() => navigation.navigate('SearchDates', { index: 1 })}>
+            <Icon name='people-outline' width={32} height={32} fill={styles.iconFill.color} />
+            <Text style={styles.heading}>Rooms - Guest</Text>
+            <Text style={styles.dateCaption}>{roomNum} - {guests}</Text>
+          </Ripple>
+        </Animatable.View>
       </View>
-      <Button style={styles.button} status='primary' size='small' icon={StarIcon} onPress={() => navigation.navigate('SearchRooms')}>Search Rooms</Button>
+      <Animatable.View animation="bounceInRight" direction="normal" duration={500} useNativeDriver={true} >
+        <Button style={styles.button} status='primary' size='small' icon={StarIcon} onPress={() => navigation.navigate('SearchRooms')}>Search Rooms</Button>
+      </Animatable.View>
     </View>
   );
 }
@@ -63,7 +72,7 @@ export default connect(mapStateToProps)(React.memo(SearchHotelCard));
 const themedStyles = StyleService.create({
   searchCard: {
     marginTop: -95,
-    margin: 10,
+    margin: '5%',
     padding: 15,
     marginBottom: 30,
     borderRadius: 10,
@@ -83,10 +92,11 @@ const themedStyles = StyleService.create({
     borderBottomRightRadius: 50,
   },
   datesContainer: {
-    width: '30%',
+    // width: '30%',
     height: 100,
     alignItems: 'center',
     justifyContent: 'center',
+    zIndex: 99999
   },
   container: {
     flexDirection: 'row',
@@ -96,7 +106,7 @@ const themedStyles = StyleService.create({
   seperator: {
     width: 1,
     height: 100,
-    backgroundColor: 'color-basic-100'
+    backgroundColor: 'color-basic-300'
   },
   heading: {
     fontSize: 16,

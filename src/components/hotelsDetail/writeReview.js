@@ -4,14 +4,17 @@ import { bindActionCreators } from 'redux';
 import { Input, Icon, Button, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
+import * as Animatable from 'react-native-animatable';
 import SnackBar from 'react-native-snackbar-component';
+
 import saveReviewRating from '../../redux/thunkActions/saveReview';
 
 const WriteReview = (props) => {
   
   const styles = useStyleSheet(style);
-  var errors = props.hotelDetail.save_review;
   const id = props.hotelDetail.hotelIds.hotelId;
+  const [visible, setVisible] = React.useState(false);
+  const [message, setMessage] = React.useState('');
   const [value, setValue] = React.useState('');
   const [emailValue, setEmailValue] = React.useState('');
   const [commentsValue, setCommentsValue] = React.useState('');
@@ -44,7 +47,57 @@ const WriteReview = (props) => {
   }
 
   const addReview = () => {
-    props.saveReviewRating({ id_hotel: id, name: value, rating: star, email: emailValue, comment: commentsValue }, props.common.userData.access_token);
+    if(validate()){
+      props.saveReviewRating({ id_hotel: id, name: value, rating: star, email: emailValue, comment: commentsValue }, props.common.userData.access_token);
+    }
+  }
+
+  const validate = () => {
+    if(value.length <= 0){
+      setVisible(true);
+      setMessage('Name Cannot be empty');
+      setTimeout(() => {
+        setVisible(false);
+      }, 3010);
+      return false;
+    }
+    else if(emailValue.length <= 0){
+      setVisible(true);
+      setMessage('Email Cannot be empty');
+      setTimeout(() => {
+        setVisible(false);
+      }, 3010);
+      return false;
+    }
+    else if(commentsValue.length <= 0){
+      setVisible(true);
+      setMessage('Comments Cannot be empty');
+      setTimeout(() => {
+        setVisible(false);
+      }, 3010);
+      return false;
+    }
+    else if(star === 0){
+      setVisible(true);
+      setMessage('Rating Cannot be empty');
+      setTimeout(() => {
+        setVisible(false);
+      }, 3010);
+      return false;
+    }
+
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (emailValue.match(mailformat)) {
+      return true;
+    }
+    else {
+      setVisible(true);
+      setMessage('Invalid email address!');
+      setTimeout(() => {
+        setVisible(false);
+      }, 3010);
+      return false;
+    }
   }
 
   const SubmitIcon = () => (
@@ -54,30 +107,40 @@ const WriteReview = (props) => {
   return (
     <View>
       <View style={styles.inputContainer} >
-        <Input
-          style={styles.inputs}
-          placeholder='Name'
-          value={value}
-          onChangeText={setValue}
-        />
-        <Input
-          style={styles.inputs}
-          placeholder='Email'
-          value={emailValue}
-          onChangeText={setEmailValue}
-        />
-        <RatingStars />
-        <Input
-          style={styles.inputsComment}
-          placeholder='Comments'
-          size='large'
-          value={commentsValue}
-          onChangeText={setCommentsValue}
-        />
-        <Button style={styles.button} onPress={addReview} appearance={'outline'} icon={SubmitIcon} >Submit</Button>
+        <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} >
+          <Input
+            style={styles.inputs}
+            placeholder='Name'
+            value={value}
+            onChangeText={setValue}
+          />
+        </Animatable.View>
+        <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={10} >
+          <Input
+            style={styles.inputs}
+            placeholder='Email'
+            value={emailValue}
+            onChangeText={setEmailValue}
+          />
+        </Animatable.View>
+        <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={20} >
+          <RatingStars />
+        </Animatable.View>
+        <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={30} >
+          <Input
+            style={styles.inputsComment}
+            placeholder='Comments'
+            size='large'
+            value={commentsValue}
+            onChangeText={setCommentsValue}
+          />
+        </Animatable.View>
+        <Animatable.View style={styles.button} animation="bounceInRight" duration={600} useNativeDriver={true} delay={40} >
+          <Button onPress={addReview} appearance={'outline'} icon={SubmitIcon} >Submit</Button>
+        </Animatable.View>
       </View>
       <View style={styles.snackbar}>
-        {errors !== null ? <SnackBar visible={errors.error} textMessage={errors.message} autoHidingTime={5000} actionText="Ok" /> : null}
+        <SnackBar containerStyle={styles.snack} visible={visible} textMessage={message} autoHidingTime={3000} />
       </View>
     </View>
   );
@@ -122,6 +185,10 @@ const style = StyleService.create({
   },
   snackbar: {
     marginTop: 60,
+    margin: 10,
+  },
+  snack:{
+    borderRadius: 5,
   },
   saveIconStyle: {
     fill: 'color-primary-600',

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 
 const NameBlock = (props) => {
 
@@ -8,24 +9,26 @@ const NameBlock = (props) => {
   const data = props.data;
   
   return (
-    <View style={styles.cardContainer}>
-      <View style={styles.nameprice}>
-        <View style={styles.nameBlock}>
-          <Text style={styles.roomTitle}>{data.title}</Text>
-          <Text style={styles.caption}>{data.subtitle}</Text>
-          <View style={styles.ratingContainer}>
-            <Icon name='star' width={22} height={22} fill='#FFD13A' />
-            <Text style={styles.ratingCount}><Text style={styles.caption}>{data.avg_rating}</Text><Text style={styles.caption}> | {data.total_comments} Comments</Text></Text>
+    <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={10} >
+      <View style={styles.cardContainer}>
+        <View style={styles.nameprice}>
+          <View style={styles.nameBlock}>
+            <Text style={styles.roomTitle}>{data.title}</Text>
+            <Text style={styles.caption}>{data.subtitle}</Text>
+            <View style={styles.ratingContainer}>
+              <Icon name='star' width={22} height={22} fill='#FFD13A' />
+              <Text style={styles.ratingCount}><Text style={styles.caption}>{data.avg_rating}</Text><Text style={styles.caption}> | {data.total_comments} Comments</Text></Text>
+            </View>
+          </View>
+          <View style={styles.priceBlock}>
+            <Text style={styles.oldPrice}>{'₹' + data.discount_price} </Text>
+            <Text style={styles.price}>{'₹' + data.avg_price}</Text>
+            <Text style={styles.priceCaption}>  Per Night</Text>
+            <Icon name='map-outline' style={styles.mapIcon} fill='#CCC' />
           </View>
         </View>
-        <View style={styles.priceBlock}>
-          <Text style={styles.oldPrice}>{'₹' + data.discount_price} </Text>
-          <Text style={styles.price}>{'₹' + data.avg_price}</Text>
-          <Text style={styles.priceCaption}>  Per Night</Text>
-          <Icon name='map-outline' style={styles.mapIcon} fill='#CCC' />
-        </View>
       </View>
-    </View>
+    </Animatable.View>
   );
 }
 
