@@ -49,6 +49,5 @@ const themedStyle = StyleService.create({
   },
   snack: {
     borderRadius: 5,
-    zIndex: 9999999,
   }
 });

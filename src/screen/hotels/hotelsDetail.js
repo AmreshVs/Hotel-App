@@ -17,7 +17,9 @@ import ReviewsRatings from '../../components/hotelsDetail/reviewsRatings';
 import RulesPolicies from '../../components/hotelsDetail/rulesPolicies';
 import PricingDetails from '../../components/hotelsDetail/pricingDetails';
 import BookHotel from '../../components/hotelsDetail/bookHotel';
+import FoodsBeverages from '../../components/hotelsDetail/foodsBeverages';
 import LoadHotelDetailsData from '../../redux/thunkActions/loadHotelDetails';
+import LoadFoodsBeverages from '../../redux/thunkActions/loadFoodsBeverages';
 import LoadPrices from '../../redux/thunkActions/loadPrices';
 
 // Skeletons
@@ -39,6 +41,7 @@ const HotelsDetail = (props) => {
   const navigation = useNavigation();
   var errors = props.hotelDetail.prices_services;
   const [data, setData] = React.useState({});
+  const [foods, setFoods] = React.useState({});
   const [loading, setLoading] = React.useState(true);
   const [loadPrices, setLoadPrices] = React.useState(null);
   const [showSnack, setShowSnack] = React.useState(false);
@@ -49,9 +52,12 @@ const HotelsDetail = (props) => {
     async function loadDatas() {
       const response = await LoadHotelDetailsData(props.route.params.alias, props.common.userData.access_token);
       setData(response.data[0]);
+      const result = await LoadFoodsBeverages(props.common.userData.access_token, response.data[0].nameBlock.id);
+      setFoods(result);
       setLoading(false);
       setLoadPrices(true);
     }
+    
     if (loading === true) {
       loadDatas();
     }
@@ -105,6 +111,7 @@ const HotelsDetail = (props) => {
           {loading === true ? <GuestDetailsBlockSK /> : <GuestDetails />}
           {loading === true ? <ReviewRatingBlockSK /> : <ReviewsRatings data={data.reviewsRatingsBlock} hotelId={data.nameBlock.id} />}
           <RenderPriceBlock />
+          {foods.data !== undefined && foods.data.length > 0 ? <FoodsBeverages data={foods} token={props.common.userData.access_token} hotelId={data.nameBlock.id} /> : null}
           {loading === true ? <RulesBlockSK /> : <RulesPolicies />}
         </View>
         <View style={{ marginBottom: 10 }} />

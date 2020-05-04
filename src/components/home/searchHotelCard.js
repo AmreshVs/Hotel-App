@@ -6,11 +6,14 @@ import Ripple from 'react-native-material-ripple';
 import moment from 'moment';
 import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
+import RangeSlider from 'rn-range-slider';
 
 const SearchHotelCard = (props) => {
 
   const navigation = useNavigation();
   const styles = useStyleSheet(themedStyles);
+  const [low, setLow] = React.useState(props.data !== undefined ? props.data.minCost : 0);
+  const [high, setHigh] = React.useState(props.data !== undefined ? props.data.maxCost : 0);
 
   if (props.hotelDetail.rooms !== undefined) {
     var rooms = props.hotelDetail.rooms;
@@ -55,8 +58,29 @@ const SearchHotelCard = (props) => {
           </Ripple>
         </Animatable.View>
       </View>
+      <Animatable.View animation="fadeInDown" direction="normal" duration={500} useNativeDriver={true} >
+        <View style={styles.price}>
+          <Text style={styles.dateCaption}>{'₹' + low}</Text>
+          <Text style={styles.heading}>Price Range</Text>
+          <Text style={styles.dateCaption}>{'₹' + high}</Text>
+        </View>
+        <RangeSlider
+          style={styles.slider}
+          gravity={'center'}
+          min={props.data !== undefined ? props.data.minCost : 0}
+          max={props.data !== undefined ? props.data.maxCost : 0}
+          step={50}
+          selectionColor={styles.range.color}
+          blankColor={styles.range.blank}
+          labelStyle="none"
+          onValueChanged={(low, high, fromUser) => {
+            setLow(low);
+            setHigh(high);
+          }}
+        />
+      </Animatable.View>
       <Animatable.View animation="bounceInRight" direction="normal" duration={500} useNativeDriver={true} >
-        <Button style={styles.button} status='primary' size='small' icon={StarIcon} onPress={() => navigation.navigate('SearchRooms')}>Search Rooms</Button>
+        <Button style={styles.button} status='primary' size='small' icon={StarIcon} onPress={() => navigation.navigate('SearchRooms', { price: low + ',' + high})}>Search Rooms</Button>
       </Animatable.View>
     </View>
   );
@@ -92,7 +116,6 @@ const themedStyles = StyleService.create({
     borderBottomRightRadius: 50,
   },
   datesContainer: {
-    // width: '30%',
     height: 100,
     alignItems: 'center',
     justifyContent: 'center',
@@ -101,7 +124,7 @@ const themedStyles = StyleService.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 20,
+    marginBottom: 10
   },
   seperator: {
     width: 1,
@@ -120,5 +143,19 @@ const themedStyles = StyleService.create({
   },
   iconFill: {
     color: 'color-primary-500'
+  },
+  range:{
+    color: 'color-success-500',
+    blank: 'color-basic-300'
+  },
+  slider:{
+    width: '100%',
+    height: 40,
+    marginBottom: 10,
+    // paddingBottom: 10,
+  },
+  price:{
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 });

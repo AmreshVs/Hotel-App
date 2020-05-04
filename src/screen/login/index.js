@@ -25,7 +25,7 @@ const LoginScreen = (props) => {
       uri: "https://q-cf.bstatic.com/images/hotel/max1024x768/205/205138280.jpg",
     },
     {
-      uri: "https://captainsolo.website/wp-content/uploads/2019/10/sr-jungle-resort-1.jpg",
+      uri: "https://www.bedbreakfast.ee/wp-content/uploads/2016/10/hotel-room.jpg",
     }
   ];
 
@@ -109,7 +109,7 @@ const LoginScreen = (props) => {
 
   const sendOtp = async () => {
     const userData = await UserLoginAuth({ mobile_number: value });
-    snackbarMessage(userData.message)
+    snackbarMessage(userData.message);
   }
 
   const validateData = () => {

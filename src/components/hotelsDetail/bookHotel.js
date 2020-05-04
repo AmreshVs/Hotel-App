@@ -26,7 +26,7 @@ const BookHotel = (props) => {
       <View style={styles.container}>
         <View style={styles.textContainer}>
           <Text style={styles.total}>₹{props.data.price !== undefined ? props.data.price.discount_after_price : 0}</Text>
-          <Text style={styles.totalCaption}>Total</Text>
+          <Text style={styles.totalCaption}>Inc Tax ₹{props.data.price !== undefined ? props.data.price.vat : 0}</Text>
         </View>
         <View style={styles.btnContainer}>
           {props.data.price !== undefined ? <Button onPress={navigatePayment}>Book Now</Button> : <Button disabled={true}>Book Now</Button>}

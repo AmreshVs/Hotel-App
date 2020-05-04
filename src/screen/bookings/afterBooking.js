@@ -31,6 +31,7 @@ const AfterBooking = (props) => {
     rooms: hotelDetail.rooms,
     service: hotelDetail.services,
     coupons: hotelDetail.coupons.code !== undefined ? hotelDetail.coupons.code : '',
+    foods: hotelDetail.foods,
     user: {
       firstname: userData.firstname,
       lastname: userData.lastname,

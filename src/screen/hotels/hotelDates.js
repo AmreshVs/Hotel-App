@@ -16,7 +16,6 @@ const HotelDates = (props) => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [range, setRange] = React.useState({ startDate: props.hotelDetail.dates.startDate, endDate: props.hotelDetail.dates.endDate });
 
-
   const ClosePage = () => {
     navigation.navigate('HotelsDetail', { alias: props.route.params.alias });
     setTimeout(function () {

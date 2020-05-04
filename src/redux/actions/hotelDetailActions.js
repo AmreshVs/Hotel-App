@@ -1,5 +1,5 @@
 import { OPEN_IMAGE_VIEWER, CLOSE_IMAGE_VIEWER } from '../actionCreators/hotelDetailAC';
-import { ADD_GUESTS, REMOVE_GUESTS } from '../actionCreators/hotelDetailAC';
+import { ADD_GUESTS, REMOVE_GUESTS, ADD_FOODS, REMOVE_FOODS } from '../actionCreators/hotelDetailAC';
 import { ADD_SERVICES, REMOVE_SERVICES, SERVICE_CHECKED, HOTEL_IDS } from '../actionCreators/hotelDetailAC';
 import { CHOOSE_DATES, CLEAR_DATA, SAVE_REVIEW, LOAD_PRICES, COUPONS } from '../actionCreators/hotelDetailAC';
 import { LOAD_HOTELDETAILS_DATA_PENDING, LOAD_HOTELDETAILS_DATA_SUCCESS, LOAD_HOTELDETAILS_DATA_ERROR } from '../actionCreators/hotelDetailAC';
@@ -37,6 +37,26 @@ export const removeGuests = (payload) => {
   return {
     type: REMOVE_GUESTS,
     payload,
+  };
+};
+
+const foodsArr = {};
+
+// Add Foods and Beverages
+export const addFoods = (payload) => {
+  foodsArr[payload.index] = payload.foods;
+  return {
+    type: ADD_FOODS,
+    foodsArr
+  };
+};
+
+// Remove Foods and Beverages
+export const removeFoods = (payload) => {
+  delete foodsArr[payload.index];
+  return {
+    type: REMOVE_FOODS,
+    foodsArr
   };
 };
 
@@ -91,6 +111,10 @@ export const loadHotelDetailsDataError = (payload) => {
 };
 
 export const clearData = (payload) => {
+  // Clear Foods Arr to make it fresh for each rooms
+  for (var key in foodsArr) {
+    delete foodsArr[key];
+  }
   return {
     type: CLEAR_DATA,
     payload

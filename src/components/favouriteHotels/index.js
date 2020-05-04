@@ -12,7 +12,7 @@ import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 import { clearData } from '../../redux/actions/hotelDetailActions';
 
 const FavouriteHotels = (props) => {
-console.log(props);
+  
   const navigation = useNavigation();
   const styles = useStyleSheet(themedStyle);
 

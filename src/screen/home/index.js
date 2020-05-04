@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 
 import themedStyle from './styles';
+import SearchHotelCardSK from '../../components/skeletons/searchHotelCardSK';
 import SearchHotelCard from '../../components/home/searchHotelCard';
 import Head from '../../components/home/head';
 import RecommendedRooms from '../../components/home/recommenedRooms';
@@ -43,7 +44,7 @@ const HomeScreen = (props) => {
       <Animatable.View animation="fadeIn" direction="normal" duration={800} useNativeDriver={true} >
         <Head/>
       </Animatable.View>
-      <SearchHotelCard/>
+      {data.price_range === undefined ? <SearchHotelCardSK/> : <SearchHotelCard data={data.price_range} /> }
       <RecommendedRooms data={data.recommended} />
       <ExclusiveRooms data={data.exclusive} />
     </ScrollView>

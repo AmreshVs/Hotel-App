@@ -17,7 +17,7 @@ const SearchRoomsScreen = (props) => {
 
   useEffect(() => {
     async function loadDatas() {
-      const response = await FindHotels({ dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms }, props.common.userData.access_token);
+      const response = await FindHotels({ dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, price: props.route.params.price }, props.common.userData.access_token);
       setData(response);
     }
     loadDatas();

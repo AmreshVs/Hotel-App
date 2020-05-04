@@ -96,7 +96,7 @@ const BookedHotelDetails = (props) => {
           {props.data.service.map((item) =>
             <View style={styles.serviceContainer} key={item.id}>
               <Text style={styles.serviceCaption}>{item.title}</Text>
-              <Text style={styles.caption}>₹{item.price}</Text>
+              <Text style={styles.caption}>₹{item.price + ' X ' + item.qty}</Text>
             </View>
           )}
           <View style={styles.serviceContainer}>
@@ -105,7 +105,7 @@ const BookedHotelDetails = (props) => {
           </View>
           <View style={styles.serviceContainer}>
             <Text style={styles.serviceCaption}>Total</Text>
-            <Text style={styles.totalCaption}>₹{props.data.total}</Text>
+            <Text style={styles.totalCaption}>₹{(props.data.total).toFixed(2)}</Text>
           </View>
         </View>
         <View style={styles.hrLine}></View>
