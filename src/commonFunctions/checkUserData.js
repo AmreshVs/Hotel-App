@@ -5,7 +5,7 @@ const CheckUserData = (data) => {
   const keys = [];
   if (Object.keys(userData).length > 0) {
     Object.keys(userData).map((item) => {
-      if (item !== 'access_token' && item !== 'OneSignalUserId') {
+      if (item !== 'access_token' && item !== 'oneSignalUserId' && item !== 'user_id') {
         if (userData[item] === null || userData[item] === '') {
           keys.push(item.charAt(0).toUpperCase() + item.slice(1));
         }

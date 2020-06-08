@@ -14,6 +14,7 @@ import UserLoginAuth from '../../redux/thunkActions/userLoginAuth';
 import { userLogin } from '../../redux/actions/commonActions';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 
+var onesignal = '';
 const LoginScreen = (props) => {
 
   const navigation = useNavigation();
@@ -50,6 +51,10 @@ const LoginScreen = (props) => {
     }
     OneSignal.addEventListener('ids', onIds);
     retrieveData();
+
+    return () => {
+      OneSignal.removeEventListener('ids');
+    }
   }, [])
 
   useFocusEffect(
@@ -66,7 +71,10 @@ const LoginScreen = (props) => {
   );
 
   // return one signal user id
-  const onIds = (data) => setUserId(data.userId);
+  const onIds = (data) => {
+    onesignal = data.userId;
+    setUserId(data.userId);
+  }
 
   const slideComp = () => {
     if (validateData()) {
@@ -134,7 +142,7 @@ const LoginScreen = (props) => {
       snackbarMessage('Enter OTP');
     }
     else{
-      const userData = await UserLoginAuth({ mobile_number: value, otp: otpValue, oneSignalUserId: userId });
+      const userData = await UserLoginAuth({ mobile_number: value, otp: otpValue, oneSignalUserId: onesignal || userId });
       if(userData.message.otp){
         snackbarMessage(userData.message.otp);
       }

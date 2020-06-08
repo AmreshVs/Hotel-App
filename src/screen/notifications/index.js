@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, RefreshControl } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { TopNavigationAction, Icon, Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
@@ -15,6 +15,7 @@ const NotificationsScreen = (props) => {
   const navigation = useNavigation();
   const styles = useStyleSheet(themedStyles);
   const [data, setData] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     async function loadData() {
@@ -25,12 +26,17 @@ const NotificationsScreen = (props) => {
     navigation.addListener('focus', () => {
       reloadData();
     });
+
+    return () => {
+      navigation.removeListener('focus');
+    }
   }, [])
 
   const reloadData = async () => {
-    setData([]);
+    setRefresh(true);
     const response = await ViewNotifications(props.access_token);
     setData(response.length > 0 ? response : -1);
+    setRefresh(false);
   }
 
   const RefreshIcon = () => <Icon name='refresh-outline' fill='#FFF' />;
@@ -52,7 +58,14 @@ const NotificationsScreen = (props) => {
   return (
     <View style={styles.backContainer}>
       <TopNavSimple screenTitle='Notifications' rightControl={true} rightControlFun={RefreshAction} />
-      <ScrollView contentContainerStyle={styles.container} showsHorizontalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={styles.container} showsHorizontalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            refreshing={refresh}
+            onRefresh={reloadData}
+          />
+        }
+      >
         {data === -1 ? <NoData /> : data.length === 0 ? <NotificationsSK /> : <Notifications data={data} token={props.access_token} reload={reloadData} />}
       </ScrollView>
     </View>

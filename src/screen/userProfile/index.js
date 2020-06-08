@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView, RefreshControl } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import TopNavSimple from '../../components/navigation/topNavSimple';
@@ -14,6 +14,7 @@ const UserProfileScreen = (props) => {
   const navigation = useNavigation();
   const [data, setData] = React.useState([]);
   const [edit, setEdit] = React.useState(false);
+  const [refresh, setRefresh] = React.useState(false);
 
   const handleClick = () => {
     setEdit(!edit);
@@ -28,18 +29,30 @@ const UserProfileScreen = (props) => {
     navigation.addListener('focus', () => {
       reloadData();
     });
+
+    return () => {
+      navigation.removeListener('focus');
+    }
   }, []);
 
   const reloadData = async () => {
-    setData([]);
+    setRefresh(true);
     const response = await LoadProfileData(props.access_token);
     setData(response);
+    setRefresh(false);
   }
 
   return (
     <View>
       <TopNavSimple screenTitle='User Profile' />
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            refreshing={refresh}
+            onRefresh={reloadData}
+          />
+        }
+      >
         <View style={styles.container}>
           {data.length <= 0 ? <ProfileSK /> : (edit === false ? <ProfileView data={data} handleClick={handleClick} /> : <ProfileEdit data={data} handleClick={handleClick} reloadData={reloadData} />)}
         </View>

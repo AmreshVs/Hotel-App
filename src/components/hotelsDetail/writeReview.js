@@ -10,13 +10,14 @@ import SnackBar from 'react-native-snackbar-component';
 import saveReviewRating from '../../redux/thunkActions/saveReview';
 
 const WriteReview = (props) => {
-  
+
   const styles = useStyleSheet(style);
+  let userData = props.common.userData;
   const id = props.hotelDetail.hotelIds.hotelId;
   const [visible, setVisible] = React.useState(false);
   const [message, setMessage] = React.useState('');
-  const [value, setValue] = React.useState('');
-  const [emailValue, setEmailValue] = React.useState('');
+  const [value, setValue] = React.useState(`${userData.firstname} ${userData.lastname}`);
+  const [emailValue, setEmailValue] = React.useState(userData.email);
   const [commentsValue, setCommentsValue] = React.useState('');
   const [star, setStar] = React.useState(0);
 

@@ -39,11 +39,14 @@ const BookingssScreen = (props) => {
     navigation.addListener('focus', () => {
       reloadData();
     });
+
+    return () => {
+      navigation.removeListener('focus');
+    }
   }, []);
 
   const reloadData = async () => {
     CheckUserData(props.userData);
-    setData([]);
     const response = await LoadBookingHistory(props.userData.access_token);
     setData(response);
   }

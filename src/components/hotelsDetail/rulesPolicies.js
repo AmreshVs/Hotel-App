@@ -14,7 +14,6 @@ const RulesPolicies = () => {
         <Text>{'\u2022 '} Outside food not allowed</Text>
         <Text>{'\u2022 '} Couples are welcome</Text>
         <Text>{'\u2022 '} Guests can check in using any local or outstation ID proof</Text>
-        <Text>{'\u2022 '} Only Indian citizens are allowed to stay</Text>
       </View>
     </Animatable.View>
   );

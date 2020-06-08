@@ -1,6 +1,6 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, RefreshControl } from 'react-native';
 import { Icon, Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { useNavigation } from '@react-navigation/native';
 import { connect } from 'react-redux';
@@ -31,6 +31,7 @@ const FavouritesScreen = (props) => {
   const styles = useStyleSheet(themedStyle);
   const [data, setData] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
+  const [refresh, setRefresh] = React.useState(false);
 
   React.useEffect(() => {
     CheckUserData(props.userData);
@@ -44,15 +45,18 @@ const FavouritesScreen = (props) => {
     navigation.addListener('focus', () => {
       reloadData();
     });
+
+    return () => {
+      navigation.removeListener('focus');
+    }
   }, []);
 
   const reloadData = async () => {
+    setRefresh(true);
     CheckUserData(props.userData);
-    setLoading(true);
-    setData([]);
     const response = await GetFavourites(props.userData.access_token);
     setData(response);
-    setLoading(false);
+    setRefresh(false);
   }
 
   const navigateHotelDetails = (alias, id, is_favorite) => {
@@ -67,7 +71,14 @@ const FavouritesScreen = (props) => {
   return (
     <View style={styles.bodyContainer}>
       <TopNavSimple screenTitle='Favourite Rooms' />
-      <ScrollView showsVerticalScrollIndicator={false} style={styles.favourites} >
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.favourites} 
+        refreshControl={
+          <RefreshControl
+            refreshing={refresh}
+            onRefresh={reloadData}
+          />
+        }
+      >
         {loading === true ?
           [1, 2, 3].map((item) => <FavouriteHotelSK key={item} />)
           :
