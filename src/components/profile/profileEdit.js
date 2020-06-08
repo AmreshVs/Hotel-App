@@ -137,7 +137,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(ProfileEdit);
 
 const themedStyle = StyleService.create({
   bodyContainer: {
-    backgroundColor: 'background-basic-color-1',
     height: '100%',
     alignItems: 'center',
   },

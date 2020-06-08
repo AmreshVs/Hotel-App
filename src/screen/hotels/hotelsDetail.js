@@ -90,7 +90,7 @@ const HotelsDetail = (props) => {
         <BookHotel data={prices.data.data} />
         {errors !== undefined && errors !== null && errors.error !== undefined ?
           <View style={styles.snackbar}>
-            <SnackBar visible={showSnack} textMessage={errors.error} actionText="Ok" actionHandler={() => setShowSnack(false)} />
+            <SnackBar visible={showSnack} textMessage={errors.error} />
           </View>
           : null}
       </View>

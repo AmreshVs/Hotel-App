@@ -94,7 +94,6 @@ export default ProfileView;
 
 const style = StyleService.create({
   bodyContainer: {
-    backgroundColor: 'background-basic-color-1',
     height: '100%',
     alignItems: 'center',
   },

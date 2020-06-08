@@ -24,7 +24,7 @@ const ExtraServices = (props) => {
       check = await props.addServices({ id: props.id, serviceId: props.service_id, qty: count });
       if (check) {
         setTimeout(function () {
-          props.LoadPrices({ hotelId: props.hotelDetail.hotelIds.hotelId, roomId: props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: check.servicesArr }, props.common.userData.access_token);
+          props.LoadPrices({ hotelId: props.hotelDetail.hotelIds.hotelId, roomId: props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: check.servicesArr, foods: props.hotelDetail.foods }, props.common.userData.access_token);
         }, 10);
       }
     }
@@ -35,7 +35,7 @@ const ExtraServices = (props) => {
       delete serviceArr[props.id];
       check = await props.removeServices(serviceArr);
       setTimeout(function () {
-        props.LoadPrices({ hotelId: props.hotelDetail.hotelIds.hotelId, roomId: props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: serviceArr }, props.common.userData.access_token);
+        props.LoadPrices({ hotelId: props.hotelDetail.hotelIds.hotelId, roomId: props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: serviceArr, foods: props.hotelDetail.foods }, props.common.userData.access_token);
       }, 10);
     }
 
@@ -48,7 +48,7 @@ const ExtraServices = (props) => {
       props.addServices({ id: props.id, serviceId: checkArr[props.id].service_id, qty: checkArr[props.id].qty });
       setTimeout(function () {
         if (props.hotelDetail.serviceChecked.includes(props.id)) {
-          props.LoadPrices({ hotelId: props.hotelDetail.hotelIds.hotelId, roomId: props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: props.hotelDetail.services }, props.common.userData.access_token);
+          props.LoadPrices({ hotelId: props.hotelDetail.hotelIds.hotelId, roomId: props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: props.hotelDetail.services, foods: props.hotelDetail.foods }, props.common.userData.access_token);
         }
       }, 5);
     }
@@ -57,7 +57,7 @@ const ExtraServices = (props) => {
       props.addServices({ id: props.id, serviceId: checkArr[props.id].service_id, qty: checkArr[props.id].qty });
       setTimeout(function () {
         if (props.hotelDetail.serviceChecked.includes(props.id)) {
-          props.LoadPrices({ hotelId: props.hotelDetail.hotelIds.hotelId, roomId: props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: props.hotelDetail.services }, props.common.userData.access_token);
+          props.LoadPrices({ hotelId: props.hotelDetail.hotelIds.hotelId, roomId: props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: props.hotelDetail.services, foods: props.hotelDetail.foods }, props.common.userData.access_token);
         }
       }, 5);
     }

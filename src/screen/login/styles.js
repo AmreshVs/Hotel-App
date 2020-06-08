@@ -29,13 +29,13 @@ const styles = StyleSheet.create({
     marginBottom: hp('1%'),
   },
   phone:{
-    width: wp('68%'),
+    width: wp('66%'),
     marginBottom: hp('1%'),
   },
   countryCode:{
-    width: wp('16%'),
+    width: wp('18%'),
     marginBottom: hp('1%'),
-    marginRight: 5
+    marginRight: 5,
   },
   btnInput: {
     marginBottom: hp('1%'),

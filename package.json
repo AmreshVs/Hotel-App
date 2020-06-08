@@ -9,7 +9,8 @@
     "clean": "cd android && gradlew clean",
     "test": "jest",
     "lint": "eslint .",
-    "build-android": "./gradlew assembleRelease"
+    "assemble-android": "cd android && gradlew assembleRelease",
+    "bundle-android": "cd android && gradlew bundleRelease"
   },
   "dependencies": {
     "@eva-design/eva": "^1.4.0",

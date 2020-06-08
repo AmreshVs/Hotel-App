@@ -11,7 +11,7 @@ const UserLoginAuth = async (data) => {
       return response.data;
     })
     .catch(function (error) {
-      return error.response;
+      return error.response.data;
     });
 
 }
