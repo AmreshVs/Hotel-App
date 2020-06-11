@@ -14,7 +14,7 @@ const Amenities = (props) => {
   }
 
   return (
-    <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={20} >
+    <Animatable.View animation="fadeInUp" direction="normal" duration={500} useNativeDriver={true} delay={90} >
       <View style={styles.cardContainer}>
         <Text style={styles.heading}>Amenities</Text>
         <View style={{ height: showAmenities, overflow: 'hidden' }}>

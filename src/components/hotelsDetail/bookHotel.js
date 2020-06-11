@@ -14,7 +14,7 @@ const BookHotel = (props) => {
   const navigatePayment = () => {
     let checkData = CheckUserData(props.userData);
     if (Object.values(checkData).length > 0) {
-      navigation.navigate('UserProfileScreen');
+      navigation.navigate('UserProfileScreen', { hotelId: props.hotelId, alias: props.alias, is_favorite: props.is_favorite });
     }
     else {
       navigation.navigate('PaymentScreen');

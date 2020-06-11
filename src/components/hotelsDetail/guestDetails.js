@@ -20,42 +20,42 @@ const GuestDetails = (props) => {
   };
 
   return (
-    <Animatable.View style={{ width: '100%', alignItems: 'center' }} animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={50} >
-        <View style={styles.cardContainer}>
-          <View style={styles.textContainer}>
-            <Text style={styles.heading}>Guest Details</Text>
-            <Ripple onPress={toggleModal}>
-              {visible == false ?
-                <Icon name='edit-outline' fill={styles.iconColor.color} width={20} height={20} />
-                :
-                <Icon name='checkmark-outline' fill={styles.iconColor.color} width={20} height={20} />
-              }
-            </Ripple>
-          </View>
-          {visible == false ?
-            <View style={styles.textContainer}>
-              <Text style={styles.guestName}>{name}</Text>
-              <Text>+91 {phone}</Text>
-            </View>
-            :
-            <View>
-              <Input
-                placeholder='Guest name'
-                value={name}
-                size='small'
-                onChangeText={setName}
-                style={styles.input}
-              />
-              <Input
-                placeholder='Mobile Number'
-                value={phone}
-                size='small'
-                onChangeText={setPhone}
-                style={styles.input}
-              />
-            </View>
-          }
+    <Animatable.View style={{ width: '100%', alignItems: 'center' }} animation="fadeInUp" direction="normal" duration={500} useNativeDriver={true} delay={90} >
+      <View style={styles.cardContainer}>
+        <View style={styles.textContainer}>
+          <Text style={styles.heading}>Guest Details</Text>
+          <Ripple onPress={toggleModal}>
+            {visible == false ?
+              <Icon name='edit-outline' fill={styles.iconColor.color} width={20} height={20} />
+              :
+              <Icon name='checkmark-outline' fill={styles.iconColor.color} width={20} height={20} />
+            }
+          </Ripple>
         </View>
+        {visible == false ?
+          <View style={styles.textContainer}>
+            <Text style={styles.guestName}>{name}</Text>
+            <Text>+91 {phone}</Text>
+          </View>
+          :
+          <View>
+            <Input
+              placeholder='Guest name'
+              value={name}
+              size='small'
+              onChangeText={setName}
+              style={styles.input}
+            />
+            <Input
+              placeholder='Mobile Number'
+              value={phone}
+              size='small'
+              onChangeText={setPhone}
+              style={styles.input}
+            />
+          </View>
+        }
+      </View>
     </Animatable.View>
   );
 }

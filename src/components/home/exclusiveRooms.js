@@ -7,7 +7,6 @@ import Ripple from 'react-native-material-ripple';
 import { useNavigation } from '@react-navigation/native';
 
 import RoomsListSmall from '../rooms/roomsListSmall';
-import ExclusiveRoomsSK from '../skeletons/exclusiveRoomsSK';
 import { clearData } from '../../redux/actions/hotelDetailActions';
 
 const ExclusiveRooms = (props) => {
@@ -28,17 +27,6 @@ const ExclusiveRooms = (props) => {
     });
   }
 
-  var data = [];
-  var loaded = null;
-  if (props.data !== undefined && Object.keys(props.data).length > 0) {
-    data = props.data;
-    loaded = true;
-  }
-  else {
-    data = [1, 2];
-    loaded = false;
-  }
-
   return (
     <View>
       <View style={styles.headingBlock}>
@@ -47,7 +35,7 @@ const ExclusiveRooms = (props) => {
           <Text style={styles.caption}>View More</Text>
         </Ripple>
       </View>
-      {data.map((item, index) => loaded === false ? <ExclusiveRoomsSK key={item + 1} pending={true} /> : <RoomsListSmall key={item.alias} delay={index} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} address={item.alias} cost={item.price_start} oldCost={Number(item.price_start) + 200} is_favourite={item.is_favorite} />)}
+      {props.data.map((item, index) => <RoomsListSmall key={item.alias + Math.random()} reload={props.reload} delay={index} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} address={item.alias} cost={item.price_start} oldCost={Number(item.price_start) + 200} is_favourite={item.is_favorite} />)}
       <Ripple rippleDuration={600} onPress={navigateDetails}>
         <Button style={styles.button} appearance='ghost' status='basic'>View More</Button>
       </Ripple>

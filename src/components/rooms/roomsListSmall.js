@@ -6,7 +6,6 @@ import * as Animatable from 'react-native-animatable';
 
 import ReviewRating from '../extra/reviewRating';
 import AddFavourite from '../../redux/thunkActions/addFavourite';
-import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 
 const RoomsListSmall = (props) => {
 
@@ -15,8 +14,7 @@ const RoomsListSmall = (props) => {
 
   const saveFavourite = async () => {
     setFavcolor(favcolor === '#AAA' ? '#FF4626' : '#AAA');
-    const response = await AddFavourite({ hotel_id: props.hotelId }, props.token);
-    snackbarMessage(response.message + ' for ' + props.hotelName);
+    await AddFavourite({ hotel_id: props.hotelId }, props.token);
   }
 
   var maxlimit = 25;
@@ -24,8 +22,8 @@ const RoomsListSmall = (props) => {
     (((props.hotelName).substring(0, maxlimit - 3)) + '...') :
     props.hotelName;
 
-  return (
-    <Animatable.View animation="fadeInLeft" direction="normal" duration={800} useNativeDriver={true} delay={props.delay * 50} >
+  const RenderRoom = () => {
+    return(
       <View style={styles.hotelListCard}>
         <View style={styles.imgContainer}>
           <Ripple onPress={props.navigate}>
@@ -61,6 +59,17 @@ const RoomsListSmall = (props) => {
           </View>
         </View>
       </View>
+    )
+  }
+
+  return (
+    props.reload === true ?
+    <View>
+      <RenderRoom/>
+    </View>
+    :
+    <Animatable.View animation="fadeInLeft" direction="normal" duration={800} useNativeDriver={true} delay={props.delay * 50} >
+      <RenderRoom/>
     </Animatable.View>
   );
 }

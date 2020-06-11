@@ -42,7 +42,7 @@ const ChooseDates = (props) => {
   const dates = (fromDate !== undefined && toDate !== undefined) ? fromDate + ' - ' + toDate : '-';
 
   return (
-    <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={40} >
+    <Animatable.View animation="fadeInUp" direction="normal" duration={500} useNativeDriver={true} delay={90} >
       <View style={styles.cardContainer}>
         <Text style={styles.heading}>Choose Room's and Guest's</Text>
         <Ripple rippleSize={150} rippleDuration={600} style={styles.choosedates} onPress={hotelDates}>

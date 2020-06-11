@@ -51,10 +51,11 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/runtime": "^7.9.2",
-    "react-native-svg": "^12.1.0",
+    "babel-eslint": "^10.1.0",
     "babel-jest": "^25.4.0",
     "jest": "^25.4.0",
-    "metro-react-native-babel-preset": "^0.59.0"
+    "metro-react-native-babel-preset": "^0.59.0",
+    "react-native-svg": "^12.1.0"
   },
   "jest": {
     "preset": "react-native"

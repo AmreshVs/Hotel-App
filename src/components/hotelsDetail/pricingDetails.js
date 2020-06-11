@@ -11,7 +11,7 @@ import LoadPrices from '../../redux/thunkActions/loadPrices';
 import { addCoupons } from '../../redux/actions/hotelDetailActions';
 
 const PricingDetails = (props) => {
-  
+  console.log(props);
   const styles = useStyleSheet(style);
   const [modal, setModal] = React.useState(false);
   var servicesId = 0;
@@ -22,14 +22,14 @@ const PricingDetails = (props) => {
     }
     else {
       props.addCoupons({});
-      props.LoadPrices({ hotelId: props.hotelDetail.hotelIds.hotelId, roomId: props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: props.hotelDetail.services }, props.common.userData.access_token);
+      props.LoadPrices({ hotelId: props.hotelDetail.hotelIds.hotelId, roomId: props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: props.hotelDetail.services, foods: props.hotelDetail.foods }, props.common.userData.access_token);
       setModal(false);
     }
   }
-
+ 
   const closeModal = (item, price) => {
     props.addCoupons({ code: item, price: price });
-    props.LoadPrices({ hotelId: props.hotelDetail.hotelIds.hotelId, roomId: props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: props.hotelDetail.services, coupons: item }, props.common.userData.access_token);
+    props.LoadPrices({ hotelId: props.hotelDetail.hotelIds.hotelId, roomId: props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: props.hotelDetail.services, coupons: item, foods: props.hotelDetail.foods }, props.common.userData.access_token);
     setModal(!modal);
   }
 

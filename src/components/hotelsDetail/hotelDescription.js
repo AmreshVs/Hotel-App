@@ -18,7 +18,7 @@ const HotelDescription = (props) => {
   const description1 = description.replace(lines, '');
 
   return (
-    <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={20} >
+    <Animatable.View animation="fadeInUp" direction="normal" duration={500} useNativeDriver={true} delay={80} >
       <View style={styles.cardContainer}>
         <Text style={styles.heading}>Description</Text>
         <Text style={[styles.desc, { height: showDesc }]}>{description1}</Text>

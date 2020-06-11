@@ -9,8 +9,8 @@ import Progress from '../extra/progress';
 import ReviewsLess from './reviewsLess';
 import TopNavSimple from '../navigation/topNavSimple';
 import WriteReview from './writeReview';
-import ReviewsLessSK from '../skeletons/hotelDetail/reviewsLessSK';
 import LoadAllReviews from '../../redux/thunkActions/loadAllReviews';
+import Loader from '../../components/loader';
 
 const GuestDetails = (props) => {
 
@@ -39,15 +39,8 @@ const GuestDetails = (props) => {
     { id: 1, num: props.data.rating1 },
   ];
 
-  const RenderReviewLessSK = () => {
-    const skData = [1, 2, 3, 4, 5];
-    return (
-      skData.map((item) => <ReviewsLessSK key={item} />)
-    )
-  }
-
   return (
-    <Animatable.View style={{ width: '100%', alignItems: 'center' }} animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={60} >
+    <Animatable.View style={{ width: '100%', alignItems: 'center' }} animation="fadeInUp" direction="normal" duration={500} useNativeDriver={true} delay={90} >
       <View style={styles.cardContainer}>
         <View style={styles.textContainer}>
           <View style={styles.textContainer1}>
@@ -91,7 +84,7 @@ const GuestDetails = (props) => {
           <View>
             <TopNavSimple backHandler={toggleModal} screenTitle="All Reviews" />
             <ScrollView style={styles.reviewsMore} showsVerticalScrollIndicator={false}>
-              {allReviewData.length === 0 ? <RenderReviewLessSK /> :
+              {allReviewData.length === 0 ? <Loader topBar={true} /> :
                 allReviewData.map((item, index) => {
                   return <ReviewsLess key={item.id} delay={index} data={item} />
                 })

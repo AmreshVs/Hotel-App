@@ -6,8 +6,8 @@ const AddFavourite = async (data, token) => {
   return await axios({
     method: 'POST',
     url: API_URL + '/add-favourite',
-    headers: {
-      'Authorization': token
+    headers:{
+      Authorization: token
     },
     data: data,
   })

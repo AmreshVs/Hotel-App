@@ -21,17 +21,9 @@ import FoodsBeverages from '../../components/hotelsDetail/foodsBeverages';
 import LoadHotelDetailsData from '../../redux/thunkActions/loadHotelDetails';
 import LoadFoodsBeverages from '../../redux/thunkActions/loadFoodsBeverages';
 import LoadPrices from '../../redux/thunkActions/loadPrices';
+import Loader from '../../components/loader';
 
 // Skeletons
-import ThumbImageSK from '../../components/skeletons/thumbImageSK';
-import NameBlockSK from '../../components/skeletons/hotelDetail/nameBlockSK';
-import DescriptionBlockSK from '../../components/skeletons/hotelDetail/descriptionBlockSK';
-import ChooseRoomsBlockSK from '../../components/skeletons/hotelDetail/chooseRoomsBlockSK';
-import GuestDetailsBlockSK from '../../components/skeletons/hotelDetail/guestDetailsBlockSK';
-import RulesBlockSK from '../../components/skeletons/hotelDetail/rulesBlockSK';
-import AmenitiesBlockSK from '../../components/skeletons/hotelDetail/amenitiesBlockSK';
-import RoomsBlockSK from '../../components/skeletons/hotelDetail/roomsBlockSK';
-import ReviewRatingBlockSK from '../../components/skeletons/hotelDetail/reviewsRatingsSK';
 import PriceDetailsBlockSK from '../../components/skeletons/hotelDetail/priceDetailsBlockSK';
 import TotalPriceSK from '../../components/skeletons/hotelDetail/totalPriceSK';
 
@@ -54,14 +46,13 @@ const HotelsDetail = (props) => {
       setData(response.data[0]);
       const result = await LoadFoodsBeverages(props.common.userData.access_token, response.data[0].nameBlock.id);
       setFoods(result);
-      setLoading(false);
       setLoadPrices(true);
+      setLoading(false);
     }
     
-    if (loading === true) {
-      loadDatas();
-    }
-  }, [])
+    loadDatas();
+    
+  }, []);
 
   if (loadPrices === true) {
     setLoadPrices(false);
@@ -78,7 +69,9 @@ const HotelsDetail = (props) => {
   }
 
   const RenderPriceBlock = () => {
-    errors !== undefined && errors !== null && errors.error !== '' ? setShowSnack(true) : false;
+    if(errors !== undefined && errors !== null && errors.error !== ''){
+      setShowSnack(true);
+    }
     return (
       priceCond ? <PricingDetails data={prices.data} /> : <PriceDetailsBlockSK />
     );
@@ -87,7 +80,7 @@ const HotelsDetail = (props) => {
   const RenderTotal = () => (
     priceCond ?
       <View>
-        <BookHotel data={prices.data.data} />
+        <BookHotel data={prices.data.data} hotelId={data.nameBlock !== undefined ? data.nameBlock.id : null} alias={props.route.params.alias} is_favorite={props.route.params.is_favorite} />
         {errors !== undefined && errors !== null && errors.error !== undefined ?
           <View style={styles.snackbar}>
             <SnackBar visible={showSnack} textMessage={errors.error} />
@@ -99,24 +92,30 @@ const HotelsDetail = (props) => {
 
   return (
     <SafeAreaView style={styles.background}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <TopNavSimple screenTitle={loading === false ? data.nameBlock.title : ''} backHandler={() => navigation.goBack()} />
-        {loading === true ? <ThumbImageSK /> : <ThumbImg route={props.route.params} images={data.imageBlock} />}
-        <View style={styles.bodyContainer}>
-          {loading === true ? <NameBlockSK /> : <NameBlock data={data.nameBlock} />}
-          {loading === true ? <DescriptionBlockSK /> : <HotelDescription description={data.descriptionBlock.desc} />}
-          {loading === true ? <AmenitiesBlockSK /> : <Amenities data={data.amenitiesBlock} />}
-          {loading === true ? <RoomsBlockSK /> : <RoomsCategory hotelId={data.nameBlock.id} data={data.roomsBlock} />}
-          {loading === true ? <ChooseRoomsBlockSK /> : <ChooseDates alias={props.route.params.alias} />}
-          {loading === true ? <GuestDetailsBlockSK /> : <GuestDetails />}
-          {loading === true ? <ReviewRatingBlockSK /> : <ReviewsRatings data={data.reviewsRatingsBlock} hotelId={data.nameBlock.id} />}
-          <RenderPriceBlock />
-          {foods.data !== undefined && foods.data.length > 0 ? <FoodsBeverages data={foods} token={props.common.userData.access_token} hotelId={data.nameBlock.id} /> : null}
-          {loading === true ? <RulesBlockSK /> : <RulesPolicies />}
-        </View>
-        <View style={{ marginBottom: 10 }} />
-      </ScrollView>
-      <RenderTotal />
+      {loading === true ? 
+        <Loader/>
+        :
+        <>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <TopNavSimple screenTitle={loading === false ? data.nameBlock.title : ''} backHandler={() => navigation.goBack()} />
+            <ThumbImg route={props.route.params} images={data.imageBlock} />
+            <View style={styles.bodyContainer}>
+              <NameBlock data={data.nameBlock} />
+              <HotelDescription description={data.descriptionBlock.desc} />
+              <Amenities data={data.amenitiesBlock} />
+              <RoomsCategory hotelId={data.nameBlock.id} data={data.roomsBlock} />
+              <ChooseDates alias={props.route.params.alias} />
+              <GuestDetails />
+              <ReviewsRatings data={data.reviewsRatingsBlock} hotelId={data.nameBlock.id} />
+              <RenderPriceBlock />
+              {foods.data !== undefined && foods.data.length > 0 ? <FoodsBeverages data={foods} token={props.common.userData.access_token} hotelId={data.nameBlock.id} /> : null}
+              <RulesPolicies />
+            </View>
+            <View style={{ marginBottom: 10 }} />
+          </ScrollView>
+          <RenderTotal />
+        </>
+      }
     </SafeAreaView>
   );
 };

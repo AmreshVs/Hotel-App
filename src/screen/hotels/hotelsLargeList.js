@@ -7,8 +7,8 @@ import { useNavigation } from '@react-navigation/native';
 import RoomsListAllLarge from '../../components/rooms/roomsListAllLarge';
 import TopNavSimple from '../../components/navigation/topNavSimple';
 import LoadRecommendedRoomsData from '../../redux/thunkActions/loadRecommendedRoomsData';
-import RecommendedRoomsSK from '../../components/skeletons/recommendedRoomsSK';
 import { clearData } from '../../redux/actions/hotelDetailActions';
+import Loader from '../../components/loader';
 
 const HotelsLargeListScreen = (props) => {
 
@@ -22,10 +22,8 @@ const HotelsLargeListScreen = (props) => {
       setData(response);
       setLoading(false);
     }
-    if (loading === true) {
-      loadDatas();
-    }
-  }, [])
+    loadDatas();
+  }, []);
 
   const navigateHotelDetails = (alias, id, is_favorite) => {
     props.clearData();
@@ -36,22 +34,18 @@ const HotelsLargeListScreen = (props) => {
     });
   }
 
-  const RenderSK = () => {
-    return (
-      <View style={{ alignItems: 'center', paddingTop: 20, }}>
-        <RecommendedRoomsSK />
-        <RecommendedRoomsSK />
-      </View>
-    )
-  }
-
   return (
     <SafeAreaView>
       <TopNavSimple screenTitle="Recommended Rooms" backHandler={() => navigation.goBack()} />
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {loading === true ? <RenderSK /> : data.map((item, index) => <RoomsListAllLarge key={item.alias} delay={index} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favourite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} cost={item.price_start} oldCost={(item.price_start) + 200} is_favourite={item.is_favorite} />)}
-        <View style={{ marginBottom: 80 }} />
-      </ScrollView>
+      {
+        loading === true ?
+          <Loader topBar={true} />
+        :
+          <ScrollView showsVerticalScrollIndicator={false}>
+            {data.map((item, index) => <RoomsListAllLarge key={item.alias} delay={index} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favourite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} cost={item.price_start} oldCost={(item.price_start) + 200} is_favourite={item.is_favorite} />)}
+            <View style={{ marginBottom: 80 }} />
+          </ScrollView>
+      }
     </SafeAreaView>
   );
 };

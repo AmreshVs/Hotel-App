@@ -50,7 +50,7 @@ const FoodItems = (props) => {
   }
 
   const loadPrice = (result) => {
-    props.LoadPrices({ hotelId: props.hotelDetail.hotelIds.hotelId, roomId: props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: props.hotelDetail.services, foods: result.foodsArr }, props.common.userData.access_token);
+    props.LoadPrices({ hotelId: props.hotelDetail.hotelIds.hotelId, roomId: props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: props.hotelDetail.services, foods: result.foodsArr, coupons: props.hotelDetail.coupons.code || '' }, props.common.userData.access_token);
   } 
 
   return(

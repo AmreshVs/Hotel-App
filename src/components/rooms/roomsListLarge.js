@@ -5,21 +5,19 @@ import Ripple from 'react-native-material-ripple';
 import * as Animatable from 'react-native-animatable';
 
 import AddFavourite from '../../redux/thunkActions/addFavourite';
-import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 
 const RoomsListLarge = (props) => {
-  
+
   const styles = useStyleSheet(style);
   const [favcolor, setFavcolor] = React.useState(props.is_favourite === 1 ? '#FF4626' : '#AAA');
 
   const addFavourite = async () => {
     setFavcolor(favcolor === '#AAA' ? '#FF4626' : '#AAA');
-    const response = await AddFavourite({ hotel_id: props.hotelId }, props.token);
-    snackbarMessage(response.message + ' for ' + props.hotelName);
+    await AddFavourite({ hotel_id: props.hotelId }, props.token);
   }
 
-  return (
-    <Animatable.View animation="fadeInRight" direction="normal" duration={800} useNativeDriver={true} delay={props.delay * 50}>
+  const RenderRoom = () => {
+    return(
       <View style={styles.hotelCard}>
         <Ripple rippleSize={300} rippleDuration={600} onPress={props.navigate}>
           <Image
@@ -47,11 +45,22 @@ const RoomsListLarge = (props) => {
           </View>
         </Ripple>
       </View>
+    )
+  }
+
+  return (
+    props.reload === true ?
+    <View>
+      <RenderRoom/>
+    </View>
+    :
+    <Animatable.View animation="fadeInRight" direction="normal" duration={800} useNativeDriver={true} delay={props.delay * 50}>
+      <RenderRoom/>
     </Animatable.View>
   );
 }
 
-export default RoomsListLarge;
+export default React.memo(RoomsListLarge);
 
 const style = StyleService.create({
   hotelCard: {

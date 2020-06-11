@@ -8,6 +8,7 @@ import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { AsyncStorage } from 'react-native';
 import OneSignal from 'react-native-onesignal';
 import  * as Animatable from 'react-native-animatable';
+import axios from 'axios';
 
 import styles from './styles';
 import UserLoginAuth from '../../redux/thunkActions/userLoginAuth';
@@ -147,11 +148,11 @@ const LoginScreen = (props) => {
         snackbarMessage(userData.message.otp);
       }
       else{
-        props.userLogin(userData.data);
+        await props.userLogin(userData.data);
         const token = userData.data.access_token;
-        snackbarMessage(userData.message)
+        axios.defaults.headers.common['Authorization'] = token;
         if (token !== undefined && token !== '') {
-          storeAsyncData(JSON.stringify(userData.data));
+          await storeAsyncData(JSON.stringify(userData.data));
           navigation.navigate('Home');
         }
       }

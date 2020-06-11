@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, ScrollView } from 'react-native';
+import { View, Image, ScrollView, RefreshControl } from 'react-native';
 import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import { useNavigation } from '@react-navigation/native';
@@ -17,10 +17,17 @@ const BookingsOverview = (props) => {
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+    <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}
+      refreshControl={
+        <RefreshControl
+          refreshing={props.refresh}
+          onRefresh={props.reloadData}
+        />
+      }
+    >
       {props.data.map((item, index) =>
-        <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={index * 50}>
-          <View style={styles.container} key={item.booking_id}>
+        <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={index * 50} >
+          <View style={styles.container} key={item.booking_id + Math.random()}>
             <Ripple rippleDuration={600} onPress={() => navigateBookingdetail(item.booking_id)}>
               <View style={styles.cardContainer}>
                 <View style={styles.row}>
@@ -117,7 +124,7 @@ const themedStyle = StyleService.create({
     flexDirection: 'row',
   },
   iconContainer: {
-    right: 10,
+    right: 20,
   },
   datesContainer: {
     marginTop: 5,

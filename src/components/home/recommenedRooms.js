@@ -7,7 +7,6 @@ import Ripple from 'react-native-material-ripple';
 import { useNavigation } from '@react-navigation/native';
 
 import RoomsListLarge from '../rooms/roomsListLarge';
-import RecommendedRoomsSK from '../skeletons/recommendedRoomsSK';
 import { clearData } from '../../redux/actions/hotelDetailActions';
 
 const RecommendedRooms = (props) => {
@@ -28,17 +27,6 @@ const RecommendedRooms = (props) => {
     });
   }
 
-  var data = [];
-  var loaded = null;
-  if (props.data !== undefined && Object.keys(props.data).length > 0) {
-    data = props.data;
-    loaded = true;
-  }
-  else {
-    data = [1, 2];
-    loaded = false;
-  }
-
   return (
     <View>
       <View style={styles.headingBlock}>
@@ -48,7 +36,7 @@ const RecommendedRooms = (props) => {
         </Ripple>
       </View>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        {data.map((item, index) => loaded === false ? <RecommendedRoomsSK key={item + 1} pending={true} /> : <RoomsListLarge key={item.alias} delay={index} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} cost={item.price_start} oldCost={Number(item.price_start) + 200} pending={false} is_favourite={item.is_favorite} />)}
+        {props.data.map((item, index) => <RoomsListLarge key={item.alias + Math.random()} reload={props.reload} delay={index} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} cost={item.price_start} oldCost={Number(item.price_start) + 200} pending={false} is_favourite={item.is_favorite} />)}
       </ScrollView>
     </View>
   );

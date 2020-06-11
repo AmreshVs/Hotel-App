@@ -29,7 +29,7 @@ const ThumbImg = (props) => {
   }
 
   return (
-    <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} >
+    <Animatable.View animation="fadeInUp" direction="normal" duration={500} useNativeDriver={true} >
       <View style={styles.imageContainer}>
         <Ripple rippleSize={50} rippleDuration={600} onPress={addFavourite} style={styles.heartContainer}>
           <Icon name='heart' style={styles.heartIcon} fill={favcolor} />

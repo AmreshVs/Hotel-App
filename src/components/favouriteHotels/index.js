@@ -8,7 +8,6 @@ import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 
 import AddFavourite from '../../redux/thunkActions/addFavourite';
-import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
 import { clearData } from '../../redux/actions/hotelDetailActions';
 
 const FavouriteHotels = (props) => {
@@ -17,8 +16,7 @@ const FavouriteHotels = (props) => {
   const styles = useStyleSheet(themedStyle);
 
   const removeFavourite = async () => {
-    const response = await AddFavourite({ hotel_id: props.hotelId }, props.token);
-    snackbarMessage(response.message + ' for ' + props.hotelName);
+    await AddFavourite({ hotel_id: props.hotelId }, props.common.userData.access_token);
     props.reloadData();
   }
 

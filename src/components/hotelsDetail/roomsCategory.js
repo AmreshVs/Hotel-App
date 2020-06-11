@@ -69,7 +69,7 @@ const RoomsCategory = (props) => {
   );
 
   return (
-    <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={30} >
+    <Animatable.View animation="fadeInUp" direction="normal" duration={500} useNativeDriver={true} delay={90} >
       <View style={styles.cardContainer}>
         <Text style={styles.heading}>Rooms</Text>
         {props.data.map((item) => {

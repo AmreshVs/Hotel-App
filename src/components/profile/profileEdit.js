@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { View } from 'react-native';
 import { Input, Icon, Card, Button, StyleService, useStyleSheet } from '@ui-kitten/components';
+import { AsyncStorage } from 'react-native';
 
 import SaveProfileData from '../../redux/thunkActions/saveProfileData';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
@@ -19,13 +20,17 @@ const ProfileEdit = (props) => {
 
   const handleSave = async () => {
     if (validate()) {
-      const response = await SaveProfileData(props.access_token, { firstname: firstname, lastname: lastname, email: email, address: address, city: city });
-      snackbarMessage(response.message);
-      props.userLogin({ access_token: props.access_token, firstname: firstname, lastname: lastname, email: email, address: address, city: city })
+      await SaveProfileData(props.access_token, { firstname: firstname, lastname: lastname, email: email, address: address, city: city });
+      props.userLogin({ access_token: props.access_token, firstname: firstname, lastname: lastname, email: email, address: address, city: city });
+      storeAsyncData(JSON.stringify({ access_token: props.access_token, firstname: firstname, lastname: lastname, email: email, address: address, city: city }));
       props.handleClick();
-      props.reloadData();
+      props.reloadData(true);
     }
   }
+
+  const storeAsyncData = async (userData) => {
+    await AsyncStorage.setItem('@Darpad:userData', userData);
+  };
 
   const validate = () => {
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;

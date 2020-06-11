@@ -8,9 +8,9 @@ import { connect } from 'react-redux';
 import TopNavSimple from '../../components/navigation/topNavSimple';
 import FavouriteHotels from '../../components/favouriteHotels/index';
 import GetFavourites from '../../redux/thunkActions/getFavourites';
-import FavouriteHotelSK from '../../components/skeletons/favouriteHotelSK';
 import CheckUserData from '../../commonFunctions/checkUserData';
 import { clearData } from '../../redux/actions/hotelDetailActions';
+import Loader from '../../components/loader';
 
 const NoFavourites = () => {
 
@@ -30,18 +30,18 @@ const FavouritesScreen = (props) => {
   const navigation = useNavigation();
   const styles = useStyleSheet(themedStyle);
   const [data, setData] = React.useState([]);
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
   const [refresh, setRefresh] = React.useState(false);
 
   React.useEffect(() => {
     CheckUserData(props.userData);
     async function loadDatas() {
-      setLoading(true);
       const response = await GetFavourites(props.userData.access_token);
       setData(response);
       setLoading(false);
     }
     loadDatas();
+    CheckUserData(props.userData);
     navigation.addListener('focus', () => {
       reloadData();
     });
@@ -53,7 +53,6 @@ const FavouritesScreen = (props) => {
 
   const reloadData = async () => {
     setRefresh(true);
-    CheckUserData(props.userData);
     const response = await GetFavourites(props.userData.access_token);
     setData(response);
     setRefresh(false);
@@ -71,19 +70,20 @@ const FavouritesScreen = (props) => {
   return (
     <View style={styles.bodyContainer}>
       <TopNavSimple screenTitle='Favourite Rooms' />
-      <ScrollView showsVerticalScrollIndicator={false} style={styles.favourites} 
-        refreshControl={
-          <RefreshControl
-            refreshing={refresh}
-            onRefresh={reloadData}
-          />
-        }
-      >
-        {loading === true ?
-          [1, 2, 3].map((item) => <FavouriteHotelSK key={item} />)
-          :
-          (data.length === 0 ? <NoFavourites /> : data.map((item, index) => <FavouriteHotels key={item.id} delay={index} alias={item.alias} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} reloadData={reloadData} hotelId={item.id} image={item.image[0].file} hotelName={item.title} price={item.price_start} rating={item.avg_rating} token={props.access_token} />))}
-      </ScrollView>
+      {loading === true ? 
+        <Loader topBottom={true} />
+        :
+        <ScrollView showsVerticalScrollIndicator={false} style={styles.favourites} 
+          refreshControl={
+            <RefreshControl
+              refreshing={refresh}
+              onRefresh={reloadData}
+            />
+          }
+        >
+          {(data.length === 0 ? <NoFavourites /> : data.map((item, index) => <FavouriteHotels key={item.id} delay={index} alias={item.alias} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} reloadData={reloadData} hotelId={item.id} image={item.image[0].file} hotelName={item.title} price={item.price_start} rating={item.avg_rating} token={props.access_token} />))}
+        </ScrollView>
+      }
     </View>
   );
 }

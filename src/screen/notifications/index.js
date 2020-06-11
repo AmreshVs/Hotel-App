@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { View, ScrollView, RefreshControl } from 'react-native';
+import { View, ScrollView, RefreshControl, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { TopNavigationAction, Icon, Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 
 import Notifications from '../../components/notifications/index';
-import NotificationsSK from '../../components/skeletons/notificationsSK';
 import TopNavSimple from '../../components/navigation/topNavSimple';
 import ViewNotifications from '../../commonFunctions/viewNotifications';
+import Loader from '../../components/loader';
 
 const NotificationsScreen = (props) => {
 
@@ -16,11 +16,13 @@ const NotificationsScreen = (props) => {
   const styles = useStyleSheet(themedStyles);
   const [data, setData] = useState([]);
   const [refresh, setRefresh] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadData() {
       const response = await ViewNotifications(props.access_token);
       setData(response.length > 0 ? response : -1);
+      setLoading(false);
     }
     loadData();
     navigation.addListener('focus', () => {
@@ -58,16 +60,20 @@ const NotificationsScreen = (props) => {
   return (
     <View style={styles.backContainer}>
       <TopNavSimple screenTitle='Notifications' rightControl={true} rightControlFun={RefreshAction} />
-      <ScrollView contentContainerStyle={styles.container} showsHorizontalScrollIndicator={false}
-        refreshControl={
-          <RefreshControl
-            refreshing={refresh}
-            onRefresh={reloadData}
-          />
-        }
-      >
-        {data === -1 ? <NoData /> : data.length === 0 ? <NotificationsSK /> : <Notifications data={data} token={props.access_token} reload={reloadData} />}
-      </ScrollView>
+      {loading === true ? 
+        <Loader/>
+        :
+        <ScrollView contentContainerStyle={styles.container} showsHorizontalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl
+              refreshing={refresh}
+              onRefresh={reloadData}
+            />
+          }
+        >
+          {data === -1 ? <NoData /> : <Notifications data={data} token={props.access_token} reload={reloadData} />}
+        </ScrollView>
+      }
     </View>
   )
 }
@@ -90,6 +96,6 @@ const themedStyles = StyleService.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    height: 700,
+    height: Dimensions.get('window').height - 100,
   },
 })

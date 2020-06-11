@@ -3,6 +3,7 @@ import { View, AsyncStorage } from 'react-native';
 import { Button, Card, Icon, Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
+import { CommonActions } from '@react-navigation/native';
 
 const ProfileView = (props) => {
 
@@ -11,8 +12,15 @@ const ProfileView = (props) => {
   
   const logout = async () => {
     const userData = await AsyncStorage.removeItem('@Darpad:userData');
-    if (userData === null) {
-      navigation.push('LoginScreen');
+    if(userData === null){
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [
+            { name: 'LoginScreen' },
+          ],
+        })
+      );
     }
   }
 

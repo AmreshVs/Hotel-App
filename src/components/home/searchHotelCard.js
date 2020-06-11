@@ -73,7 +73,7 @@ const SearchHotelCard = (props) => {
           selectionColor={styles.range.color}
           blankColor={styles.range.blank}
           labelStyle="none"
-          onValueChanged={(low, high, fromUser) => {
+          onValueChanged={(low, high) => {
             setLow(low);
             setHigh(high);
           }}

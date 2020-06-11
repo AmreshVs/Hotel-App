@@ -9,7 +9,7 @@ const NameBlock = (props) => {
   const data = props.data;
   
   return (
-    <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={10} >
+    <Animatable.View animation="fadeInUp" direction="normal" duration={500} useNativeDriver={true} delay={50} >
       <View style={styles.cardContainer}>
         <View style={styles.nameprice}>
           <View style={styles.nameBlock}>

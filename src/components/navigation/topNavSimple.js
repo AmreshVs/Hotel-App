@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import { Icon, TopNavigation, TopNavigationAction, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { useNavigation } from '@react-navigation/native';
 import Ripple from 'react-native-material-ripple';
@@ -21,15 +22,19 @@ const TopNavSimple = (props) => {
   );
 
   return (
-    <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={[styles.topbar.color1, styles.topbar.color2, styles.topbar.color3]}>
+    <View style={styles.root}>
       <TopNavigation title={props.screenTitle} titleStyle={styles.title} alignment='center' leftControl={props.backHandler !== undefined ? BackAction() : null} rightControls={props.rightControl === true ? props.rightControlFun() : null} style={styles.header} />
-    </LinearGradient>
+    </View>
   )
 }
 
 export default TopNavSimple;
 
 const style = StyleService.create({
+  root:{
+    backgroundColor: 'topBar-color-3',
+    height: 55
+  },
   header: {
     backgroundColor: 'transparent',
   },

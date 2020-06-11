@@ -6,9 +6,9 @@ import { useNavigation } from '@react-navigation/native';
 
 import RoomsListSmall from '../../components/rooms/roomsListSmall';
 import TopNavSimple from '../../components/navigation/topNavSimple';
-import ExclusiveRoomsSK from '../../components/skeletons/exclusiveRoomsSK';
 import LoadExclusiveRoomsData from '../../redux/thunkActions/loadExclusiveRoomsData';
 import { clearData } from '../../redux/actions/hotelDetailActions';
+import Loader from '../../components/loader';
 
 const HotelsLargeListScreen = (props) => {
 
@@ -36,24 +36,17 @@ const HotelsLargeListScreen = (props) => {
     });
   }
 
-  const RenderSK = () => {
-    return (
-      <View>
-        <ExclusiveRoomsSK />
-        <ExclusiveRoomsSK />
-        <ExclusiveRoomsSK />
-        <ExclusiveRoomsSK />
-      </View>
-    )
-  }
-
   return (
     <SafeAreaView>
       <TopNavSimple screenTitle="Explore Rooms" backHandler={() => navigation.goBack()} />
-      <ScrollView showsVerticalScrollIndicator={false} style={{ paddingTop: 20 }}>
-        {loading === true ? <RenderSK /> : data.map((item, index) => <RoomsListSmall key={item.alias} delay={index} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favourite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} address={item.alias} cost={item.price_start} oldCost={(item.price_start) + 200} is_favourite={item.is_favorite} />)}
-        <View style={{ marginBottom: 80 }} />
-      </ScrollView>
+      {loading === true ? 
+        <Loader topBar={true} />
+        :
+        <ScrollView showsVerticalScrollIndicator={false} style={{ paddingTop: 20 }}>
+          {data.map((item, index) => <RoomsListSmall key={item.alias} delay={index} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favourite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} address={item.alias} cost={item.price_start} oldCost={(item.price_start) + 200} is_favourite={item.is_favorite} />)}
+          <View style={{ marginBottom: 80 }} />
+        </ScrollView>
+      }
     </SafeAreaView>
   );
 };
