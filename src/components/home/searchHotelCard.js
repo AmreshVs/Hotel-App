@@ -7,6 +7,7 @@ import moment from 'moment';
 import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 import RangeSlider from 'rn-range-slider';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const SearchHotelCard = (props) => {
 
@@ -80,7 +81,7 @@ const SearchHotelCard = (props) => {
         />
       </Animatable.View>
       <Animatable.View animation="bounceInRight" direction="normal" duration={500} useNativeDriver={true} >
-        <Button style={styles.button} status='primary' size='small' icon={StarIcon} onPress={() => navigation.navigate('SearchRooms', { price: low + ',' + high})}>Search Rooms</Button>
+        <Button style={styles.button} status='primary' size='small' icon={StarIcon} onPress={() => navigation.push('SearchRooms', { price: low + ',' + high})}>Search Rooms</Button>
       </Animatable.View>
     </View>
   );
@@ -132,13 +133,13 @@ const themedStyles = StyleService.create({
     backgroundColor: 'color-basic-300'
   },
   heading: {
-    fontSize: 16,
+    fontSize: hp('2.3%'),
     fontWeight: '700',
     color: 'color-primary-500',
     marginBottom: 5,
   },
   dateCaption: {
-    fontSize: 16,
+    fontSize: hp('2.2%'),
     color: 'color-basic-600'
   },
   iconFill: {

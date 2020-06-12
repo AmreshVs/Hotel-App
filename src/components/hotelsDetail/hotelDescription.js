@@ -3,6 +3,7 @@ import { Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import * as Animatable from 'react-native-animatable';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const HotelDescription = (props) => {
   
@@ -23,7 +24,7 @@ const HotelDescription = (props) => {
         <Text style={styles.heading}>Description</Text>
         <Text style={[styles.desc, { height: showDesc }]}>{description1}</Text>
         <Ripple rippleSize={50} rippleDuration={600} onPress={revealDescription}>
-          <Text status='primary' style={{ marginTop: 5 }}>{showDesc == 60 ? 'More' : 'Less'}</Text>
+          <Text status='primary' style={{ marginTop: 5, fontSize: hp('2.2%') }}>{showDesc == 60 ? 'More' : 'Less'}</Text>
         </Ripple>
       </View>
     </Animatable.View>
@@ -34,21 +35,22 @@ export default HotelDescription;
 
 const style = StyleService.create({
   cardContainer: {
-    width: '95%',
+    width: '100%',
     borderRadius: 10,
-    marginTop: 10,
+    marginTop: 5,
     backgroundColor: 'background-basic-color-1',
     padding: 13,
     borderWidth: 1,
     borderColor: 'color-basic-300',
   },
   heading: {
-    fontSize: 16,
+    fontSize: hp('2.3%'),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
   },
   desc: {
-    color: 'color-basic-600'
+    color: 'color-basic-600',
+    fontSize: hp('2.2%')
   }
 })

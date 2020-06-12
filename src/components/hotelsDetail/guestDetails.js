@@ -5,6 +5,7 @@ import { Text, Icon, Input, StyleService, useStyleSheet } from '@ui-kitten/compo
 import { View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import * as Animatable from 'react-native-animatable';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import { addGuests } from '../../redux/actions/hotelDetailActions';
 
@@ -35,7 +36,7 @@ const GuestDetails = (props) => {
         {visible == false ?
           <View style={styles.textContainer}>
             <Text style={styles.guestName}>{name}</Text>
-            <Text>+91 {phone}</Text>
+            <Text style={styles.text}>+91 {phone}</Text>
           </View>
           :
           <View>
@@ -72,9 +73,9 @@ export default connect(mapStateToProps, mapDispatchToProps)(GuestDetails);
 
 const style = StyleService.create({
   cardContainer: {
-    width: '95%',
+    width: '100%',
     borderRadius: 10,
-    marginTop: 10,
+    marginTop: 5,
     backgroundColor: 'background-basic-color-1',
     padding: 13,
     borderWidth: 1,
@@ -82,7 +83,7 @@ const style = StyleService.create({
     paddingBottom: 15,
   },
   heading: {
-    fontSize: 16,
+    fontSize: hp('2.3%'),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -94,12 +95,12 @@ const style = StyleService.create({
   },
   guestName: {
     color: 'color-basic-700',
-    fontWeight: '700'
+    fontWeight: '700',
+    fontSize: hp('2.2%')
   },
   popoverContent: {
     justifyContent: 'center',
     alignItems: 'center',
-
     padding: 24,
   },
   backdrop: {
@@ -110,5 +111,8 @@ const style = StyleService.create({
   },
   iconColor: {
     color: 'color-basic-600'
+  },
+  text:{
+    fontSize: hp('2.2%')
   }
 })

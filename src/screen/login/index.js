@@ -44,7 +44,7 @@ const LoginScreen = (props) => {
         const userData = await AsyncStorage.getItem('@Darpad:userData');
         if (userData !== null) {
           props.userLogin(JSON.parse(userData));
-          navigation.navigate('Home');
+          navigation.replace('Home');
         }
       } catch (error) {
 
@@ -153,7 +153,7 @@ const LoginScreen = (props) => {
         axios.defaults.headers.common['Authorization'] = token;
         if (token !== undefined && token !== '') {
           await storeAsyncData(JSON.stringify(userData.data));
-          navigation.navigate('Home');
+          navigation.replace('Home');
         }
       }
     }

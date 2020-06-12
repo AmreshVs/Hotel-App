@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { FlatList } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import FoodItems from './foodItems';
 import LoadFoodsBeverages from '../../redux/thunkActions/loadFoodsBeverages';
@@ -47,16 +48,16 @@ export default FoodsBeverages;
 
 const style = StyleService.create({
   cardContainer: {
-    width: '95%',
+    width: '100%',
     borderRadius: 10,
-    marginTop: 10,
+    marginTop: 5,
     backgroundColor: 'background-basic-color-1',
     padding: 13,
     borderWidth: 1,
     borderColor: 'color-basic-300',
   },
   heading: {
-    fontSize: 16,
+    fontSize: hp('2.3%'),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',

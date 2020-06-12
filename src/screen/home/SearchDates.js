@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { SafeAreaView, StyleSheet, ScrollView } from 'react-native';
+import { SafeAreaView, StyleSheet, ScrollView, Dimensions, View } from 'react-native';
 import { Layout, Tab, TabView, Button } from '@ui-kitten/components';
 import { RangeCalendar } from '@ui-kitten/components';
 import { useNavigation } from '@react-navigation/native';
@@ -55,7 +55,7 @@ const SearchDates = (props) => {
       <TabView
         selectedIndex={selectedIndex}
         onSelect={setSelectedIndex}
-        style={{ height: '91%' }}
+        style={styles.tabs}
       >
         <Tab title='Check In / Out' style={styles.title}>
           <Layout style={styles.tabContainer}>
@@ -67,7 +67,7 @@ const SearchDates = (props) => {
           </Layout>
         </Tab>
         <Tab title='Guests' style={styles.title}>
-          <ScrollView style={[styles.tabContainer, styles.guests]} showsVerticalScrollIndicator={false}>
+          <ScrollView contentContainerStyle={[styles.dates, styles.guests]} showsVerticalScrollIndicator={false}>
             {roomsArray.map((item) => {
               if (props.hotelDetail.rooms[item] !== undefined) {
                 return <SelectGuest key={item} roomNum={item} adult={props.hotelDetail.rooms[item].adult} children={props.hotelDetail.rooms[item].children} removeRoom={removeRoom} ClosePage={ClosePage} />
@@ -79,7 +79,9 @@ const SearchDates = (props) => {
           </ScrollView>
         </Tab>
       </TabView>
-      <Button style={styles.button} onPress={ClosePage} status='primary'>Confirm</Button>
+      <View style={styles.btnContainer}>
+        <Button onPress={ClosePage} status='primary'>Confirm</Button>
+      </View>
     </SafeAreaView>
   );
 };
@@ -99,16 +101,25 @@ const styles = StyleSheet.create({
     minHeight: 64,
   },
   title: {
-    padding: 10
+    padding: 10,
   },
   guests: {
     margin: 20,
     marginBottom: 0,
   },
-  button: {
-    margin: 10
+  btnContainer:{
+    padding: 5,
+    width: '100%',
+    position: 'absolute',
+    bottom: 5,
   },
   calender: {
     width: '100%',
+  },
+  tabs:{
+    height: Dimensions.get('window').height - 20
+  },
+  addRoom:{
+    marginBottom: 130
   }
 });

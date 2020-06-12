@@ -44,10 +44,10 @@ const HotelsDetail = (props) => {
     async function loadDatas() {
       const response = await LoadHotelDetailsData(props.route.params.alias, props.common.userData.access_token);
       setData(response.data[0]);
+      setLoading(false);
+      setLoadPrices(true);
       const result = await LoadFoodsBeverages(props.common.userData.access_token, response.data[0].nameBlock.id);
       setFoods(result);
-      setLoadPrices(true);
-      setLoading(false);
     }
     
     loadDatas();
@@ -139,6 +139,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 5
   },
   snackbar: {
     height: 45,

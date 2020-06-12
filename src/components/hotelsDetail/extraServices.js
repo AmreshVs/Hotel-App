@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Text, CheckBox, Icon, Tooltip, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen'; 
 
 import { addServices, removeServices, serviceChecked } from '../../redux/actions/hotelDetailActions';
 import LoadPrices from '../../redux/thunkActions/loadPrices';
@@ -81,7 +82,7 @@ const ExtraServices = (props) => {
     <View style={styles.cardContainer}>
       <View>
         <View style={styles.textInfo}>
-          <Text>{props.name}</Text>
+          <Text style={styles.text}>{props.name}</Text>
           {props.desc !== '' &&
             <Tooltip
               visible={visible}
@@ -133,14 +134,16 @@ const style = StyleService.create({
   price: {
     width: 70,
     marginRight: 10,
-    textAlign: 'right'
+    textAlign: 'right',
+    fontSize: hp('2.2%')
   },
   count: {
     marginLeft: 10,
     marginRight: 10,
+    fontSize: hp('2.2%')
   },
   desc: {
-    fontSize: 13,
+    fontSize: hp('2.2%'),
   },
   textInfo: {
     flexDirection: 'row'
@@ -158,5 +161,8 @@ const style = StyleService.create({
   },
   iconColor: {
     color: 'color-basic-600'
+  },
+  text:{
+    fontSize: hp('2.3%')
   }
 })

@@ -3,6 +3,7 @@ import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View, Image } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import * as Animatable from 'react-native-animatable';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import ReviewRating from '../extra/reviewRating';
 import AddFavourite from '../../redux/thunkActions/addFavourite';
@@ -105,7 +106,7 @@ const style = StyleService.create({
     justifyContent: 'space-between',
   },
   title: {
-    fontSize: 15,
+    fontSize: hp('2.3%'),
     marginBottom: 0,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -120,12 +121,12 @@ const style = StyleService.create({
   },
   price: {
     marginTop: 5,
-    fontSize: 20,
+    fontSize: hp('3%'),
     fontWeight: '700',
     color: 'color-primary-500',
   },
   oldPrice: {
-    fontSize: 15,
+    fontSize: hp('2.2%'),
     paddingTop: 1,
     paddingRight: 5,
     color: 'color-basic-600',
@@ -134,12 +135,13 @@ const style = StyleService.create({
   },
   priceCaption: {
     color: 'color-basic-600',
-    fontSize: 13,
+    fontSize: hp('2.2%'),
   },
   caption: {
     marginTop: 0,
     marginLeft: 10,
     color: 'color-basic-600',
+    fontSize: hp('2.2%')
   },
   starIcon: {
     width: 25,

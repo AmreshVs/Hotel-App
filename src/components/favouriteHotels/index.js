@@ -6,6 +6,7 @@ import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import AddFavourite from '../../redux/thunkActions/addFavourite';
 import { clearData } from '../../redux/actions/hotelDetailActions';
@@ -92,7 +93,7 @@ const themedStyle = StyleService.create({
     justifyContent: 'space-between'
   },
   hotelName: {
-    fontSize: 16,
+    fontSize: hp('2.3%'),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -114,18 +115,18 @@ const themedStyle = StyleService.create({
   caption: {
     color: 'color-basic-600',
     paddingLeft: 5,
-    fontSize: 14,
+    fontSize: hp('2.2%'),
   },
   price: {
     textAlign: 'right',
     marginBottom: 3,
-    fontSize: 18,
+    fontSize: hp('3%'),
     fontWeight: '700',
     color: 'color-primary-500',
   },
   priceCaption: {
     color: 'color-basic-600',
-    fontSize: 16
+    fontSize: hp('2.2%')
   },
   heartContainer: {
     position: 'absolute',

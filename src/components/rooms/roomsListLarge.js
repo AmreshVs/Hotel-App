@@ -3,6 +3,7 @@ import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View, Image } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import * as Animatable from 'react-native-animatable';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import AddFavourite from '../../redux/thunkActions/addFavourite';
 
@@ -115,7 +116,7 @@ const style = StyleService.create({
     borderColor: 'background-basic-color-4',
   },
   title: {
-    fontSize: 15,
+    fontSize: hp('2.3%'),
     marginBottom: 0,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -125,12 +126,12 @@ const style = StyleService.create({
   },
   price: {
     marginTop: 4,
-    fontSize: 20,
+    fontSize: hp('3%'),
     fontWeight: '700',
     color: 'color-primary-500',
   },
   priceCaption: {
-    fontSize: 14,
+    fontSize: hp('2.2%'),
     marginTop: 2,
     color: 'color-basic-600'
   },
@@ -163,7 +164,7 @@ const style = StyleService.create({
     height: 21
   },
   ratingCount: {
-    fontSize: 14,
+    fontSize: hp('2.2%'),
     fontWeight: 'bold',
     color: '#626262'
   },
@@ -188,7 +189,7 @@ const style = StyleService.create({
     borderRadius: 50,
   },
   oldPrice: {
-    fontSize: 16,
+    fontSize: hp('2.2%'),
     paddingTop: 2,
     paddingRight: 5,
     color: 'color-basic-600',

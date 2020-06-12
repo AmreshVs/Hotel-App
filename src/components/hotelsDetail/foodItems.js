@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Text, StyleService, useStyleSheet, Button, Icon } from '@ui-kitten/components';
 import { Image } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import { addFoods, removeFoods } from '../../redux/actions/hotelDetailActions';
 import LoadPrices from '../../redux/thunkActions/loadPrices';
@@ -94,13 +95,14 @@ const style = StyleService.create({
   },
   foodName:{
     color: 'color-basic-700',
-    fontSize: 16,
+    fontSize: hp('2.3%'),
     paddingTop: 5,
     paddingBottom: 3
   },
   caption:{
     color: 'color-basic-600',
-    paddingBottom: 5
+    paddingBottom: 5,
+    fontSize: hp('2.2%')
   },
   foodsImg:{
     width: 150,

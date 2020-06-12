@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 import { Text, CheckBox, Button, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View, Modal, ScrollView } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import moment from 'moment';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import TopNavSimple from '../navigation/topNavSimple';
 import ExtraServices from './extraServices';
@@ -11,10 +13,14 @@ import LoadPrices from '../../redux/thunkActions/loadPrices';
 import { addCoupons } from '../../redux/actions/hotelDetailActions';
 
 const PricingDetails = (props) => {
-  console.log(props);
+  
   const styles = useStyleSheet(style);
   const [modal, setModal] = React.useState(false);
   var servicesId = 0;
+  let total = props.hotelDetail.prices_services.data.data.price.total;
+  let startDate = moment(props.hotelDetail.dates.startDate);
+  let endDate = moment(props.hotelDetail.dates.endDate);
+  let days = endDate.diff(startDate, 'days');
 
   const openModal = () => {
     if (props.hotelDetail.coupons.code === undefined) {
@@ -49,14 +55,18 @@ const PricingDetails = (props) => {
           return <ExtraServices key={item.service_id} id={servicesId} service_id={item.service_id} name={item.service_name} desc={''} quantity={(item.service_type).search('qty') !== -1 ? true : false} price={'₹' + item.price} />
         })}
         <View style={styles.textContainer}>
+          <Text style={styles.total}>{days} Night's</Text>
+          <Text style={styles.total}>₹{total}</Text>
+        </View>
+        {/* <View style={styles.textContainer}>
           <Text style={styles.total}>Total</Text>
           <Text style={styles.total}>₹{props.data.data.price !== undefined ? props.data.data.price.total : 0}</Text>
-        </View>
+        </View> */}
         {props.data.data.price !== undefined &&
           <View>
             <View style={styles.textContainer}>
-              <Text>Discount</Text>
-              <Text>- ₹{props.data.data.price.discount_price}</Text>
+              <Text style={styles.text}>Discount</Text>
+              <Text style={styles.text}>- ₹{props.data.data.price.discount_price}</Text>
             </View>
             <View style={styles.textContainer}>
               <Text style={styles.total}>Tax</Text>
@@ -118,16 +128,16 @@ export default connect(mapStateToProps, mapDispatchToProps)(PricingDetails);
 
 const style = StyleService.create({
   cardContainer: {
-    width: '95%',
+    width: '100%',
     borderRadius: 10,
-    marginTop: 10,
+    marginTop: 5,
     backgroundColor: 'background-basic-color-1',
     padding: 13,
     borderWidth: 1,
     borderColor: 'color-basic-300',
   },
   heading: {
-    fontSize: 16,
+    fontSize: hp('2.3%'),
     marginBottom: 10,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -138,7 +148,8 @@ const style = StyleService.create({
     justifyContent: 'space-between',
   },
   total: {
-    fontWeight: '700'
+    fontWeight: '700',
+    fontSize: hp('2.2%')
   },
   checkboxContainer: {
     alignItems: 'center',
@@ -181,18 +192,24 @@ const style = StyleService.create({
     borderStyle: 'dashed',
     borderColor: 'color-warning-500',
     borderRadius: 6,
+    fontSize: hp('2.2%')
   },
   couponDesc: {
     marginLeft: 10,
     marginBottom: 10,
+    fontSize: hp('2.2%')
   },
   couponHeading: {
     marginLeft: 10,
     marginTop: 10,
+    fontSize: hp('2.2%')
   },
   applyCoupon: {
     height: '100%',
     backgroundColor: 'background-basic-color-2',
     paddingBottom: 30,
+  },
+  text:{
+    fontSize: hp('2.2%')
   }
 })

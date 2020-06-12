@@ -5,6 +5,7 @@ import { Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View, ScrollView } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import { useNavigation } from '@react-navigation/native';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import RoomsListLarge from '../rooms/roomsListLarge';
 import { clearData } from '../../redux/actions/hotelDetailActions';
@@ -20,7 +21,7 @@ const RecommendedRooms = (props) => {
 
   const navigateHotelDetails = (alias, id, is_favorite) => {
     props.clearData();
-    navigation.navigate('HotelsDetail', {
+    navigation.push('HotelsDetail', {
       alias: alias,
       hotelId: id,
       is_favorite: is_favorite
@@ -55,13 +56,14 @@ export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Recommend
 const style = StyleService.create({
   headingText: {
     fontWeight: '700',
-    fontSize: 16,
+    fontSize: hp('2.3%'),
     color: 'color-basic-700'
   },
   caption: {
     color: 'color-basic-600',
     padding: 5,
     marginTop: -5,
+    fontSize: hp('2.2%')
   },
   headingBlock: {
     flexDirection: 'row',

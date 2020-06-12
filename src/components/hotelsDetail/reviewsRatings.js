@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { View, Modal, ScrollView } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import * as Animatable from 'react-native-animatable';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import Progress from '../extra/progress';
 import ReviewsLess from './reviewsLess';
@@ -60,7 +61,7 @@ const GuestDetails = (props) => {
                 return (
                   <View key={item.id} style={styles.progressCount}>
                     <View style={styles.countContainer}>
-                      <Text>{item.id}</Text>
+                      <Text style={styles.text}>{item.id}</Text>
                     </View>
                     <View style={styles.progressContainer}>
                       <Progress color='#FFC145' data={item.num} />
@@ -116,16 +117,16 @@ export default connect(mapStateToProps)(GuestDetails);
 
 const style = StyleService.create({
   cardContainer: {
-    width: '95%',
+    width: '100%',
     borderRadius: 10,
-    marginTop: 10,
+    marginTop: 5,
     backgroundColor: 'background-basic-color-1',
     padding: 13,
     borderWidth: 1,
     borderColor: 'color-basic-300',
   },
   heading: {
-    fontSize: 16,
+    fontSize: hp('2.3%'),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -151,17 +152,17 @@ const style = StyleService.create({
     alignItems: 'center',
   },
   rating: {
-    fontSize: 40,
     fontWeight: '700',
     paddingTop: 20,
-    color: 'color-primary-500'
+    color: 'color-primary-500',
+    fontSize: hp('6%')
   },
   ratingCaption: {
     // color: '#AAA'
   },
   ratingNumber: {
     color: 'color-basic-600',
-    fontSize: 13,
+    fontSize: hp('2.2%'),
   },
   progressCount: {
     flexDirection: 'row',
@@ -179,7 +180,8 @@ const style = StyleService.create({
     marginTop: 10,
   },
   seeAll: {
-    color: 'color-primary-500'
+    color: 'color-primary-500',
+    fontSize: hp('2.2%')
   },
   reviewsMore: {
     paddingLeft: 20,
@@ -189,4 +191,7 @@ const style = StyleService.create({
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
+  text:{
+    fontSize: hp('2.2%')
+  }
 })

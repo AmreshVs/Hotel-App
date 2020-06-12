@@ -1,7 +1,7 @@
 import snackbarMessage from '../redux/thunkActions/snackbarMessage';
 
 const CheckUserData = (data) => {
-  console.log(data);
+
   const userData = data;
   const keys = [];
   if (Object.keys(userData).length > 0) {

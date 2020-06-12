@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Image} from 'react-native';
 import {Text, StyleService, useStyleSheet} from '@ui-kitten/components';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const Head = () => {
   const styles = useStyleSheet(style);
@@ -24,6 +25,7 @@ const style = StyleService.create({
     color: 'color-basic-100',
     padding: 15,
     textAlign: 'center',
+    fontSize: hp('3%')
   },
   headBack:{
     alignItems: 'center',

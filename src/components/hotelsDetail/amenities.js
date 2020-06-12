@@ -3,6 +3,7 @@ import { View, Image } from 'react-native';
 import { Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import * as Animatable from 'react-native-animatable';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const Amenities = (props) => {
   const styles = useStyleSheet(style);
@@ -32,7 +33,7 @@ const Amenities = (props) => {
         </View>
         {amenitiesData.length > 4 ?
           <Ripple rippleSize={50} rippleDuration={600} onPress={revealAmenities}>
-            <Text status='primary'> {showAmenities === 90 ? 'More' : 'Less'} </Text>
+            <Text status='primary' style={styles.text}> {showAmenities === 90 ? 'More' : 'Less'} </Text>
           </Ripple>
           : null}
       </View>
@@ -44,15 +45,15 @@ export default Amenities;
 
 const style = StyleService.create({
   heading: {
-    fontSize: 16,
+    fontSize: hp('2.3%'),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
   },
   cardContainer: {
-    width: '95%',
+    width: '100%',
     borderRadius: 10,
-    marginTop: 10,
+    marginTop: 5,
     padding: 13,
     backgroundColor: 'background-basic-color-1',
     borderWidth: 1,
@@ -78,6 +79,10 @@ const style = StyleService.create({
   },
   amenitiesName: {
     marginTop: 3,
-    color: 'color-basic-600'
+    color: 'color-basic-600',
+    fontSize: hp('2.2%')
+  },
+  text:{
+    fontSize: hp('2.2%')
   }
 })

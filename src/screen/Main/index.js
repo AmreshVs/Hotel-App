@@ -20,10 +20,10 @@ const Main = (props) => {
       const userData = await AsyncStorage.getItem('@Darpad:userData');
       if (userData !== null) {
         props.userLogin(JSON.parse(userData));
-        navigation.navigate('Home');
+        navigation.replace('Home');
       }
       else {
-        navigation.navigate('LoginScreen');
+        navigation.replace('LoginScreen');
       }
     } catch (error) {
 

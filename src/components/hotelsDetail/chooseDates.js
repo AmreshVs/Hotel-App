@@ -7,6 +7,7 @@ import Ripple from 'react-native-material-ripple';
 import { useNavigation } from '@react-navigation/native';
 import moment from 'moment';
 import * as Animatable from 'react-native-animatable';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import { addGuests } from '../../redux/actions/hotelDetailActions';
 
@@ -31,7 +32,7 @@ const ChooseDates = (props) => {
     if (Object.keys(rooms).length <= 0) {
       props.addGuests({ room: 1, guests: { adult: 1, children: 0 } });
     }
-    navigation.navigate('HotelDates', { alias: props.alias });
+    navigation.push('HotelDates', { alias: props.alias });
   }
 
   if (props.hotelDetail.dates !== undefined) {
@@ -72,16 +73,16 @@ export default connect(mapStateToProps, mapDispatchToProps)(ChooseDates);
 
 const style = StyleService.create({
   cardContainer: {
-    width: '95%',
+    width: '100%',
     borderRadius: 10,
-    marginTop: 10,
+    marginTop: 5,
     backgroundColor: 'background-basic-color-1',
     padding: 13,
     borderWidth: 1,
     borderColor: 'color-basic-300',
   },
   heading: {
-    fontSize: 16,
+    fontSize: hp('2.3%'),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -101,7 +102,7 @@ const style = StyleService.create({
   },
   text: {
     paddingLeft: 5,
-    fontSize: 14,
+    fontSize: hp('2.2%'),
   },
   iconColor: {
     color: 'color-primary-500'

@@ -6,7 +6,7 @@ import styles from './styles';
 const BottomNav = ({ navigation, state }) => {
 
   const onSelect = index => {
-    navigation.navigate(state.routeNames[index]);
+    navigation.jumpTo(state.routeNames[index]);
   };
 
   const HomeIcon = style => <Icon {...style} name="home-outline" />;

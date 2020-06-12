@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const NameBlock = (props) => {
 
@@ -21,7 +22,7 @@ const NameBlock = (props) => {
             </View>
           </View>
           <View style={styles.priceBlock}>
-            <Text style={styles.oldPrice}>{'₹' + data.discount_price} </Text>
+            <Text style={styles.oldPrice}>{'₹' + (data.avg_price + 200)} </Text>
             <Text style={styles.price}>{'₹' + data.avg_price}</Text>
             <Text style={styles.priceCaption}>  Per Night</Text>
             <Icon name='map-outline' style={styles.mapIcon} fill='#CCC' />
@@ -36,9 +37,8 @@ export default NameBlock;
 
 const style = StyleService.create({
   cardContainer: {
-    width: '95%',
+    width: '100%',
     borderRadius: 10,
-    marginTop: 10,
     backgroundColor: 'background-basic-color-1',
     padding: 13,
     borderWidth: 1,
@@ -61,12 +61,12 @@ const style = StyleService.create({
   },
   price: {
     marginTop: 5,
-    fontSize: 21,
+    fontSize: hp('3%'),
     fontWeight: '700',
     color: 'color-primary-500',
   },
   oldPrice: {
-    fontSize: 15,
+    fontSize: hp('2.2%'),
     paddingTop: 1,
     paddingRight: 5,
     color: 'color-basic-600',
@@ -75,17 +75,18 @@ const style = StyleService.create({
   },
   priceCaption: {
     color: 'color-basic-600',
-    fontSize: 13
+    fontSize: hp('2.2%')
   },
   roomTitle: {
-    fontSize: 16,
+    fontSize: hp('2.3%'),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
   },
   caption: {
     color: 'color-basic-600',
-    marginBottom: 3
+    marginBottom: 3,
+    fontSize: hp('2.2%')
   },
   ratingContainer: {
     flex: 1,
@@ -93,7 +94,7 @@ const style = StyleService.create({
     marginTop: 5,
   },
   ratingCount: {
-    fontSize: 16,
+    fontSize: hp('2.3%'),
     color: 'color-basic-700',
     paddingTop: 2,
     paddingLeft: 5

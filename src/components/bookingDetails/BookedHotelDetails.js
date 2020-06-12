@@ -40,7 +40,7 @@ const BookedHotelDetails = (props) => {
             const content = "#" + props.data.booking_id + " booking on " + props.data.title + " has been cancelled by " + props.data.customer_name;
             await SaveNotification({ user_id: props.user_id, booking_id: props.data.booking_id, type: 'cancel', heading: heading, content: content, notify_to: 'admin' }, props.token);
             SendNotification(heading, content, props.token);
-            navigation.navigate('Home');
+            navigation.replace('Home');
           }
         },
       ],

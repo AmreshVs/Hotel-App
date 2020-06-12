@@ -59,7 +59,7 @@ const AfterBooking = (props) => {
   useFocusEffect(
     React.useCallback(() => {
       const onBackPress = () => {
-        navigation.navigate('BookingsScreen');
+        navigation.push('BookingsScreen');
       };
 
       BackHandler.addEventListener('hardwareBackPress', onBackPress);

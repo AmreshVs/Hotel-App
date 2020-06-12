@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { ScrollView, View, Image } from 'react-native';
 import { Text, CheckBox, Icon, Modal, Layout, StyleService, useStyleSheet } from '@ui-kitten/components';
 import * as Animatable from 'react-native-animatable';
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 import LoadPrices from '../../redux/thunkActions/loadPrices';
 import ImageViewer from '../../components/extra/ImageViewer';
@@ -79,7 +80,7 @@ const RoomsCategory = (props) => {
           return (
             <View key={item.id} style={styles.controlContainer}>
               <View style={styles.roomDetails}>
-                <View>
+                <View style={styles.imageContainer}>
                   <Ripple onPress={() => addModalImages(item.images)}>
                     <Image
                       style={styles.image}
@@ -87,7 +88,7 @@ const RoomsCategory = (props) => {
                     />
                   </Ripple>
                 </View>
-                <View>
+                <View style={styles.contentContainer}>
                   <Text style={styles.roomTitle}>{hotelname}</Text>
                   <View style={styles.capacity}>
                     <Icon name='people-outline' fill={styles.iconColor.color} width={20} height={20} />
@@ -131,15 +132,14 @@ export default connect(mapStateToProps, mapDispatchToProps)(RoomsCategory);
 
 const style = StyleService.create({
   heading: {
-    fontSize: 16,
+    fontSize: hp('2.3%'),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
   },
   cardContainer: {
-    width: '95%',
     borderRadius: 10,
-    marginTop: 10,
+    marginTop: 5,
     backgroundColor: 'background-basic-color-1',
     padding: 13,
     borderWidth: 1,
@@ -157,12 +157,21 @@ const style = StyleService.create({
     marginBottom: 5,
     borderWidth: 1,
     borderColor: 'color-basic-300',
+    width: '100%',
   },
   image: {
-    width: 150,
-    height: 130,
+    width: '100%',
+    height: '100%',
     borderTopLeftRadius: 5,
     borderBottomLeftRadius: 5,
+  },
+  imageContainer:{
+    width: wp('35%'),
+    height: hp('22%'),
+  },
+  contentContainer:{
+    width: wp('55%'),
+    height: hp('22%'),
   },
   roomDetails: {
     flexDirection: 'row',
@@ -170,7 +179,8 @@ const style = StyleService.create({
   roomTitle: {
     padding: 8,
     paddingLeft: 10,
-    width: '100%'
+    width: '100%',
+    fontSize: hp('2.3%')
   },
   capacity: {
     flexDirection: 'row',
@@ -203,11 +213,11 @@ const style = StyleService.create({
   moreCaption: {
     minWidth: 20,
     textAlign: 'center',
-    fontSize: 13,
+    fontSize: hp('2.2%'),
     color: 'color-basic-600'
   },
   checkText: {
-    fontSize: 16,
+    fontSize: hp('2.3%'),
     fontWeight: 'bold',
     color: 'color-primary-500'
   },
