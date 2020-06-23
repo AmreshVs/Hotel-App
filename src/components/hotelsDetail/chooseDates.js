@@ -7,7 +7,7 @@ import Ripple from 'react-native-material-ripple';
 import { useNavigation } from '@react-navigation/native';
 import moment from 'moment';
 import * as Animatable from 'react-native-animatable';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 import { addGuests } from '../../redux/actions/hotelDetailActions';
 
@@ -82,7 +82,7 @@ const style = StyleService.create({
     borderColor: 'color-basic-300',
   },
   heading: {
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -102,7 +102,7 @@ const style = StyleService.create({
   },
   text: {
     paddingLeft: 5,
-    fontSize: hp('2.2%'),
+    fontSize: RFPercentage(2.2),
   },
   iconColor: {
     color: 'color-primary-500'

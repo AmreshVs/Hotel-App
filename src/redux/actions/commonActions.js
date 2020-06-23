@@ -1,4 +1,4 @@
-import { USER_LOGIN, SNACKBAR_MESSAGE } from '../actionCreators/commonAC';
+import { USER_LOGIN, SNACKBAR_MESSAGE, AUTO_OTP_HASH } from '../actionCreators/commonAC';
 
 export const userLogin = (payload) => {
   return {
@@ -10,6 +10,13 @@ export const userLogin = (payload) => {
 export const snackMessage = (payload) => {
   return {
     type: SNACKBAR_MESSAGE,
+    payload
+  };
+};
+
+export const setAutoOtpHash = (payload) => {
+  return {
+    type: AUTO_OTP_HASH,
     payload
   };
 };

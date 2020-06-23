@@ -3,7 +3,7 @@ import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View, Image } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import * as Animatable from 'react-native-animatable';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 import ReviewRating from '../extra/reviewRating';
 import AddFavourite from '../../redux/thunkActions/addFavourite';
@@ -53,11 +53,17 @@ const RoomsListSmall = (props) => {
               </Ripple>
             </View>
           </View>
-          <View style={styles.priceContainer}>
-            <Text style={styles.oldPrice}>₹{props.oldCost} </Text>
-            <Text style={styles.price}>₹{props.cost}</Text>
-            <Text style={styles.priceCaption}>  Per Night</Text>
-          </View>
+          {props.status === 1 ?
+            <View style={styles.priceContainer}>
+              <Text style={styles.oldPrice}>₹{props.oldCost} </Text>
+              <Text style={styles.price}>₹{props.cost}</Text>
+              <Text style={styles.priceCaption}>  Per Night</Text>
+            </View>
+          :
+            <View style={styles.priceContainer}>
+              <Text status='danger'>Room's Not Available</Text>
+            </View>
+          }
         </View>
       </View>
     )
@@ -106,7 +112,7 @@ const style = StyleService.create({
     justifyContent: 'space-between',
   },
   title: {
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     marginBottom: 0,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -121,12 +127,12 @@ const style = StyleService.create({
   },
   price: {
     marginTop: 5,
-    fontSize: hp('3%'),
+    fontSize: RFPercentage(3),
     fontWeight: '700',
     color: 'color-primary-500',
   },
   oldPrice: {
-    fontSize: hp('2.2%'),
+    fontSize: RFPercentage(2.2),
     paddingTop: 1,
     paddingRight: 5,
     color: 'color-basic-600',
@@ -135,13 +141,13 @@ const style = StyleService.create({
   },
   priceCaption: {
     color: 'color-basic-600',
-    fontSize: hp('2.2%'),
+    fontSize: RFPercentage(2.2),
   },
   caption: {
     marginTop: 0,
     marginLeft: 10,
     color: 'color-basic-600',
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   },
   starIcon: {
     width: 25,

@@ -4,7 +4,7 @@ import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 const BookingsOverview = (props) => {
 
@@ -98,11 +98,11 @@ const themedStyle = StyleService.create({
   hotelName: {
     fontWeight: '700',
     color: 'color-basic-700',
-    fontSize: hp('2.3%')
+    fontSize: RFPercentage(2.5)
   },
   caption: {
     color: 'color-basic-600',
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   },
   info: {
     marginTop: 20,
@@ -115,7 +115,7 @@ const themedStyle = StyleService.create({
   address: {
     width: '50%',
     color: 'color-basic-600',
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   },
   starIcon: {
     width: 25,
@@ -146,6 +146,6 @@ const themedStyle = StyleService.create({
     paddingHorizontal: 10
   },
   text:{
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   }
 })

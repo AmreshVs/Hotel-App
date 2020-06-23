@@ -4,14 +4,19 @@ import { bindActionCreators } from 'redux';
 import { Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { AsyncStorage, StyleSheet, View } from 'react-native';
+import RNOtpVerify from 'react-native-otp-verify';
 
-import { userLogin } from '../../redux/actions/commonActions';
+import { userLogin, setAutoOtpHash } from '../../redux/actions/commonActions';
 
 const Main = (props) => {
 
   const navigation = useNavigation();
 
   React.useEffect(() => {
+    RNOtpVerify.getHash()
+    .then((hash) => {
+      props.setAutoOtpHash(hash[0]);
+    })
     retrieveData();
   }, [])
 
@@ -43,7 +48,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ userLogin: userLogin }, dispatch);
+  return bindActionCreators({ userLogin: userLogin, setAutoOtpHash: setAutoOtpHash }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { View } from 'react-native';
 import { Input, Icon, Card, Button, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { AsyncStorage } from 'react-native';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 import SaveProfileData from '../../redux/thunkActions/saveProfileData';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
@@ -172,7 +172,7 @@ const themedStyle = StyleService.create({
     paddingLeft: 10,
   },
   inputText: {
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     color: 'color-basic-700',
   },
   btnContainer: {

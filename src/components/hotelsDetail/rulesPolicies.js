@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 const RulesPolicies = () => {
 
@@ -33,12 +33,12 @@ const style = StyleService.create({
     borderColor: 'color-basic-300',
   },
   heading: {
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
   },
   text:{
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   }
 })

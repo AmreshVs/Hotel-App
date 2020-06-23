@@ -5,7 +5,7 @@ import { Text, Button, StyleService, useStyleSheet } from '@ui-kitten/components
 import { View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import { useNavigation } from '@react-navigation/native';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 import RoomsListSmall from '../rooms/roomsListSmall';
 import { clearData } from '../../redux/actions/hotelDetailActions';
@@ -36,7 +36,7 @@ const ExclusiveRooms = (props) => {
           <Text style={styles.caption}>View More</Text>
         </Ripple>
       </View>
-      {props.data.map((item, index) => <RoomsListSmall key={item.alias + Math.random()} reload={props.reload} delay={index} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} address={item.alias} cost={item.price_start} oldCost={Number(item.price_start) + 200} is_favourite={item.is_favorite} />)}
+      {props.data.map((item, index) => <RoomsListSmall key={item.alias + Math.random()} reload={props.reload} delay={index} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} address={item.alias} cost={item.price_start} oldCost={Number(item.price_start) + 200} is_favourite={item.is_favorite} status={item.status} />)}
       <Ripple rippleDuration={600} onPress={navigateDetails}>
         <Button style={styles.button} appearance='ghost' status='basic'>View More</Button>
       </Ripple>
@@ -57,14 +57,14 @@ export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Exclusive
 const style = StyleService.create({
   headingText: {
     fontWeight: '700',
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     color: 'color-basic-700'
   },
   caption: {
     color: 'color-basic-600',
     padding: 5,
     marginTop: -5,
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   },
   headingBlock: {
     flexDirection: 'row',

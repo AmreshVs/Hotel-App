@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Dimensions } from 'react-native';
 import { Radio, RadioGroup, Button } from '@ui-kitten/components';
 import { useNavigation } from '@react-navigation/native';
 
@@ -27,7 +27,7 @@ const PaymentScreen = (props) => {
   return (
     <View>
       <TopNavSimple screenTitle="Confirm Booking" />
-      <View styles={styles.flexContainer}>
+      <View style={styles.flexContainer}>
         <View style={styles.container}>
           <RadioGroup
             selectedIndex={selectedIndex}
@@ -52,15 +52,16 @@ export default connect(mapStateToProps)(PaymentScreen);
 
 const styles = StyleSheet.create({
   flexContainer: {
-    flex: 1,
     flexDirection: 'column',
-    alignItems: 'flex-end',
-    justifyContent: 'space-between'
+    // alignItems: 'flex-end',
+    justifyContent: 'space-between',
+    backgroundColor: '#FFF',
+    height: Dimensions.get('window').height - 80,
   },
   container: {
     paddingLeft: 15,
   },
   btnContainer: {
-    padding: 15,
+    padding: 10,
   }
 })

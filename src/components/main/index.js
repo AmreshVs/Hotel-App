@@ -22,8 +22,8 @@ const Main = (props) => {
   return (
     <View style={styles.mainView}>
       <NavigationContainer ref={navigationRef}>
-        <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
-        <View style={styles.statusBar} />
+        {/* <StatusBar barStyle="light-content" translucent  /> */}
+        {/* <View style={styles.statusBar} /> */}
         <TabNavigator/>
         <SnackBar containerStyle={styles.snack} visible={props.visible} textMessage={props.message} backgroundColor={props.backgroundColor} actionText="Ok" position="bottom" bottom={10} right={10} left={10} autoHidingTime={1900} />
       </NavigationContainer>

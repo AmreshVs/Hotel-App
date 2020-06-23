@@ -4,7 +4,7 @@ import * as Navigation from '../components/navigation/rootNavigation';
 const Logout = async () => {
   const userData = await AsyncStorage.removeItem('@Darpad:userData');
   if (userData === null) {
-    Navigation.replace('LoginScreen');
+    Navigation.navigate('LoginScreen');
   }
 
 }

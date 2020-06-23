@@ -39,11 +39,17 @@ const RoomsListAllLarge = (props) => {
         </View>
         <Ripple rippleSize={300} rippleDuration={600} style={styles.namePrice} onPress={props.navigate}>
           <Text style={styles.title}>{props.hotelName}</Text>
-          <View style={styles.priceBlock}>
-            <Text style={styles.oldPrice}>₹{props.oldCost} </Text>
-            <Text style={styles.price}>₹{props.cost}</Text>
-            <Text style={styles.priceCaption}>  Per Night</Text>
-          </View>
+          {props.status === 1 ? 
+            <View style={styles.priceBlock}>
+              <Text style={styles.oldPrice}>₹{props.oldCost} </Text>
+              <Text style={styles.price}>₹{props.cost}</Text>
+              <Text style={styles.priceCaption}>  Per Night</Text>
+            </View>
+          :
+            <View style={styles.priceBlock}>
+              <Text status='danger'>Room's Not Available</Text>
+            </View>
+          }
         </Ripple>
       </View>
     </Animatable.View>

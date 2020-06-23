@@ -5,7 +5,7 @@ import { Text, CheckBox, Button, StyleService, useStyleSheet } from '@ui-kitten/
 import { View, Modal, ScrollView } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import moment from 'moment';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 import TopNavSimple from '../navigation/topNavSimple';
 import ExtraServices from './extraServices';
@@ -13,14 +13,26 @@ import LoadPrices from '../../redux/thunkActions/loadPrices';
 import { addCoupons } from '../../redux/actions/hotelDetailActions';
 
 const PricingDetails = (props) => {
-  
+
   const styles = useStyleSheet(style);
   const [modal, setModal] = React.useState(false);
   var servicesId = 0;
-  let total = props.hotelDetail.prices_services.data.data.price.total;
+  let total = props.hotelDetail.prices_services.data.data.price !== undefined ? props.hotelDetail.prices_services.data.data.price.total : 0;
   let startDate = moment(props.hotelDetail.dates.startDate);
   let endDate = moment(props.hotelDetail.dates.endDate);
   let days = endDate.diff(startDate, 'days');
+
+  if (props.hotelDetail.rooms !== undefined) {
+    let rooms = props.hotelDetail.rooms;
+    let length = Object.keys(rooms).length;
+    var guests = 0; var roomNum = 0; 
+    for (var i = 1; i <= length; i++) {
+      roomNum++;
+      if (rooms[i] !== undefined) {
+        guests += rooms[i].adult + rooms[i].children;
+      }
+    }
+  }
 
   const openModal = () => {
     if (props.hotelDetail.coupons.code === undefined) {
@@ -39,6 +51,30 @@ const PricingDetails = (props) => {
     setModal(!modal);
   }
 
+  const RenderFoods = () => {
+    let foods = props.hotelDetail.foods;
+    let foodsArr = [];
+
+    if(Object.keys(foods).length > 0){
+      for(let item in foods){
+        console.log(foods[item]);
+        foodsArr.push(
+          <View style={styles.textContainer}>
+            <Text style={styles.text}>{foods[item].name} - {foods[item].qty}</Text>
+            <Text style={styles.total}>{'₹' + foods[item].price * foods[item].qty}</Text>
+          </View>
+        )
+      }
+      return(
+        foodsArr
+      )
+    }
+    else{
+      return null;
+    }
+
+  }
+
   return (
     <View style={{ width: '100%', alignItems: 'center' }}>
       <View style={styles.cardContainer}>
@@ -55,25 +91,26 @@ const PricingDetails = (props) => {
           return <ExtraServices key={item.service_id} id={servicesId} service_id={item.service_id} name={item.service_name} desc={''} quantity={(item.service_type).search('qty') !== -1 ? true : false} price={'₹' + item.price} />
         })}
         <View style={styles.textContainer}>
-          <Text style={styles.total}>{days} Night's</Text>
+          <View>
+            <Text style={styles.text}>Night's - {days}</Text>
+            <Text style={styles.textInfo}>Room's - {roomNum}</Text>
+            <Text style={styles.textInfo}>Guest's - {guests}</Text>
+          </View>
           <Text style={styles.total}>₹{total}</Text>
         </View>
-        {/* <View style={styles.textContainer}>
-          <Text style={styles.total}>Total</Text>
-          <Text style={styles.total}>₹{props.data.data.price !== undefined ? props.data.data.price.total : 0}</Text>
-        </View> */}
+        <RenderFoods/>
         {props.data.data.price !== undefined &&
           <View>
             <View style={styles.textContainer}>
               <Text style={styles.text}>Discount</Text>
-              <Text style={styles.text}>- ₹{props.data.data.price.discount_price}</Text>
+              <Text style={styles.total}>- ₹{props.data.data.price.discount_price}</Text>
             </View>
             <View style={styles.textContainer}>
               <Text style={styles.total}>Tax</Text>
               <Text style={styles.total}>₹{props.data.data.price !== undefined ? props.data.data.price.vat : 0}</Text>
             </View>
             <View style={styles.textContainer}>
-              <Text style={styles.total}>Total After Discount</Text>
+              <Text style={styles.total}>Total</Text>
               <Text style={styles.total}>₹{props.data.data.price.discount_after_price}</Text>
             </View>
           </View>
@@ -137,7 +174,7 @@ const style = StyleService.create({
     borderColor: 'color-basic-300',
   },
   heading: {
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     marginBottom: 10,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -149,7 +186,7 @@ const style = StyleService.create({
   },
   total: {
     fontWeight: '700',
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   },
   checkboxContainer: {
     alignItems: 'center',
@@ -192,17 +229,17 @@ const style = StyleService.create({
     borderStyle: 'dashed',
     borderColor: 'color-warning-500',
     borderRadius: 6,
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   },
   couponDesc: {
     marginLeft: 10,
     marginBottom: 10,
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   },
   couponHeading: {
     marginLeft: 10,
     marginTop: 10,
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   },
   applyCoupon: {
     height: '100%',
@@ -210,6 +247,10 @@ const style = StyleService.create({
     paddingBottom: 30,
   },
   text:{
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
+  },
+  textInfo:{
+    fontSize: RFPercentage(2.2),
+    marginTop: 15
   }
 })

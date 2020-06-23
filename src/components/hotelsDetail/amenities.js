@@ -3,7 +3,7 @@ import { View, Image } from 'react-native';
 import { Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import * as Animatable from 'react-native-animatable';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 const Amenities = (props) => {
   const styles = useStyleSheet(style);
@@ -45,7 +45,7 @@ export default Amenities;
 
 const style = StyleService.create({
   heading: {
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -80,9 +80,9 @@ const style = StyleService.create({
   amenitiesName: {
     marginTop: 3,
     color: 'color-basic-600',
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   },
   text:{
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   }
 })

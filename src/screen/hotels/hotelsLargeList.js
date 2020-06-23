@@ -42,7 +42,7 @@ const HotelsLargeListScreen = (props) => {
           <Loader topBar={true} />
         :
           <ScrollView showsVerticalScrollIndicator={false}>
-            {data.map((item, index) => <RoomsListAllLarge key={item.alias} delay={index} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favourite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} cost={item.price_start} oldCost={(item.price_start) + 200} is_favourite={item.is_favorite} />)}
+            {data.map((item, index) => <RoomsListAllLarge key={item.alias} delay={index} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favourite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} cost={item.price_start} oldCost={(item.price_start) + 200} is_favourite={item.is_favorite} status={item.status} />)}
             <View style={{ marginBottom: 80 }} />
           </ScrollView>
       }

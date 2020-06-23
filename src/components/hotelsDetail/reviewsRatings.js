@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { View, Modal, ScrollView } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import * as Animatable from 'react-native-animatable';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 import Progress from '../extra/progress';
 import ReviewsLess from './reviewsLess';
@@ -126,7 +126,7 @@ const style = StyleService.create({
     borderColor: 'color-basic-300',
   },
   heading: {
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -155,14 +155,14 @@ const style = StyleService.create({
     fontWeight: '700',
     paddingTop: 20,
     color: 'color-primary-500',
-    fontSize: hp('6%')
+    fontSize: RFPercentage(6)
   },
   ratingCaption: {
     // color: '#AAA'
   },
   ratingNumber: {
     color: 'color-basic-600',
-    fontSize: hp('2.2%'),
+    fontSize: RFPercentage(2.2),
   },
   progressCount: {
     flexDirection: 'row',
@@ -181,7 +181,7 @@ const style = StyleService.create({
   },
   seeAll: {
     color: 'color-primary-500',
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   },
   reviewsMore: {
     paddingLeft: 20,
@@ -192,6 +192,6 @@ const style = StyleService.create({
     justifyContent: 'space-between'
   },
   text:{
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   }
 })

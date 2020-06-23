@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Text, CheckBox, Icon, Tooltip, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen'; 
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 import { addServices, removeServices, serviceChecked } from '../../redux/actions/hotelDetailActions';
 import LoadPrices from '../../redux/thunkActions/loadPrices';
@@ -135,15 +135,15 @@ const style = StyleService.create({
     width: 70,
     marginRight: 10,
     textAlign: 'right',
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   },
   count: {
     marginLeft: 10,
     marginRight: 10,
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   },
   desc: {
-    fontSize: hp('2.2%'),
+    fontSize: RFPercentage(2.2),
   },
   textInfo: {
     flexDirection: 'row'
@@ -163,6 +163,6 @@ const style = StyleService.create({
     color: 'color-basic-600'
   },
   text:{
-    fontSize: hp('2.3%')
+    fontSize: RFPercentage(2.5)
   }
 })

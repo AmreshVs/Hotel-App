@@ -4,17 +4,18 @@ import { bindActionCreators } from 'redux';
 import { Text, StyleService, useStyleSheet, Button, Icon } from '@ui-kitten/components';
 import { Image } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 import { addFoods, removeFoods } from '../../redux/actions/hotelDetailActions';
 import LoadPrices from '../../redux/thunkActions/loadPrices';
 
 const FoodItems = (props) => {
-
+  
   const styles = useStyleSheet(style);
   const [add, setAdd] = React.useState(false);
   const [count, setCount] = React.useState(1);
   var result = '';
+  let maxQty = Math.floor(props.item.qty);
 
   const PlusIcon = (props) => (
     <Icon {...props} name='plus-outline' width={15} height={15} />
@@ -27,7 +28,7 @@ const FoodItems = (props) => {
   const addFood = () => {
     setAdd(!add);
     setCount(1);
-    result = props.addFoods({index: props.index, foods: { id: props.item.id, qty: count }});
+    result = props.addFoods({index: props.index, foods: { id: props.item.id, qty: count, price: props.item.price, name: props.item.name }});
     loadPrice(result);
   }
 
@@ -40,12 +41,12 @@ const FoodItems = (props) => {
   const qtyChange = (type) => {
     if(type === 'add'){
       setCount(count + 1);
-      result = props.addFoods({index: props.index, foods: { id: props.item.id, qty: count + 1 }});
+      result = props.addFoods({index: props.index, foods: { id: props.item.id, qty: count + 1, price: props.item.price, name: props.item.name }});
       loadPrice(result);
     }
     else{
       setCount(count - 1);
-      result = props.addFoods({index: props.index, foods: { id: props.item.id, qty: count - 1 }});
+      result = props.addFoods({index: props.index, foods: { id: props.item.id, qty: count - 1, price: props.item.price, name: props.item.name }});
       loadPrice(result);
     }
   }
@@ -71,7 +72,7 @@ const FoodItems = (props) => {
           <Animatable.View style={styles.btnContainer} animation="fadeInRight" duration={500}>
             <Button style={styles.btn} status='success' size='small' icon={MinusIcon} onPress={() => count > 1 ? qtyChange('minus') : removeFood()}/>
             <Text style={styles.caption}>{count}</Text>
-            <Button style={styles.btn} status='success' size='small' icon={PlusIcon} onPress={() => qtyChange('add')}/>
+            <Button style={styles.btn} status='success' size='small' icon={PlusIcon} onPress={() => qtyChange('add')} disabled={maxQty <= count ? true : false} />
           </Animatable.View>
       }
     </Animatable.View>
@@ -95,14 +96,14 @@ const style = StyleService.create({
   },
   foodName:{
     color: 'color-basic-700',
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     paddingTop: 5,
     paddingBottom: 3
   },
   caption:{
     color: 'color-basic-600',
     paddingBottom: 5,
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   },
   foodsImg:{
     width: 150,

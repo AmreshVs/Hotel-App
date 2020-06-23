@@ -105,10 +105,10 @@ const HotelsDetail = (props) => {
               <Amenities data={data.amenitiesBlock} />
               <RoomsCategory hotelId={data.nameBlock.id} data={data.roomsBlock} />
               <ChooseDates alias={props.route.params.alias} />
-              <GuestDetails />
+              {props.common.userData.type === 'editor' ? <GuestDetails /> : null}
               <ReviewsRatings data={data.reviewsRatingsBlock} hotelId={data.nameBlock.id} />
-              <RenderPriceBlock />
               {foods.data !== undefined && foods.data.length > 0 ? <FoodsBeverages data={foods} token={props.common.userData.access_token} hotelId={data.nameBlock.id} /> : null}
+              <RenderPriceBlock />
               <RulesPolicies />
             </View>
             <View style={{ marginBottom: 10 }} />

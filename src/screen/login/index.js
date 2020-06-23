@@ -9,6 +9,7 @@ import { AsyncStorage } from 'react-native';
 import OneSignal from 'react-native-onesignal';
 import  * as Animatable from 'react-native-animatable';
 import axios from 'axios';
+import RNOtpVerify from 'react-native-otp-verify';
 
 import styles from './styles';
 import UserLoginAuth from '../../redux/thunkActions/userLoginAuth';
@@ -52,9 +53,31 @@ const LoginScreen = (props) => {
     }
     OneSignal.addEventListener('ids', onIds);
     retrieveData();
+    RNOtpVerify.getOtp()
+      .then(() => {
+        RNOtpVerify.addListener((message) => {
+          try {
+            if (message) {
+              const messageWithOtp = message.split(' ');
+              const otp = (messageWithOtp[1].split(' ')[0]).split('');
+              if (otp.length === 4) {
+                setOtpValue(otp);
+              }
+            }
+          }
+          catch (error) {
+            // console.log('error', error);
+          }
+        })
+      })
+      .catch((error) => {
+        // console.log(error);
+      })
+    
 
     return () => {
       OneSignal.removeEventListener('ids');
+      RNOtpVerify.removeListener();
     }
   }, [])
 
@@ -117,7 +140,7 @@ const LoginScreen = (props) => {
   };
 
   const sendOtp = async () => {
-    const userData = await UserLoginAuth({ mobile_number: value });
+    const userData = await UserLoginAuth({ mobile_number: value, autoOtpHash: props.common.autoOtpHash });
     snackbarMessage(userData.message);
   }
 

@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import ConfirmBlock from '../../components/bookingDetails/confirmBlock';
 import HelpBlock from '../../components/bookingDetails/helpBlock';
 import BookedHotelDetails from '../../components/bookingDetails/BookedHotelDetails';
+import Loader from '../../components/loader';
 
 import ConfirmBlockSK from '../../components/skeletons/bookingDetails/confirmBlockSK';
 import HelpBlockSK from '../../components/skeletons/bookingDetails/helpBlockSK';
@@ -19,8 +20,9 @@ const AfterBooking = (props) => {
 
   const navigation = useNavigation();
   const [data, setData] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
   const hotelDetail = props.hotelDetail;
-  const userData = props.common.userData;
+  const userData = Object.keys(props.hotelDetail.guests).length > 0 ? props.hotelDetail.guests : props.common.userData;
 
   const bookingData = {
     hotelId: hotelDetail.hotelIds.hotelId,
@@ -44,7 +46,7 @@ const AfterBooking = (props) => {
 
   useEffect(() => {
     async function loadDatas() {
-      const response = await BookHotel(bookingData, userData.access_token);
+      const response = await BookHotel(bookingData, props.common.userData.access_token);
       setData(response[0]);
       const heading = userData.firstname + " " + userData.lastname + " has booked " + Object.keys(props.hotelDetail.rooms).length + " room's on " + response[0].title;
       const content = "Booking ID : " + response[0].booking_id + ", Check In : " + response[0].start_date + ", Check Out : " + response[0].end_date + ", Adult's : " + response[0].adults + ", Children's : " + response[0].children + ", Total : " + response[0].total;
@@ -52,6 +54,7 @@ const AfterBooking = (props) => {
       const buttons = [{ "id": "notify-cancel", "text": "Cancel" }, { "id": "notify-approve", "text": "Approve" }]
       const notifyData = { action: 'approve', notification_id: saveNotify.data.id, booking_id: saveNotify.data.booking_id, oneSignalUserId: userData.oneSignalUserId, user_id: userData.user_id };
       SendNotification(heading, content, userData.access_token, buttons, notifyData);
+      setLoading(false);
     }
     loadDatas();
   }, []);
@@ -59,7 +62,8 @@ const AfterBooking = (props) => {
   useFocusEffect(
     React.useCallback(() => {
       const onBackPress = () => {
-        navigation.push('BookingsScreen');
+        navigation.navigate('BookingsScreen');
+        return true;
       };
 
       BackHandler.addEventListener('hardwareBackPress', onBackPress);
@@ -78,13 +82,17 @@ const AfterBooking = (props) => {
   return (
     <View style={styles.bodyContainer}>
       <TopNavSimple screenTitle='Booking Details' backHandler={() => navigation.navigate('BookingsScreen')} />
-      <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
-        <View style={styles.contentContainer}>
-          {data.length <= 0 ? <ConfirmBlockSK /> : <ConfirmBlock booking_id={data.booking_id} total={data.total} status={data.status} status_label={data.status_label} transaction_id={data.transaction_id} />}
-          {data.length <= 0 ? <BookedDetailsSK /> : <BookedHotelDetails data={data} token={userData.access_token} user_id={userData.user_id} reloadData={reloadData} />}
-          {data.length <= 0 ? <HelpBlockSK /> : <HelpBlock />}
-        </View>
-      </ScrollView>
+      {loading === true ? 
+        <Loader topBar={true} />
+        :
+        <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
+          <View style={styles.contentContainer}>
+            {data.length <= 0 ? <ConfirmBlockSK /> : <ConfirmBlock booking_id={data.booking_id} total={data.total} status={data.status} status_label={data.status_label} transaction_id={data.transaction_id} />}
+            {data.length <= 0 ? <BookedDetailsSK /> : <BookedHotelDetails data={data} token={userData.access_token} user_id={userData.user_id} reloadData={reloadData} />}
+            {data.length <= 0 ? <HelpBlockSK /> : <HelpBlock />}
+          </View>
+        </ScrollView>
+      }
     </View>
   );
 }

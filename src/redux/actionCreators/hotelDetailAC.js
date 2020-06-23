@@ -30,3 +30,4 @@ export const SERVICE_CHECKED = 'SERVICE_CHECKED';
 
 export const HOTEL_IDS = 'HOTEL_IDS';
 export const COUPONS = 'COUPONS';
+export const ADD_GUEST_DETAIL = 'ADD_GUEST_DETAIL';

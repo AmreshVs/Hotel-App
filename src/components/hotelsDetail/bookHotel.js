@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Text, Button, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 import CheckUserData from '../../commonFunctions/checkUserData';
 
@@ -51,7 +51,7 @@ const style = StyleService.create({
     backgroundColor: 'background-basic-color-1',
   },
   heading: {
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -63,12 +63,12 @@ const style = StyleService.create({
     alignItems: 'flex-start'
   },
   total: {
-    fontSize: hp('3%'),
+    fontSize: RFPercentage(3),
     fontWeight: '700'
   },
   totalCaption: {
     color: 'color-basic-600',
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   },
   btnContainer: {
     width: '70%',

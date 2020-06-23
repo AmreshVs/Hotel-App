@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 const NameBlock = (props) => {
 
@@ -61,12 +61,12 @@ const style = StyleService.create({
   },
   price: {
     marginTop: 5,
-    fontSize: hp('3%'),
+    fontSize: RFPercentage(3),
     fontWeight: '700',
     color: 'color-primary-500',
   },
   oldPrice: {
-    fontSize: hp('2.2%'),
+    fontSize: RFPercentage(2.2),
     paddingTop: 1,
     paddingRight: 5,
     color: 'color-basic-600',
@@ -75,10 +75,10 @@ const style = StyleService.create({
   },
   priceCaption: {
     color: 'color-basic-600',
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   },
   roomTitle: {
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -86,7 +86,7 @@ const style = StyleService.create({
   caption: {
     color: 'color-basic-600',
     marginBottom: 3,
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   },
   ratingContainer: {
     flex: 1,
@@ -94,7 +94,7 @@ const style = StyleService.create({
     marginTop: 5,
   },
   ratingCount: {
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     color: 'color-basic-700',
     paddingTop: 2,
     paddingLeft: 5

@@ -4,7 +4,7 @@ import { Button, Card, Icon, Text, StyleService, useStyleSheet } from '@ui-kitte
 import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 import { CommonActions } from '@react-navigation/native';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 const ProfileView = (props) => {
 
@@ -132,7 +132,7 @@ const style = StyleService.create({
     paddingLeft: 10,
   },
   inputText: {
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     color: 'color-basic-700',
   },
   btnContainer: {

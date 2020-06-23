@@ -3,7 +3,7 @@ import { Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import * as Animatable from 'react-native-animatable';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 const HotelDescription = (props) => {
   
@@ -24,7 +24,7 @@ const HotelDescription = (props) => {
         <Text style={styles.heading}>Description</Text>
         <Text style={[styles.desc, { height: showDesc }]}>{description1}</Text>
         <Ripple rippleSize={50} rippleDuration={600} onPress={revealDescription}>
-          <Text status='primary' style={{ marginTop: 5, fontSize: hp('2.2%') }}>{showDesc == 60 ? 'More' : 'Less'}</Text>
+          <Text status='primary' style={{ marginTop: 5, fontSize: RFPercentage(2.2) }}>{showDesc == 60 ? 'More' : 'Less'}</Text>
         </Ripple>
       </View>
     </Animatable.View>
@@ -44,13 +44,13 @@ const style = StyleService.create({
     borderColor: 'color-basic-300',
   },
   heading: {
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
   },
   desc: {
     color: 'color-basic-600',
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   }
 })

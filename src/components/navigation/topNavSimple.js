@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { Icon, TopNavigation, TopNavigationAction, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { useNavigation } from '@react-navigation/native';
 import Ripple from 'react-native-material-ripple';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 const TopNavSimple = (props) => {
 
@@ -41,7 +41,7 @@ const style = StyleService.create({
   title: {
     width: '60%',
     height: 30,
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     fontWeight: 'bold',
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,

@@ -5,7 +5,7 @@ import { Text, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View, ScrollView } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import { useNavigation } from '@react-navigation/native';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 import RoomsListLarge from '../rooms/roomsListLarge';
 import { clearData } from '../../redux/actions/hotelDetailActions';
@@ -37,7 +37,7 @@ const RecommendedRooms = (props) => {
         </Ripple>
       </View>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        {props.data.map((item, index) => <RoomsListLarge key={item.alias + Math.random()} reload={props.reload} delay={index} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} cost={item.price_start} oldCost={Number(item.price_start) + 200} pending={false} is_favourite={item.is_favorite} />)}
+        {props.data.map((item, index) => <RoomsListLarge key={item.alias + Math.random()} reload={props.reload} delay={index} navigate={() => navigateHotelDetails(item.alias, item.id, item.is_favorite)} image={item.image[0].file} rating={item.avg_rating} token={props.common.userData.access_token} hotelId={item.id} hotelName={item.title} cost={item.price_start} oldCost={Number(item.price_start) + 200} pending={false} is_favourite={item.is_favorite} status={item.status} />)}
       </ScrollView>
     </View>
   );
@@ -56,14 +56,14 @@ export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Recommend
 const style = StyleService.create({
   headingText: {
     fontWeight: '700',
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     color: 'color-basic-700'
   },
   caption: {
     color: 'color-basic-600',
     padding: 5,
     marginTop: -5,
-    fontSize: hp('2.2%')
+    fontSize: RFPercentage(2.2)
   },
   headingBlock: {
     flexDirection: 'row',

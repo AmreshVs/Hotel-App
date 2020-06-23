@@ -3,7 +3,7 @@ import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { View, Image } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import * as Animatable from 'react-native-animatable';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 import AddFavourite from '../../redux/thunkActions/addFavourite';
 
@@ -39,11 +39,17 @@ const RoomsListLarge = (props) => {
         </View>
         <Ripple style={styles.namePrice} onPress={props.navigate}>
           <Text style={styles.title}>{props.hotelName}</Text>
-          <View style={styles.priceBlock}>
-            <Text style={styles.oldPrice}>₹{props.oldCost} </Text>
-            <Text style={styles.price}>₹{props.cost}</Text>
-            <Text style={styles.priceCaption}>  Per Night</Text>
-          </View>
+          {props.status === 1 ?
+            <View style={styles.priceBlock}>
+              <Text style={styles.oldPrice}>₹{props.oldCost} </Text>
+              <Text style={styles.price}>₹{props.cost}</Text>
+              <Text style={styles.priceCaption}>  Per Night</Text>
+            </View>
+            :
+            <View style={styles.priceBlock}>
+              <Text status='danger'>Room's Not Available</Text>
+            </View>
+          }
         </Ripple>
       </View>
     )
@@ -116,7 +122,7 @@ const style = StyleService.create({
     borderColor: 'background-basic-color-4',
   },
   title: {
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     marginBottom: 0,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -126,12 +132,12 @@ const style = StyleService.create({
   },
   price: {
     marginTop: 4,
-    fontSize: hp('3%'),
+    fontSize: RFPercentage(3),
     fontWeight: '700',
     color: 'color-primary-500',
   },
   priceCaption: {
-    fontSize: hp('2.2%'),
+    fontSize: RFPercentage(2.2),
     marginTop: 2,
     color: 'color-basic-600'
   },
@@ -164,7 +170,7 @@ const style = StyleService.create({
     height: 21
   },
   ratingCount: {
-    fontSize: hp('2.2%'),
+    fontSize: RFPercentage(2.2),
     fontWeight: 'bold',
     color: '#626262'
   },
@@ -189,7 +195,7 @@ const style = StyleService.create({
     borderRadius: 50,
   },
   oldPrice: {
-    fontSize: hp('2.2%'),
+    fontSize: RFPercentage(2.2),
     paddingTop: 2,
     paddingRight: 5,
     color: 'color-basic-600',

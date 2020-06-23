@@ -6,6 +6,7 @@ import { ScrollView, View, Image } from 'react-native';
 import { Text, CheckBox, Icon, Modal, Layout, StyleService, useStyleSheet } from '@ui-kitten/components';
 import * as Animatable from 'react-native-animatable';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 import LoadPrices from '../../redux/thunkActions/loadPrices';
 import ImageViewer from '../../components/extra/ImageViewer';
@@ -132,7 +133,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(RoomsCategory);
 
 const style = StyleService.create({
   heading: {
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -180,7 +181,7 @@ const style = StyleService.create({
     padding: 8,
     paddingLeft: 10,
     width: '100%',
-    fontSize: hp('2.3%')
+    fontSize: RFPercentage(2.5)
   },
   capacity: {
     flexDirection: 'row',
@@ -213,11 +214,11 @@ const style = StyleService.create({
   moreCaption: {
     minWidth: 20,
     textAlign: 'center',
-    fontSize: hp('2.2%'),
+    fontSize: RFPercentage(2.2),
     color: 'color-basic-600'
   },
   checkText: {
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     fontWeight: 'bold',
     color: 'color-primary-500'
   },

@@ -7,7 +7,7 @@ import moment from 'moment';
 import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 import RangeSlider from 'rn-range-slider';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 const SearchHotelCard = (props) => {
 
@@ -133,13 +133,13 @@ const themedStyles = StyleService.create({
     backgroundColor: 'color-basic-300'
   },
   heading: {
-    fontSize: hp('2.3%'),
+    fontSize: RFPercentage(2.5),
     fontWeight: '700',
     color: 'color-primary-500',
     marginBottom: 5,
   },
   dateCaption: {
-    fontSize: hp('2.2%'),
+    fontSize: RFPercentage(2.3),
     color: 'color-basic-600'
   },
   iconFill: {
@@ -153,7 +153,6 @@ const themedStyles = StyleService.create({
     width: '100%',
     height: 40,
     marginBottom: 10,
-    // paddingBottom: 10,
   },
   price:{
     flexDirection: 'row',

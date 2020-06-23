@@ -10,7 +10,7 @@ import SendNotification from '../../commonFunctions/sendNotification';
 import SaveNotification from '../../commonFunctions/saveNotification';
 
 const BookedHotelDetails = (props) => {
-
+  console.log(props)
   const navigation = useNavigation();
   const styles = useStyleSheet(themedStyle);
 
@@ -100,8 +100,16 @@ const BookedHotelDetails = (props) => {
             </View>
           )}
           <View style={styles.serviceContainer}>
+            <Text style={styles.serviceCaption}>Room's</Text>
+            <Text style={styles.priceCaption}>₹{props.data.amount}</Text>
+          </View>
+          <View style={styles.serviceContainer}>
             <Text style={styles.serviceCaption}>Discount</Text>
-            <Text style={styles.caption}>₹{props.data.discount}</Text>
+            <Text style={styles.priceCaption}>- ₹{props.data.discount}</Text>
+          </View>
+          <View style={styles.serviceContainer}>
+            <Text style={styles.serviceCaption}>Tax</Text>
+            <Text style={styles.priceCaption}>₹{props.data.tax}</Text>
           </View>
           <View style={styles.serviceContainer}>
             <Text style={styles.serviceCaption}>Total</Text>
@@ -156,7 +164,11 @@ const themedStyle = StyleService.create({
     alignItems: 'center',
   },
   caption: {
-    color: 'color-basic-600'
+    color: 'color-basic-600',
+  },
+  priceCaption: {
+    color: 'color-basic-700',
+    fontWeight: '700'
   },
   hrLine: {
     width: '100%',
