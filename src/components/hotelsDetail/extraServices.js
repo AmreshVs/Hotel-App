@@ -14,15 +14,17 @@ const ExtraServices = (props) => {
   const styles = useStyleSheet(style);
   const count = 1;
   const [visible, setVisible] = React.useState(false);
+// console.log(props.hotelDetail);
+  const checkChange = async (id, service_id) => {
 
-  const checkChange = async () => {
     var check = false;
     const checkArr = props.hotelDetail.serviceChecked;
-
-    if (!props.hotelDetail.serviceChecked.includes(props.id)) {
+    
+    if (!checkArr.includes(props.id)) {
       checkArr.push(props.id);
       props.serviceChecked(checkArr);
-      check = await props.addServices({ id: props.id, serviceId: props.service_id, qty: count });
+      check = await props.addServices({ id: id, serviceId: service_id, qty: count });
+
       if (check) {
         setTimeout(function () {
           props.LoadPrices({ hotelId: props.hotelDetail.hotelIds.hotelId, roomId: props.hotelDetail.hotelIds.roomId, dates: props.hotelDetail.dates, rooms: props.hotelDetail.rooms, service: check.servicesArr, foods: props.hotelDetail.foods, coupons: props.hotelDetail.coupons.code || '' }, props.common.userData.access_token);
@@ -100,7 +102,7 @@ const ExtraServices = (props) => {
           <Text style={styles.price}>{props.price}</Text>
           <CheckBox
             checked={props.hotelDetail.serviceChecked.includes(props.id) ? true : false}
-            onChange={checkChange}
+            onChange={() => checkChange(props.id, props.service_id)}
           />
         </View>
       </View>
@@ -135,15 +137,15 @@ const style = StyleService.create({
     width: 70,
     marginRight: 10,
     textAlign: 'right',
-    fontSize: RFPercentage(2.2)
+    fontSize: RFPercentage(2)
   },
   count: {
     marginLeft: 10,
     marginRight: 10,
-    fontSize: RFPercentage(2.2)
+    fontSize: RFPercentage(2)
   },
   desc: {
-    fontSize: RFPercentage(2.2),
+    fontSize: RFPercentage(2),
   },
   textInfo: {
     flexDirection: 'row'
@@ -163,6 +165,6 @@ const style = StyleService.create({
     color: 'color-basic-600'
   },
   text:{
-    fontSize: RFPercentage(2.5)
+    fontSize: RFPercentage(2)
   }
 })

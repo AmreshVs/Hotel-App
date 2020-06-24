@@ -56,14 +56,14 @@ export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Recommend
 const style = StyleService.create({
   headingText: {
     fontWeight: '700',
-    fontSize: RFPercentage(2.5),
+    fontSize: RFPercentage(2),
     color: 'color-basic-700'
   },
   caption: {
     color: 'color-basic-600',
     padding: 5,
     marginTop: -5,
-    fontSize: RFPercentage(2.2)
+    fontSize: RFPercentage(2)
   },
   headingBlock: {
     flexDirection: 'row',

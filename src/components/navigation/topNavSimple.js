@@ -41,7 +41,7 @@ const style = StyleService.create({
   title: {
     width: '60%',
     height: 30,
-    fontSize: RFPercentage(2.5),
+    fontSize: RFPercentage(2),
     fontWeight: 'bold',
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,

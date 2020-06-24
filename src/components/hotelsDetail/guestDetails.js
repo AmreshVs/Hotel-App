@@ -166,7 +166,7 @@ const style = StyleService.create({
     paddingBottom: 15,
   },
   heading: {
-    fontSize: RFPercentage(2.5),
+    fontSize: RFPercentage(2),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -179,7 +179,7 @@ const style = StyleService.create({
   guestName: {
     color: 'color-basic-700',
     fontWeight: '700',
-    fontSize: RFPercentage(2.2)
+    fontSize: RFPercentage(2)
   },
   popoverContent: {
     justifyContent: 'center',
@@ -196,7 +196,7 @@ const style = StyleService.create({
     color: 'color-basic-600'
   },
   text:{
-    fontSize: RFPercentage(2.2),
+    fontSize: RFPercentage(2),
     width: '50%',
     textAlign: 'right'
   },

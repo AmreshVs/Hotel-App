@@ -112,7 +112,7 @@ const style = StyleService.create({
     justifyContent: 'space-between',
   },
   title: {
-    fontSize: RFPercentage(2.5),
+    fontSize: RFPercentage(2),
     marginBottom: 0,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -127,12 +127,12 @@ const style = StyleService.create({
   },
   price: {
     marginTop: 5,
-    fontSize: RFPercentage(3),
+    fontSize: RFPercentage(2.5),
     fontWeight: '700',
     color: 'color-primary-500',
   },
   oldPrice: {
-    fontSize: RFPercentage(2.2),
+    fontSize: RFPercentage(2),
     paddingTop: 1,
     paddingRight: 5,
     color: 'color-basic-600',
@@ -141,13 +141,13 @@ const style = StyleService.create({
   },
   priceCaption: {
     color: 'color-basic-600',
-    fontSize: RFPercentage(2.2),
+    fontSize: RFPercentage(2),
   },
   caption: {
     marginTop: 0,
     marginLeft: 10,
     color: 'color-basic-600',
-    fontSize: RFPercentage(2.2)
+    fontSize: RFPercentage(2)
   },
   starIcon: {
     width: 25,

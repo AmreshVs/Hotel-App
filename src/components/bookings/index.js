@@ -98,11 +98,11 @@ const themedStyle = StyleService.create({
   hotelName: {
     fontWeight: '700',
     color: 'color-basic-700',
-    fontSize: RFPercentage(2.5)
+    fontSize: RFPercentage(2)
   },
   caption: {
     color: 'color-basic-600',
-    fontSize: RFPercentage(2.2)
+    fontSize: RFPercentage(2)
   },
   info: {
     marginTop: 20,
@@ -115,7 +115,7 @@ const themedStyle = StyleService.create({
   address: {
     width: '50%',
     color: 'color-basic-600',
-    fontSize: RFPercentage(2.2)
+    fontSize: RFPercentage(2)
   },
   starIcon: {
     width: 25,
@@ -146,6 +146,6 @@ const themedStyle = StyleService.create({
     paddingHorizontal: 10
   },
   text:{
-    fontSize: RFPercentage(2.2)
+    fontSize: RFPercentage(2)
   }
 })

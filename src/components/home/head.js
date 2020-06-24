@@ -25,7 +25,7 @@ const style = StyleService.create({
     color: 'color-basic-100',
     padding: 15,
     textAlign: 'center',
-    fontSize: RFPercentage(3)
+    fontSize: RFPercentage(2.5)
   },
   headBack:{
     alignItems: 'center',

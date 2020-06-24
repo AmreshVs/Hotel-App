@@ -96,14 +96,14 @@ const style = StyleService.create({
   },
   foodName:{
     color: 'color-basic-700',
-    fontSize: RFPercentage(2.5),
+    fontSize: RFPercentage(2),
     paddingTop: 5,
     paddingBottom: 3
   },
   caption:{
     color: 'color-basic-600',
     paddingBottom: 5,
-    fontSize: RFPercentage(2.2)
+    fontSize: RFPercentage(2)
   },
   foodsImg:{
     width: 150,

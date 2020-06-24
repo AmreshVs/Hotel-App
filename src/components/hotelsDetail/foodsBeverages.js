@@ -57,7 +57,7 @@ const style = StyleService.create({
     borderColor: 'color-basic-300',
   },
   heading: {
-    fontSize: RFPercentage(2.5),
+    fontSize: RFPercentage(2),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',

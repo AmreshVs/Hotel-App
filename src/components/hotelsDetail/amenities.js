@@ -45,7 +45,7 @@ export default Amenities;
 
 const style = StyleService.create({
   heading: {
-    fontSize: RFPercentage(2.5),
+    fontSize: RFPercentage(2),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -80,9 +80,9 @@ const style = StyleService.create({
   amenitiesName: {
     marginTop: 3,
     color: 'color-basic-600',
-    fontSize: RFPercentage(2.2)
+    fontSize: RFPercentage(2)
   },
   text:{
-    fontSize: RFPercentage(2.2)
+    fontSize: RFPercentage(2)
   }
 })

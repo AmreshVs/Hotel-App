@@ -93,7 +93,7 @@ const themedStyle = StyleService.create({
     justifyContent: 'space-between'
   },
   hotelName: {
-    fontSize: RFPercentage(2.5),
+    fontSize: RFPercentage(2),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -115,18 +115,18 @@ const themedStyle = StyleService.create({
   caption: {
     color: 'color-basic-600',
     paddingLeft: 5,
-    fontSize: RFPercentage(2.2),
+    fontSize: RFPercentage(2),
   },
   price: {
     textAlign: 'right',
     marginBottom: 3,
-    fontSize: RFPercentage(3),
+    fontSize: RFPercentage(2.5),
     fontWeight: '700',
     color: 'color-primary-500',
   },
   priceCaption: {
     color: 'color-basic-600',
-    fontSize: RFPercentage(2.2)
+    fontSize: RFPercentage(2)
   },
   heartContainer: {
     position: 'absolute',

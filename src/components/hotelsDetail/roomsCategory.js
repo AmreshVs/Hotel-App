@@ -133,7 +133,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(RoomsCategory);
 
 const style = StyleService.create({
   heading: {
-    fontSize: RFPercentage(2.5),
+    fontSize: RFPercentage(2),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -181,7 +181,7 @@ const style = StyleService.create({
     padding: 8,
     paddingLeft: 10,
     width: '100%',
-    fontSize: RFPercentage(2.5)
+    fontSize: RFPercentage(2)
   },
   capacity: {
     flexDirection: 'row',
@@ -214,11 +214,11 @@ const style = StyleService.create({
   moreCaption: {
     minWidth: 20,
     textAlign: 'center',
-    fontSize: RFPercentage(2.2),
+    fontSize: RFPercentage(2),
     color: 'color-basic-600'
   },
   checkText: {
-    fontSize: RFPercentage(2.5),
+    fontSize: RFPercentage(2),
     fontWeight: 'bold',
     color: 'color-primary-500'
   },

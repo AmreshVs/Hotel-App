@@ -133,13 +133,13 @@ const themedStyles = StyleService.create({
     backgroundColor: 'color-basic-300'
   },
   heading: {
-    fontSize: RFPercentage(2.5),
+    fontSize: RFPercentage(2),
     fontWeight: '700',
     color: 'color-primary-500',
     marginBottom: 5,
   },
   dateCaption: {
-    fontSize: RFPercentage(2.3),
+    fontSize: RFPercentage(2),
     color: 'color-basic-600'
   },
   iconFill: {

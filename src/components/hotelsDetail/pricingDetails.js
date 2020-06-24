@@ -13,7 +13,7 @@ import LoadPrices from '../../redux/thunkActions/loadPrices';
 import { addCoupons } from '../../redux/actions/hotelDetailActions';
 
 const PricingDetails = (props) => {
-  console.log(props);
+
   const styles = useStyleSheet(style);
   const [modal, setModal] = React.useState(false);
   var servicesId = 0;
@@ -173,7 +173,7 @@ const style = StyleService.create({
     borderColor: 'color-basic-300',
   },
   heading: {
-    fontSize: RFPercentage(2.5),
+    fontSize: RFPercentage(2),
     marginBottom: 10,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -185,7 +185,7 @@ const style = StyleService.create({
   },
   total: {
     fontWeight: '700',
-    fontSize: RFPercentage(2.2)
+    fontSize: RFPercentage(2)
   },
   checkboxContainer: {
     alignItems: 'center',
@@ -228,17 +228,17 @@ const style = StyleService.create({
     borderStyle: 'dashed',
     borderColor: 'color-warning-500',
     borderRadius: 6,
-    fontSize: RFPercentage(2.2)
+    fontSize: RFPercentage(2)
   },
   couponDesc: {
     marginLeft: 10,
     marginBottom: 10,
-    fontSize: RFPercentage(2.2)
+    fontSize: RFPercentage(2)
   },
   couponHeading: {
     marginLeft: 10,
     marginTop: 10,
-    fontSize: RFPercentage(2.2)
+    fontSize: RFPercentage(2)
   },
   applyCoupon: {
     height: '100%',
@@ -246,10 +246,10 @@ const style = StyleService.create({
     paddingBottom: 30,
   },
   text:{
-    fontSize: RFPercentage(2.2)
+    fontSize: RFPercentage(2)
   },
   textInfo:{
-    fontSize: RFPercentage(2.2),
+    fontSize: RFPercentage(2),
     marginTop: 15
   }
 })

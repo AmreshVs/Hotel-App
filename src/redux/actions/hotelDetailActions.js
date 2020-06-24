@@ -1,6 +1,6 @@
 import { OPEN_IMAGE_VIEWER, CLOSE_IMAGE_VIEWER } from '../actionCreators/hotelDetailAC';
 import { ADD_GUESTS, REMOVE_GUESTS, ADD_FOODS, REMOVE_FOODS } from '../actionCreators/hotelDetailAC';
-import { ADD_SERVICES, REMOVE_SERVICES, SERVICE_CHECKED, HOTEL_IDS } from '../actionCreators/hotelDetailAC';
+import { ADD_SERVICES, REMOVE_SERVICES, CLEAR_SERVICES, SERVICE_CHECKED, HOTEL_IDS } from '../actionCreators/hotelDetailAC';
 import { CHOOSE_DATES, CLEAR_DATA, SAVE_REVIEW, LOAD_PRICES, COUPONS, ADD_GUEST_DETAIL } from '../actionCreators/hotelDetailAC';
 import { LOAD_HOTELDETAILS_DATA_PENDING, LOAD_HOTELDETAILS_DATA_SUCCESS, LOAD_HOTELDETAILS_DATA_ERROR } from '../actionCreators/hotelDetailAC';
 
@@ -60,7 +60,7 @@ export const removeFoods = (payload) => {
   };
 };
 
-const servicesArr = {};
+var servicesArr = {};
 
 // Add Services for rooms
 export const addServices = (payload) => {
@@ -115,6 +115,8 @@ export const clearData = (payload) => {
   for (var key in foodsArr) {
     delete foodsArr[key];
   }
+  servicesArr = {};
+
   return {
     type: CLEAR_DATA,
     payload

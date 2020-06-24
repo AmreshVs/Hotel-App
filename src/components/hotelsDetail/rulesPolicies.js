@@ -9,13 +9,11 @@ const RulesPolicies = () => {
   const styles = useStyleSheet(style);
   
   return (
-    <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={60} >
-      <View style={styles.cardContainer}>
-        <Text style={styles.heading}>Rules & Policies</Text>
-        <Text style={styles.text}>{'\u2022 '} Outside food not allowed</Text>
-        <Text style={styles.text}>{'\u2022 '} Couples are welcome</Text>
-        <Text style={styles.text}>{'\u2022 '} Guests can check in using any local or outstation ID proof</Text>
-      </View>
+    <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={60} style={styles.cardContainer}>
+      <Text style={styles.heading}>Rules & Policies</Text>
+      <Text style={styles.text}>{'\u2022 '} Outside food not allowed</Text>
+      <Text style={styles.text}>{'\u2022 '} Couples are welcome</Text>
+      <Text style={styles.text}>{'\u2022 '} Guests can check in using any local or outstation ID proof</Text>
     </Animatable.View>
   );
 }
@@ -33,12 +31,12 @@ const style = StyleService.create({
     borderColor: 'color-basic-300',
   },
   heading: {
-    fontSize: RFPercentage(2.5),
+    fontSize: RFPercentage(2),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
   },
   text:{
-    fontSize: RFPercentage(2.2)
+    fontSize: RFPercentage(2)
   }
 })

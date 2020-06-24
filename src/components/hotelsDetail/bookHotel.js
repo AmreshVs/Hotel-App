@@ -51,7 +51,7 @@ const style = StyleService.create({
     backgroundColor: 'background-basic-color-1',
   },
   heading: {
-    fontSize: RFPercentage(2.5),
+    fontSize: RFPercentage(2),
     marginBottom: 3,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -63,12 +63,12 @@ const style = StyleService.create({
     alignItems: 'flex-start'
   },
   total: {
-    fontSize: RFPercentage(3),
+    fontSize: RFPercentage(2.5),
     fontWeight: '700'
   },
   totalCaption: {
     color: 'color-basic-600',
-    fontSize: RFPercentage(2.2)
+    fontSize: RFPercentage(2)
   },
   btnContainer: {
     width: '70%',

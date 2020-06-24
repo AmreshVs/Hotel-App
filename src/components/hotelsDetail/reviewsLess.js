@@ -52,7 +52,7 @@ const style = StyleService.create({
     borderRightColor: 'color-basic-300',
   },
   rating: {
-    fontSize: RFPercentage(2.2),
+    fontSize: RFPercentage(2),
     color: 'color-basic-600',
     textAlign: 'center',
     width: 20,
@@ -66,16 +66,16 @@ const style = StyleService.create({
   name: {
     color: 'color-basic-700',
     fontWeight: '700',
-    fontSize: RFPercentage(2.5)
+    fontSize: RFPercentage(2)
   },
   postedon: {
-    fontSize: RFPercentage(2.2),
+    fontSize: RFPercentage(2),
     color: 'color-basic-600'
   },
   reviewContent: {
     marginTop: 5,
   },
   review: {
-    fontSize: RFPercentage(2.2),
+    fontSize: RFPercentage(2),
   },
 })

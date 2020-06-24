@@ -132,7 +132,7 @@ const style = StyleService.create({
     paddingLeft: 10,
   },
   inputText: {
-    fontSize: RFPercentage(2.5),
+    fontSize: RFPercentage(2),
     color: 'color-basic-700',
   },
   btnContainer: {

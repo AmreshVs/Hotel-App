@@ -122,7 +122,7 @@ const style = StyleService.create({
     borderColor: 'background-basic-color-4',
   },
   title: {
-    fontSize: RFPercentage(2.5),
+    fontSize: RFPercentage(2),
     marginBottom: 0,
     color: 'color-basic-700',
     fontWeight: '700',
@@ -132,12 +132,12 @@ const style = StyleService.create({
   },
   price: {
     marginTop: 4,
-    fontSize: RFPercentage(3),
+    fontSize: RFPercentage(2.5),
     fontWeight: '700',
     color: 'color-primary-500',
   },
   priceCaption: {
-    fontSize: RFPercentage(2.2),
+    fontSize: RFPercentage(2),
     marginTop: 2,
     color: 'color-basic-600'
   },
@@ -170,7 +170,7 @@ const style = StyleService.create({
     height: 21
   },
   ratingCount: {
-    fontSize: RFPercentage(2.2),
+    fontSize: RFPercentage(2),
     fontWeight: 'bold',
     color: '#626262'
   },
@@ -195,7 +195,7 @@ const style = StyleService.create({
     borderRadius: 50,
   },
   oldPrice: {
-    fontSize: RFPercentage(2.2),
+    fontSize: RFPercentage(2),
     paddingTop: 2,
     paddingRight: 5,
     color: 'color-basic-600',
