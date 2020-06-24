@@ -4,14 +4,16 @@ import { Card, Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/compon
 import * as Animatable from 'react-native-animatable';
 
 const ConfirmBlock = (props) => {
-  
+
   const styles = useStyleSheet(themedStyle);
   var bgClr = '';
-  if (props.status === 1 || props.status === 4 || props.status === 5) {
-    bgClr = '#19b752';
-  }
+  let status_label = props.status === 7 ? 'Completed' : props.status_label;
+  
   if (props.status === 2) {
     bgClr = '#DB2C36';
+  }
+  else{
+    bgClr = '#19b752';
   }
 
   return (
@@ -19,9 +21,27 @@ const ConfirmBlock = (props) => {
       <Card style={[styles.container, { backgroundColor: bgClr }]}>
         <View style={styles.bookingContainer}>
           <Icon name='checkmark-circle-outline' style={styles.checkIcon} fill={styles.iconColor.color} />
-          <Text style={styles.confirmed}>Your Booking is {props.status_label}!</Text>
+          {props.status !== 6 ?
+            <Text style={styles.confirmed}>Your Booking is {status_label}!</Text>
+            :
+            <Text style={styles.confirmed}>{props.status === 6 ? 'Checked In' : 'Checked Out'}!</Text>
+          }
           <Text style={styles.bookingCaption}>Your booking ID is #{props.booking_id}.</Text>
-          {props.transaction_id === '' || props.transaction_id === '-' ? <Text style={styles.caption}>The amount of ₹{(props.total).toFixed(2)} can be payed upon your arrival. This booking can be cancelled anytime here.</Text> : <Text style={styles.caption}> Your payment is successfull and Transaction ID is {props.transaction_id}. Now Check In to your rooms hassle free.</Text>}
+          {props. status === 7 
+          ?
+            <>
+              {props.transaction_id === '' || props.transaction_id === '-' ? <Text style={styles.caption}>The amount of ₹{(props.total).toFixed(2)} has been payed during checkout. Thanks for booking with us!.</Text> : <Text style={styles.caption}> Your payment was successfull and Transaction ID is {props.transaction_id}.</Text>}
+            </>
+          :
+          props.status !== 6 ?
+            <>
+              {props.transaction_id === '' || props.transaction_id === '-' ? <Text style={styles.caption}>The amount of ₹{(props.total).toFixed(2)} can be payed upon your arrival. This booking can be cancelled anytime here.</Text> : <Text style={styles.caption}> Your payment is successfull and Transaction ID is {props.transaction_id}. Now Check In to your rooms hassle free.</Text>}
+            </>
+          :
+            <>
+              {props.transaction_id === '' || props.transaction_id === '-' ? <Text style={styles.caption}>The amount of ₹{(props.total).toFixed(2)} can be payed during checkout. This booking can be checked out anytime here.</Text> : <Text style={styles.caption}> Your payment is successfull and Transaction ID is {props.transaction_id}.</Text>}
+            </>
+          }
         </View>
       </Card>
     </Animatable.View>

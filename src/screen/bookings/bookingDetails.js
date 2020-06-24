@@ -30,9 +30,11 @@ const BookingDetails = (props) => {
   }, []);
 
   const reloadData = async () => {
+    setLoading(true);
     setData([]);
     const response = await LoadBookingDetails(props.access_token, props.route.params.id);
     setData(response[0]);
+    setLoading(false);
   }
 
   const RefreshIcon = () => <Icon name='refresh-outline' fill='#FFF' />;

@@ -13,11 +13,11 @@ import LoadPrices from '../../redux/thunkActions/loadPrices';
 import { addCoupons } from '../../redux/actions/hotelDetailActions';
 
 const PricingDetails = (props) => {
-
+  console.log(props);
   const styles = useStyleSheet(style);
   const [modal, setModal] = React.useState(false);
   var servicesId = 0;
-  let total = props.hotelDetail.prices_services.data.data.price !== undefined ? props.hotelDetail.prices_services.data.data.price.total : 0;
+  let room_price = props.hotelDetail.prices_services.data.data.price !== undefined ? props.hotelDetail.prices_services.data.data.price.room_price : 0;
   let startDate = moment(props.hotelDetail.dates.startDate);
   let endDate = moment(props.hotelDetail.dates.endDate);
   let days = endDate.diff(startDate, 'days');
@@ -57,7 +57,6 @@ const PricingDetails = (props) => {
 
     if(Object.keys(foods).length > 0){
       for(let item in foods){
-        console.log(foods[item]);
         foodsArr.push(
           <View style={styles.textContainer}>
             <Text style={styles.text}>{foods[item].name} - {foods[item].qty}</Text>
@@ -96,7 +95,7 @@ const PricingDetails = (props) => {
             <Text style={styles.textInfo}>Room's - {roomNum}</Text>
             <Text style={styles.textInfo}>Guest's - {guests}</Text>
           </View>
-          <Text style={styles.total}>₹{total}</Text>
+          <Text style={styles.total}>₹{room_price}</Text>
         </View>
         <RenderFoods/>
         {props.data.data.price !== undefined &&

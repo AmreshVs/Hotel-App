@@ -6,11 +6,12 @@ import * as Animatable from 'react-native-animatable';
 
 import CancelBooking from '../../redux/thunkActions/cancelBooking';
 import snackbarMessage from '../../redux/thunkActions/snackbarMessage';
+import CheckOut from '../../redux/thunkActions/checkout';
 import SendNotification from '../../commonFunctions/sendNotification';
 import SaveNotification from '../../commonFunctions/saveNotification';
 
 const BookedHotelDetails = (props) => {
-  console.log(props)
+
   const navigation = useNavigation();
   const styles = useStyleSheet(themedStyle);
 
@@ -20,6 +21,10 @@ const BookedHotelDetails = (props) => {
 
   const CallIcon = () => (
     <Icon style={styles.btnIcons} name='phone-call-outline' fill='#FFF' />
+  );
+
+  const CheckOutIcon = () => (
+    <Icon style={styles.btnIcons} name='log-out-outline' fill='#FFF' />
   );
 
   const cancelBook = () => {
@@ -46,6 +51,13 @@ const BookedHotelDetails = (props) => {
       ],
       { cancelable: true },
     );
+  }
+
+  const checkOut = async () => {
+    let rawData = JSON.parse(props.data.cart);
+    let modifiedData = { ...rawData, booking_id: props.data.booking_id, dates: { ...rawData.dates, endDate: new Date() }};
+    const response = await CheckOut(modifiedData, props.token);
+    props.reloadData();
   }
 
   return (
@@ -96,7 +108,7 @@ const BookedHotelDetails = (props) => {
           {props.data.service.map((item) =>
             <View style={styles.serviceContainer} key={item.id}>
               <Text style={styles.serviceCaption}>{item.title}</Text>
-              <Text style={styles.caption}>₹{item.price + ' X ' + item.qty}</Text>
+              <Text style={styles.priceCaption}>₹{item.price + ' X ' + item.qty}</Text>
             </View>
           )}
           <View style={styles.serviceContainer}>
@@ -119,7 +131,10 @@ const BookedHotelDetails = (props) => {
         <View style={styles.hrLine}></View>
         <View style={styles.btnContainer}>
           <Button style={styles.btns} status='danger' size='small' icon={CloseIcon} disabled={props.data.status === 1 || props.data.status === 5 ? false : true} onPress={cancelBook}>Cancel Booking</Button>
-          <Button style={styles.btns} status='primary' size='small' icon={CallIcon}>Call Hotel</Button>
+          {props.data.status !== 6 && props.data.status !== 7 && 
+            <Button style={styles.btns} status='primary' size='small' icon={CallIcon}>Call Hotel</Button>
+          }
+          {props.data.status === 6 && <Button style={styles.btns} status='primary' size='small' icon={CheckOutIcon} onPress={checkOut}>Check Out</Button>}
         </View>
       </Card>
     </Animatable.View>
