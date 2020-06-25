@@ -31,29 +31,27 @@ const FavouriteHotels = (props) => {
   }
 
   return (
-    <Animatable.View animation="fadeInLeft" direction="normal" duration={1000} useNativeDriver={true} delay={props.delay * 50}>
-      <View style={styles.container}>
-        <View style={styles.favContainer}>
-          <Ripple rippleSize={500} rippleDuration={600} onPress={() => navigateHotelDetails(props.alias, props.hotelId, 1)}>
-            <Image style={styles.image} source={{ uri: props.image }} />
-          </Ripple>
-          <Ripple rippleSize={50} rippleDuration={600} onPress={removeFavourite} style={styles.heartContainer}>
-            <Icon name='heart' style={styles.heartIcon} fill='#FF4626' />
-          </Ripple>
-          <View style={styles.contentContainer}>
-            <View style={styles.leftContainer}>
-              <Ripple rippleSize={500} rippleDuration={600} onPress={() => props.navigate(props.alias, props.hotelId, 1)}>
-                <Text style={styles.hotelName}>{props.hotelName}</Text>
-              </Ripple>
-              <View style={styles.iconContainer}>
-                <Icon name='star' style={styles.starIcon} fill='#FFD13A' />
-                <Text style={styles.caption}>{props.rating}</Text>
-              </View>
+    <Animatable.View style={styles.container} animation="fadeInLeft" direction="normal" duration={1000} useNativeDriver={true} delay={props.delay * 50}>
+      <View style={styles.favContainer}>
+        <Ripple rippleSize={500} rippleDuration={600} onPress={() => navigateHotelDetails(props.alias, props.hotelId, 1)}>
+          <Image style={styles.image} source={{ uri: props.image }} />
+        </Ripple>
+        <Ripple rippleSize={50} rippleDuration={600} onPress={removeFavourite} style={styles.heartContainer}>
+          <Icon name='heart' style={styles.heartIcon} fill='#FF4626' />
+        </Ripple>
+        <View style={styles.contentContainer}>
+          <View style={styles.leftContainer}>
+            <Ripple rippleSize={500} rippleDuration={600} onPress={() => props.navigate(props.alias, props.hotelId, 1)}>
+              <Text style={styles.hotelName}>{props.hotelName}</Text>
+            </Ripple>
+            <View style={styles.iconContainer}>
+              <Icon name='star' style={styles.starIcon} fill='#FFD13A' />
+              <Text style={styles.caption}>{props.rating}</Text>
             </View>
-            <View style={styles.rightContainer}>
-              <Text style={styles.price}>{'₹' + props.price}</Text>
-              <Text style={styles.priceCaption}>  Per Night</Text>
-            </View>
+          </View>
+          <View style={styles.rightContainer}>
+            <Text style={styles.price}>{'₹' + props.price}</Text>
+            <Text style={styles.priceCaption}>  Per Night</Text>
           </View>
         </View>
       </View>
@@ -75,9 +73,10 @@ const themedStyle = StyleService.create({
   container: {
     alignItems: 'center',
     marginBottom: 20,
+    padding: 10
   },
   favContainer: {
-    width: '95%',
+    width: '100%',
     height: 300,
     borderBottomWidth: 1,
     borderBottomColor: 'color-basic-400',

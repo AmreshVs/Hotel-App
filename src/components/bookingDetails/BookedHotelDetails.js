@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image, Alert } from 'react-native';
-import { Card, Button, Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
+import { Button, Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 
@@ -56,13 +56,13 @@ const BookedHotelDetails = (props) => {
   const checkOut = async () => {
     let rawData = JSON.parse(props.data.cart);
     let modifiedData = { ...rawData, booking_id: props.data.booking_id, dates: { ...rawData.dates, endDate: new Date() }};
-    const response = await CheckOut(modifiedData, props.token);
+    await CheckOut(modifiedData, props.token);
     props.reloadData();
   }
 
   return (
     <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={10} >
-      <Card style={styles.container}>
+      <View style={styles.container}>
         <View style={styles.bookingContainer}>
           <View style={styles.confirmContainer}>
             <Text style={styles.confirmed}>{props.data.customer_name}</Text>
@@ -130,13 +130,13 @@ const BookedHotelDetails = (props) => {
         </View>
         <View style={styles.hrLine}></View>
         <View style={styles.btnContainer}>
-          <Button style={styles.btns} status='danger' size='small' icon={CloseIcon} disabled={props.data.status === 1 || props.data.status === 5 ? false : true} onPress={cancelBook}>Cancel Booking</Button>
+          <Button style={styles.btns} status='danger' size='small' icon={CloseIcon} disabled={props.data.status === 1 || props.data.status === 5 || props.data.status === 4 ? false : true} onPress={cancelBook}>Cancel Booking</Button>
           {props.data.status !== 6 && props.data.status !== 7 && 
             <Button style={styles.btns} status='primary' size='small' icon={CallIcon}>Call Hotel</Button>
           }
           {props.data.status === 6 && <Button style={styles.btns} status='primary' size='small' icon={CheckOutIcon} onPress={checkOut}>Check Out</Button>}
         </View>
-      </Card>
+      </View>
     </Animatable.View>
   )
 }
@@ -146,8 +146,12 @@ export default BookedHotelDetails;
 const themedStyle = StyleService.create({
   container: {
     width: '100%',
-    borderRadius: 10,
+    borderRadius: 15,
     marginTop: 10,
+    padding: 15,
+    borderWidth: 1,
+    borderColor: 'color-basic-400',
+    backgroundColor: 'background-basic-color-1',
   },
   bookingContainer: {
     alignItems: 'center',

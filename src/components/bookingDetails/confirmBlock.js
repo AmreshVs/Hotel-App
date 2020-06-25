@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Card, Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
+import { Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import * as Animatable from 'react-native-animatable';
 
 const ConfirmBlock = (props) => {
@@ -18,10 +18,10 @@ const ConfirmBlock = (props) => {
 
   return (
     <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true}>
-      <Card style={[styles.container, { backgroundColor: bgClr }]}>
+      <View style={[styles.container, { backgroundColor: bgClr }]}>
         <View style={styles.bookingContainer}>
           <Icon name='checkmark-circle-outline' style={styles.checkIcon} fill={styles.iconColor.color} />
-          {props.status !== 6 ?
+          {props.status !== 6 && props.status !== 7 ?
             <Text style={styles.confirmed}>Your Booking is {status_label}!</Text>
             :
             <Text style={styles.confirmed}>{props.status === 6 ? 'Checked In' : 'Checked Out'}!</Text>
@@ -43,7 +43,7 @@ const ConfirmBlock = (props) => {
             </>
           }
         </View>
-      </Card>
+      </View>
     </Animatable.View>
   )
 }
@@ -54,7 +54,11 @@ const themedStyle = StyleService.create({
   container: {
     width: '100%',
     marginTop: 10,
-    borderRadius: 10,
+    borderRadius: 15,
+    padding: 15,
+    borderWidth: 1,
+    borderColor: 'color-basic-400',
+    backgroundColor: 'background-basic-color-1',
   },
   bookingContainer: {
     alignItems: 'center',

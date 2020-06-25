@@ -125,7 +125,7 @@ const themedStyle = StyleService.create({
     flexDirection: 'row',
   },
   iconContainer: {
-    right: 10,
+    right: 0,
   },
   datesContainer: {
     marginTop: 5,

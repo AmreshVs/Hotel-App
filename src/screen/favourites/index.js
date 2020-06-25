@@ -101,6 +101,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Favourite
 const themedStyle = StyleService.create({
   bodyContainer: {
     height: '100%',
+    backgroundColor: 'background-basic-color-1'
   },
   noDataContainer: {
     height: '100%',

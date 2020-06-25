@@ -38,6 +38,7 @@ const LoginScreen = (props) => {
   const [visible, setVisible] = React.useState(false);
   const [slideAnim] = React.useState(new Animated.Value(0));
   const [slideAnimOtp] = React.useState(new Animated.Value(500));
+  const [mobileStatus, setMobileStatus] = React.useState(false);
 
   React.useEffect(() => {
     const retrieveData = async () => {
@@ -59,7 +60,7 @@ const LoginScreen = (props) => {
           try {
             if (message) {
               const messageWithOtp = message.split(' ');
-              const otp = (messageWithOtp[1].split(' ')[0]).split('');
+              const otp = messageWithOtp[1];
               if (otp.length === 4) {
                 setOtpValue(otp);
               }
@@ -103,6 +104,7 @@ const LoginScreen = (props) => {
   const slideComp = () => {
     if (validateData()) {
       sendOtp();
+      setMobileStatus(true);
       Animated.spring(slideAnim, {
         toValue: 200,
         useNativeDriver: true
@@ -116,6 +118,8 @@ const LoginScreen = (props) => {
   }
 
   const slideBack = () => {
+    setOtpValue('');
+    setMobileStatus(false);
     Animated.spring(slideAnim, {
       toValue: 0,
       useNativeDriver: true
@@ -215,6 +219,7 @@ const LoginScreen = (props) => {
                 placeholder='Enter mobile number'
                 icon={renderIcon}
                 onChangeText={setValue}
+                disabled={mobileStatus}
               />
             </View>
             <Button style={styles.btnInput} appearance='filled' onPress={slideComp}>Get OTP</Button>

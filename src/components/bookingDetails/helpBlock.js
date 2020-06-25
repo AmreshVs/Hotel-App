@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Card, Button, Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
+import { Button, Text, Icon, StyleService, useStyleSheet } from '@ui-kitten/components';
 import * as Animatable from 'react-native-animatable';
 
 const HelpBlock = () => {
@@ -9,7 +9,7 @@ const HelpBlock = () => {
   
   return (
     <Animatable.View animation="fadeInRight" direction="normal" duration={500} useNativeDriver={true} delay={30}>
-      <Card style={styles.container}>
+      <View style={styles.container}>
         <View style={styles.bookingContainer}>
           <View style={styles.confirmContainer}>
             <Icon name='alert-circle-outline' style={styles.checkIcon} fill='#FF7E6D' />
@@ -21,7 +21,7 @@ const HelpBlock = () => {
             <Button appearance='ghost' size='small' status='basic'>Email Us</Button>
           </View>
         </View>
-      </Card>
+      </View>
     </Animatable.View>
   )
 }
@@ -33,7 +33,11 @@ const themedStyle = StyleService.create({
     width: '100%',
     marginTop: 10,
     marginBottom: 10,
-    borderRadius: 10,
+    borderRadius: 15,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: 'color-basic-400',
+    backgroundColor: 'background-basic-color-1',
   },
   bookingContainer: {
     alignItems: 'center',

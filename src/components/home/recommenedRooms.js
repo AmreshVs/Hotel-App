@@ -51,7 +51,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({ clearData: clearData }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(React.memo(RecommendedRooms));
+export default connect(mapStateToProps, mapDispatchToProps)(RecommendedRooms);
 
 const style = StyleService.create({
   headingText: {
